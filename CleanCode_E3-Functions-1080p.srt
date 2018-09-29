@@ -1,0 +1,2841 @@
+﻿1
+00:00:02,816 --> 00:00:06,736
+Episódio III
+Tamanho de Funções
+
+2
+00:00:09,232 --> 00:00:13,376
+Oi, eu sou o tio bob
+e isso é Clean Code
+
+3
+00:00:50,736 --> 00:00:53,600
+Eu sou o Arquiteto
+
+4
+00:00:53,648 --> 00:00:54,816
+Quê?
+
+5
+00:00:54,872 --> 00:00:57,488
+Filme  errado!? Corta! Corta!
+
+6
+00:00:57,536 --> 00:01:00,624
+Functions! são o que fazemos
+
+7
+00:01:00,632 --> 00:01:04,010
+praticamente todo código que\N escrevemos vai parar em uma função
+
+8
+00:01:04,040 --> 00:01:08,248
+e todo código que faz alguma\N coisa vai para uma função
+
+9
+00:01:08,240 --> 00:01:11,488
+funções são a primeira\N a camada de organização
+
+10
+00:01:11,480 --> 00:01:15,448
+elas são o primeiro container
+que botamos nosso código
+
+11
+00:01:15,448 --> 00:01:20,632
+Por isso, é muito importante\N saber bem como fazer elas
+
+12
+00:01:20,632 --> 00:01:22,800
+quão grande uma função deve ser?
+
+13
+00:01:22,800 --> 00:01:26,368
+20 linas? 30 linhas? vc sabe?
+
+14
+00:01:26,368 --> 00:01:28,752
+acontece que existe uma regra simples
+
+15
+00:01:28,752 --> 00:01:34,672
+eu vou ensiná-la, e se vc segui-la,\N suas funções sempre serão do tamanho certo
+
+16
+00:01:37,488 --> 00:01:42,472
+vc já se perguntou se já viu todas\N as classes dentro do seu projeto?
+
+17
+00:01:42,472 --> 00:01:51,240
+vc se preocupa que classes podem estar escondidas
+em algum lugar no seu código, nunca vistas?
+
+18
+00:01:51,240 --> 00:01:56,832
+acontece que, classes tendem a ficar\N escondidas dentro de algumas funções grandes
+
+19
+00:01:56,832 --> 00:01:59,552
+esse é um dos lugares que podem estar escondidas
+
+20
+00:01:59,552 --> 00:02:06,496
+então nesse episódio irei mostrar\N como vc encontra essas classes
+
+21
+00:02:06,496 --> 00:02:10,632
+fazendo suas funções ficarem do tamanho certo
+
+22
+00:02:10,632 --> 00:02:12,632
+Ah, aqui está vc, demonio!
+
+23
+00:02:14,576 --> 00:02:15,536
+sempre fugindo!
+
+24
+00:02:17,168 --> 00:02:21,520
+vc já ouviu a regra que uma \Nfunção deve fazer somente uma coisa?
+
+25
+00:02:21,520 --> 00:02:23,768
+algumas vezes é dito algo assim :
+
+26
+00:02:23,768 --> 00:02:29,712
+uma função deve fazer somente\N uma coisa e deveria fazer isso bem
+
+27
+00:02:29,712 --> 00:02:33,552
+mas o que significa "só uma coisa"?
+
+28
+00:02:33,560 --> 00:02:38,968
+neste episódio eu vou te ensinar o
+que "uma coisa" significa, sem dúvidas
+
+29
+00:02:40,432 --> 00:02:47,432
+porque esse episodio é 
+tudo sobre tamanho de funçoes
+
+30
+00:02:50,328 --> 00:02:54,424
+O que faz o sol brilhar?
+
+31
+00:02:54,420 --> 00:02:57,792
+Aposto que achou que tinha\N esquecido da aula de astronomia!
+
+32
+00:02:57,792 --> 00:02:59,792
+não, eu não esqueci
+
+33
+00:02:59,792 --> 00:03:03,200
+Onde o sol consegue sua energia ?
+
+34
+00:03:07,032 --> 00:03:13,992
+nos anos 90, cientistas acreditavam que todas as
+grandes perguntas já tinham sido respondidas
+
+35
+00:03:13,992 --> 00:03:17,152
+que não tinham novas 
+descobertas a serem feitas
+
+36
+00:03:17,152 --> 00:03:21,320
+em 1970, A. A. Michelson disse:
+
+37
+00:03:21,320 --> 00:03:28,000
+que papel futuro da ciencia seria
+adicionar casas decimais 
+à numeros já obtidos
+
+38
+00:03:29,248 --> 00:03:31,936
+Oh, tinha coisas que 
+ainda incomodavam eles
+
+39
+00:03:31,936 --> 00:03:36,384
+como a idade da terra ou a fonte de energia do sol
+
+40
+00:03:36,488 --> 00:03:41,048
+mas muitos acreditavam que 
+essas eram coisas pequenas
+
+41
+00:03:41,048 --> 00:03:44,024
+que eventualmente seriam 
+resolvidas com o tempo
+
+42
+00:03:44,024 --> 00:03:47,312
+no inicio de 1800, 
+físicos teriam estudado
+
+43
+00:03:47,312 --> 00:03:51,512
+que se o sol fosse alimentado 
+por uma força natural como o fogo
+
+44
+00:03:51,512 --> 00:03:55,352
+então ele teria energia
+suficiente para mais 10 mil anos
+
+45
+00:03:55,352 --> 00:04:00,240
+mas os geologos, que estavam estudando
+as camadas de pedras sedimentares
+
+46
+00:04:00,240 --> 00:04:04,216
+estavam convencidos que a terra 
+tinha pelo menos 100 milhões de anos
+
+47
+00:04:04,216 --> 00:04:08,584
+e como tinham impressões de
+ plantas nessas pedras antigas,
+
+48
+00:04:08,584 --> 00:04:13,448
+eles acreditam que o sol estava 
+ativo a pelo menos 100 milhões de anos
+
+49
+00:04:13,448 --> 00:04:18,344
+em 1887, Lord Kelvin resolveu este problema
+
+50
+00:04:18,344 --> 00:04:24,168
+mostrando que o sol deriva seu 
+poder de seu próprio colapso gravitacional
+
+51
+00:04:24,168 --> 00:04:27,728
+um objeto tão grande quanto 
+o sol precisa contrair somente
+
+52
+00:04:27,728 --> 00:04:33,496
+15 metros por século para manter
+a produção de energia absorvida
+
+53
+00:04:33,496 --> 00:04:36,264
+para um objeto do tamanho do sol isso
+
+54
+00:04:36,264 --> 00:04:40,744
+significa que ele poderia se 
+alimenatar por vãrios milhões de anos
+
+55
+00:04:42,744 --> 00:04:46,856
+mas naquele tempo, biologos e geologos
+
+56
+00:04:46,856 --> 00:04:49,824
+estavam exigindo  mais tempo ainda
+
+57
+00:04:49,824 --> 00:04:52,088
+Darwing não estava disposto a aceitar
+
+58
+00:04:52,088 --> 00:04:55,824
+que 100 milhoes de anos era 
+tempo suficiente para a evolução da vida
+
+59
+00:04:55,824 --> 00:05:00,280
+e os geologos estavam achando 
+camadas de pedras cada vez mais fundas
+
+60
+00:05:00,280 --> 00:05:04,616
+enquanto Lord Kelvin havia 
+resolvido o problema de 100 milhoes de anos
+
+61
+00:05:04,616 --> 00:05:09,344
+Biologos e Geologos estavam exigindo bilhões de anos
+
+62
+00:05:10,960 --> 00:05:13,872
+este impasse foi quebrado eventualmente por
+
+63
+00:05:13,872 --> 00:05:18,344
+um conjunto de acidentes que começaram em 1995
+
+64
+00:05:18,344 --> 00:05:23,456
+naquele ano, Wilhelm Röntgen
+acidentalmente descobriu os raios X
+
+65
+00:05:23,456 --> 00:05:28,416
+ele estava experimentando 
+descargas eletricas poderosas
+
+66
+00:05:28,416 --> 00:05:34,296
+e ele notou um brilho fraco 
+de um material fosforescente
+
+67
+00:05:34,296 --> 00:05:37,408
+que por coincidencia ele tinha colocado perto
+
+68
+00:05:38,800 --> 00:05:40,800
+Röntgen, rapidamente mostrou que
+
+69
+00:05:40,800 --> 00:05:43,624
+esses raios x são bem penetrantes
+
+70
+00:05:43,624 --> 00:05:48,912
+ele podia escurecer chapas fotográficas 
+que estavam seladas em papel cartolina
+
+71
+00:05:48,912 --> 00:05:52,976
+ele conseguiu até tirar uma 
+foto dos ossos de sua propria mão
+
+72
+00:05:52,976 --> 00:05:59,088
+um ano depois, Antoine Henri Becquerel 
+decidiu experimentar com fosforescentes
+
+73
+00:05:59,088 --> 00:06:02,720
+ele sentiu que fosforescentes 
+era uma fonte de raios x
+
+74
+00:06:02,720 --> 00:06:07,456
+ele pegou material que iria 
+brilar apos ser exposto a luz do sol
+
+75
+00:06:07,456 --> 00:06:12,504
+e colocou próximo a chapas 
+fotografias seladas em cartolina
+
+76
+00:06:12,504 --> 00:06:14,848
+se essas chapas fossem escurecidas
+
+77
+00:06:14,848 --> 00:06:18,568
+então o material fosforescente 
+deve ser uma fonte de raios x
+
+78
+00:06:19,976 --> 00:06:23,448
+um dos materiais fosforescente que ele usou
+
+79
+00:06:23,448 --> 00:06:27,784
+foi cristais de sulfato de urânio e potássio
+
+80
+00:06:27,784 --> 00:06:31,048
+um componente contendo urânio
+
+81
+00:06:31,048 --> 00:06:32,872
+e funcionou muito bem
+
+82
+00:06:32,872 --> 00:06:37,264
+toda vez que botava esses cristais no sol
+
+83
+00:06:37,264 --> 00:06:40,048
+com uma chapa fotografica envelopada
+
+84
+00:06:40,048 --> 00:06:42,592
+a chapa fotografica ficava escurecida
+
+85
+00:06:42,592 --> 00:06:46,216
+ele foi capaz de até criar siluetas de metais
+
+86
+00:06:46,216 --> 00:06:50,360
+que foram postos entre os 
+cristais e a chapa fotografica
+
+87
+00:06:50,360 --> 00:06:55,696
+Becquerel estava certo, os materiais 
+fosforecentes estavam produzindo raios x
+
+88
+00:06:57,288 --> 00:07:00,472
+mas então o tempo ficou feio para eles
+
+89
+00:07:00,472 --> 00:07:04,744
+o sol ficou atras de nuvens por vários dias
+
+90
+00:07:04,744 --> 00:07:09,552
+ele tinha um experimento 
+pronto com os cristais e a chapa
+
+91
+00:07:09,552 --> 00:07:13,160
+mas sem o sol para fazer os cristais brilharem
+
+92
+00:07:13,160 --> 00:07:14,200
+era inutil
+
+93
+00:07:14,200 --> 00:07:19,088
+então ele pegou o experimento 
+e guardou em um armario
+
+94
+00:07:19,088 --> 00:07:21,392
+esperando pelo sol aparecer de novo
+
+95
+00:07:23,392 --> 00:07:27,064
+dias depois tirou o experimento do armario
+
+96
+00:07:27,176 --> 00:07:29,864
+mas daí ele fez algo inesperado
+
+97
+00:07:29,864 --> 00:07:32,576
+ele revelou a chapa fotográfica
+
+98
+00:07:32,576 --> 00:07:34,496
+o que fez ele fazer isso?
+
+99
+00:07:34,496 --> 00:07:36,816
+os cristais nunca foram expostos ao sol
+
+100
+00:07:36,816 --> 00:07:40,200
+eles não brilharam, não teria como produzir raios x
+
+101
+00:07:40,200 --> 00:07:43,088
+por que ele revelou aquela placa fotográfica?
+
+102
+00:07:43,088 --> 00:07:45,224
+provavelmente nunca saberemos
+
+103
+00:07:45,264 --> 00:07:48,264
+mas quando ele fezm os 
+resultados foram surpreendentes
+
+104
+00:07:50,144 --> 00:07:52,776
+a placa estava escurecida
+
+105
+00:07:53,340 --> 00:07:57,232
+de alguma forma  raios x estavam sendo produzidos
+
+106
+00:07:57,232 --> 00:08:00,816
+por aqueles cristas, mesmo eles não sendo expostos ao sol
+
+107
+00:08:00,816 --> 00:08:06,032
+e esses raios x estavam penetrando 
+a cartolina que cobriam a chapa fotográfica
+
+108
+00:08:06,032 --> 00:08:08,264
+e escurecendo a chapa fotográfica
+
+109
+00:08:09,160 --> 00:08:11,720
+Becquerel tentou de novo e de novo
+
+110
+00:08:11,720 --> 00:08:14,432
+repetiu o experimento várias vezes
+
+111
+00:08:14,432 --> 00:08:19,736
+e todas as vezes as chapas fotográficas 
+eram escurecidas pelos cristais
+
+112
+00:08:19,736 --> 00:08:24,992
+os raios x que vinham destes cristas 
+penetravam cartolinas, papelão..
+
+113
+00:08:24,992 --> 00:08:27,760
+ele podia fazer siluetas de objetos metálicos
+
+114
+00:08:27,760 --> 00:08:30,480
+tinha poder vindo desses cristais
+
+115
+00:08:30,480 --> 00:08:34,120
+mas esse poder não tinha 
+vindo do sol como ele imaginava
+
+116
+00:08:34,120 --> 00:08:37,424
+não, esse poder simplesmente vinha dos cristas
+
+117
+00:08:37,424 --> 00:08:40,120
+e isso implicava em algo muito perturbador
+
+118
+00:08:40,120 --> 00:08:44,816
+a quanto tempo esses cristais 
+vinham emitindo raios x deste nível ?
+
+119
+00:08:44,816 --> 00:08:50,264
+a única explicação razoavel é 
+que eles veem emitindo desde que foram formados
+
+120
+00:08:50,264 --> 00:08:52,376
+mas isso seria a milhoes de anos
+
+121
+00:08:52,376 --> 00:08:54,776
+de onde saiu esse poder?
+
+122
+00:08:54,776 --> 00:08:57,616
+a quantidade de energia era desconcertante
+
+123
+00:09:00,544 --> 00:09:05,224
+Becquerel descobriu radioatividade bem por acidente
+
+124
+00:09:05,224 --> 00:09:11,224
+e com isso ele descobriu a 
+energia imensa contida em reações nucleares
+
+125
+00:09:11,224 --> 00:09:13,224
+ele não saberia naquela tempo
+
+126
+00:09:13,224 --> 00:09:17,352
+mas ele também havia descoberto a fonte de poder do sol
+
+127
+00:09:23,152 --> 00:09:26,992
+A primeira regra das funções
+
+128
+00:09:27,448 --> 00:09:31,840
+A primeira regra de funções: elas devem ser pequenas.
+
+129
+00:09:31,840 --> 00:09:36,696
+A segunda regra de funçoes: devem ser ainda menores.
+
+130
+00:09:36,696 --> 00:09:39,320
+quão grande uma funçao deve ser ?
+
+131
+00:09:39,320 --> 00:09:42,160
+nos anos 80 tinhamos uma regra simples:
+
+132
+00:09:42,160 --> 00:09:45,000
+uma função tinha que ser do tamanho da tela
+
+133
+00:09:45,000 --> 00:09:46,560
+claro que naqueles dias
+
+134
+00:09:46,560 --> 00:09:48,768
+estavamos falando de uma vt100
+
+135
+00:09:48,768 --> 00:09:52,976
+que tinham 24 linhas onde 4 eram usadas pelo editor
+
+136
+00:09:52,976 --> 00:09:57,200
+então a regra era : aproximadamente 20 linhas
+
+137
+00:09:58,656 --> 00:10:00,600
+hoje em dia, é claro
+
+138
+00:10:00,600 --> 00:10:03,080
+estes jovens programadores com olhos de águia
+
+139
+00:10:03,080 --> 00:10:07,264
+todos tem vários monitores do tamanho de uma parede
+
+140
+00:10:07,264 --> 00:10:10,960
+e o pixel nessas telas são do tamanho de atómos de uranio
+
+141
+00:10:10,960 --> 00:10:15,176
+então eles podem criar 
+centenas de linhas em uma tela cheia
+
+142
+00:10:15,176 --> 00:10:19,472
+então a regra do tamanho da tela não vale mais
+
+143
+00:10:24,712 --> 00:10:27,272
+quão grande uma função deveria ser ?
+
+144
+00:10:29,272 --> 00:10:32,408
+4 linhas é OK, talvez 5
+
+145
+00:10:32,408 --> 00:10:34,704
+6? ok...
+
+146
+00:10:34,704 --> 00:10:36,704
+10?! é muito grande
+
+147
+00:10:39,176 --> 00:10:41,928
+eu posso ver a expressão na sua cara
+
+148
+00:10:41,928 --> 00:10:45,328
+eu sei o que estáo pensando. 
+vcs acham que eu to maluco
+
+149
+00:10:45,328 --> 00:10:46,272
+estão pensando:
+
+150
+00:10:46,272 --> 00:10:49,696
+pq alguem faria uma função tão pequena ?
+
+151
+00:10:50,816 --> 00:10:53,408
+mas considere isto:
+
+152
+00:10:53,408 --> 00:10:58,008
+em uma funçao de 4 linhas 
+quanta identaçao acha que irá ver
+
+153
+00:10:58,008 --> 00:11:03,904
+quantos if aninhados while e deus te ajude, 
+blocos try chatch vc verá ?
+
+154
+00:11:04,256 --> 00:11:09,376
+numa função de 4 linhas, não 
+há muito espaço para identação
+
+155
+00:11:11,376 --> 00:11:17,976
+então como que o corpo de um 
+IF ou um loop while ou bloco try catch
+
+156
+00:11:17,976 --> 00:11:20,912
+apareceria em uma funçao de 4 linhas ?
+
+157
+00:11:20,912 --> 00:11:24,088
+teriam que ser funçôes chamando outras, não?
+
+158
+00:11:24,088 --> 00:11:28,432
+não tem como enterrar muita \Nlógica em uma funçao de 4 linhas
+
+159
+00:11:28,432 --> 00:11:33,032
+então toda essa lógica teria que 
+ser extraida como outras funções
+
+160
+00:11:35,032 --> 00:11:38,432
+e o que todas funções tem em comum?
+
+161
+00:11:38,432 --> 00:11:40,432
+lembre do noss último episódio
+
+162
+00:11:40,432 --> 00:11:41,848
+todas tem nomes:
+
+163
+00:11:41,848 --> 00:11:47,728
+nomes bem escolhidos e bem descritivos 
+que dizem o que a funçao faz
+
+164
+00:11:50,440 --> 00:11:52,688
+e lembre-se da regra do escopo:
+
+165
+00:11:53,040 --> 00:11:58,248
+funçoes em um escopo pequeno 
+deveriam ter nomes grandes e descritivos
+
+166
+00:11:58,248 --> 00:12:02,960
+se sua classe é composta por 
+várias funçoes pequenas
+
+167
+00:12:02,960 --> 00:12:09,248
+então todas essas funçoes 
+teriam nomes bons, grandes e descritivos
+
+168
+00:12:11,120 --> 00:12:12,528
+o que mais ?
+
+169
+00:12:12,528 --> 00:12:16,320
+vc extrairia seus predicados do seus IFs e loops while
+
+170
+00:12:16,320 --> 00:12:20,768
+funçoes booleanas ainda menores 
+com nomes pequenos e bem escolhidos
+
+171
+00:12:22,488 --> 00:12:27,408
+e todos esses nomes iriam 
+usar as partes corretas do discurso
+
+172
+00:12:27,408 --> 00:12:31,808
+e seu código será lido como uma proza bem escrita
+
+173
+00:12:33,672 --> 00:12:38,200
+ha! Eu preciso ver um exemplo! me mostre!
+
+174
+00:12:39,912 --> 00:12:43,784
+em 2007 eu estava navegando no site FitNesse
+
+175
+00:12:43,784 --> 00:12:46,344
+quando notei esse ótimo exemplo
+
+176
+00:12:46,344 --> 00:12:51,360
+de uma grande função estática seu nome era "TestableHtml"
+
+177
+00:12:51,360 --> 00:12:55,024
+o que por acaso, é um substantivo e não um verbo
+
+178
+00:12:55,024 --> 00:12:57,872
+violando nossa regra para nome de funções
+
+179
+00:12:58,888 --> 00:13:03,112
+FitNesse é um framework de 
+testes de aceitaçao baseado em Wiki
+
+180
+00:13:03,112 --> 00:13:08,288
+"TestableHtml" é uma funçao que 
+rodeia uma página de teste
+
+181
+00:13:08,288 --> 00:13:12,152
+ com os metódos  setup e teardown \N herdados apropriadamente
+
+182
+00:13:12,150 --> 00:13:16,152
+essa função tem 45 linhas nela
+
+183
+00:13:16,152 --> 00:13:19,360
+e estão carregadas de código duplicado
+
+184
+00:13:19,360 --> 00:13:22,704
+também possuem 2 argumentos e 2 variáveis locais
+
+185
+00:13:22,704 --> 00:13:25,872
+que são usados ao longo das 45 linhas
+
+186
+00:13:27,416 --> 00:13:29,600
+qundo vc tem uma funçao
+
+187
+00:13:29,600 --> 00:13:32,792
+que pode ser divida em diversas áreas funcionais
+
+188
+00:13:32,792 --> 00:13:36,816
+e vc tem variáveis que são 
+usadas em todas essas áreas
+
+189
+00:13:36,816 --> 00:13:39,840
+então o que vc realmente tem, é uma classe
+
+190
+00:13:39,840 --> 00:13:44,320
+afinal de contas, uma classe é \Napenas um grupo de funçoes
+
+191
+00:13:44,320 --> 00:13:47,104
+que usam um conjunto comum de variáveis
+
+192
+00:13:48,152 --> 00:13:55,320
+então, o primeiro passo é invocar
+o "Extract Method Object" da refatoração
+
+193
+00:13:55,320 --> 00:13:59,888
+para poder converter essa \Nfunção em uma classe própria
+
+194
+00:13:59,888 --> 00:14:04,752
+essa classe será então contruida 
+com os argumentos dessa função
+
+195
+00:14:04,752 --> 00:14:08,680
+e então o método "invoke", será chamado
+
+196
+00:14:09,160 --> 00:14:14,648
+depois iriamos promover todas essas variaveis
+ locais da funcao em campos da classe
+
+197
+00:14:14,648 --> 00:14:17,928
+e inicalizariamos esses campos no construtor
+
+198
+00:14:17,928 --> 00:14:24,384
+isso nos permitirá extrair várias funções
+menores sem ter que passar argumentos entre elas
+
+199
+00:14:24,384 --> 00:14:29,200
+como pode ver a funçao invoke 
+tem uma estrutura de repetição
+
+200
+00:14:29,200 --> 00:14:33,264
+essas 3 linhas se repetem 4 vezes
+
+201
+00:14:33,264 --> 00:14:38,208
+as 3 linhas não são completamente iguais 
+existem algumas diferenças pequenas
+
+202
+00:14:38,208 --> 00:14:42,056
+então a primeira coisa que 
+faremos é eliminar essas diferenças
+
+203
+00:14:42,056 --> 00:14:46,952
+e extrair novas variáveis para 
+que as 3 linhas sejam paramétricas
+
+204
+00:15:01,608 --> 00:15:08,768
+agora podemos extrair esses 4
+ grupos em uma funçao única chamada cleanPage
+
+205
+00:15:08,768 --> 00:15:11,720
+e podemos limpar essa função um pouco
+
+206
+00:15:19,840 --> 00:15:25,672
+agora podemos ver que ainda exitem outras 4 repetiçoes
+
+207
+00:15:25,672 --> 00:15:31,136
+podemos fazer elas paramétricas, 
+extraindo uma váriavel (PageName)
+
+208
+00:15:31,136 --> 00:15:38,864
+e podemos extrair esses 4 grupo em 
+uma única função chamada IncludeIfInherited
+
+209
+00:15:57,688 --> 00:16:03,056
+agora podemos extrair as principais
+ operações em funcões bem nomeadas
+
+210
+00:16:03,056 --> 00:16:06,920
+podemos extrair o código que incluí as configuraçoes
+
+211
+00:16:06,920 --> 00:16:10,632
+em uma função chamada IncludeSetups
+
+212
+00:16:10,632 --> 00:16:15,792
+também podemos extrari o
+código que incluí as desmontagens
+
+213
+00:16:15,792 --> 00:16:20,528
+em uma função chamada IncludeTeardowns
+
+214
+00:16:23,176 --> 00:16:27,048
+depois: podemos nos livrar desse código de StringBuffer
+
+215
+00:16:27,048 --> 00:16:30,568
+fazendo com que todas 
+essas funções retornem strings
+
+216
+00:16:30,568 --> 00:16:35,232
+e juntar todas com a função invoke
+
+217
+00:16:54,664 --> 00:16:59,120
+agora a lógica da função invoke está clara
+
+218
+00:16:59,120 --> 00:17:06,536
+podemos consolidá-la ainda mais colocando todo o código
+de alteraçado do contéudo dentro do IF
+
+219
+00:17:14,800 --> 00:17:23,112
+agora podemos extrair o predicado desse If e substituir
+com algo que o descreve muito bem
+
+220
+00:17:23,112 --> 00:17:26,976
+e depois podemos extrair o conteúdo desse if
+
+221
+00:17:26,976 --> 00:17:33,624
+para que  todo o if se torne uma 
+senteça que descreve precisamente o que faz
+
+222
+00:17:33,624 --> 00:17:37,200
+ele é lido como uma proza bem escrita
+
+223
+00:17:38,240 --> 00:17:42,136
+Agora a função invoke te 
+diz o que ela faz exatamente
+
+224
+00:17:42,136 --> 00:17:45,200
+assim como todas as outras 
+funções desta classe
+
+225
+00:17:45,200 --> 00:17:49,216
+porque são todas funções
+ pequenas e bem escritas
+
+226
+00:17:55,096 --> 00:18:00,600
+finalmente está bem claro
+ o que esta classe faz
+
+227
+00:18:00,600 --> 00:18:05,152
+ela envolve uma página de
+ teste com setups e teardowns
+
+228
+00:18:05,152 --> 00:18:09,992
+então podemos renomear esta
+ classe para SetupTeardownSurrounder
+
+229
+00:18:09,992 --> 00:18:14,240
+e podemos renomear a função invoke para surround
+
+230
+00:18:24,370 --> 00:18:27,744
+a versão completa dessa classe
+ pode ser encontrada em cleancoders.com
+
+231
+00:18:31,616 --> 00:18:33,888
+você está maluco?
+
+232
+00:18:35,256 --> 00:18:38,168
+Eu já estava esperando essa reação
+
+233
+00:18:38,632 --> 00:18:41,472
+deixa eu ver se eu sei o que vc está pensando
+
+234
+00:18:41,472 --> 00:18:46,312
+vc está pensando q vc ficará perdido
+ em um mar de pequenas funçoes
+
+235
+00:18:46,312 --> 00:18:50,480
+que não será capaz de se 
+encontrar dentro do código
+
+236
+00:18:50,480 --> 00:18:55,168
+que todas essas funções vão 
+levar muito tempo para ser chamadas
+
+237
+00:18:55,168 --> 00:18:58,360
+o overhead de chamadas vai te matar
+
+238
+00:18:58,360 --> 00:19:05,216
+e também está pensando que escrever todas
+essas funçoes pequenas vai levar muito tempo
+
+239
+00:19:07,128 --> 00:19:09,624
+bem, isso é um Absurdo
+
+240
+00:19:09,624 --> 00:19:12,840
+vc não vai ficar perdido em um mar de funções
+
+241
+00:19:12,840 --> 00:19:17,464
+não vai ficar perdido em uma 
+floresta cheia de pequenos métodos
+
+242
+00:19:17,464 --> 00:19:23,152
+pq essas funçoes/métodos 
+tem nomes que vc escolheu
+
+243
+00:19:23,152 --> 00:19:25,272
+se fez vc o seu trabalho
+
+244
+00:19:25,272 --> 00:19:28,256
+se pos nomes nas suas funçoes
+
+245
+00:19:28,256 --> 00:19:32,360
+e se essas funçoes estão
+em classes com bons nomes
+
+246
+00:19:32,360 --> 00:19:36,896
+e se essas classes 
+estão com namespaces bem nomeados
+
+247
+00:19:36,896 --> 00:19:39,272
+então ninguem conseguie ficar perdido
+
+248
+00:19:39,272 --> 00:19:44,336
+esses nomes são as placas 
+que te guiarão atráves do código
+
+249
+00:19:44,336 --> 00:19:48,784
+vc não pode se perder se vc usou bons nomes
+
+250
+00:19:49,560 --> 00:19:53,648
+A metáfora da geografia
+
+251
+00:19:53,648 --> 00:19:59,712
+pq sentimos tão desconfortável com
+a idéia de funçoes pequenas que tem nomes?
+
+252
+00:19:59,712 --> 00:20:02,256
+o que isso tem que nos amedronta ?
+
+253
+00:20:02,256 --> 00:20:03,656
+eu te digo o que é
+
+254
+00:20:04,030 --> 00:20:09,432
+é o fato que funções grandes 
+são profundamente familiares para nós
+
+255
+00:20:09,824 --> 00:20:13,440
+pegue uma funçao grande e vire ela de lado
+
+256
+00:20:13,440 --> 00:20:15,256
+e parece como uma paisagem
+
+257
+00:20:15,664 --> 00:20:20,320
+nós, humanos, evoluimos 
+para reconhecer paisagens
+
+258
+00:20:20,320 --> 00:20:23,712
+nós sabemos onde estamos 
+reconhecendo pontos de referência
+
+259
+00:20:23,712 --> 00:20:28,784
+isso nos faz sentir confortáveis de um jeito bem primitivo
+
+260
+00:20:28,784 --> 00:20:36,176
+nós somos muito bons em navegar terrenos
+complexos reconhecendo pontos de referência
+
+261
+00:20:37,432 --> 00:20:40,960
+como sabemos o caminho dentro de uma funçao grande ?
+
+262
+00:20:41,712 --> 00:20:43,840
+nós reconhecemos os 
+pontos de referência
+
+263
+00:20:43,840 --> 00:20:47,280
+sabemos, por exemplo que 
+os índices são incrementnados
+
+264
+00:20:47,280 --> 00:20:51,272
+na terceira linha indentada,
+ logo após o segundo bloco de comando
+
+265
+00:20:51,272 --> 00:20:54,568
+sabemos que e fator tempo é ajustado
+
+266
+00:20:54,568 --> 00:21:01,504
+naquele pequeno código depois do If, 
+logo após aquele bloco try cach
+
+267
+00:21:01,504 --> 00:21:04,336
+nós memorizamos a paisagem
+
+268
+00:21:04,336 --> 00:21:07,024
+e reconhencemos os pontos de referencia
+
+269
+00:21:07,024 --> 00:21:12,008
+e essa é uma sensasão bem 
+confortável para nosso cérebro reptiliano
+
+270
+00:21:13,200 --> 00:21:15,920
+mas se vc colocar alguem novo no projeto,
+
+271
+00:21:15,920 --> 00:21:21,416
+eles vão olhar o código e não vão reconhecer nada
+
+272
+00:21:21,416 --> 00:21:23,416
+eles ficaraão totalmente desorientados
+
+273
+00:21:23,416 --> 00:21:26,800
+eles não saberão por onde ir ou começar.
+
+274
+00:21:26,800 --> 00:21:31,328
+eventualmente eles irão ter 
+que ficar perambulando pelo código
+
+275
+00:21:31,328 --> 00:21:34,592
+na esperaça de poder encontrar
+ algum lugar seguro para acampar
+
+276
+00:21:34,592 --> 00:21:36,760
+antes de serem comidos por um tigre dente de sabre
+
+277
+00:21:38,040 --> 00:21:39,592
+por outro lado,
+
+278
+00:21:39,592 --> 00:21:43,776
+se vc colocar alguem novo em 
+um código que tenha sinalizaçoes:
+
+279
+00:21:43,776 --> 00:21:50,464
+funçoes bem nomeadas dentro de classes bem 
+nomeadas dentro de namespaces bem nomeados
+
+280
+00:21:50,888 --> 00:21:54,704
+então irá perceber , que eles 
+irão conseguir navegar pelo caminho
+
+281
+00:21:54,704 --> 00:21:58,168
+sem serem comidos por uma ave do terror.
+
+282
+00:21:58,168 --> 00:22:03,456
+eles se irão se adaptar facilmente
+e se tornarão produtivos rapidamente
+
+283
+00:22:04,064 --> 00:22:08,792
+A metáfora do banheiro
+
+284
+00:22:08,792 --> 00:22:12,432
+quero que imagine quando vc tinha 12 anos
+
+285
+00:22:12,432 --> 00:22:16,440
+vc provavelmente tinha um sistema de
+arquivamento para seu quarto, como eu tinha
+
+286
+00:22:16,440 --> 00:22:18,256
+tudo no chão
+
+287
+00:22:18,256 --> 00:22:22,768
+suas meias estacam no pé da cama,
+ vc usou elas ondem, talvez queira usa-las hj
+
+288
+00:22:22,768 --> 00:22:26,048
+suas cuecas similarmente estavam na cabeceira da cama
+
+289
+00:22:26,048 --> 00:22:30,432
+os livros que estava lendo estavam entre a cama e a parede
+
+290
+00:22:30,960 --> 00:22:33,544
+esse sistema te serviu bem
+
+291
+00:22:33,544 --> 00:22:38,432
+vc sabia onde tudo estavam e 
+se sentia bem confortavel com isso
+
+292
+00:22:40,000 --> 00:22:43,768
+mas entáo sua mãe invade seu quarto e diz:
+
+293
+00:22:43,768 --> 00:22:47,024
+"meu deus do céu esse quarto tá um chiqueiro"
+
+294
+00:22:47,024 --> 00:22:50,160
+e ela começava a estragar o seu sistema de arquivamento
+
+295
+00:22:50,160 --> 00:22:52,504
+colocando as coisas longe
+
+296
+00:22:52,504 --> 00:22:59,992
+ela adiciona insultos, forçando-o a
+ajuda a destruir seu sistema de arquivamento
+
+297
+00:23:01,816 --> 00:23:06,528
+eventualmente sua mãe terminaria 
+de destruir seu sistema de arquivamento
+
+298
+00:23:06,528 --> 00:23:11,208
+e depois iria te dar uma bronca
+para vc manter seu quarto em ordem
+
+299
+00:23:11,560 --> 00:23:18,888
+depois que ela saía de vistas 
+seu cerebro repitiliano iria se reafirmar
+
+300
+00:23:18,888 --> 00:23:24,088
+vc iria pegar todas as coisas 
+e colocar de volta no chão
+
+301
+00:23:24,088 --> 00:23:29,112
+reestabelecendo o seu confortável
+ sistema de arquivamento
+
+302
+00:23:30,072 --> 00:23:36,600
+é só quando temos 25 ou 30 anos 
+e vivemos com outra pessoal
+
+303
+00:23:36,600 --> 00:23:41,904
+que percebemos que essa não é uma boa
+ estrategia para trabalhar e viver em um time
+
+304
+00:23:41,900 --> 00:23:47,456
+é dificil de ser um time quando 
+está rodeado de bagunça o tempo todo
+
+305
+00:23:47,456 --> 00:23:49,536
+quando outras pessoas estáo envolvidas
+
+306
+00:23:49,536 --> 00:23:53,056
+a estratégia "de tudo no chão" , desmorona rapidamente
+
+307
+00:23:53,664 --> 00:23:59,064
+e então lembramos do que nossas mães 
+ensinamvam, quando inultilmente limpavam nossos quartos
+
+308
+00:23:59,064 --> 00:24:04,640
+e começamos a guardar as coisas 
+em gavetas, armários, cabides
+
+309
+00:24:04,640 --> 00:24:09,384
+guardamos elas para que não sejam 
+pisoteadas por outras pessoas com que vivemos
+
+310
+00:24:09,384 --> 00:24:15,752
+quardamos elas para que nós e 
+outras pessoas possam encontrar depois
+
+311
+00:24:16,288 --> 00:24:21,160
+as vezes guardamos em potes com nomes,
+
+312
+00:24:21,160 --> 00:24:25,368
+para que depois quando 
+voltassemos, saberiamos o que tem neles
+
+313
+00:24:26,248 --> 00:24:32,256
+funções grandes ? 
+issó é a para crianças de 12 anos.
+
+314
+00:24:32,256 --> 00:24:37,776
+vc se sente confortável com tudo 
+espalhado em uma grande pilha
+
+315
+00:24:37,776 --> 00:24:41,096
+depois de um tempo, quando começa  
+a madurecer e começa a trabalhar em um time
+
+316
+00:24:41,096 --> 00:24:46,544
+vc percebe que o melhor lugar para 
+se colocar código é em lugar com bons nomes
+
+317
+00:24:46,544 --> 00:24:49,616
+onde podem ser encontrados depois e entendidos.
+
+318
+00:24:50,592 --> 00:24:54,816
+Eficiência
+
+319
+00:24:59,584 --> 00:25:05,456
+antigamente, havia um tempo onde nos
+ preocupávamos com o overhead de funçoes
+
+320
+00:25:05,450 --> 00:25:10,304
+sabíamos naquele tempo, contruir um
+gerenciador de memória era muito caro
+
+321
+00:25:10,304 --> 00:25:14,144
+e passar argumentos para funçoes tomava muito tempo
+
+322
+00:25:14,144 --> 00:25:16,600
+em me lembro, uma vez em 1970
+
+323
+00:25:16,600 --> 00:25:21,728
+nós trabalhamos em um microprocessador 
+8085 e estavamos escrevendo em C
+
+324
+00:25:21,728 --> 00:25:27,040
+e naqueles dias nós medíamos overhead 
+de chamada de funçoes em microsegundos
+
+325
+00:25:28,424 --> 00:25:32,784
+mas hoje em dia, nossos 
+computadores são tão rápidos
+
+326
+00:25:32,784 --> 00:25:35,744
+e nossos compiladores são
+ tão bons em otimização
+
+327
+00:25:35,744 --> 00:25:39,368
+que uma chamada de funçãoleva 
+nanosegundos, talvez menos.
+
+328
+00:25:39,368 --> 00:25:44,104
+se preocupar com esse tipo de overhead 
+é totalmente desnecessário e contraprodutivo
+
+329
+00:25:44,104 --> 00:25:48,472
+no lugar disso, devíamos aproveitar 
+da rapidez e poder dessas máquinas
+
+330
+00:25:48,472 --> 00:25:51,816
+para particionar nosso software 
+para serem primeiramente legíveis
+
+331
+00:25:59,752 --> 00:26:00,952
+sim, eu sei...
+
+332
+00:26:00,952 --> 00:26:06,616
+alguns de vcs estão trabalhando 
+em ambientes bem restritos
+
+333
+00:26:06,616 --> 00:26:12,224
+e sim, para vc overhead de funçao 
+ainda é algo para se preocupar
+
+334
+00:26:12,224 --> 00:26:16,560
+mas só deve ser preocupante nos 
+loops mais internos do seu sistema
+
+335
+00:26:16,560 --> 00:26:21,504
+eu posso entender se vc quizer 
+juntar algumas funçoes nos loops centrais
+
+336
+00:26:21,504 --> 00:26:25,936
+mas fora desses loops centrais, 
+overhead de chamada de funçao é minúsculo
+
+337
+00:26:30,624 --> 00:26:38,280
+Pascal escreveu uma vez: Desculpe pelo tamanho
+desta carta, não tive tempo para fazer menor
+
+338
+00:26:39,760 --> 00:26:41,624
+Claro que Pascal estava certo
+
+339
+00:26:41,624 --> 00:26:44,952
+eliminar redundâncias leva tempo
+
+340
+00:26:44,950 --> 00:26:48,432
+Organizar nossos pensamentos leva tempo
+
+341
+00:26:48,432 --> 00:26:51,648
+Tornar as coisas menores leva tempo
+
+342
+00:26:53,424 --> 00:26:56,200
+E Pascal estava certo em se desculpar
+
+343
+00:26:56,200 --> 00:27:03,640
+Porque deixar algo grande é irresponsável, descuidado e rude
+
+344
+00:27:03,640 --> 00:27:10,744
+Deixa o fardo de organizar os pensamentos e entende-los à seus leitores
+
+345
+00:27:10,744 --> 00:27:13,768
+vc pode salvar um pouco do seu tempo
+
+346
+00:27:13,768 --> 00:27:16,592
+mas está custando a todos os outros muito tempo
+
+347
+00:27:17,424 --> 00:27:18,760
+O que mais?
+
+348
+00:27:18,760 --> 00:27:24,816
+vc provavelmente terá que voltar para aquele código
+ em um mês, semana ou até mesmo no  dia
+
+349
+00:27:24,810 --> 00:27:29,856
+e vc terá que tentar entendee-lo novamente
+
+350
+00:27:29,856 --> 00:27:31,872
+então, deixar uma função grande
+
+351
+00:27:31,872 --> 00:27:37,112
+vai custar pra vc, além de todo o resto, muito tempo e esforço
+
+352
+00:27:38,488 --> 00:27:42,656
+não seja bobo, não seja mesquinho e burro
+
+353
+00:27:42,656 --> 00:27:46,168
+limpar uma função grande, não toma tanto tempo assim
+
+354
+00:27:46,168 --> 00:27:50,032
+e vc ganha de volta com grande juros e correção
+
+355
+00:27:53,368 --> 00:27:58,296
+então seja gentil com sua equipe, sua compania e vc mesmo
+
+356
+00:27:58,632 --> 00:28:00,568
+mantenha seu quarto limpo.
+
+357
+00:28:01,456 --> 00:28:04,440
+Onde as classes vão para se esconder ?
+
+358
+00:28:09,880 --> 00:28:12,728
+vc sabe o que uma funcão grande é ?
+
+359
+00:28:12,904 --> 00:28:16,920
+uma função grande é onde 
+as classes vão para se esconder
+
+360
+00:28:20,368 --> 00:28:24,824
+já se perguntou se vc 
+particionaria seu programa em classes
+
+361
+00:28:24,824 --> 00:28:28,480
+se vc encontrasse todas as classes a serem encontradas
+
+362
+00:28:28,480 --> 00:28:31,504
+vc acha que tem alguma forma de fazer isso ?
+
+363
+00:28:32,392 --> 00:28:35,704
+em fato eu sei de uma, vou te mostar
+
+364
+00:28:36,360 --> 00:28:38,544
+O que é uma função grande ?
+
+365
+00:28:38,544 --> 00:28:45,416
+é um escopo dividido em 
+várias seções de funcionalidades
+
+366
+00:28:45,416 --> 00:28:49,536
+geralmente vistas em indentações principais
+
+367
+00:28:49,536 --> 00:28:52,752
+essas seções diferentes, comunicam entre si
+
+368
+00:28:52,752 --> 00:28:56,232
+usando variáveis que são locais para o escopo inteiro
+
+369
+00:28:57,080 --> 00:29:02,544
+então, o que vc tem quando tem um 
+conjunto de variáveis em um escopo grande
+
+370
+00:29:02,544 --> 00:29:05,680
+acessados por diferentes segmentos de funcionalidade
+
+371
+00:29:05,920 --> 00:29:08,896
+bem , é claro q vc tem é uma classe.
+
+372
+00:29:08,896 --> 00:29:15,320
+de fato, qse sempre funçoes grandes 
+podem ser refatoradas em uma ou mais classes
+
+373
+00:29:18,256 --> 00:29:20,008
+me mostre um exemplo!
+
+374
+00:29:21,392 --> 00:29:24,896
+O próximo exemplo que iremos estudar vem deste livros
+
+375
+00:29:24,896 --> 00:29:28,912
+Literate Programming, escripo por Donald E. Knuth em 1991
+
+376
+00:29:28,912 --> 00:29:32,208
+Neste livro, ele descreve um sistema
+
+377
+00:29:32,208 --> 00:29:39,496
+no qual vc escreve seu código em pequenos 
+trechos em pascal, c ou algo do tipo
+
+378
+00:29:39,496 --> 00:29:42,968
+envolvido em texto explicatório
+
+379
+00:29:42,968 --> 00:29:49,536
+o programa então juntaria os trechos 
+e os tornaria em um programa funcional
+
+380
+00:29:50,104 --> 00:29:51,976
+o código que está vendo agora
+
+381
+00:29:51,976 --> 00:29:54,040
+é uma tradução em Java
+
+382
+00:29:54,040 --> 00:29:59,000
+de um programa pascal que
+Donald E. Knuth escreveu neste livro
+
+383
+00:30:02,008 --> 00:30:06,408
+para todos os efeitos, isto é código gerado
+
+384
+00:30:06,408 --> 00:30:10,472
+O que explica por que é tão bagunçado.
+
+385
+00:30:11,536 --> 00:30:16,312
+este programa imprime um relatório 
+dos primeiros mil numeros primos
+
+386
+00:30:16,312 --> 00:30:18,392
+o imprime em 5 paginas
+
+387
+00:30:18,392 --> 00:30:23,456
+cada pagina tendo 4 colunas por 50 linhas
+
+388
+00:30:23,456 --> 00:30:27,776
+tem um cabecalho no topo de 
+cada página com o numero da página
+
+389
+00:30:30,424 --> 00:30:32,784
+Eu escrevi um teste para esse programa
+
+390
+00:30:32,784 --> 00:30:38,672
+ele simplesmente compara o resultado com um
+ relatório previamente salvo que chamo de Gold
+
+391
+00:30:40,040 --> 00:30:42,800
+Se os dois batem, então o teste passa
+
+392
+00:30:42,800 --> 00:30:48,072
+isso é um exemplo de teste de 
+caracterização, descrito por Michael Feathers
+
+393
+00:30:48,072 --> 00:30:52,168
+em seu ótimo livro, chamado 
+"trabalhando efetivamente com código legado"
+
+394
+00:30:52,168 --> 00:30:57,224
+vc escreve um teste de caracterizaçao quando tem 
+um pedaço de código legado que deseja refatorar
+
+395
+00:30:57,220 --> 00:31:00,960
+o teste te ajuda a ter 
+certeza que não quebrou nada
+
+396
+00:31:01,600 --> 00:31:06,840
+após examinar, vc percebe que 
+este programa é um grande funçao
+
+397
+00:31:06,840 --> 00:31:09,424
+com um monte de variáveis
+
+398
+00:31:09,976 --> 00:31:14,816
+sempre que vc tem um monte de
+ variáveis controladas por uma grande funçao
+
+399
+00:31:14,816 --> 00:31:19,736
+o que vc realmente tem, 
+é uma ou mais classes se escondendo lá
+
+400
+00:31:19,736 --> 00:31:26,096
+o que vamos fazer é encontrar 
+essas classes e expor elas
+
+401
+00:31:28,000 --> 00:31:32,416
+a primeira coisa que vamos fazer,
+ é pegar essa funçao inteira
+
+402
+00:31:32,416 --> 00:31:39,792
+e mover em uma classe separada usando 
+o método de refatoraçao: extract method object
+
+403
+00:31:39,792 --> 00:31:45,912
+Iremos chamar essa nova classe de 
+PrimePrinterHelper o que claro, é um nome terrivel
+
+404
+00:31:45,912 --> 00:31:50,520
+mas iremos voltar e consertar 
+depois, quando entendermos mais
+
+405
+00:31:50,520 --> 00:31:54,128
+por enquanto, vamos 
+limpar alguns detalhes
+
+406
+00:31:54,128 --> 00:31:58,176
+e depois vamos rodar 
+o teste, que claro, passa
+
+407
+00:32:00,176 --> 00:32:09,640
+agora para quebrar essa 
+função em funções menores
+
+408
+00:32:09,640 --> 00:32:12,472
+preciso tirar todas
+ essas variáveis locais
+
+409
+00:32:12,472 --> 00:32:16,072
+e promover elas para 
+serem campos da nova classe
+
+410
+00:32:16,072 --> 00:32:19,576
+vou fazer isso indiscriminadamente,
+ vou promover todas
+
+411
+00:32:19,576 --> 00:32:22,864
+eu entendo que isso faz 
+um pouco de bagunça alí em cima
+
+412
+00:32:22,864 --> 00:32:26,800
+mas iremos arrumar depois,
+ quando entendermos mais
+
+413
+00:32:26,800 --> 00:32:29,184
+por enquanto, eu só preciso 
+delas fora do caminho
+
+414
+00:32:29,200 --> 00:32:31,104
+e claro, uma vez que eu fizer isso
+
+415
+00:32:31,104 --> 00:32:32,872
+o teste ainda passa
+
+416
+00:32:40,920 --> 00:32:45,976
+Seria bem fácil de pegar 
+essa funçao e cortá-la ao meio
+
+417
+00:32:45,976 --> 00:32:49,152
+a parte de cima iria 
+calcular os números primos
+
+418
+00:32:49,152 --> 00:32:52,464
+a parte debaixo iria imprimir o relatório
+
+419
+00:32:52,464 --> 00:32:58,848
+então vamos extrair essa parte
+de baixo em uma funçao chamada "printNumbers"
+
+420
+00:32:58,840 --> 00:33:03,312
+vamos passar para ela 
+o array de números primos
+
+421
+00:33:03,312 --> 00:33:07,432
+e então podemos chamar essa funçao do Main()
+
+422
+00:33:07,432 --> 00:33:14,248
+Isso nos deixa com uma classe 
+chamada PrimePrinterHelper que tem 2 funçoes:
+
+423
+00:33:14,248 --> 00:33:16,496
+uma gera numeros primos
+
+424
+00:33:16,496 --> 00:33:19,872
+a outra imprime um relatório através de um array
+
+425
+00:33:39,208 --> 00:33:43,800
+mas gerar numeros primos e imprimir relatórios numéricos
+
+426
+00:33:43,800 --> 00:33:46,088
+são conceitos totalmente diferentes
+
+427
+00:33:46,088 --> 00:33:49,144
+eles não se pertencem na mesma classe
+
+428
+00:33:49,144 --> 00:33:52,608
+vamos tirar essa funçao printNumbers
+
+429
+00:33:52,608 --> 00:33:54,928
+e jogá-la para sua própria classe
+
+430
+00:33:54,928 --> 00:34:00,288
+de novo iremos usar o método de
+refatoraçao extract method object
+
+431
+00:34:00,288 --> 00:34:03,544
+vamos nomear a nova classse NumberPrinter
+
+432
+00:34:03,544 --> 00:34:08,584
+e então moveremos ela para \Nsua própria pasta a um nível elevado
+
+433
+00:34:08,580 --> 00:34:12,784
+depois, vamos arrumar e \Nlimpar algumas coisas
+
+434
+00:34:12,784 --> 00:34:17,216
+então faremos o Main() usar \Na nova classe para imprimir
+
+435
+00:34:17,216 --> 00:34:20,112
+e é claro, tudo funciona ainda.
+
+436
+00:34:33,856 --> 00:34:40,336
+claro tem um monte de restos de cópia, \Nna antiga classe PrimePrinterHelper
+
+437
+00:34:40,336 --> 00:34:41,992
+então podemos limpar isso
+
+438
+00:34:41,992 --> 00:34:46,272
+e isso nos deixa com uma classe que não faz
+nada além de gerar números primos.
+
+439
+00:34:46,272 --> 00:34:49,824
+então podemos mudar seu nome para PrimeGenerator
+
+440
+00:34:49,824 --> 00:34:51,800
+mover para um nível acima
+
+441
+00:34:51,800 --> 00:34:53,992
+e então fazer o Main() chama-la
+
+442
+00:35:09,560 --> 00:35:14,768
+assim, pegamos um funçao bem extensa e feia
+
+443
+00:35:14,768 --> 00:35:18,056
+e a tornamos em 2 classes
+
+444
+00:35:18,056 --> 00:35:20,264
+que estão prontas para\N serem refatoradas ainda mais
+
+445
+00:35:20,264 --> 00:35:22,912
+em um monte de outras funçoes pequenas
+
+446
+00:35:22,912 --> 00:35:27,808
+isso é o que sempre acontece\N quando tem uma funçao grande
+
+447
+00:35:27,808 --> 00:35:32,616
+porque funçoes grandes é onde\N as classes vão para se esconder
+
+448
+00:35:32,640 --> 00:35:37,512
+versão completa do PrimePrinter\N pode ser encontrara em cleancoders.com
+
+449
+00:35:39,512 --> 00:35:43,736
+A próxima vez que ver\N uma funçao grande, vai saber
+
+450
+00:35:43,736 --> 00:35:46,472
+é aí que todas as classes foram se esconder
+
+451
+00:35:50,490 --> 00:35:54,744
+Uma coisa!
+
+452
+00:35:54,740 --> 00:35:55,230
+tenho certeza que ouviu a antiga regra
+
+453
+00:35:55,230 --> 00:35:56,740
+que um função deve fazer bem e somente uma coisa
+tenho certeza que ouviu a antiga regra
+
+454
+00:35:56,740 --> 00:36:02,128
+que um função deve fazer bem e somente uma coisa
+
+455
+00:36:04,048 --> 00:36:06,824
+isso soa um bom conselho, e é
+
+456
+00:36:06,824 --> 00:36:11,296
+mas tem um problema: o que significa "uma coisa"?
+
+457
+00:36:11,296 --> 00:36:14,936
+O problema com o termo "uma coisa" é que é ambíguo
+
+458
+00:36:14,936 --> 00:36:16,904
+poderia significar qualquer coisa
+
+459
+00:36:19,808 --> 00:36:24,000
+lembra daquela função que estávamos vendo:  "testableHtml"
+
+460
+00:36:25,136 --> 00:36:30,568
+seu trabalho era incluir setups e\N teardowns de páginas em uma página de teste
+
+461
+00:36:30,568 --> 00:36:32,888
+e renderizar tudo em Html
+
+462
+00:36:34,024 --> 00:36:36,280
+isso é "uma coisa"?
+
+463
+00:36:36,280 --> 00:36:39,616
+Claro que para quem chama parece uma coisa
+
+464
+00:36:39,616 --> 00:36:44,440
+mas para o leitor.. \Nessa funçao está cheia de coisas
+
+465
+00:36:46,440 --> 00:36:50,408
+quando refatoramos essa\N função em funções menores
+
+466
+00:36:50,408 --> 00:36:52,328
+fizemos algo interessante
+
+467
+00:36:52,328 --> 00:36:57,832
+primeiro puxamos as maiores\N seçoes em fuçoes individuais
+
+468
+00:36:57,832 --> 00:37:02,672
+mas depois separamos elas em \Ndiferentes níveis de abstraçao
+
+469
+00:37:10,120 --> 00:37:13,224
+a primeira parte disso \Né bem fácil de enteder
+
+470
+00:37:13,408 --> 00:37:17,000
+se sua funçao é composta \Nde várias seçoes diferentes
+
+471
+00:37:17,000 --> 00:37:19,592
+então está claramente fazendo mais que uma coisa
+
+472
+00:37:19,592 --> 00:37:21,896
+pelo menos, para o ponto de vista do leitor
+
+473
+00:37:25,192 --> 00:37:28,072
+a segunda parte disto é um pouco mais sutil
+
+474
+00:37:28,624 --> 00:37:32,704
+Se uma função manipula mais de um nível de abstração
+
+475
+00:37:32,704 --> 00:37:34,912
+está fazendo mais de uma coisa
+
+476
+00:37:34,912 --> 00:37:36,912
+por exemplo:
+
+477
+00:37:36,912 --> 00:37:41,048
+Stringbuffers, conversor de\N path e rastreadores de página
+
+478
+00:37:41,048 --> 00:37:45,528
+são todos detalhes de implementação \Nde um nível baixo de abstração
+
+479
+00:37:45,528 --> 00:37:53,320
+enquanto que páginas testáveis, páginas herdadas, sáo
+conceitos de negócio de um nível alto de abstração
+
+480
+00:37:53,320 --> 00:37:57,664
+não queremos uma função manipulando os 2 conceitos
+
+481
+00:37:57,664 --> 00:38:02,392
+queremos separar os níveis de\N abstracação em funções diferentes
+
+482
+00:38:02,712 --> 00:38:09,016
+para uma função fazer uma coisa,\N ela não pode atravessar níveis de abtração
+
+483
+00:38:11,016 --> 00:38:13,264
+mas níveis de abtração são obscuros
+
+484
+00:38:13,264 --> 00:38:16,472
+por exemplo:  ratreador de página e  conversor de Path
+
+485
+00:38:16,472 --> 00:38:17,888
+qual é mais elevado?
+
+486
+00:38:17,888 --> 00:38:20,224
+e onde colocaria o stringBuffer
+
+487
+00:38:20,224 --> 00:38:22,384
+entre eles, abaixo, em cima deles ?
+
+488
+00:38:22,960 --> 00:38:26,784
+essa obscuridade de níveis \Nde abastração são indesejáveis
+
+489
+00:38:26,784 --> 00:38:30,312
+O que realmente queremos \Né uma forma inequívoca
+
+490
+00:38:30,312 --> 00:38:33,584
+de dizer se uma função \Nestá ou não fazendo uma coisa
+
+491
+00:38:33,584 --> 00:38:37,240
+uma forma determinística,\N que ninguem pode discutir
+
+492
+00:38:37,240 --> 00:38:38,872
+Essa forma existe ?
+
+493
+00:38:39,920 --> 00:38:41,328
+De fato existe
+
+494
+00:38:44,960 --> 00:38:49,016
+Extraia até cair!
+
+495
+00:38:49,200 --> 00:38:52,936
+Como pode ter certeza que\N sua função está fazendo só uma coisa?
+
+496
+00:38:53,592 --> 00:38:56,904
+Eu tenho uma resposta, mas vc não vai gostar
+
+497
+00:38:56,904 --> 00:38:59,712
+vc provavelmente irá odiar
+
+498
+00:38:59,712 --> 00:39:02,640
+vai odiar pq a resposta é tão obvia
+
+499
+00:39:02,640 --> 00:39:04,696
+e pq é assustadora
+
+500
+00:39:08,864 --> 00:39:10,368
+como vc faz uma coisa ?
+
+501
+00:39:11,536 --> 00:39:16,144
+vc continua a extrair\N funções até não conseguir mais
+
+502
+00:39:16,272 --> 00:39:20,368
+até pq, se vc consegue extrair uma função de outra
+
+503
+00:39:20,368 --> 00:39:24,344
+então, por definição, a função\N original estava fazendo mais de uma coisa
+
+504
+00:39:27,064 --> 00:39:29,128
+eu disse que não iria gostar
+
+505
+00:39:29,128 --> 00:39:32,280
+as implicações são de levantar os cabelos
+
+506
+00:39:32,520 --> 00:39:36,480
+Acontece que se quizer que sua função faça uma coisa
+
+507
+00:39:36,480 --> 00:39:43,184
+vc precisa extrair, extrair,\N extrair até não conseguir mais
+
+508
+00:39:43,888 --> 00:39:46,936
+eu chamo isso de extrair até cair
+
+509
+00:39:49,200 --> 00:39:55,440
+e claro o resultado final disso é que \Nnossas classes serão compostas de funções
+
+510
+00:39:55,440 --> 00:39:58,408
+que são aproximadamente 4 linhas de tamanho
+
+511
+00:40:02,208 --> 00:40:05,248
+de fato, eu quero minhas funçoes tão pequenas
+
+512
+00:40:05,248 --> 00:40:09,288
+que meus Ifs e loops while, não precisarão de chaves
+
+513
+00:40:09,288 --> 00:40:13,728
+eu vejo as chaves, como oportunidades de extrair
+
+514
+00:40:16,360 --> 00:40:21,216
+Oh excelente! me mostre um exemplo bem famoso!
+
+515
+00:40:22,560 --> 00:40:30,208
+Este é o exemplo da locadora, \Ndo famoso livro do Martin Fowler: Refactoring
+
+516
+00:40:30,208 --> 00:40:32,648
+Vamos pegar esse código horrível
+
+517
+00:40:32,648 --> 00:40:37,680
+e vamos transformá-lo em um \Nconjunto de boas e pequenas funções
+
+518
+00:40:37,680 --> 00:40:39,192
+bora lá!
+
+519
+00:40:40,968 --> 00:40:42,912
+olhe para esses testes
+
+520
+00:40:42,912 --> 00:40:44,120
+está uma bagunça!
+
+521
+00:40:44,120 --> 00:40:46,320
+eles quebram todos os tipos de regras
+
+522
+00:40:46,320 --> 00:40:51,432
+A pior coisa que fazem é testar\N o sistema olhando para o texto dos relatórios
+
+523
+00:40:51,432 --> 00:40:54,424
+isso é equivalente a testar o sistema através da UI
+
+524
+00:40:54,424 --> 00:40:57,312
+o que sempre será um erro!
+
+525
+00:40:58,112 --> 00:41:01,528
+A primeira coisa que iremos fazer,\N é refatorar esses testes
+
+526
+00:41:01,528 --> 00:41:05,432
+e vamos extrair até cair, \Naté mesmo nos testes
+
+527
+00:41:05,432 --> 00:41:09,416
+os detalhes desse processo \Nestá disponível em outro screencast
+
+528
+00:41:09,416 --> 00:41:14,328
+para nossos propósitos, iremos pular\N os 24 minutos desse screencast
+
+529
+00:41:14,328 --> 00:41:16,328
+e iremos olhar para o resultado
+
+530
+00:42:19,592 --> 00:42:21,968
+ok, vamos desacelerar um pouco
+
+531
+00:42:21,968 --> 00:42:23,552
+para olhar para a classe Statement
+
+532
+00:42:23,552 --> 00:42:26,416
+tem algumas coisas estranhas para limpar aqui
+
+533
+00:42:26,416 --> 00:42:32,536
+como o uso dessa classe vector \Ne a posiçao estranha de algumas variáveis
+
+534
+00:42:32,536 --> 00:42:34,624
+vamos passar por isso bem rápido
+
+535
+00:42:48,528 --> 00:42:52,712
+ok, agora vamos dar uma olhada\N nessa refatoraçào da função generate
+
+536
+00:42:52,712 --> 00:42:57,376
+essa função generate é uma \Ncoisa horrível cheia de sujeira
+
+537
+00:42:57,376 --> 00:43:01,624
+mas iremos refatorar\N rapidamente para 5 linhas de código
+
+538
+00:43:01,624 --> 00:43:04,680
+e essas 5 linhas são bem claras
+
+539
+00:43:04,680 --> 00:43:06,120
+ela limpa os totais,
+
+540
+00:43:06,120 --> 00:43:07,344
+cria um cabeçalho
+
+541
+00:43:07,344 --> 00:43:08,888
+adiciona as linhas de locação
+
+542
+00:43:08,888 --> 00:43:11,088
+adiciona o rodapé. Simples
+
+543
+00:43:12,808 --> 00:43:15,336
+próximo, iremos limpar algumas coisas
+
+544
+00:43:15,336 --> 00:43:18,712
+mover algumas funçoes\N para que sejam bem lidas
+
+545
+00:43:18,712 --> 00:43:21,368
+para que as coisas estejam \Nonde vc espera que estejam
+
+546
+00:43:26,304 --> 00:43:28,704
+Agora vamos dar uma olhada \Nnessa funçao rentalLines
+
+547
+00:43:28,704 --> 00:43:30,936
+ela é um pouco grande
+
+548
+00:43:30,936 --> 00:43:33,840
+mas na maior parte é apenas um grande loop
+
+549
+00:43:33,840 --> 00:43:38,224
+eu vou pegar esse miolo do\N loop e extrair para um método
+
+550
+00:43:38,224 --> 00:43:41,664
+e dar um nome no singular : rentalLine
+
+551
+00:43:55,912 --> 00:43:58,128
+rentalLine aindá está bem grande
+
+552
+00:43:58,128 --> 00:44:00,280
+tem esse grande case-switch nele
+
+553
+00:44:00,280 --> 00:44:02,440
+me pergunto o que esse switch-case faz?!
+
+554
+00:44:02,440 --> 00:44:06,904
+bem tem esse comentário que \Ntenta nos dizer "determinar a quantia..."
+
+555
+00:44:06,904 --> 00:44:10,512
+vamos pegar esse switch-case e extrair fora
+
+556
+00:44:10,512 --> 00:44:14,592
+para uma função e usar o \Ncomentário para nomea-la": determineAmount
+
+557
+00:44:14,592 --> 00:44:17,592
+e depois podemos nos \Nlivrar desse comentário
+
+558
+00:44:26,360 --> 00:44:29,280
+podemos fazer a mesma \Ncoisa com o  FrequentReterPoints
+
+559
+00:44:29,280 --> 00:44:31,912
+e depois nos livrar\N de umas estruturas idiotas.
+
+560
+00:44:33,912 --> 00:44:57,264
+Finalmente
+
+561
+00:44:57,264 --> 00:45:01,184
+podemos extrair a formataçao do texto da rentalLine
+
+562
+00:45:01,184 --> 00:45:06,256
+deixando o rentalLine \Numa funçao bela, concisa e precisa
+
+563
+00:45:06,256 --> 00:45:08,632
+que não deve confundir ninguém
+
+564
+00:45:26,560 --> 00:45:31,632
+a função determineAmout cheira a "Feature Envy"
+
+565
+00:45:31,632 --> 00:45:35,336
+ela não usa nenhuma variável da classe Statement
+
+566
+00:45:35,336 --> 00:45:38,432
+e de fato, manipula a classe rental
+
+567
+00:45:38,432 --> 00:45:43,152
+então acredito que devemos move-la para a classe Rental
+
+568
+00:46:02,768 --> 00:46:06,272
+podemos fazer o mesmo com DetermineFrequentRenterPoints
+
+569
+00:46:06,272 --> 00:46:10,344
+também cheira a Feature Envy e \Nprecisa ser movida para classe Rental
+
+570
+00:46:12,344 --> 00:46:25,912
+E agora, tudo que restou na classe Statement
+
+571
+00:46:25,912 --> 00:46:28,776
+são coisas sobre formatação do Statement
+
+572
+00:46:28,776 --> 00:46:32,704
+Todos os cálculos foram movidos na classe Rental
+
+573
+00:46:38,936 --> 00:46:41,320
+mas agora que vemos a classe Rental
+
+574
+00:46:41,320 --> 00:46:45,688
+podemos ver que determineAmount \Ne determineFrequentRenterPoints
+
+575
+00:46:45,688 --> 00:46:47,792
+ainda cheram a Feature Envy
+
+576
+00:46:48,200 --> 00:46:51,616
+Eles usam mais o Filme do que a locação
+
+577
+00:46:51,616 --> 00:46:55,616
+então iremos move-los de novo, dessa vez para o Movie
+
+578
+00:46:55,616 --> 00:46:58,440
+mas deixaremos para trás no Rental
+
+579
+00:46:58,440 --> 00:47:02,448
+um pouco de código para passar junto os dias alugados
+
+580
+00:47:26,656 --> 00:47:31,080
+Agora aquele grande switch-case está na classe Movie
+
+581
+00:47:31,080 --> 00:47:35,024
+mas desde que esse switch, passa pelo tipo do Filme
+
+582
+00:47:35,024 --> 00:47:39,416
+estamos prontos para trocar esse switch-case com polimorfismo
+
+583
+00:47:39,416 --> 00:47:42,392
+então, a primeira coisa que faremos é irmos aos testes
+
+584
+00:47:42,392 --> 00:47:45,240
+e fazer com que os testes pareçam polimorficos
+
+585
+00:47:45,240 --> 00:47:47,200
+criando derivados
+
+586
+00:47:47,200 --> 00:47:52,336
+então criaremos esses derivados vazios para os testes passarem
+
+587
+00:48:11,200 --> 00:48:17,184
+depois iremos tirar as funçoes \NdetermineFrequentRenterPoints e o determineAmount
+
+588
+00:48:17,184 --> 00:48:20,288
+da classe Movie e botar elas nas derivadas
+
+589
+00:48:20,288 --> 00:48:24,576
+deixando para trás na classe Movie, métodos abstratos
+
+590
+00:48:35,800 --> 00:48:37,680
+depois iremos pegar uma cobertura de código
+
+591
+00:48:37,680 --> 00:48:41,824
+para dar uma olhada no que está sendo executado e o que não está
+
+592
+00:48:41,824 --> 00:48:47,440
+e nas derivadas iremos encontrar todo código que não está sendo executado e iremos matar
+
+593
+00:48:47,472 --> 00:48:50,648
+isso, irá de fato nos livrar de todo o switch-case
+
+594
+00:48:50,648 --> 00:48:55,976
+e também de toda a lógica combinatória na FrequentReterPoints
+
+595
+00:48:55,976 --> 00:48:57,976
+tudo que será deixado para trás
+
+596
+00:48:57,976 --> 00:49:01,504
+são simples regras de negócio nas derivadas
+
+597
+00:49:23,710 --> 00:49:32,104
+finalmente podemos começar a\N limpar todos os detritos e sujeiras deixados para trás
+
+598
+00:49:32,104 --> 00:49:37,384
+deixando na classe Movie e Rental o mínimo possível
+
+599
+00:49:46,136 --> 00:49:49,480
+no screencast original que pode conseguir separadamente
+
+600
+00:49:49,480 --> 00:49:52,112
+essa refatoração levou 1 hora
+
+601
+00:49:52,112 --> 00:49:55,904
+pegamos uma função bem grande e feia
+
+602
+00:49:55,904 --> 00:50:00,008
+e arrastamos ela em um monte de classes
+
+603
+00:50:00,008 --> 00:50:04,152
+arrastamos para fora da Stament para Rental para a Movie
+
+604
+00:50:04,152 --> 00:50:08,808
+Criamos 3 derivadas, ararstamos o código para essas derivadas
+
+605
+00:50:08,808 --> 00:50:12,472
+literalmente viramos do avesso esse código
+
+606
+00:50:12,472 --> 00:50:14,256
+e o que foi deixado para trás
+
+607
+00:50:14,256 --> 00:50:17,936
+é uma bela trilha de funçoes simples e pequenas
+
+608
+00:50:17,936 --> 00:50:20,104
+cada uma com um bom nome
+
+609
+00:50:20,104 --> 00:50:22,784
+cada uma explicando a si mesmas perfeitamente
+
+610
+00:50:31,440 --> 00:50:33,320
+bem legal né ?
+
+611
+00:50:33,320 --> 00:50:38,128
+um funçao bem grande, refatorada \Nem um conjunto de outras funçoes pequenas
+
+612
+00:50:38,128 --> 00:50:41,456
+espalhadas em um conjunto de classes pequenas
+
+613
+00:50:42,072 --> 00:50:43,576
+Isso é muito melhor
+
+614
+00:50:43,576 --> 00:50:46,696
+é muito mais simples, mais fácil de entender
+
+615
+00:50:46,696 --> 00:50:48,136
+mais fácl de ler
+
+616
+00:50:48,136 --> 00:50:50,912
+mais fácil de mudar e manter
+
+617
+00:50:50,912 --> 00:50:53,816
+Isto é como vc quer que seu código seja
+
+618
+00:51:00,544 --> 00:51:02,152
+Você acha que eu estou sério sobre isso?
+
+619
+00:51:02,152 --> 00:51:03,672
+pode ter certeza que estou!
+
+620
+00:51:04,112 --> 00:51:07,264
+Se que suas funçoes façam uma coisa
+
+621
+00:51:07,264 --> 00:51:11,376
+se quer que elas sejam boas e pequenas e tenham bons nomes
+
+622
+00:51:11,376 --> 00:51:15,704
+Se quer encontrar todas as \Nclasses escondidas no seu programa
+
+623
+00:51:15,704 --> 00:51:21,256
+Se quer que seu código seja bom, \Npequeno e fácil de ler e entender
+
+624
+00:51:21,256 --> 00:51:26,528
+Se quer que os outros leiam seu \Ncódigo e encontrem o que eles esperavam
+
+625
+00:51:26,528 --> 00:51:30,480
+Então vc aprenderá como praticar a extrair até cair!
+
+626
+00:51:32,480 --> 00:51:39,064
+Conclusão
+
+627
+00:51:41,488 --> 00:51:46,872
+Ok, escoteiros, se juntem \Nantes que os guaxinins peguem vcs
+
+628
+00:51:47,512 --> 00:51:50,744
+certo, antes de irmos, alguns lembretes
+
+629
+00:51:51,056 --> 00:51:52,320
+primeiramente
+
+630
+00:51:52,320 --> 00:51:55,848
+lembrem-se que a primeira regra das funções
+
+631
+00:51:55,848 --> 00:51:57,848
+é que elas sejam pequenas
+
+632
+00:51:58,288 --> 00:52:01,832
+e qual a segunda ? Isso mesmo...
+
+633
+00:52:01,832 --> 00:52:04,392
+Que sejam menores do que isso
+
+634
+00:52:05,920 --> 00:52:10,600
+Lembrem-se, que muitas funçoes pequenas e bem nomeadas
+
+635
+00:52:10,600 --> 00:52:14,696
+irá salvar  bastente tempo de vc e todo mundo
+
+636
+00:52:14,696 --> 00:52:21,808
+pq irão ser como placas sinalizadores, \Najudando todos a navegar pelo seu código
+
+637
+00:52:23,440 --> 00:52:30,768
+lembrem-se que a maioria não precisam \Nse preocupar com a eficiencia do overhead de funçoes
+
+638
+00:52:30,768 --> 00:52:36,224
+em qse todos os casos, se preocupar \Nem quanto tempo leva para chamar uma funçao
+
+639
+00:52:36,224 --> 00:52:38,672
+é provavelmente desnecessário
+
+640
+00:52:39,210 --> 00:52:43,472
+lembrem-se que fazer funçoes pequenas irá salvar tempo
+
+641
+00:52:43,472 --> 00:52:47,344
+de vc e todo mundo
+
+642
+00:52:48,024 --> 00:52:52,728
+lembrem-se que classes se escondem em funçoes grandes
+
+643
+00:52:52,728 --> 00:52:58,064
+e que se quiser particionar \Nadequadamente seu programa em classes
+
+644
+00:52:58,064 --> 00:53:00,688
+mantenha pequenas as suas funções
+
+645
+00:53:02,064 --> 00:53:06,112
+lembrem-se que funçoes fazem uma coisa
+
+646
+00:53:06,112 --> 00:53:10,664
+e a unica forma de garantir que um funçao faz uma coisa
+
+647
+00:53:10,664 --> 00:53:14,552
+é extrair até cair! certo ?!
+
+648
+00:53:16,496 --> 00:53:18,496
+Extrair até cair!
+
+649
+00:53:19,976 --> 00:53:21,752
+deixa eu repetir :
+
+650
+00:53:21,752 --> 00:53:25,544
+Se vc pode extrair uma funçao de outra
+
+651
+00:53:25,544 --> 00:53:26,848
+vc deve!
+
+652
+00:53:27,088 --> 00:53:32,376
+pq a função original, por definiçao,\N está fazendo mais de uma coisa
+
+653
+00:53:33,272 --> 00:53:36,800
+Se fizerem tudo isso, meus escoteiros
+
+654
+00:53:36,800 --> 00:53:40,824
+Estarão de fato, mantendo seus códigos bem limpos!
+
+655
+00:53:41,840 --> 00:53:43,928
+certo, agora vamos embora
+
+656
+00:53:50,024 --> 00:53:52,704
+Isso foi bem divertido e aprendemos bastente
+
+657
+00:53:52,704 --> 00:53:55,376
+mas tem outras coisas que precisamos discutir
+
+658
+00:53:55,376 --> 00:53:59,136
+por exemplo, como iremos organizar nossas classes e funçoes
+
+659
+00:53:59,136 --> 00:54:04,104
+e sobre tratamento de erros, efeitos colaterais, withs
+
+660
+00:54:04,104 --> 00:54:05,968
+programação estruturada
+
+661
+00:54:05,968 --> 00:54:10,264
+não vai querer perder o proxime episodio de clean code
+
+662
+00:54:10,264 --> 00:54:13,880
+Episodio 4 : function estructure
+

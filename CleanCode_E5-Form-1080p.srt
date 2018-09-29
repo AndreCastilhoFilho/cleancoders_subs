@@ -1,0 +1,5222 @@
+﻿1
+00:00:55,581 --> 00:00:59,089
+bem vindos ao episídio 5 : Form
+
+2
+00:01:01,089 --> 00:01:02,461
+no episódio 4, aprendemos 
+sobre estrutura de função
+
+3
+00:01:02,461 --> 00:01:05,975
+aprendemos que função não 
+pode ter mais que 3 argumentos
+
+4
+00:01:05,975 --> 00:01:08,307
+nenhum deles deve ser boolean
+
+5
+00:01:08,307 --> 00:01:12,910
+aprendemos como organizar os 
+métodos dentro das classe
+
+6
+00:01:12,910 --> 00:01:15,070
+usando a regra da descida
+
+7
+00:01:15,070 --> 00:01:17,673
+aprendemos um monte sobre switch-cases
+
+8
+00:01:17,673 --> 00:01:20,393
+aprendemos o porque não são O.O
+
+9
+00:01:20,393 --> 00:01:24,215
+e porque eles impedem publicação independente
+
+10
+00:01:24,215 --> 00:01:27,815
+falamos tbem como gerencia-los
+
+11
+00:01:27,815 --> 00:01:30,615
+aprendemos sobre programação estrutural
+
+12
+00:01:30,615 --> 00:01:33,003
+e sobre programação funcional
+
+13
+00:01:33,003 --> 00:01:37,230
+aprendemos sobre a tecnica de 
+separação de command e query
+
+14
+00:01:37,230 --> 00:01:39,230
+e "diga, não pergunte"
+
+15
+00:01:39,230 --> 00:01:40,400
+e finalmente
+
+16
+00:01:40,400 --> 00:01:42,332
+aprendemos bastante sobre tratamento de erros
+
+17
+00:01:42,332 --> 00:01:44,935
+aprendemos como usar exceptions
+
+18
+00:01:44,935 --> 00:01:48,553
+e como adotar o padrão de caso especial
+
+19
+00:01:49,095 --> 00:01:50,523
+agora, neste episódio
+
+20
+00:01:50,523 --> 00:01:53,433
+falaremos de problemas com Form
+
+21
+00:01:53,433 --> 00:01:55,827
+por exemplo: comentários
+
+22
+00:01:56,664 --> 00:01:59,501
+quantos comentários vc 
+acha que deveria escrever?
+
+23
+00:01:59,913 --> 00:02:01,747
+onde deveria colocá-los?
+
+24
+00:02:01,747 --> 00:02:03,950
+quando deveria escreve-los?
+
+25
+00:02:03,950 --> 00:02:07,421
+e deveria ter alguma ferramenta como checkstyle
+
+26
+00:02:07,421 --> 00:02:10,184
+que enforça o uso de comentários
+
+27
+00:02:12,547 --> 00:02:14,763
+quão grande um arquivo deve ser ?
+
+28
+00:02:14,763 --> 00:02:17,421
+quão largo uma linha deve ser?
+
+29
+00:02:17,581 --> 00:02:21,723
+como deve usar espaço em branco para
+ escrever seu código apropriadamente
+
+30
+00:02:22,080 --> 00:02:24,664
+e sobre identação?
+
+31
+00:02:27,224 --> 00:02:28,664
+o que é uma classe?
+
+32
+00:02:28,664 --> 00:02:30,436
+do que ela te proteje?
+
+33
+00:02:30,436 --> 00:02:32,332
+e a o que ela te expõe?
+
+34
+00:02:32,609 --> 00:02:35,403
+todas as variáveis da 
+classe deveriam ser private?
+
+35
+00:02:35,440 --> 00:02:38,301
+vc deveria escrever sets 
+e gets para todas elas ?
+
+36
+00:02:40,012 --> 00:02:43,920
+qual a diferença entre um 
+classe e uma estrutura de dados?
+
+37
+00:02:43,920 --> 00:02:47,181
+para que vc usaria uma estrutura de dados?
+
+38
+00:02:47,181 --> 00:02:50,184
+uma estrutura de dados tem métodos?
+
+39
+00:02:51,033 --> 00:02:54,578
+do que estrutura de dados te proteje?
+
+40
+00:02:54,578 --> 00:02:57,587
+e quais riscos ela te expõe?
+
+41
+00:02:59,760 --> 00:03:02,978
+o que são limites em software?
+
+42
+00:03:03,052 --> 00:03:05,753
+como esses limites devem se cruzar?
+
+43
+00:03:05,753 --> 00:03:06,947
+por exemplo: 
+
+44
+00:03:06,947 --> 00:03:11,938
+databases geralmente vivem em uma
+ partição diferente da aplicação
+
+45
+00:03:11,938 --> 00:03:17,304
+a aplicação deveria conhecer 
+o schemma do banco de dados?
+
+46
+00:03:17,300 --> 00:03:22,443
+as tabelas de banco de dados 
+deveriam corresponder a classes
+
+47
+00:03:22,443 --> 00:03:25,501
+ou objetos do domínio da aplicação?
+
+48
+00:03:25,815 --> 00:03:28,012
+como deveriamos gerenciar
+
+49
+00:03:28,012 --> 00:03:30,720
+essa divisão entre a aplicação
+
+50
+00:03:30,720 --> 00:03:32,332
+e outras partições
+
+51
+00:03:32,332 --> 00:03:34,332
+como o banco de dados
+
+52
+00:03:37,415 --> 00:03:42,086
+essas são as perguntas que iremos
+ responder nesse episódio de clean code
+
+53
+00:03:42,086 --> 00:03:44,086
+então se estiverem prontos
+
+54
+00:03:45,095 --> 00:03:47,027
+apertem os sintos
+
+55
+00:03:47,027 --> 00:03:48,996
+pq estamos prestes a lidar
+
+56
+00:03:48,996 --> 00:03:51,981
+com a questão de: forma
+
+57
+00:03:57,260 --> 00:04:00,166
+Pira do Sol
+
+58
+00:04:05,286 --> 00:04:07,821
+daqui 6 bilhões de anos
+
+59
+00:04:07,821 --> 00:04:10,289
+nosso sol começará a morrer
+
+60
+00:04:11,107 --> 00:04:14,166
+como convém uma entidade estelar
+
+61
+00:04:14,160 --> 00:04:21,655
+a morte do sol será longa, violenta,
+ muito bonita e bem letal
+
+62
+00:04:21,655 --> 00:04:25,273
+para os 4 planetas que compartilham seu calor
+
+63
+00:04:25,975 --> 00:04:30,960
+nesses dias, habidantes da terra
+ terão que ser bem inteligentes 
+
+64
+00:04:30,960 --> 00:04:34,916
+se quiserem se salvar do
+ choro de agonia do sol
+
+65
+00:04:34,916 --> 00:04:38,763
+mas antes de falarmos da morte do sol
+
+66
+00:04:38,763 --> 00:04:41,581
+vamos falar primeiro do seu nascimento
+
+67
+00:04:42,941 --> 00:04:45,433
+6 bilhões de anos atrás,
+
+68
+00:04:45,433 --> 00:04:49,390
+quando o universo tinha
+metade da idade que é hoje
+
+69
+00:04:49,390 --> 00:04:54,996
+uma estrela gigante se explodiu em pedacinhos
+
+70
+00:04:54,996 --> 00:04:56,836
+a onda de  choque desse evento
+
+71
+00:04:56,836 --> 00:05:00,436
+eventuamente se colidiu com uma nuvem de hidrogênio
+
+72
+00:05:00,436 --> 00:05:02,793
+entrando em colapso
+
+73
+00:05:02,793 --> 00:05:06,104
+novas estrelas foram formadas daquela colisão
+
+74
+00:05:06,104 --> 00:05:11,163
+nosso sol foi apenas um de muitos
+
+75
+00:05:12,904 --> 00:05:14,141
+como qualquer criança
+
+76
+00:05:14,141 --> 00:05:16,873
+o sol acordou como uma rajada
+
+77
+00:05:16,870 --> 00:05:20,553
+ele gritou pelo vento estelar
+
+78
+00:05:20,553 --> 00:05:25,200
+limpando todo o gás e poeira
+ da nuvem que o tinha invocado
+
+79
+00:05:25,581 --> 00:05:28,830
+somente as pedras mais pesadas, 
+asteroides e planetas
+
+80
+00:05:28,830 --> 00:05:32,332
+conseguiram sobreviver ao 
+bafo letal do sol
+
+81
+00:05:33,846 --> 00:05:40,338
+depois disso, o sol sussegou 
+em uma vida de queima nuclear
+
+82
+00:05:40,584 --> 00:05:43,236
+convertendo hidrogenio em helio
+
+83
+00:05:43,236 --> 00:05:46,418
+o helio se acumulando aos poucos no seu núcleo
+
+84
+00:05:46,418 --> 00:05:50,547
+e para compensar, sol crescia mais radiante e quente
+
+85
+00:05:50,540 --> 00:05:55,649
+de fato, sol é 20% mais quente 
+hoje, do que quando a terra se formou
+
+86
+00:05:57,852 --> 00:06:01,538
+até mesmo hoje, o sol continua a ficar mais quente
+
+87
+00:06:01,538 --> 00:06:04,363
+em alguns milhões de anos, será tão quente 
+
+88
+00:06:04,363 --> 00:06:06,640
+que os oceanos começarão a evaporar
+
+89
+00:06:06,640 --> 00:06:08,640
+a terra não conseguirá tolerar
+
+90
+00:06:08,996 --> 00:06:10,861
+se ainda estivermos aqui até lá
+
+91
+00:06:10,861 --> 00:06:16,978
+talvez iremos lançar algum tipo de sombras 
+gigantes para bloquear a radiaçao do sol
+
+92
+00:06:16,978 --> 00:06:19,649
+evitando que os oceanos sequem
+
+93
+00:06:20,123 --> 00:06:21,206
+se fossemos embora
+
+94
+00:06:21,206 --> 00:06:23,206
+e ninguém tomou nosso lugar
+
+95
+00:06:23,580 --> 00:06:28,640
+então a terra irá secar e morrerá
+
+96
+00:06:29,833 --> 00:06:31,593
+mas o sol continuará a viver
+
+97
+00:06:31,593 --> 00:06:35,015
+ficando mais quente a cada ano
+
+98
+00:06:35,015 --> 00:06:37,612
+eventualmente, as luas geladas de júpiter
+
+99
+00:06:37,612 --> 00:06:39,175
+irão começar a descongelar
+
+100
+00:06:39,175 --> 00:06:43,981
+e marte, marte irá ficar quente igual o verão
+
+101
+00:06:43,981 --> 00:06:46,947
+talvez alguns de nós irá para lá por algum tempo
+
+102
+00:06:46,947 --> 00:06:48,947
+para viver em um conforto relativo
+
+103
+00:06:50,240 --> 00:06:54,732
+mas o hélio no núcleo do sol, continuará a crescer
+
+104
+00:06:54,732 --> 00:06:55,815
+eventualmente
+
+105
+00:06:55,815 --> 00:06:58,800
+todo o hidrogênio no centro do núcleo
+
+106
+00:06:58,800 --> 00:07:01,544
+se esgotará, deixando nada além de hélio
+
+107
+00:07:01,544 --> 00:07:04,160
+algum hidrogênio em, volta de fora desse hélio
+
+108
+00:07:04,160 --> 00:07:07,033
+continuará a queimar em uma concha
+
+109
+00:07:07,033 --> 00:07:09,538
+sempre aumentando a pressão e temperatura
+
+110
+00:07:09,538 --> 00:07:11,593
+que o helio experiencia
+
+111
+00:07:11,593 --> 00:07:14,603
+é preciso muito para levar o hélio a fusão
+
+112
+00:07:14,603 --> 00:07:17,144
+mas depois que certa linha é cruzada
+
+113
+00:07:17,144 --> 00:07:20,412
+o hélio irá responder com vingança
+
+114
+00:07:21,323 --> 00:07:22,326
+um dia
+
+115
+00:07:22,326 --> 00:07:24,326
+daqui à 6 bilhões
+
+116
+00:07:24,326 --> 00:07:26,024
+essa linha será cruzada
+
+117
+00:07:26,024 --> 00:07:30,904
+e o hélio no núcleo começará a se fundir em carbono e oxigênio
+
+118
+00:07:30,904 --> 00:07:35,323
+Mas há uma peculiaridade da física
+ quântica conhecida como degeneração
+
+119
+00:07:35,323 --> 00:07:41,747
+que impedirá que a energia liberada por essa fusão aumente a pressão no núcleo.
+
+120
+00:07:41,747 --> 00:07:44,910
+e isso significa que o núcleo não
+ será capaz de expandir e esfriar
+
+121
+00:07:44,910 --> 00:07:47,624
+então a temperatura irá disparar
+
+122
+00:07:47,624 --> 00:07:50,738
+e com ela a frequencia da fusão de hélio
+
+123
+00:07:50,738 --> 00:07:53,261
+resultando em uma reaçao de fulga, conhecida 
+
+124
+00:07:53,261 --> 00:07:55,686
+como o flash de hélio
+
+125
+00:08:00,787 --> 00:08:02,830
+em apenas alguns segundos,
+
+126
+00:08:02,830 --> 00:08:08,209
+a saída de energia do núcleo irá
+ disparar em um fator de 100 bilhões
+
+127
+00:08:08,209 --> 00:08:13,323
+a temperatura irá subir ao ponto que a degeneração será perdida
+
+128
+00:08:13,323 --> 00:08:15,920
+e a pressão normal pode exercer-se
+
+129
+00:08:15,920 --> 00:08:18,572
+essa pressão fará o núcleo expandir
+
+130
+00:08:18,572 --> 00:08:23,126
+e enquanto expande vai esfriar 
+para meros 100 milhões de kelvin
+
+131
+00:08:23,126 --> 00:08:28,726
+onde fusão estável de hélio em 
+carbono e oxigênio pode começar
+
+132
+00:08:30,080 --> 00:08:33,021
+a energia produzida por essa catastrofe
+
+133
+00:08:33,021 --> 00:08:35,360
+e a subsequente fusão  de hélio
+
+134
+00:08:35,360 --> 00:08:36,523
+é enorme
+
+135
+00:08:36,523 --> 00:08:41,889
+vai atingir o sol e ele irá crescer
+ em um fator de mais ou menos 100
+
+136
+00:08:41,889 --> 00:08:44,196
+irá devorar mercúrio
+
+137
+00:08:44,196 --> 00:08:46,067
+engolir venus
+
+138
+00:08:46,067 --> 00:08:50,240
+e irá apenas pincelar a superfice da terra
+
+139
+00:08:50,240 --> 00:08:54,172
+a menos que movamos o planeta perto de saturno ou júpiter
+
+140
+00:08:54,170 --> 00:08:57,532
+a terra irá derreter e evaporar
+
+141
+00:08:57,544 --> 00:09:02,061
+nosso planeta irá ser
+ destruído até seus ossos
+
+142
+00:09:03,230 --> 00:09:11,089
+por 1 bilhao de ano, o sol continuará a crescer e encolher
+
+143
+00:09:11,089 --> 00:09:14,676
+oscilando em uma torturante dança da morte
+
+144
+00:09:14,676 --> 00:09:18,972
+para cada pulsação irá dispersar parte se sua massa
+
+145
+00:09:18,972 --> 00:09:24,356
+se encobrindo em sua propria mortalha fúnebre
+
+146
+00:09:25,963 --> 00:09:28,744
+mas essa dança da morte irá ter um fim
+
+147
+00:09:28,744 --> 00:09:31,895
+existirá uma oscilação final
+
+148
+00:09:31,895 --> 00:09:35,667
+e então o sol começará entrar em colapso
+
+149
+00:09:35,667 --> 00:09:37,747
+por um tempo, o calor desse colapso
+
+150
+00:09:37,747 --> 00:09:41,384
+causará o brilho no ultravioleta
+
+151
+00:09:41,384 --> 00:09:45,889
+por 100 mil anos, irá brilhar tanto no ultravioleta
+
+152
+00:09:45,889 --> 00:09:49,009
+que as nuvens ao redor irá brilhar
+
+153
+00:09:49,009 --> 00:09:53,236
+e se tornará uma das coisas 
+mais bonitas que poderá ver no céu
+
+154
+00:09:53,236 --> 00:09:55,938
+uma gloriosa nebulosa planetária
+
+155
+00:09:55,938 --> 00:10:02,104
+uma pira funerária condizente com a
+ majestade da estrela que nos deu vida
+
+156
+00:10:03,292 --> 00:10:06,923
+mas a estrela irá esfriar e a UV irá se apagar
+
+157
+00:10:06,923 --> 00:10:09,784
+as nuvens irá se dissipar no vácuo do espaço
+
+158
+00:10:09,784 --> 00:10:13,138
+deixando para trás o cadáver do sol
+
+159
+00:10:13,138 --> 00:10:16,830
+uma cinza de carbono e oxigenio
+
+160
+00:10:16,830 --> 00:10:18,307
+uma estrela branca anã
+
+161
+00:10:18,307 --> 00:10:20,547
+brilhando com o calor de sua formação
+
+162
+00:10:20,547 --> 00:10:22,326
+mas gradualmente esfriando
+
+163
+00:10:22,326 --> 00:10:26,344
+por 1 bilhão de anos será uma lápide brilhosa
+
+164
+00:10:26,344 --> 00:10:30,566
+marcando o lugar onde uma estreja já esteve
+
+165
+00:10:31,938 --> 00:10:35,833
+é claro que uma estrela anã branca 
+não gera calor por conta própria
+
+166
+00:10:35,833 --> 00:10:38,430
+então por bilhoes de anos a mais 
+
+167
+00:10:38,430 --> 00:10:42,123
+irá se esfriar à temperatuda do espaço
+
+168
+00:10:42,123 --> 00:10:46,941
+irá se tornar uma bola frígida de carbono e oxigenio
+
+169
+00:10:46,941 --> 00:10:50,824
+um destino ignóbil para algo
+ tão grande como uma estrela
+
+170
+00:10:55,852 --> 00:10:58,695
+essa idéia de degeneração
+
+171
+00:10:58,695 --> 00:11:00,929
+isso é bem interessante, na verdade.
+
+172
+00:11:00,929 --> 00:11:04,449
+teremos que falar sobre isso em outro episódio
+
+173
+00:11:04,449 --> 00:11:07,741
+com licença
+
+174
+00:11:12,000 --> 00:11:14,295
+cometários
+
+175
+00:11:19,673 --> 00:11:24,018
+está na hora de termos uma conversa franca,
+ sobre comentários no nosso código
+
+176
+00:11:24,018 --> 00:11:25,643
+qual o propósito deles?
+
+177
+00:11:25,643 --> 00:11:27,212
+quando devemos escreve-los?
+
+178
+00:11:27,212 --> 00:11:29,667
+e quando não devemos?
+
+179
+00:11:32,990 --> 00:11:36,030
+padrões de código
+
+180
+00:11:36,030 --> 00:11:38,750
+em toda empresa acima de um certo tamanho
+
+181
+00:11:38,750 --> 00:11:40,750
+evetualmente surge
+
+182
+00:11:40,750 --> 00:11:44,990
+o impulso burocrático de criar um documento
+
+183
+00:11:44,990 --> 00:11:49,446
+esse documenteo, especifíca,dita e obriga 
+
+184
+00:11:49,446 --> 00:11:53,366
+o que cada ponto e vírgula deve parecer
+
+185
+00:11:53,366 --> 00:11:58,233
+esse documenteo é chamado de : padrões de código
+
+186
+00:11:59,046 --> 00:12:01,600
+eu acredito fielmente em padrões de código 
+
+187
+00:12:01,600 --> 00:12:03,366
+acredito que todo time deveria ter um
+
+188
+00:12:03,366 --> 00:12:06,196
+e cada desenvolvedor do time deveria segui-lo
+
+189
+00:12:06,196 --> 00:12:10,135
+mas eu não acredito que os padrões de código 
+deveriam ser escritos em um documento separado
+
+190
+00:12:10,916 --> 00:12:15,630
+eu acho que os padrões de código deveriam ser
+ visíveis dentro do próprio código
+
+191
+00:12:15,630 --> 00:12:19,046
+o código deveria ser o padrão de código
+
+192
+00:12:19,046 --> 00:12:22,375
+de fato, se vc é forçado a escrever um documento separado,
+
+193
+00:12:22,375 --> 00:12:27,803
+deve ser provavelmente porque seu código 
+não é uma boa amostra para seus padrões
+
+194
+00:12:29,126 --> 00:12:35,304
+se os padrões estão implícitos no nosso 
+código ou em um documento separado
+
+195
+00:12:35,304 --> 00:12:41,372
+frequentemente nos diz que devemos
+ documentar cada objeto, função, classe..
+
+196
+00:12:41,372 --> 00:12:45,433
+e cada bloco de código com algum tipo de comentários
+
+197
+00:12:46,658 --> 00:12:51,821
+isso é pura besteira que induz 
+a poluiçao de código e desilusão
+
+198
+00:12:52,110 --> 00:12:54,516
+quando comentários são tão 
+frequentes no nosso código
+
+199
+00:12:54,516 --> 00:12:56,067
+nós tendemos a ignorá-los
+
+200
+00:12:56,067 --> 00:12:58,836
+até mesmo aqueles que não deveríamos ignorar
+
+201
+00:13:00,683 --> 00:13:01,969
+comentários devem ser raros
+
+202
+00:13:06,849 --> 00:13:09,206
+quando programadores são forçados a escrever comentários
+
+203
+00:13:09,206 --> 00:13:11,778
+quando comentários são obrigatórios
+
+204
+00:13:11,778 --> 00:13:14,504
+então, eles escrevem porque devem
+
+205
+00:13:14,504 --> 00:13:16,510
+não porque eles precisam
+
+206
+00:13:16,510 --> 00:13:18,283
+esses comentários se tornam
+
+207
+00:13:18,283 --> 00:13:23,224
+vagos esqueletos, sem carne em seus ossos
+
+208
+00:13:23,224 --> 00:13:25,083
+se tornam algo
+
+209
+00:13:25,083 --> 00:13:27,083
+a ser ignorado
+
+210
+00:13:28,067 --> 00:13:30,153
+e ignoramos 
+
+211
+00:13:30,153 --> 00:13:32,467
+nossos olhos passam voando pelos comentários 
+
+212
+00:13:32,467 --> 00:13:34,523
+em busca de código de verdade
+
+213
+00:13:34,523 --> 00:13:36,793
+nós até falamos para nossas IDEs
+
+214
+00:13:36,793 --> 00:13:39,440
+para colori-los em alguma cor acinzentada
+
+215
+00:13:39,440 --> 00:13:41,926
+para ser mais fácil de ignorá-los
+
+216
+00:13:42,270 --> 00:13:44,356
+quando comentários são comuns
+
+217
+00:13:44,356 --> 00:13:47,741
+eles se tornam o "Menino Que Gritava Lobo"
+
+218
+00:13:47,741 --> 00:13:49,741
+eles se tornam inúteis
+
+219
+00:13:51,716 --> 00:13:53,926
+cometários devem ser raros
+
+220
+00:13:53,926 --> 00:13:56,615
+devem ser reservados para aqueles casos especiais
+
+221
+00:13:56,615 --> 00:13:59,655
+onde a atençao dos programadores são realmente necessária
+
+222
+00:13:59,655 --> 00:14:01,760
+devem ser bem vermelhos
+
+223
+00:14:01,760 --> 00:14:04,258
+para que os leitores não possam ignora-los
+
+224
+00:14:04,258 --> 00:14:07,840
+e cada programador que ler, deve ficar agradecido e aliviado
+
+225
+00:14:07,840 --> 00:14:09,840
+que aqueles comentários estavam lá
+
+226
+00:14:11,963 --> 00:14:14,443
+mas vc não precisa acreditar
+ na minha palavra para isso
+
+227
+00:14:14,443 --> 00:14:19,052
+vamos ouvir o que Kerninhan e Plauger disseram em 1998
+
+228
+00:14:19,052 --> 00:14:22,824
+em "Elemnts of Programming Style" - 2a. Edição
+
+229
+00:14:22,824 --> 00:14:26,720
+vou ler o primeiro parágrafo do capítulo 8
+
+230
+00:14:26,720 --> 00:14:28,086
+Documentação
+
+231
+00:14:28,086 --> 00:14:30,086
+Segura essa...
+
+232
+00:14:30,843 --> 00:14:33,846
+A melhor documentação para um programa
+
+233
+00:14:33,846 --> 00:14:36,104
+é uma estrutura limpa
+
+234
+00:14:36,104 --> 00:14:39,581
+também ajuda, se o código está bem formatado
+
+235
+00:14:39,581 --> 00:14:44,800
+com bons identificadores mnemônicos 
+e rótulos, se houver necessidade.
+
+236
+00:14:44,800 --> 00:14:48,596
+E um pouco de comentários esclarecedores.
+
+237
+00:14:48,596 --> 00:14:53,255
+fluxogramas e descrições de 
+programas são de importância secundária,
+
+238
+00:14:53,255 --> 00:14:57,427
+A única documentação confiável de um programa
+
+239
+00:14:57,427 --> 00:14:59,304
+é o próprio código
+
+240
+00:14:59,304 --> 00:15:01,101
+a razão é simples:
+
+241
+00:15:01,101 --> 00:15:04,338
+sempre que existe representaçoes múltiplas de um programa
+
+242
+00:15:04,338 --> 00:15:07,212
+a chance de discrepância existe.
+
+243
+00:15:07,212 --> 00:15:09,064
+se o código está em erro
+
+244
+00:15:09,064 --> 00:15:12,787
+fluxogramas artísticos e comentários detalhados
+
+245
+00:15:12,787 --> 00:15:15,126
+são inúteis
+
+246
+00:15:15,126 --> 00:15:18,960
+Somente lendo o código, o programador pode ter certeza
+
+247
+00:15:18,960 --> 00:15:20,904
+do que o programa faz
+
+248
+00:15:22,904 --> 00:15:24,898
+Comentários são fracassos
+
+249
+00:15:27,107 --> 00:15:29,686
+deveria ser o objetivo de todo programador
+
+250
+00:15:29,686 --> 00:15:33,655
+escrever código que expressa sua intenção tão bem
+
+251
+00:15:33,655 --> 00:15:35,655
+que não precisa de comentários
+
+252
+00:15:36,086 --> 00:15:37,833
+se adotarmos esse objetivo
+
+253
+00:15:37,833 --> 00:15:40,916
+então, cada comentário que escrevemos, é um fracassos
+
+254
+00:15:42,916 --> 00:15:46,473
+é possível expressar intenção no código
+
+255
+00:15:47,926 --> 00:15:49,840
+alguns acham quem não é
+
+256
+00:15:50,480 --> 00:15:51,661
+alguns pensam que
+
+257
+00:15:51,661 --> 00:15:55,458
+código é o mecanismo errado para expressar intenção
+
+258
+00:15:56,080 --> 00:15:58,043
+e algumas décadas atrás
+
+259
+00:15:58,043 --> 00:16:00,375
+eles até podiam estar certos
+
+260
+00:16:00,873 --> 00:16:02,535
+algumas linguagens
+
+261
+00:16:02,535 --> 00:16:04,295
+como linguagem assembly
+
+262
+00:16:04,295 --> 00:16:06,455
+não são expressivas de forma alguma
+
+263
+00:16:06,455 --> 00:16:09,680
+cometários nessas linguagens
+ são absolutamente necessários
+
+264
+00:16:09,680 --> 00:16:12,830
+vc não consegue entender o código sem eles
+
+265
+00:16:12,830 --> 00:16:18,160
+até mesmo linguagens como 
+pascal e fortan e até mesmo C
+
+266
+00:16:18,160 --> 00:16:20,867
+são tão sintaxicalmente difíceis
+
+267
+00:16:20,867 --> 00:16:25,920
+que escrever código expressivo é bem difícil
+
+268
+00:16:27,120 --> 00:16:31,440
+para piorar, até mesmo no começo dos anos 90
+
+269
+00:16:31,440 --> 00:16:36,104
+muitos códigos eram escritos em ambientes bem restritos
+
+270
+00:16:36,566 --> 00:16:38,812
+quando os tempos cíclicos são longos
+
+271
+00:16:38,812 --> 00:16:41,409
+e a memória é curta
+
+272
+00:16:41,409 --> 00:16:44,572
+pode ser bem difícil ser expressivo
+
+273
+00:16:44,572 --> 00:16:49,255
+as restriçoes de recursos,
+ dominam a estrutura do código
+
+274
+00:16:51,140 --> 00:16:54,861
+mas nossas linguagens modernas, como JAVA, C# e Ruby
+
+275
+00:16:54,861 --> 00:16:57,304
+são extremamente expressivas
+
+276
+00:16:57,304 --> 00:17:02,116
+temos um monte de elementos sintáxicos que podemos usar
+
+277
+00:17:02,116 --> 00:17:07,187
+como classes, classes aninhadas e namespaces
+
+278
+00:17:07,187 --> 00:17:10,418
+enums, nomes sem limites
+
+279
+00:17:10,418 --> 00:17:13,230
+essas são coisas poderosas que podemos usar
+
+280
+00:17:13,230 --> 00:17:15,230
+para expressar nossa intenção
+
+281
+00:17:16,492 --> 00:17:19,606
+e nossos processadores, são tão rápidos
+
+282
+00:17:19,606 --> 00:17:22,233
+e memória é tão barata
+
+283
+00:17:22,233 --> 00:17:28,313
+que qualquer ineficiência mínima criada 
+por deixar seu código mais expressivo
+
+284
+00:17:28,313 --> 00:17:31,347
+pode praticamente ser ignoradas
+
+285
+00:17:31,347 --> 00:17:37,723
+hoje em dia, não há desculpas para
+ não deixar seu código expressivo 
+
+286
+00:17:39,101 --> 00:17:40,289
+e isso significa, 
+
+287
+00:17:40,289 --> 00:17:42,492
+que cada comentário que escreve
+
+288
+00:17:42,492 --> 00:17:45,784
+é um fracasso de expressar bem
+ a intençao do seu código
+
+289
+00:17:45,784 --> 00:17:48,861
+todo comentário é um fracasso
+
+290
+00:17:50,000 --> 00:17:52,713
+não me entanda mal, eu escrevo comentários sim!
+
+291
+00:17:52,713 --> 00:17:55,852
+eu só não me parabenizo por fazer isso.
+
+292
+00:17:55,852 --> 00:17:58,184
+eu considero cada comentário que escrevo
+
+293
+00:17:58,184 --> 00:18:02,609
+um fracasso da minha habilidade 
+de me expressar bem no código
+
+294
+00:18:02,609 --> 00:18:07,150
+eu tento, descobrir formas 
+de evitar escrever comentários
+
+295
+00:18:07,150 --> 00:18:09,907
+tento refatorar o código de toda forma que posso
+
+296
+00:18:09,907 --> 00:18:12,763
+para tornar o código mais expressivo
+
+297
+00:18:12,763 --> 00:18:16,110
+mas no fim, tem vezes que eu falho
+
+298
+00:18:16,110 --> 00:18:18,701
+não consigo descobrir como tornar o código
+
+299
+00:18:18,701 --> 00:18:21,083
+se expressar bem e de forma clara
+
+300
+00:18:21,080 --> 00:18:26,073
+e nesses casos eu reconheço o meu 
+fracasso, escrevendo um comentário
+
+301
+00:18:28,073 --> 00:18:29,692
+comentários são mentiras
+
+302
+00:18:31,649 --> 00:18:34,350
+pq sou tão triste com comentários?
+
+303
+00:18:34,830 --> 00:18:35,950
+bem..
+
+304
+00:18:35,950 --> 00:18:38,184
+eu não gosto de bagunça
+
+305
+00:18:38,184 --> 00:18:40,184
+e eu não gosto de mentiras
+
+306
+00:18:40,184 --> 00:18:44,523
+e comentários, tendem a ser ambos
+
+307
+00:18:44,929 --> 00:18:49,815
+é bem difil comentários
+ permanecerem verdadeiros por muito tempo
+
+308
+00:18:49,815 --> 00:18:53,612
+o autor provavelmente estava tendando 
+escrever a verdade, quando fez o comentário
+
+309
+00:18:53,612 --> 00:18:56,824
+pelo menos o que ele entendeu da verdade
+
+310
+00:18:56,824 --> 00:19:00,492
+o problema é que com o tempo, o comentário de degrada
+
+311
+00:19:00,492 --> 00:19:03,569
+em desinformação e mentiras
+
+312
+00:19:05,150 --> 00:19:09,464
+vc pode pensar que isso é 
+apenas um problema de disciplina
+
+313
+00:19:09,464 --> 00:19:12,990
+que pode fazer os programadores trabalharem mais empenhados
+
+314
+00:19:12,990 --> 00:19:16,455
+que manterão esses comentários sempre atualizados
+
+315
+00:19:16,455 --> 00:19:19,249
+mas isso não é o problema
+
+316
+00:19:19,249 --> 00:19:24,529
+comentários não apodrecem só 
+porque os programadores são preguiçosos
+
+317
+00:19:24,529 --> 00:19:30,578
+comentários também apodrecem,
+ porque tendem a ser não-local
+
+318
+00:19:30,763 --> 00:19:33,181
+quando vc altera uma linha de código
+
+319
+00:19:33,181 --> 00:19:36,640
+em algum módulo, para consertar um bug
+
+320
+00:19:36,640 --> 00:19:38,830
+ou adicionar uma feature
+
+321
+00:19:38,830 --> 00:19:43,643
+como sabe que não existe algum 
+comentário em algum lugar no código
+
+322
+00:19:43,643 --> 00:19:45,735
+que vc acabou de invalidar ?
+
+323
+00:19:45,735 --> 00:19:49,273
+esse comentário pode estar no topo
+ da classe que vc acabou de alterar
+
+324
+00:19:49,273 --> 00:19:53,169
+pode estar em outro arquivo do mesmo módulo
+
+325
+00:19:53,169 --> 00:19:56,947
+pode estar até mesmo em algum usuário bem longe
+
+326
+00:19:56,947 --> 00:19:58,947
+não existe boa forma de saber
+
+327
+00:19:58,947 --> 00:20:02,363
+então comentários, devem apodrecer
+
+328
+00:20:02,363 --> 00:20:04,276
+gradualmente se tornam mentiras
+
+329
+00:20:04,276 --> 00:20:06,240
+que causam mais mal que bem
+
+330
+00:20:08,061 --> 00:20:09,704
+bons comentários
+
+331
+00:20:11,452 --> 00:20:13,501
+nem todo comentário é ruim
+
+332
+00:20:13,501 --> 00:20:17,452
+algumas vezes comentários podem ser bem úteis
+
+333
+00:20:17,452 --> 00:20:19,950
+algumas vezes, eles são obrigatórios
+
+334
+00:20:19,950 --> 00:20:23,353
+vamos olhar alguns casos que comentários são
+
+335
+00:20:23,353 --> 00:20:26,166
+de algum valor
+
+336
+00:20:27,538 --> 00:20:29,236
+comentários legais
+
+337
+00:20:29,236 --> 00:20:30,867
+certo, eles tem que estar lá
+
+338
+00:20:30,867 --> 00:20:32,123
+sem escolha
+
+339
+00:20:32,123 --> 00:20:34,480
+então botem eles no topo do arquivo
+
+340
+00:20:34,480 --> 00:20:38,596
+melhor ainda, escreva um script que coloque eles no topo
+
+341
+00:20:38,596 --> 00:20:42,018
+de todo arquivo e automaticamente atualiza as datas
+
+342
+00:20:42,018 --> 00:20:42,775
+melhor ainda
+
+343
+00:20:42,775 --> 00:20:45,630
+arrume uma IDE que faz isso para vc
+
+344
+00:20:46,713 --> 00:20:48,609
+comentários informativos
+
+345
+00:20:48,609 --> 00:20:53,132
+ok, existe alguns comentários
+ informativos que são bem úteis
+
+346
+00:20:53,132 --> 00:20:58,646
+por exemplo: sevc tem um comentário
+ que descreve uma expressão regular horrível
+
+347
+00:20:58,646 --> 00:21:00,098
+isso é bem útil!
+
+348
+00:21:00,090 --> 00:21:08,400
+ou alguma sintaxe Arcane estranha, talvez um SQL que precisa definir
+
+349
+00:21:08,400 --> 00:21:12,572
+comentários como esses, podem ter um valor de ouro
+
+350
+00:21:12,572 --> 00:21:16,295
+especialmente se considerar 
+que comentários não pesam nada
+
+351
+00:21:17,772 --> 00:21:22,320
+clarificações e explicaçoes de intenção
+
+352
+00:21:22,320 --> 00:21:25,680
+quando precisa escrever um 
+comentário para explicar sua intenção
+
+353
+00:21:25,680 --> 00:21:28,701
+significa que vc falhou!
+
+354
+00:21:28,701 --> 00:21:33,784
+claro, nessas situaçoes, é melhor
+ não deixar o código sem explicacão
+
+355
+00:21:33,784 --> 00:21:36,861
+portanto, escreva o comentário!
+
+356
+00:21:36,861 --> 00:21:39,895
+e depois pague uma penitência.
+
+357
+00:21:43,113 --> 00:21:46,073
+Avisos de consequências
+
+358
+00:21:46,640 --> 00:21:48,227
+sim, é verdade
+
+359
+00:21:48,227 --> 00:21:52,320
+um comentário pode ser usado
+ para te alertar de coisas ruins
+
+360
+00:21:52,320 --> 00:21:53,403
+claro que
+
+361
+00:21:53,403 --> 00:21:56,252
+uma boa função pode fazer o mesmo
+
+362
+00:21:57,556 --> 00:21:59,476
+comentários TODO
+
+363
+00:21:59,907 --> 00:22:01,267
+comentários TODO?
+
+364
+00:22:01,267 --> 00:22:02,972
+eu to lendo isso certo?
+
+365
+00:22:02,972 --> 00:22:03,987
+O que?
+
+366
+00:22:03,980 --> 00:22:04,387
+Quem?!
+
+367
+00:22:04,387 --> 00:22:08,227
+Que cabeça de vento coloca 
+comentário TODO neste roteiro!
+
+368
+00:22:08,227 --> 00:22:11,950
+Eu achei que esse era um show
+ para profissionais, pelo amor de deus...
+
+369
+00:22:11,950 --> 00:22:12,972
+puta merda!
+
+370
+00:22:12,972 --> 00:22:14,307
+Corta,Corta!!
+
+371
+00:22:14,307 --> 00:22:16,350
+Tira isso do roteiro
+
+372
+00:22:17,513 --> 00:22:20,455
+Documentação de API pública
+
+373
+00:22:20,450 --> 00:22:26,910
+nada pode ser mais útil como
+ uma API pública bem documentada
+
+374
+00:22:26,910 --> 00:22:32,640
+Se está usando alguma ferramenta de 
+documentação tipo JAVADOC ou alguma outra
+
+375
+00:22:32,640 --> 00:22:37,944
+vc com certeza deve escrever  bons 
+documentos para suas APIs públicas
+
+376
+00:22:37,944 --> 00:22:43,009
+claro que também deve se certificar 
+que suas funções são auto-explicativas
+
+377
+00:22:43,009 --> 00:22:47,895
+e mantenha em mente que, a melhor documentação de API 
+
+378
+00:22:47,895 --> 00:22:51,495
+é a documentaçao que vc não precisa escrever
+
+379
+00:22:53,723 --> 00:22:55,409
+Comenários ruins
+
+380
+00:22:57,390 --> 00:22:58,406
+resmungos
+
+381
+00:23:00,110 --> 00:23:04,541
+não fale consigo mesmo nos 
+comentários do seu código
+
+382
+00:23:04,541 --> 00:23:09,181
+não fale sobre a letra das
+ músicas que está escutando
+
+383
+00:23:09,181 --> 00:23:12,160
+ou sua situação de vida
+
+384
+00:23:12,160 --> 00:23:15,710
+ou como seus colegas tem mau hálito
+
+385
+00:23:15,710 --> 00:23:18,929
+ou eles escrevem código errado
+
+386
+00:23:18,929 --> 00:23:20,596
+não queremos saber
+
+387
+00:23:20,596 --> 00:23:22,818
+cala boca e codifique!
+
+388
+00:23:24,621 --> 00:23:26,775
+explicações redundantes
+
+389
+00:23:27,409 --> 00:23:32,264
+por favor, quando escrever um comentário,
+ tenha certeza que fale algo novo
+
+390
+00:23:32,264 --> 00:23:35,292
+não reafirme o código
+
+391
+00:23:35,292 --> 00:23:40,609
+não me diz o algoritmo se o mesmo 
+é perfeitamente claro no código
+
+392
+00:23:40,600 --> 00:23:47,095
+por favor , não me diga o que a variável 
+carrega se é perfeitamente óbvio pelo nome
+
+393
+00:23:47,095 --> 00:23:49,575
+lembrem-se do princípio DRY
+
+394
+00:23:49,575 --> 00:23:51,427
+Don't Repeat Yourself
+
+395
+00:23:51,427 --> 00:23:53,778
+nem mesmo em um comentário
+
+396
+00:23:55,027 --> 00:23:57,581
+redundancia mandatória
+
+397
+00:23:57,581 --> 00:24:00,707
+ou deveria ser chamado de redundância estúpida
+
+398
+00:24:01,753 --> 00:24:03,803
+se vc fez um sistema
+
+399
+00:24:03,803 --> 00:24:06,855
+a que usa uma ferramenta como Checkstyle
+
+400
+00:24:06,855 --> 00:24:12,529
+para obrigar comentários estúpidos e redundantes
+
+401
+00:24:12,529 --> 00:24:15,015
+então, desligue
+
+402
+00:24:15,280 --> 00:24:19,784
+se é controlado por alguém que se recusa a desligar
+
+403
+00:24:19,784 --> 00:24:23,667
+o requisito de comentários estúpidos e redundantes
+
+404
+00:24:23,667 --> 00:24:26,123
+então reuna seus amigos 
+
+405
+00:24:26,123 --> 00:24:28,049
+pinte suas faces de azul
+
+406
+00:24:28,049 --> 00:24:30,596
+faça cartões e posters
+
+407
+00:24:30,596 --> 00:24:32,621
+vai para mesa dele
+
+408
+00:24:32,621 --> 00:24:34,935
+e comecem a gritar em uníssono
+
+409
+00:24:34,935 --> 00:24:45,095
+"Tudo que pedimos.. é dar uma chance ao código"
+
+410
+00:24:45,095 --> 00:24:48,640
+faça ele desligar essa verificação estúpida!
+
+411
+00:24:49,840 --> 00:24:52,215
+o que estou prestes a dizer,
+ pode soar um pouco bobo
+
+412
+00:24:52,215 --> 00:24:56,560
+mas eu preciso dizer, porque 
+eu vi tantos comentários que tem isso
+
+413
+00:24:57,286 --> 00:25:00,910
+quando vc vê um comentário que é errado
+
+414
+00:25:00,910 --> 00:25:02,793
+ou enganoso
+
+415
+00:25:02,793 --> 00:25:05,790
+arrume ou apague
+
+416
+00:25:06,590 --> 00:25:08,707
+eu sei que parece óbivo, mas
+
+417
+00:25:08,700 --> 00:25:15,513
+eu já li um monte de código onde os 
+programadores não estavam dispostos a fazer isso
+
+418
+00:25:15,513 --> 00:25:20,184
+se livre de comentários errados e enganosos
+
+419
+00:25:21,876 --> 00:25:23,944
+comentários de diário
+
+420
+00:25:25,150 --> 00:25:28,104
+vc tem um versionador de código, certo ?
+
+421
+00:25:28,596 --> 00:25:30,350
+então use
+
+422
+00:25:30,350 --> 00:25:33,735
+não encha seu código com um monte de comentários
+
+423
+00:25:33,735 --> 00:25:37,255
+que são melhores no versionador de código
+
+424
+00:25:37,250 --> 00:25:42,664
+se vc tem um monte de comentários 
+de diário no seu código-fonte, delete eles!
+
+425
+00:25:42,664 --> 00:25:44,984
+e não escreva mais eles!
+
+426
+00:25:44,984 --> 00:25:52,793
+ninguem se importa que J.P.G  transformou 
+inteiro em double  em 5/3/1992
+
+427
+00:25:54,541 --> 00:25:56,713
+comentários de ruído
+
+428
+00:25:56,713 --> 00:25:59,452
+se eu ver esse tipo de bobagem
+
+429
+00:25:59,452 --> 00:26:01,206
+eu irei até você
+
+430
+00:26:01,206 --> 00:26:04,646
+em uma noite fria e escura
+
+431
+00:26:13,360 --> 00:26:18,246
+¯\_(ツ)_/¯
+
+432
+00:26:18,947 --> 00:26:20,307
+marcadores de posição
+
+433
+00:26:20,307 --> 00:26:24,363
+e grandes comentários de banner
+
+434
+00:26:24,363 --> 00:26:26,283
+um grande comentário de banner
+
+435
+00:26:26,283 --> 00:26:28,775
+é uma grande forma de ter certeza
+
+436
+00:26:28,775 --> 00:26:31,926
+que as palavras dentro disso nunca será lida
+
+437
+00:26:31,920 --> 00:26:37,476
+nada grita: "me ignore" mais
+ que um grande comentário de banner
+
+438
+00:26:37,476 --> 00:26:38,344
+por que?
+
+439
+00:26:38,344 --> 00:26:43,015
+porque frequentemente vemos 
+esses banners que chamam a atenção
+
+440
+00:26:43,015 --> 00:26:46,566
+para coisas que preferíamos não prestar.
+
+441
+00:26:46,566 --> 00:26:48,055
+por exemplo
+
+442
+00:26:48,055 --> 00:26:51,729
+um graunde comentário de banner que diz:
+
+443
+00:26:51,729 --> 00:26:54,941
+Aqui está os construtores padrões
+
+444
+00:26:56,295 --> 00:26:57,932
+comentários de fecha chave
+
+445
+00:26:57,932 --> 00:27:02,135
+é, teve um tempo nos anos 80 que fazia sentido
+
+446
+00:27:02,135 --> 00:27:06,320
+costumávamos a colocar comentários em cada chave fechada
+
+447
+00:27:06,320 --> 00:27:10,172
+para deixar vc saber qual bloco está sendo fechado
+
+448
+00:27:10,172 --> 00:27:14,572
+mas hj em dia nossas IDEs muito boas nisso
+
+449
+00:27:14,572 --> 00:27:20,406
+elas são as que se certificam 
+que estamos fechando nossas chaves, parenteses
+
+450
+00:27:20,406 --> 00:27:24,683
+então não há necessidade mais desses comentários
+
+451
+00:27:24,683 --> 00:27:26,904
+e por vafor não use-os
+
+452
+00:27:28,363 --> 00:27:30,135
+atribuiçoes
+
+453
+00:27:31,206 --> 00:27:36,596
+é realmente necessário botar seu nome em cada linha de código?
+
+454
+00:27:37,273 --> 00:27:39,840
+J.J.Q. fez isso!
+
+455
+00:27:40,658 --> 00:27:44,147
+o versionador de código vai se lembrar disso
+
+456
+00:27:44,147 --> 00:27:48,036
+vc não precisa botar suas
+ iniciais em cada linha de código
+
+457
+00:27:48,036 --> 00:27:51,083
+se quisermos saber em quem botar a culpa
+
+458
+00:27:51,083 --> 00:27:53,766
+podemos usar o versionador para isso
+
+459
+00:27:53,766 --> 00:27:56,990
+vc não precisa assinar
+ cada linha de código que escreve
+
+460
+00:27:56,990 --> 00:28:01,704
+além do que, ninguem quer 
+saber que Killroy esteve aqui.
+
+461
+00:28:03,556 --> 00:28:05,821
+HTML em comentários
+
+462
+00:28:06,855 --> 00:28:07,495
+é..
+
+463
+00:28:07,495 --> 00:28:09,218
+eu sei
+
+464
+00:28:09,218 --> 00:28:12,289
+queremos nossa ferramenta de documentação
+
+465
+00:28:12,289 --> 00:28:15,556
+imprima automaticamente um documento bem formatado
+
+466
+00:28:15,556 --> 00:28:19,089
+então é tentador colocar html nos comentários
+
+467
+00:28:19,089 --> 00:28:21,587
+para que algumas palavras fiquem itálico
+
+468
+00:28:21,587 --> 00:28:23,926
+e algumas palavras fiquem em negrito
+
+469
+00:28:23,926 --> 00:28:25,766
+mas veja,
+
+470
+00:28:25,766 --> 00:28:28,701
+essa documentação, está dentro do códigoe 
+
+471
+00:28:28,701 --> 00:28:31,815
+e é onde ela deve ser mais legível
+
+472
+00:28:31,815 --> 00:28:36,012
+HTML no código, obscurece os comentários
+
+473
+00:28:36,012 --> 00:28:39,298
+no único lugar que deveria ser mais legível
+
+474
+00:28:39,298 --> 00:28:44,418
+por favor, não bote HTML nos comentários
+
+475
+00:28:46,049 --> 00:28:48,307
+informaçao não local
+
+476
+00:28:50,560 --> 00:28:54,916
+comentários que falam de
+ partes de código que estão bem longe
+
+477
+00:28:54,916 --> 00:28:57,206
+vão apodrecer rápido
+
+478
+00:28:57,206 --> 00:28:57,993
+porque 
+
+479
+00:28:57,990 --> 00:29:00,898
+não há nenhuma forma de alguem 
+que está modificando o código 
+
+480
+00:29:00,898 --> 00:29:03,280
+saber que esse comentário existe 
+
+481
+00:29:03,280 --> 00:29:08,073
+então quando escrever um comentário,
+ não fale de código que está bem longe
+
+482
+00:29:08,073 --> 00:29:10,209
+se precisa escrever um comentário
+
+483
+00:29:10,209 --> 00:29:14,615
+certifique-se que fique bem 
+do lado do código que ele descreve
+
+484
+00:29:16,221 --> 00:29:18,344
+códigos comentados
+
+485
+00:29:18,344 --> 00:29:23,538
+não há abominação maior da natureza
+
+486
+00:29:23,538 --> 00:29:26,209
+que códigos comentádos
+
+487
+00:29:26,209 --> 00:29:32,658
+é a profanação de tudo que é bom sobre software
+
+488
+00:29:32,658 --> 00:29:35,446
+quando vc ver código comentado
+
+489
+00:29:35,446 --> 00:29:36,880
+vc deve excluí-lo
+
+490
+00:29:36,880 --> 00:29:39,618
+expurga-lo do código-fonte
+
+491
+00:29:39,618 --> 00:29:43,932
+não leia, não toque, não tente entender
+
+492
+00:29:43,932 --> 00:29:47,384
+apenas arranque fora do código-fonte
+
+493
+00:29:47,384 --> 00:29:50,326
+lembrem-se, vcs não vão usá-los
+
+494
+00:29:50,326 --> 00:29:54,560
+porque vc tem um sistema versionador de código
+
+495
+00:29:54,560 --> 00:29:56,190
+não tem?
+
+496
+00:29:56,824 --> 00:29:59,563
+já viu código comentado
+
+497
+00:29:59,563 --> 00:30:04,523
+que contém, funções tão velhas que nem existem mais
+
+498
+00:30:04,523 --> 00:30:07,156
+ou variáveis que os nomes já mudaram
+
+499
+00:30:07,156 --> 00:30:09,753
+ou foram movidas para outros lugares no código
+
+500
+00:30:09,753 --> 00:30:11,809
+talvez em uma classe diferente
+
+501
+00:30:12,104 --> 00:30:17,347
+é tão velho que não tem nem 
+chance de ser executado de novo
+
+502
+00:30:20,320 --> 00:30:22,713
+toda vez que vejo código comentado
+
+503
+00:30:22,713 --> 00:30:24,578
+eu deleto na hora
+
+504
+00:30:24,578 --> 00:30:25,846
+eu não leio
+
+505
+00:30:25,846 --> 00:30:28,473
+eu não tento entender porque está lá
+
+506
+00:30:28,473 --> 00:30:31,255
+eu simplesmente removo da existência
+
+507
+00:30:31,255 --> 00:30:33,255
+e vc deveria fazer o mesmo!
+
+508
+00:30:34,793 --> 00:30:35,796
+lembrem-se
+
+509
+00:30:35,796 --> 00:30:38,196
+o código não vai ser perdido de verdade
+
+510
+00:30:38,196 --> 00:30:41,470
+seu sistema versionador
+ de código vai se lembrar
+
+511
+00:30:41,470 --> 00:30:44,707
+então, realmente, não precisa manter ele
+
+512
+00:30:44,707 --> 00:30:46,480
+não tem sentindo em ter ele lá
+
+513
+00:30:46,480 --> 00:30:48,824
+ninguém vai sentir falta!
+
+514
+00:30:48,824 --> 00:30:51,261
+não precisa ficar lá plantando dentro do código
+
+515
+00:30:51,261 --> 00:30:54,387
+ficando cada vez menos relevante a cada dia
+
+516
+00:30:54,387 --> 00:30:58,356
+então quando ver código comentado, mate-o!
+
+517
+00:31:00,449 --> 00:31:02,215
+Estrutura explicativa
+
+518
+00:31:03,981 --> 00:31:08,067
+em vez de usar comentários para 
+descrever o que seu código faz
+
+519
+00:31:08,067 --> 00:31:12,824
+aprenda como usar variáveis e nomes explicativos
+
+520
+00:31:12,824 --> 00:31:17,046
+faça seu código ser lido 
+como uma proza bem escrita
+
+521
+00:31:17,046 --> 00:31:21,138
+escolhendo as palavras 
+certas para seus nomes
+
+522
+00:31:21,138 --> 00:31:24,720
+e compor sentenças legíveis no seu código
+
+523
+00:31:26,092 --> 00:31:31,323
+o que está vendo aqui é o 
+screencast associado com este episódio
+
+524
+00:31:31,323 --> 00:31:34,529
+chamado números de Lychrel
+
+525
+00:31:34,529 --> 00:31:38,030
+e as funçõees que estámos rolando agora
+
+526
+00:31:38,030 --> 00:31:40,030
+são testes
+
+527
+00:31:40,030 --> 00:31:44,633
+note que esses testes estão
+ cheios de funções explicativas 
+
+528
+00:31:44,633 --> 00:31:49,033
+vc não vê os típicos assert.true, assert.equals
+
+529
+00:31:49,033 --> 00:31:50,664
+sujando os testes
+
+530
+00:31:50,664 --> 00:31:55,224
+invés disso vc vê um conjunto de assertions
+
+531
+00:31:55,224 --> 00:31:57,089
+com bons nomes
+
+532
+00:31:57,089 --> 00:31:58,806
+"converges At Iteration"
+
+533
+00:31:58,806 --> 00:31:59,938
+vc não sabe o que isso significa
+
+534
+00:31:59,938 --> 00:32:02,246
+porque vc não assistiu o screencast
+
+535
+00:32:02,246 --> 00:32:04,449
+mas, vc pode dizer que isso são fatos
+
+536
+00:32:04,449 --> 00:32:06,061
+"does not converge"
+
+537
+00:32:06,061 --> 00:32:06,836
+"is Palindrome"
+
+538
+00:32:06,836 --> 00:32:08,516
+"is not Palindrome"
+
+539
+00:32:08,516 --> 00:32:09,901
+"reversed"
+
+540
+00:32:09,901 --> 00:32:16,990
+essas são funções explicativas dentro dos 
+testes que os fazem muito mais legíveis
+
+541
+00:32:16,990 --> 00:32:23,083
+pode ver aqui que a função "reversed", chama  o assertEquals
+
+542
+00:32:23,083 --> 00:32:28,824
+mas eu costumo enterrar todos
+ os asserts nessas funcões Helper
+
+543
+00:32:28,824 --> 00:32:32,012
+aqui está o próprio código da aplicação
+
+544
+00:32:32,012 --> 00:32:39,218
+e pode ver que também está cheia de 
+funçoes e variavéis explicativas
+
+545
+00:32:39,218 --> 00:32:42,523
+boas funções como "convertAtIteration"
+
+546
+00:32:42,523 --> 00:32:45,255
+funções privadas como "converge"
+
+547
+00:32:45,255 --> 00:32:47,009
+são bons utilitários
+
+548
+00:32:47,009 --> 00:32:49,667
+perceba que são relativamente pequenas
+
+549
+00:32:49,667 --> 00:32:51,876
+não tem muita coisa dentro
+
+550
+00:32:51,876 --> 00:32:55,372
+pode ver algumas variáveis explicativas alí
+
+551
+00:32:55,372 --> 00:32:56,313
+"nDigits"
+
+552
+00:32:56,313 --> 00:32:58,646
+"rDigitis" e "lastIndex"
+
+553
+00:32:58,646 --> 00:33:03,046
+elas fazem sentido no contexto desta aplicação
+
+554
+00:33:03,040 --> 00:33:06,313
+outro método explicativo
+
+555
+00:33:06,313 --> 00:33:07,489
+"isPalindrome"
+
+556
+00:33:07,489 --> 00:33:09,575
+pode ver que 
+
+557
+00:33:09,575 --> 00:33:12,449
+neste screencast, estamos usando basntente
+
+558
+00:33:12,440 --> 00:33:16,627
+vasriáveis explicatívas e funcções
+
+559
+00:33:22,633 --> 00:33:25,304
+Formatando
+
+560
+00:33:26,744 --> 00:33:28,615
+sou uma dessas pessoas chatas
+
+561
+00:33:28,615 --> 00:33:29,483
+que acha que 
+
+562
+00:33:29,483 --> 00:33:32,196
+a diciplina de espaçoes em branco é importante
+
+563
+00:33:32,196 --> 00:33:37,895
+odeio ler código que alguém saiu dando espaços sem controle
+
+564
+00:33:37,895 --> 00:33:40,449
+espaços em branco, carregam informação
+
+565
+00:33:40,449 --> 00:33:43,778
+e assim devemos usar com o mesmo nível de cuidado 
+
+566
+00:33:43,778 --> 00:33:46,775
+como em qualquer outra estrutura em nosso código
+
+567
+00:33:47,870 --> 00:33:48,867
+lembre-se
+
+568
+00:33:48,867 --> 00:33:51,095
+quando alguem ler nosso código 
+
+569
+00:33:51,120 --> 00:33:54,695
+queremos que fiquem impressionados com a atenção aos detalhes
+
+570
+00:33:54,695 --> 00:33:57,156
+impressionados por o quão organizado é 
+
+571
+00:33:57,156 --> 00:34:00,683
+convencidos de que foi feito por profissionais
+
+572
+00:34:00,683 --> 00:34:04,375
+e aprimeira coisa que vão
+ ver quando lerem nosso código
+
+573
+00:34:04,375 --> 00:34:06,104
+é a formatação
+
+574
+00:34:07,310 --> 00:34:10,196
+formatação é sobre comunicação
+
+575
+00:34:10,196 --> 00:34:13,015
+e comunicação é a primeira ordem de negócios
+
+576
+00:34:13,015 --> 00:34:14,412
+para todos os programadores
+
+577
+00:34:14,412 --> 00:34:15,513
+lembre-se
+
+578
+00:34:15,513 --> 00:34:17,169
+fazer seu código comunicar 
+
+579
+00:34:17,169 --> 00:34:21,593
+é mais importante que faze-lo funcionar
+
+580
+00:34:23,058 --> 00:34:24,443
+tamanho do arquivo
+
+581
+00:34:26,670 --> 00:34:29,661
+o quão grande um arquivo-fonte deve ser?
+
+582
+00:34:29,661 --> 00:34:32,818
+aqui está uma informação que pode achar interessante
+
+583
+00:34:32,818 --> 00:34:37,033
+primeiramente, note que a escala vertical é logarítimica
+
+584
+00:34:37,033 --> 00:34:41,347
+então, pequenas alterações tem grandes consequencias
+
+585
+00:34:41,347 --> 00:34:45,766
+nesta caixa, temos 7 programas sendo representados
+
+586
+00:34:45,766 --> 00:34:47,409
+as linhas verticais 
+
+587
+00:34:47,409 --> 00:34:50,756
+represantam os extremos do tamanho do arquivo
+
+588
+00:34:50,756 --> 00:34:54,640
+as caixas no meio, representam o desvio padrão
+
+589
+00:34:54,640 --> 00:34:58,836
+e no centro de cada caixa é 
+o tamanho médio do arquivo
+
+590
+00:35:00,270 --> 00:35:04,270
+note quão similar junit e fitnesse são
+
+591
+00:35:04,270 --> 00:35:08,861
+ambos tem arquivos de tamanho máximo de aproximadamente 100 linhas
+
+592
+00:35:08,861 --> 00:35:13,969
+ambos tem arquivos de tamanho médio de  50 ou 60 linhas
+
+593
+00:35:13,969 --> 00:35:20,836
+e ambos tem a maioria dos arquivos entre 30 e 100 linhas
+
+594
+00:35:20,836 --> 00:35:22,824
+o que é impressionante,
+
+595
+00:35:22,824 --> 00:35:26,658
+é que os 2 projetos vastamente diferentes em tamanhos
+
+596
+00:35:26,658 --> 00:35:30,227
+junit tem 6 mil linhas mais ou menos
+
+597
+00:35:30,227 --> 00:35:34,658
+fitness, na época dessa medição, 
+tinha o oito vezes esse tamanho
+
+598
+00:35:34,650 --> 00:35:38,855
+isso implica, que o tamanho do projeto e do arquivo
+
+599
+00:35:38,855 --> 00:35:40,492
+não estão relacionados
+
+600
+00:35:40,492 --> 00:35:43,556
+que grandes projetos não implicam
+
+601
+00:35:43,556 --> 00:35:45,556
+em arquivos grandes
+
+602
+00:35:46,523 --> 00:35:49,040
+de uma olhada em junit e jdepend
+
+603
+00:35:49,040 --> 00:35:52,147
+estes 2 projetos são aproximadamente do mesmo tamanho
+
+604
+00:35:52,147 --> 00:35:54,836
+e ainda assim o tamanho médio dos arquivos do jdepent
+
+605
+00:35:54,836 --> 00:35:57,027
+é o dobro do de junit
+
+606
+00:35:57,027 --> 00:36:00,720
+novamente, isso mostra que tamanho de arquivo e de projeto
+
+607
+00:36:00,720 --> 00:36:02,720
+não estão fortemente ligados
+
+608
+00:36:04,264 --> 00:36:05,550
+de outro lado
+
+609
+00:36:05,550 --> 00:36:07,883
+de uma olhada em ant e tomcat
+
+610
+00:36:07,883 --> 00:36:11,181
+esses projetos são muito maiores que os outros
+
+611
+00:36:11,181 --> 00:36:14,480
+e eles mostram alguma corrrelação 
+
+612
+00:36:14,480 --> 00:36:17,464
+entre tamanho de arquivo e de projeto
+
+613
+00:36:17,464 --> 00:36:20,264
+o tamanho médio dos arquivos dentro do toncat
+
+614
+00:36:20,264 --> 00:36:22,061
+é 200 linhas
+
+615
+00:36:22,061 --> 00:36:25,520
+e não é incomum encontrar arquivos de 500 linhas
+
+616
+00:36:26,910 --> 00:36:31,304
+então, tamanho de arquivo está 
+correlacionado com tamanho do projeto?
+
+617
+00:36:32,036 --> 00:36:33,353
+bem..
+
+618
+00:36:33,353 --> 00:36:34,793
+talvez
+
+619
+00:36:34,793 --> 00:36:37,901
+mas, tem outra coisa que deve saber
+
+620
+00:36:37,901 --> 00:36:40,406
+os projetos do lado esquerdo
+
+621
+00:36:40,406 --> 00:36:45,200
+são todos escritos com TDD 
+como uma diciplina dominante
+
+622
+00:36:45,200 --> 00:36:47,440
+quanto mais você vai para direita
+
+623
+00:36:47,440 --> 00:36:50,627
+menor este é o caso
+
+624
+00:36:50,627 --> 00:36:52,670
+em qualquer caso, fitness mostra
+
+625
+00:36:52,670 --> 00:36:54,683
+que sistemas significativos
+
+626
+00:36:54,683 --> 00:36:56,547
+podem ser compostos de 
+
+627
+00:36:56,547 --> 00:37:00,720
+arquivos de aproximandamente 50 a 60 linhas
+
+628
+00:37:00,720 --> 00:37:05,120
+onde maioria é menor 200 linhas
+
+629
+00:37:05,120 --> 00:37:08,947
+e o maior é aproximandamente 500 linhas
+
+630
+00:37:08,947 --> 00:37:13,618
+me parece que esse é um padrão razoável e desejável
+
+631
+00:37:15,618 --> 00:37:17,120
+agora, veja bem
+
+632
+00:37:17,120 --> 00:37:19,507
+todos já vimos arquivos extensos 
+
+633
+00:37:19,507 --> 00:37:24,713
+que se tornaram um lixão para coisas
+ que não tivemos tempo para organizar
+
+634
+00:37:25,378 --> 00:37:27,655
+assim como tudo em software,
+
+635
+00:37:27,655 --> 00:37:30,055
+menor é melhor
+
+636
+00:37:30,055 --> 00:37:33,200
+mantenham seus arquivos pequenos!
+
+637
+00:37:34,646 --> 00:37:36,086
+formatação vertical
+
+638
+00:37:39,083 --> 00:37:42,750
+use linhas em branco para separar 
+coisas que devem ser separadas
+
+639
+00:37:42,750 --> 00:37:44,492
+como métodos
+
+640
+00:37:44,492 --> 00:37:49,396
+e não crie o hábito de ficar 
+batendo a tecla enter várias vezes
+
+641
+00:37:49,396 --> 00:37:53,261
+seja diciplicano no uso de espaços em branco
+
+642
+00:37:53,261 --> 00:37:57,089
+decida quantas linhas devem 
+ser usadas para separar os métodos
+
+643
+00:37:57,089 --> 00:37:59,144
+e mantenha esta decisão
+
+644
+00:37:59,144 --> 00:38:02,166
+pessoalmente, eu uso 1 linha entre métodos
+
+645
+00:38:02,166 --> 00:38:06,732
+eu também uso 1 linha para
+ separar métodos de variáveis
+
+646
+00:38:06,732 --> 00:38:09,692
+e se tiver mais de um tipo de variável
+
+647
+00:38:09,692 --> 00:38:13,083
+como constantes públicas e variáveis privadas
+
+648
+00:38:13,083 --> 00:38:15,913
+eu uso uma linha entre elas também
+
+649
+00:38:17,089 --> 00:38:18,763
+dentro de uma função
+
+650
+00:38:18,763 --> 00:38:23,643
+eu uso uma linha para separar declaração de variáveis 
+
+651
+00:38:23,643 --> 00:38:26,480
+do resto da execução do código
+
+652
+00:38:26,480 --> 00:38:31,390
+eu tbem boto entre ifs e loops while 
+
+653
+00:38:31,390 --> 00:38:34,153
+separando eles do código que segue
+
+654
+00:38:34,150 --> 00:38:37,335
+claro que quando mantém suas funções 
+tão pequenas quanto eu mantenho
+
+655
+00:38:37,335 --> 00:38:40,436
+vc não precisa muitas dessas linhas em branco
+
+656
+00:38:44,320 --> 00:38:47,489
+vamos dar uma olhada como
+ lidamos com linhas em branco
+
+657
+00:38:47,489 --> 00:38:50,424
+no screencast do número de Lychrel
+
+658
+00:38:50,424 --> 00:38:52,713
+que está associado a este episódigo
+
+659
+00:38:52,713 --> 00:38:55,200
+vc pode comprar ele separadamente se preferir
+
+660
+00:38:56,209 --> 00:39:00,172
+vamos lidar com alguns 
+probemas de linhas em branco aqui
+
+661
+00:39:00,664 --> 00:39:06,941
+por exemplo, bem no topo tem algumas  
+linhas que não deveriam estar aqui
+
+662
+00:39:06,941 --> 00:39:10,584
+os imports estão separados por linhas em branco
+
+663
+00:39:10,584 --> 00:39:14,836
+eu gosto de agrupar elas juntas
+ porque obviamente estão relacioandas
+
+664
+00:39:18,806 --> 00:39:19,821
+olhando um pouco para baixo
+
+665
+00:39:19,821 --> 00:39:21,341
+para ver se tem alguma linha em branco 
+
+666
+00:39:21,341 --> 00:39:24,830
+aquela alí está separando bem 2 tópicos diferentes 
+
+667
+00:39:24,830 --> 00:39:25,975
+vamos ver
+
+668
+00:39:25,975 --> 00:39:27,403
+opa, alí está uma linha sobrando
+
+669
+00:39:27,400 --> 00:39:28,418
+vamos nos livrar dela
+
+670
+00:39:28,418 --> 00:39:30,418
+não queremos isso
+
+671
+00:39:31,095 --> 00:39:35,833
+agora vamos mudar para o lado da aplicação
+
+672
+00:39:35,833 --> 00:39:40,129
+parece um monte de boas funções pequenas
+
+673
+00:39:40,129 --> 00:39:43,784
+sem muita linhas em branco aqui
+
+674
+00:39:45,181 --> 00:39:48,233
+mas enquanto rolamos para baixo
+
+675
+00:39:48,233 --> 00:39:49,606
+vemos algumas oportunidades 
+
+676
+00:39:49,606 --> 00:39:52,609
+perceba que tem algumas variáveis ali
+
+677
+00:39:52,609 --> 00:39:55,704
+como ndigits, rdigits e lastindex
+
+678
+00:39:55,704 --> 00:40:00,080
+e tem uma boa linha separando elas do loop for
+
+679
+00:40:00,080 --> 00:40:04,947
+e tem uma boa linha  seprando o for do return
+
+680
+00:40:04,947 --> 00:40:07,138
+e parece que a mesma coisa aqui
+
+681
+00:40:07,138 --> 00:40:09,575
+temos um par de variáveis
+
+682
+00:40:09,575 --> 00:40:10,830
+linha em branco
+
+683
+00:40:10,830 --> 00:40:13,876
+podemos usar uma linha entre esses dois
+
+684
+00:40:13,876 --> 00:40:15,876
+isso deixa um pouco melhor
+
+685
+00:40:15,876 --> 00:40:18,461
+separando o return do loop
+
+686
+00:40:28,209 --> 00:40:30,830
+variáveis que tem afinidade entre si
+
+687
+00:40:30,830 --> 00:40:32,843
+devem ser agrupadas
+
+688
+00:40:32,843 --> 00:40:35,667
+se as variáveis são usadas juntas,então
+
+689
+00:40:35,667 --> 00:40:38,744
+agrupem elas sem linhas em branco
+
+690
+00:40:42,836 --> 00:40:45,224
+a regra geral é bem simples
+
+691
+00:40:45,224 --> 00:40:49,476
+coisas que são relacionadas, 
+devem ficar juntas verticalmente
+
+692
+00:40:49,476 --> 00:40:54,338
+a distância entre elas é uma
+ medida de quão próximas elas são
+
+693
+00:40:54,338 --> 00:40:58,547
+coisas que não são relacionadas, 
+devem ser afastadas verticalmente
+
+694
+00:41:00,221 --> 00:41:01,661
+Formatação horizontal
+
+695
+00:41:04,713 --> 00:41:07,310
+que tamanho uma linha de código deve ser?
+
+696
+00:41:07,310 --> 00:41:09,858
+tenho uma regra simples sobre isto
+
+697
+00:41:09,858 --> 00:41:12,910
+vc nunca deve rolar para direita para ver
+
+698
+00:41:12,910 --> 00:41:16,221
+barra de rolagem horizontal é coisa do demônio
+
+699
+00:41:16,221 --> 00:41:17,993
+gerencie o tamanho de suas linhas
+
+700
+00:41:17,993 --> 00:41:22,184
+para que nunca precisa rolar para direita
+
+701
+00:41:22,406 --> 00:41:25,513
+claro que monitores estão ficando cada vez maiores  
+
+702
+00:41:25,513 --> 00:41:27,821
+e os pixels estão ficando menores também
+
+703
+00:41:27,821 --> 00:41:28,941
+isso significa que 
+
+704
+00:41:28,941 --> 00:41:32,916
+não é tão difícil de amontoar 200 caracteres em uma linha
+
+705
+00:41:32,916 --> 00:41:35,298
+claramente, isso seria ruim 
+
+706
+00:41:36,781 --> 00:41:40,658
+a sim, isso seria ruim
+
+707
+00:41:41,846 --> 00:41:45,661
+vamos olhar algumas estatísticas simples
+
+708
+00:41:45,661 --> 00:41:49,846
+isto é um gráfico que mostra a 
+frequencia do tamanho de linhas
+
+709
+00:41:49,846 --> 00:41:53,193
+nas mesmas 7 aplicações que vimos antes
+
+710
+00:41:53,193 --> 00:41:57,655
+novamente, o eixo vertical é logarítmico
+
+711
+00:41:57,655 --> 00:42:00,984
+veja como esses traços são similares
+
+712
+00:42:00,984 --> 00:42:03,089
+as curvas são praticamente identicas
+
+713
+00:42:03,089 --> 00:42:07,021
+esses programas estão usando exatamente 
+a mesma frequencia de distribuição
+
+714
+00:42:07,021 --> 00:42:08,276
+do tamanho de linhas 
+
+715
+00:42:08,283 --> 00:42:14,430
+é como se a frequencia do tamanho das linhas
+ fossem algum tipo de constante do universo
+
+716
+00:42:15,390 --> 00:42:17,624
+linhas pequenas predominam primeiro
+
+717
+00:42:17,624 --> 00:42:22,941
+provavelmente são linhas em branco,
+chaves e pequenas declarações
+
+718
+00:42:22,941 --> 00:42:26,960
+tem um mínimo de aproximadamente 10 caracteres
+
+719
+00:42:26,960 --> 00:42:27,993
+e depois disso
+
+720
+00:42:27,993 --> 00:42:30,646
+a frequencia começa a subir novamente
+
+721
+00:42:30,646 --> 00:42:36,387
+tem essa bela subida entre 25 a 40 caracteres
+
+722
+00:42:36,387 --> 00:42:40,356
+isso é onde a maioria das linhas se reúnem
+
+723
+00:42:40,356 --> 00:42:43,532
+depois disso, a frequência cai rapidamente
+
+724
+00:42:43,532 --> 00:42:46,006
+lembrem-se, isso é uma escala logarítmica
+
+725
+00:42:47,070 --> 00:42:50,830
+um conjunto razoável de conclusões que podemos tirar disso
+
+726
+00:42:50,830 --> 00:42:52,763
+é que primeiro
+
+727
+00:42:52,763 --> 00:42:57,815
+nos gostamos de linhas que tem de 30 a 40 caracteres
+
+728
+00:42:57,815 --> 00:43:02,523
+nós não gostamos de linhas que 
+são maiores que 80 caracteres
+
+729
+00:43:02,523 --> 00:43:05,403
+vc acha que isso é uma coincidência?
+
+730
+00:43:05,403 --> 00:43:07,624
+acho queé uma regra razoável
+
+731
+00:43:07,624 --> 00:43:13,661
+sugerir que linhas devem ser menores que 100/120 caracteres
+
+732
+00:43:13,661 --> 00:43:16,264
+vc não deve chegar nisso muito
+ frequentemente, a propósito.
+
+733
+00:43:16,264 --> 00:43:17,446
+mas se chegar, 
+
+734
+00:43:17,440 --> 00:43:20,215
+nossas telas hoje em dia, provavelmente são boas o suficientes
+
+735
+00:43:20,215 --> 00:43:22,590
+que não vamos precisar rolar para direita
+
+736
+00:43:22,590 --> 00:43:26,172
+lembrem-se, nunca façam seus 
+leitores rolarem para direita
+
+737
+00:43:28,172 --> 00:43:29,753
+Identação
+
+738
+00:43:31,750 --> 00:43:34,080
+Identação?
+
+739
+00:43:34,080 --> 00:43:35,193
+a vc não...
+
+740
+00:43:35,193 --> 00:43:36,763
+não me bote nessa
+
+741
+00:43:36,763 --> 00:43:39,427
+vcs que se virem 
+
+742
+00:43:39,427 --> 00:43:41,600
+me deixem fora dessa
+
+743
+00:43:48,147 --> 00:43:50,190
+veja, eu vou dizer apenas isto:
+
+744
+00:43:50,190 --> 00:43:52,836
+eu não me importo com qual 
+estilo de identação vc usa
+
+745
+00:43:52,836 --> 00:43:55,360
+não me importo se usa tabs ou espaços
+
+746
+00:43:55,360 --> 00:43:56,953
+use espaços
+
+747
+00:43:56,953 --> 00:44:02,806
+e eu não me importo se sua\N identação tem 2, 4 ou 8 caracteres
+
+748
+00:44:02,806 --> 00:44:04,067
+use 2
+
+749
+00:44:04,067 --> 00:44:07,286
+e não me importo onde botam as chaves
+
+750
+00:44:07,286 --> 00:44:09,323
+use o estilo K&R
+
+751
+00:44:09,323 --> 00:44:11,372
+o que eu me importo 
+
+752
+00:44:11,372 --> 00:44:15,581
+é que todo o time usem o mesmo estilo
+
+753
+00:44:19,667 --> 00:44:21,938
+o código que saí do time
+
+754
+00:44:21,938 --> 00:44:24,332
+deve parecer que o time escreveu
+
+755
+00:44:24,830 --> 00:44:26,960
+eu não deveria ser capaz de dizer
+ quem foi que escreveu  o código
+
+756
+00:44:26,960 --> 00:44:29,261
+olhando para o estido de identação
+
+757
+00:44:30,116 --> 00:44:32,640
+vocês precisam sentar
+
+758
+00:44:32,640 --> 00:44:35,606
+decidir qual estilo de identação usar
+
+759
+00:44:35,606 --> 00:44:37,316
+e depois serem responsáveis
+
+760
+00:44:37,316 --> 00:44:41,144
+todo mundo do time usa aquele estilo
+
+761
+00:44:41,950 --> 00:44:47,027
+e eu não quero ver gente reformatando
+ o código para o estilo pessoal
+
+762
+00:44:47,027 --> 00:44:48,806
+toda vez que eles dão um check-out
+
+763
+00:44:48,806 --> 00:44:52,313
+e depois reformatando devolta para o estilo do time
+
+764
+00:44:52,313 --> 00:44:54,110
+quando eles dão check-in
+
+765
+00:44:54,110 --> 00:44:58,590
+eu tbem não quero que a reformatação
+ seja automática em cada checkin
+
+766
+00:44:58,590 --> 00:45:04,424
+além de causar estragos no versionador do 
+código, isso é simplesmente desleixado
+
+767
+00:45:04,424 --> 00:45:07,778
+escolha um estilo, e então use-o
+
+768
+00:45:09,180 --> 00:45:13,864
+não me importo que use a IDE para 
+reformatar partes do seu código
+
+769
+00:45:13,864 --> 00:45:16,990
+contanto que reformate no estilo do seu time
+
+770
+00:45:16,990 --> 00:45:22,240
+talvez sua IDe tenha um arquivo de 
+configuração para aplicar identação
+
+771
+00:45:22,240 --> 00:45:23,175
+isso é bom
+
+772
+00:45:23,175 --> 00:45:27,587
+certifique todo mundo do time use
+ o mesmo arquivo de configuração
+
+773
+00:45:27,944 --> 00:45:30,830
+quando reformatar o código com a IDE
+
+774
+00:45:30,830 --> 00:45:33,723
+faça em pequenos trechos
+
+775
+00:45:33,723 --> 00:45:35,969
+não reformate todo o arquivo
+
+776
+00:45:35,969 --> 00:45:39,292
+porque isso causa estragos no versionador do código-fonte
+
+777
+00:45:39,292 --> 00:45:41,618
+e faz os merges serem um pesadelo
+
+778
+00:45:43,390 --> 00:45:48,849
+vocês estão usando um versionador 
+de código, como o git, não estão??
+
+779
+00:45:57,273 --> 00:45:59,470
+O que é uma classse?
+
+780
+00:45:59,470 --> 00:46:03,643
+vc escreve uma classse, escrevendo variáveis privadas
+
+781
+00:46:03,643 --> 00:46:06,209
+e depois vc manipula essas variáveis
+
+782
+00:46:06,209 --> 00:46:08,744
+com funções públicas
+
+783
+00:46:08,744 --> 00:46:11,993
+então, olhando de fora
+
+784
+00:46:11,993 --> 00:46:15,212
+uma classe não parece ter nunhuma variável
+
+785
+00:46:15,212 --> 00:46:17,163
+é apenas um saco de funções
+
+786
+00:46:17,163 --> 00:46:20,301
+olhando de fora vc não pode ver essas variáveis
+
+787
+00:46:20,300 --> 00:46:25,796
+então, olhando de fora, uma classe não tem variáveis
+
+788
+00:46:27,243 --> 00:46:30,664
+e desde que um objeto é apenas uma instância de uma classe
+
+789
+00:46:30,664 --> 00:46:35,058
+também é verdade que um objeto parece não ter variáveis
+
+790
+00:46:35,058 --> 00:46:36,941
+para dizer diferente
+
+791
+00:46:36,941 --> 00:46:38,941
+olhando de fora
+
+792
+00:46:38,941 --> 00:46:42,781
+um objeto parece não possuir nenhum estado observável
+
+793
+00:46:44,258 --> 00:46:46,990
+sem estado observável?
+
+794
+00:46:46,990 --> 00:46:49,655
+vc pode se opor a essa observação
+
+795
+00:46:49,655 --> 00:46:52,670
+mostrando que a maioria das classes  
+
+796
+00:46:52,670 --> 00:46:54,326
+tem gets e sets
+
+797
+00:46:54,326 --> 00:46:57,932
+e em algumas linguagens, propriedades mutáveis
+
+798
+00:46:59,421 --> 00:47:02,732
+então deixe-me responder a essa objeção dessa forma:
+
+799
+00:47:02,732 --> 00:47:05,649
+se vc pegar as variáveis privadas da sua classe
+
+800
+00:47:05,649 --> 00:47:10,110
+e expõe elas para o mundo a fora através de gets e sets
+
+801
+00:47:10,110 --> 00:47:12,320
+ou propriedades mutáveis
+
+802
+00:47:12,320 --> 00:47:14,966
+então vc tem um design ruim
+
+803
+00:47:14,966 --> 00:47:16,350
+afinal de contas,
+
+804
+00:47:16,350 --> 00:47:18,627
+por que iria fazer varoiáveis privadas
+
+805
+00:47:18,627 --> 00:47:22,812
+para depois expô-las através de gets e sets
+
+806
+00:47:24,246 --> 00:47:26,153
+lembram do episódio anterior
+
+807
+00:47:26,153 --> 00:47:30,252
+onde falamos da disciplina do "diga, não peça"
+
+808
+00:47:31,218 --> 00:47:35,249
+se um objeto, não possui estado observável
+
+809
+00:47:35,249 --> 00:47:39,384
+então, apesar de ser fácil dizer a um objeto para fazer algo
+
+810
+00:47:39,384 --> 00:47:42,676
+não faz muito sentido pedir por alguma coisa
+
+811
+00:47:42,676 --> 00:47:46,270
+um objeto que segue a disciplina do "diga, não peça"
+
+812
+00:47:46,270 --> 00:47:49,846
+provavelmente não terá muitos gets
+
+813
+00:47:49,846 --> 00:47:52,535
+e se não tem muitos gets,
+
+814
+00:47:52,535 --> 00:47:56,898
+também não tem muito sentido em ter muitos sets
+
+815
+00:47:58,227 --> 00:48:00,824
+pensem dessa forma:
+
+816
+00:48:00,824 --> 00:48:02,480
+os métodos de uma classe
+
+817
+00:48:02,480 --> 00:48:05,193
+manipulam as variáveis dessa classe
+
+818
+00:48:05,193 --> 00:48:07,458
+quanto mais variáveis dentro da classe
+
+819
+00:48:07,458 --> 00:48:09,200
+que um método manipula,
+
+820
+00:48:09,200 --> 00:48:12,707
+mais coeso aquele método é
+
+821
+00:48:12,707 --> 00:48:15,526
+um método altamente coeso
+
+822
+00:48:15,526 --> 00:48:19,563
+manipula todas as variáveis de uma classe
+
+823
+00:48:19,563 --> 00:48:22,658
+uma classe altamente coesa
+
+824
+00:48:22,658 --> 00:48:24,960
+é composta de nada mais que
+
+825
+00:48:24,960 --> 00:48:27,889
+métodos altamente coesos
+
+826
+00:48:29,772 --> 00:48:32,320
+gets e sets não são muito coesos
+
+827
+00:48:32,320 --> 00:48:36,584
+porque eles somentem manipulam uma única variável.
+
+828
+00:48:36,584 --> 00:48:39,433
+quanto mais gets e sets uma classe possuí
+
+829
+00:48:39,433 --> 00:48:42,818
+menos coesa essa classe é
+
+830
+00:48:43,796 --> 00:48:48,590
+isso significa que uma classe 
+nunca deve possuir gets e sets?
+
+831
+00:48:48,590 --> 00:48:52,830
+regras dogmáticas como essa, raramente 
+se aplicam em áreas da engenharia
+
+832
+00:48:52,830 --> 00:48:56,104
+eu certamente escrevo gets e sets de tempos e tempos
+
+833
+00:48:56,104 --> 00:48:58,160
+mas eu tento minimizar elas
+
+834
+00:48:58,160 --> 00:49:01,236
+porque eu tento maximizar coesão
+
+835
+00:49:02,541 --> 00:49:06,209
+nos casos em que escolho ter um get
+
+836
+00:49:06,209 --> 00:49:08,523
+eu não exponho a variável simplesmente
+
+837
+00:49:08,523 --> 00:49:12,910
+eu tento abstrair a informação que está sendo retirada
+
+838
+00:49:13,126 --> 00:49:16,055
+aqui, deixa eu mostrar o que quero dizer:
+
+839
+00:49:16,990 --> 00:49:21,107
+vamos dizer que tenho uma classe chamada carro
+
+840
+00:49:21,107 --> 00:49:24,916
+representa um automóvel
+
+841
+00:49:24,916 --> 00:49:26,855
+e vamos dizer que também possui
+
+842
+00:49:26,855 --> 00:49:31,704
+uma variável dentro chamada galoesDeGazolina
+
+843
+00:49:31,704 --> 00:49:35,372
+e essa variável segura o nível de combuistível do carro
+
+844
+00:49:35,372 --> 00:49:37,427
+vamos sugerir  
+
+845
+00:49:37,427 --> 00:49:42,590
+que queremos expor o conteúdo dessa 
+variável para o mundo externo
+
+846
+00:49:42,590 --> 00:49:45,513
+do que devemos chamar esse get?
+
+847
+00:49:46,990 --> 00:49:51,163
+poderimos chamar de PegaGaloesdeGasolina
+
+848
+00:49:51,163 --> 00:49:55,347
+mas isso expõe muito da implementação de nossa classe
+
+849
+00:49:55,347 --> 00:49:58,190
+usuários de nossa classe poderiam inferir
+
+850
+00:49:58,190 --> 00:50:02,886
+que existe uma variável dentro, 
+que contém os galões de gasolina
+
+851
+00:50:03,883 --> 00:50:07,963
+existe  um número de problemas 
+em ser tão específico
+
+852
+00:50:07,963 --> 00:50:09,298
+por exemplo:
+
+853
+00:50:09,298 --> 00:50:14,400
+digamos que queremos criar uma derivada chamada CarroADiesel
+
+854
+00:50:14,820 --> 00:50:19,667
+obviamente iria herdar o método: PegaGaloesDeGasolina
+
+855
+00:50:19,667 --> 00:50:22,615
+mas isso não está certo, está?
+
+856
+00:50:22,615 --> 00:50:26,203
+Carros a diesel não andam com galões de gasolina
+
+857
+00:50:27,710 --> 00:50:28,996
+pior ainda..
+
+858
+00:50:28,996 --> 00:50:33,963
+e se quisermos criar uma derivada, chamada CarroEletrico?
+
+859
+00:50:33,963 --> 00:50:38,449
+Temos um método chamado 
+PegaGaloesdeGasolinas na classe base
+
+860
+00:50:38,449 --> 00:50:42,830
+essa classe derivada não 
+combina com essa classe base
+
+861
+00:50:42,830 --> 00:50:45,600
+quando as derivadas não combinam com a base
+
+862
+00:50:45,600 --> 00:50:47,741
+algo está errado com a classe base
+
+863
+00:50:47,741 --> 00:50:53,040
+geralmente porque ela expoe
+ alguma implementação que não deveria
+
+864
+00:50:54,443 --> 00:50:55,649
+por exemplo:
+
+865
+00:50:55,649 --> 00:50:58,929
+ao invés de criar PegarcaloesDeGasolina
+
+866
+00:50:58,920 --> 00:51:04,824
+poderíamos usar um método chamado PegaPorcentagemCombustivel
+
+867
+00:51:04,824 --> 00:51:11,624
+esse método funcionário tão bem para carro
+ quanto carro elétrico ou carro à diesel
+
+868
+00:51:11,624 --> 00:51:16,947
+de fato, iria funcionar até para o
+ carro de plutônio do Dr. Brown
+
+869
+00:51:16,947 --> 00:51:18,713
+se lembra do De Volta Para o Futuro?
+
+870
+00:51:19,969 --> 00:51:23,058
+consegue sentir o polimorfismo chegando?
+
+871
+00:51:23,058 --> 00:51:27,249
+essa é a vantagem de esconder suas variáveis internas
+
+872
+00:51:27,249 --> 00:51:30,036
+quanto menor a implementação que vc expõe
+
+873
+00:51:30,036 --> 00:51:33,680
+mais oportunidade vc tem de fazer classes polimórficas
+
+874
+00:51:33,680 --> 00:51:38,609
+aquela classe carro com o PegarGaloesDeGasolina
+
+875
+00:51:38,609 --> 00:51:43,058
+não poderia ser polimorfica para carros eletricos e nucleares 
+
+876
+00:51:43,050 --> 00:51:50,923
+mas uma vez que abstraimos essa implementação,
+ então polimorfismo se torna possível
+
+877
+00:51:52,240 --> 00:51:54,849
+como aprendemos no último episódio
+
+878
+00:51:54,849 --> 00:51:58,621
+polimorfismo é a chave para publicação independente
+
+879
+00:51:58,621 --> 00:52:00,929
+e estrutura de plugin
+
+880
+00:52:00,929 --> 00:52:02,812
+para ser mais específico
+
+881
+00:52:02,810 --> 00:52:06,978
+polimorfismo nos permite proteger o código do cliente
+
+882
+00:52:06,978 --> 00:52:09,329
+como Motorista
+
+883
+00:52:09,329 --> 00:52:13,163
+de alterações na implementação do código do servidor
+
+884
+00:52:13,163 --> 00:52:14,960
+como Carro
+
+885
+00:52:14,960 --> 00:52:16,763
+é muito fácil de escrever,
+
+886
+00:52:16,763 --> 00:52:20,763
+um motorista que pode dirigir qualquer derivado de Carro
+
+887
+00:52:20,763 --> 00:52:25,083
+sem saber ou se importar o que é esse derivado
+
+888
+00:52:25,083 --> 00:52:28,129
+foi o polimorfismo, no final das contas,
+
+889
+00:52:28,129 --> 00:52:32,412
+que permitiu Marty McFly dirigir o DeLorean do Dr. Browm
+
+890
+00:52:33,692 --> 00:52:36,504
+e então, olhando de fora
+
+891
+00:52:36,504 --> 00:52:40,387
+uma classe não é nada mais que um conjunto de métodos
+
+892
+00:52:40,387 --> 00:52:42,843
+esses métodos podem operar com dados
+
+893
+00:52:42,843 --> 00:52:46,670
+mas não te dizem nada de como esses dados são implementados
+
+894
+00:52:46,670 --> 00:52:49,624
+esses métodos não são gets e sets
+
+895
+00:52:49,624 --> 00:52:52,990
+eles escondem a informação, não expõe ela
+
+896
+00:52:52,990 --> 00:52:55,476
+se precisam expor alguma informação
+
+897
+00:52:55,476 --> 00:52:59,144
+eles fazem da forma mais abstrata possível
+
+898
+00:53:01,046 --> 00:53:02,935
+mas talvez esteja duvidoso
+
+899
+00:53:02,935 --> 00:53:07,261
+talvez esteja se perguntando sobre classes como Empregado
+
+900
+00:53:07,261 --> 00:53:09,489
+que claramente tem métodos do tipo
+
+901
+00:53:09,489 --> 00:53:11,360
+PegaNome, PegaEndereco
+
+902
+00:53:11,360 --> 00:53:13,532
+que expõe a informação que está nele
+
+903
+00:53:13,532 --> 00:53:18,406
+talvez esteja achando que eu 
+estou sendo academico ou dogmático
+
+904
+00:53:18,406 --> 00:53:20,418
+ou um pouco extremista
+
+905
+00:53:20,418 --> 00:53:23,593
+ok, mas deixa eu te perguntar
+
+906
+00:53:23,593 --> 00:53:28,572
+O que vc acha que é a diferença entre
+ uma classe e uma estrutura de dados?
+
+907
+00:53:32,400 --> 00:53:35,735
+Estrutura de dados
+
+908
+00:53:37,433 --> 00:53:41,175
+Uma estrutura de dados é tipo o oposto de uma classe
+
+909
+00:53:41,175 --> 00:53:44,135
+Um estrutura de dados tem um monte de variáveis de dado
+
+910
+00:53:44,135 --> 00:53:47,452
+que são públicas e praticamente nenhuma função
+
+911
+00:53:47,452 --> 00:53:50,861
+vc vê agora a diferença entre uma estrutura de dados e classe
+
+912
+00:53:50,861 --> 00:53:55,230
+classes, tem variáveis privadas e métodos públicos
+
+913
+00:53:55,230 --> 00:53:56,633
+estrutura de dados
+
+914
+00:53:56,633 --> 00:54:00,344
+tem variáveis públicas e nenhum método
+
+915
+00:54:01,495 --> 00:54:06,824
+pode ser forçado dizer que 
+estrutura de dados não possuí métodos
+
+916
+00:54:06,824 --> 00:54:09,255
+estrutura de dados podem ter métodos
+
+917
+00:54:09,255 --> 00:54:11,716
+mas geralmente são coisas simples
+
+918
+00:54:11,716 --> 00:54:16,326
+como gets ou sets ou helpers de navegação
+
+919
+00:54:16,326 --> 00:54:18,769
+os métodos de uma estrutura de dados
+
+920
+00:54:18,769 --> 00:54:21,956
+manipulam variáveis individuais
+
+921
+00:54:21,956 --> 00:54:25,415
+eles não manipulam grupos de variáveis coesas
+
+922
+00:54:25,415 --> 00:54:28,160
+da forma que os métodos de uma classe manipula
+
+923
+00:54:28,160 --> 00:54:29,956
+os métodos de uma estrutura de dados
+
+924
+00:54:29,956 --> 00:54:32,658
+expoe implementação 
+
+925
+00:54:32,658 --> 00:54:35,778
+eles não escondem e não abstraem
+
+926
+00:54:37,409 --> 00:54:40,658
+vc não pode dizer para uma estrutura 
+de dados fazer alguma coisa
+
+927
+00:54:40,658 --> 00:54:43,107
+tudo que pode fazer é fazer perguntas
+
+928
+00:54:43,107 --> 00:54:45,963
+o Software que manipula estrutura de dados
+
+929
+00:54:45,963 --> 00:54:49,298
+é antítese do "Diga não Peça"
+
+930
+00:54:51,298 --> 00:54:54,480
+vc pode dizer a um objeto para fazer algo genérico
+
+931
+00:54:54,480 --> 00:54:57,544
+como se imprima na tela
+
+932
+00:54:57,544 --> 00:55:01,606
+e fará a coisa apropriada a seu tipo
+
+933
+00:55:01,606 --> 00:55:06,695
+irá despachar polimorficamente para o método apropriado
+
+934
+00:55:07,500 --> 00:55:09,544
+mas não pode dizer para uma estrutura de dados
+
+935
+00:55:09,544 --> 00:55:11,556
+fazer qualquer coisa genérica
+
+936
+00:55:11,556 --> 00:55:16,658
+a única coisa que pode fazer é 
+fazer perguntas bem específicas
+
+937
+00:55:16,658 --> 00:55:19,846
+se quiser imprimir uma estrutura de dados na tela
+
+938
+00:55:19,846 --> 00:55:22,400
+então terá que perguntar pelo seu tipo
+
+939
+00:55:22,400 --> 00:55:25,649
+e depois despachar para a função apropriada vc mesmo
+
+940
+00:55:25,649 --> 00:55:28,092
+provavelmente com um switch-case
+
+941
+00:55:29,310 --> 00:55:32,240
+assim, estrutura de dados e switch cases
+
+942
+00:55:32,240 --> 00:55:37,427
+estão relacionados da mesma forma que classes e polimorfismo
+
+943
+00:55:37,846 --> 00:55:40,498
+quando vc vê um switch case
+
+944
+00:55:40,498 --> 00:55:44,984
+vc pode ter certeza que há uma 
+estrutura de dados escondida em algum lugar 
+
+945
+00:55:46,510 --> 00:55:48,535
+no último episódio eu disse que
+
+946
+00:55:48,535 --> 00:55:50,393
+não gosto de switch cases
+
+947
+00:55:50,393 --> 00:55:52,707
+e eles não são Orientados a Objetos
+
+948
+00:55:52,707 --> 00:55:56,529
+a última parte é verdadeira, eles não são OO
+
+949
+00:55:56,529 --> 00:55:59,156
+mas a primeira parte não é bem verdade
+
+950
+00:55:59,156 --> 00:56:01,981
+nos não odiamos switch-cases
+
+951
+00:56:01,981 --> 00:56:04,824
+tanto quanto eu demonstrei
+
+952
+00:56:04,824 --> 00:56:07,636
+estrutura de dados e switch-cases
+
+953
+00:56:07,636 --> 00:56:10,560
+oferecem uma proteção assim como objetos
+
+954
+00:56:10,560 --> 00:56:13,489
+mas um tipo diferente de proteção
+
+955
+00:56:13,489 --> 00:56:14,953
+lembra que no último segmento 
+
+956
+00:56:14,953 --> 00:56:18,436
+falamos que porlimorfismo de objetos
+
+957
+00:56:18,436 --> 00:56:20,541
+protege seu código do cliente
+
+958
+00:56:20,541 --> 00:56:23,292
+de novos tipos de código do servidor
+
+959
+00:56:23,292 --> 00:56:24,646
+em outras palavras
+
+960
+00:56:24,646 --> 00:56:27,778
+objetos te protegem de novos tipos
+
+961
+00:56:29,236 --> 00:56:31,415
+e como aprendemos no último episódio
+
+962
+00:56:31,415 --> 00:56:34,621
+switch-cases nos expoe a alterações nos tipos
+
+963
+00:56:34,621 --> 00:56:35,963
+sempre que um novo tipo é adicionado
+
+964
+00:56:35,963 --> 00:56:38,578
+todos os switch cases devem ser modificados
+
+965
+00:56:38,578 --> 00:56:40,929
+e todo o código do cliente é impactado
+
+966
+00:56:40,929 --> 00:56:43,452
+quebrando a publicação independente
+
+967
+00:56:45,089 --> 00:56:48,720
+mas objetos não são imunes a todos os tipos de alterações
+
+968
+00:56:48,720 --> 00:56:52,332
+o que acontece se vc adiciona um método para uma classe base
+
+969
+00:56:52,332 --> 00:56:53,526
+quando vc faz isso
+
+970
+00:56:53,526 --> 00:56:56,443
+todos os clientes da classe base são afetados
+
+971
+00:56:56,443 --> 00:56:59,587
+e todos as derivadas da classe base são afetadas
+
+972
+00:56:59,587 --> 00:57:03,323
+todas tem que ser recompiladas e republicadas
+
+973
+00:57:03,323 --> 00:57:06,116
+quando vc adiciona um método para classe base
+
+974
+00:57:06,116 --> 00:57:08,972
+vc quebra a publicação independente
+
+975
+00:57:10,658 --> 00:57:13,433
+estrutura de dados e switch-cases, de outro lado
+
+976
+00:57:13,433 --> 00:57:16,283
+são imunes à adição de novas funções
+
+977
+00:57:16,283 --> 00:57:17,692
+quando vc adiciona uma nova função
+
+978
+00:57:17,692 --> 00:57:19,913
+tudo que tem que fazer é adicionar um novo switch
+
+979
+00:57:19,913 --> 00:57:21,661
+todo o resto não precisa ser alterado
+
+980
+00:57:21,661 --> 00:57:24,301
+todo o resto não precisa ser recompilado
+
+981
+00:57:25,310 --> 00:57:26,627
+então, por exemplo
+
+982
+00:57:26,627 --> 00:57:30,295
+digamos que temos um conjunto de estrutura de dados
+
+983
+00:57:30,295 --> 00:57:32,270
+que representa Formas
+
+984
+00:57:32,270 --> 00:57:38,800
+estrutura de dados chamadas de Circulo, Quadrado,
+ Triangulo, Retangulo, esse tipo de coisa
+
+985
+00:57:38,800 --> 00:57:42,664
+e digamos também que tenho um conjunto de funçoes
+
+986
+00:57:42,664 --> 00:57:45,181
+que operam nessa estruturas de dados
+
+987
+00:57:45,181 --> 00:57:48,030
+pegando Listas delas
+
+988
+00:57:48,030 --> 00:57:51,950
+então tenho uma função chamada DesenheTodoasAsFormas
+
+989
+00:57:51,950 --> 00:57:55,144
+que irá iterar através de uma lista de Formas
+
+990
+00:57:55,144 --> 00:57:56,350
+e desenhar todas elas
+
+991
+00:57:56,350 --> 00:57:59,846
+eu tenho outra função chamada ApagueTodasAsFormas
+
+992
+00:57:59,846 --> 00:58:02,726
+outra chamada RotacioneTodoasAsFormas
+
+993
+00:58:02,726 --> 00:58:06,283
+outra chamada ArrasteTodasAsFormas
+
+994
+00:58:06,283 --> 00:58:08,929
+se olhar dentro dessas funções
+
+995
+00:58:08,929 --> 00:58:11,655
+vc esperaria ver switch-cases
+
+996
+00:58:11,655 --> 00:58:15,187
+selecionando todos os tipos de formas
+
+997
+00:58:16,683 --> 00:58:19,458
+mas e se eu adicionar outra função nova
+
+998
+00:58:19,458 --> 00:58:21,544
+como RotacioneTodasAsFormas
+
+999
+00:58:21,544 --> 00:58:24,633
+claro que vc esperaria ter um switch-case nela
+
+1000
+00:58:24,630 --> 00:58:27,544
+mas adicionar essa função, não teria efeito algum
+
+1001
+00:58:27,544 --> 00:58:29,593
+em nenhuma das outras funções
+
+1002
+00:58:29,593 --> 00:58:33,636
+e nem em nenhuma das estrutura de dados existentes
+
+1003
+00:58:33,636 --> 00:58:36,393
+então adicionar uma função nova 
+
+1004
+00:58:36,393 --> 00:58:38,824
+para estrutura de dados e switch cases
+
+1005
+00:58:38,824 --> 00:58:41,950
+não quebra publicação independente
+
+1006
+00:58:43,673 --> 00:58:47,280
+perceba como esses dois schemas são diferentes um do outro
+
+1007
+00:58:47,280 --> 00:58:49,907
+classes nos protege de tipos novos
+
+1008
+00:58:49,907 --> 00:58:52,480
+mas nos expõe métodos novos
+
+1009
+00:58:52,480 --> 00:58:53,366
+estrutura de dados
+
+1010
+00:58:53,366 --> 00:58:55,458
+nos protege contra novos métodos
+
+1011
+00:58:55,458 --> 00:58:58,424
+mas nos expõe a novos tipos
+
+1012
+00:58:58,424 --> 00:59:01,864
+isso carrega uma pergunta bem interessante
+
+1013
+00:59:01,864 --> 00:59:05,520
+existe alguma forma de conseguir proteção de ambos?
+
+1014
+00:59:05,520 --> 00:59:08,615
+novos tipos e novos métodos?
+
+1015
+00:59:09,932 --> 00:59:12,738
+isso é chamado de problema da expressão
+
+1016
+00:59:12,738 --> 00:59:15,027
+e há boas soluções para ele
+
+1017
+00:59:15,027 --> 00:59:17,280
+vamos explorar algumas dessas soluções
+
+1018
+00:59:17,280 --> 00:59:19,329
+em um episódio futuro
+
+1019
+00:59:19,329 --> 00:59:22,486
+na série de Design Patterns
+
+1020
+00:59:23,821 --> 00:59:25,027
+por enquanto,
+
+1021
+00:59:25,027 --> 00:59:27,064
+a chave para publicação independente
+
+1022
+00:59:27,064 --> 00:59:30,449
+é saber qual forma usar e quando
+
+1023
+00:59:30,449 --> 00:59:32,603
+usamos classes e objetos
+
+1024
+00:59:32,603 --> 00:59:35,790
+quando os tipos são mais prováveis de serem adicionados
+
+1025
+00:59:35,790 --> 00:59:38,689
+usamos estrutura de dados e switch-casses
+
+1026
+00:59:38,689 --> 00:59:41,686
+quando os métodos são mais prováveis de serem adicionados
+
+1027
+00:59:45,538 --> 00:59:49,261
+fronteiras
+
+1028
+00:59:50,153 --> 00:59:56,541
+no último episódio, falamos como 
+separar Main do resto da aplicação
+
+1029
+00:59:56,541 --> 00:59:58,929
+separamos em duas partições
+
+1030
+00:59:58,929 --> 01:00:00,830
+com Main de um lado
+
+1031
+01:00:00,830 --> 01:00:02,793
+e aplicação em outro
+
+1032
+01:00:02,793 --> 01:00:06,400
+também falamos como todas as dependências do código fonte
+
+1033
+01:00:06,400 --> 01:00:09,686
+devem cruzar esse limite, indo em uma direção
+
+1034
+01:00:09,680 --> 01:00:13,138
+longe do Main e em direção a aplicação
+
+1035
+01:00:13,138 --> 01:00:17,507
+isso torna Main um plugin para o resto da aplicação
+
+1036
+01:00:17,507 --> 01:00:19,550
+e isso é um bom conselho
+
+1037
+01:00:19,550 --> 01:00:23,058
+mas, é um caso específico
+
+1038
+01:00:23,058 --> 01:00:26,184
+de uma regra muito mais geral
+
+1039
+01:00:26,707 --> 01:00:30,369
+Sistemas de software são entrecruzados por fronteiras
+
+1040
+01:00:30,369 --> 01:00:32,652
+o código de um lado da fronteiras
+
+1041
+01:00:32,652 --> 01:00:36,800
+é bem diferente do codigo do outro lado da fronteira
+
+1042
+01:00:36,800 --> 01:00:41,316
+a fronteira que separa Main da Aplicação
+
+1043
+01:00:41,316 --> 01:00:44,147
+é só um exemplo de fronteira
+
+1044
+01:00:44,147 --> 01:00:46,190
+dois outros exemplos são:
+
+1045
+01:00:46,190 --> 01:00:50,092
+a fronteira que separa Views de Models
+
+1046
+01:00:50,092 --> 01:00:54,276
+e a fronteira que separa o banco de
+ dados dos objetos de domínio
+
+1047
+01:00:56,006 --> 01:00:57,193
+para cada fronteira
+
+1048
+01:00:57,193 --> 01:00:59,046
+um lado é concreto
+
+1049
+01:00:59,046 --> 01:01:01,433
+e outro lado é abstrato
+
+1050
+01:01:01,433 --> 01:01:02,135
+por exemplo
+
+1051
+01:01:02,130 --> 01:01:06,209
+Main é concreto onde todo resto da aplicação
+
+1052
+01:01:06,209 --> 01:01:09,427
+é abstrato, do ponto de vista do Main
+
+1053
+01:01:11,033 --> 01:01:13,753
+toda vez que tem um cruzamento de fronteira como esse
+
+1054
+01:01:13,753 --> 01:01:16,080
+vc quer todas as dependencias do código fonte
+
+1055
+01:01:16,080 --> 01:01:18,676
+apontando para longe do lado concreto
+
+1056
+01:01:18,676 --> 01:01:20,929
+em direção ao lado abstrato
+
+1057
+01:01:20,929 --> 01:01:22,067
+por exemplo
+
+1058
+01:01:22,067 --> 01:01:26,455
+considere a fronteira entre
+ objetos de domínio e banco de dados
+
+1059
+01:01:26,455 --> 01:01:28,535
+a Base de dados é concreta
+
+1060
+01:01:28,535 --> 01:01:30,683
+os objetos de domínio, são abstratos
+
+1061
+01:01:30,683 --> 01:01:33,827
+portanto, vc quer todas as dependências do código-fonte
+
+1062
+01:01:33,827 --> 01:01:36,123
+apontando para longe da base de dados
+
+1063
+01:01:36,123 --> 01:01:38,166
+em direção aos objetos de domínio
+
+1064
+01:01:38,166 --> 01:01:39,212
+em outras palavras,
+
+1065
+01:01:39,212 --> 01:01:41,827
+a base de dados, depende do domínio
+
+1066
+01:01:41,827 --> 01:01:45,618
+o domínio, não depende da base de dados
+
+1067
+01:01:46,590 --> 01:01:51,052
+por anos,  experts em modelagem tem nos dito
+
+1068
+01:01:51,052 --> 01:01:53,476
+que devemos modelar nossa aplicação 
+
+1069
+01:01:53,476 --> 01:01:56,504
+de uma forma que é separada de nossa base de dados
+
+1070
+01:01:56,504 --> 01:01:59,230
+por algum tipo de camada de interface
+
+1071
+01:01:59,230 --> 01:02:01,520
+esse é um bom conselho
+
+1072
+01:02:01,520 --> 01:02:02,873
+a última coisa que queremos ver
+
+1073
+01:02:02,873 --> 01:02:07,483
+é um monte de código SQL no nosso código da aplicação
+
+1074
+01:02:07,993 --> 01:02:11,846
+não queremos ver, especialmente, 
+código SQL nas nossas views
+
+1075
+01:02:11,846 --> 01:02:13,815
+isso é um crime capital
+
+1076
+01:02:13,815 --> 01:02:15,680
+e eu vou te achar
+
+1077
+01:02:16,830 --> 01:02:24,732
+mantenha seus SQLs escondidos dentro da 
+entre a aplicação e a base de dados 
+
+1078
+01:02:26,424 --> 01:02:29,661
+deveria estar claro, que a camada de interface da base de dados
+
+1079
+01:02:29,661 --> 01:02:32,861
+vai depender da base de dados
+
+1080
+01:02:32,861 --> 01:02:35,747
+o que geralmente não é entendido
+
+1081
+01:02:35,747 --> 01:02:40,098
+é que a aplicação não deveria depender da camada
+
+1082
+01:02:40,098 --> 01:02:42,461
+lembre-se, a aplicação é abstrata
+
+1083
+01:02:42,461 --> 01:02:44,356
+a camada é concreta
+
+1084
+01:02:44,356 --> 01:02:47,384
+então a camada é que deveria depender da aplicação
+
+1085
+01:02:49,169 --> 01:02:52,978
+para alguns de vocês, isso pode parecer absurdo
+
+1086
+01:02:52,978 --> 01:02:54,750
+mas lembre-se
+
+1087
+01:02:54,750 --> 01:02:56,375
+modelagem em Orientada à Objetos
+
+1088
+01:02:56,375 --> 01:02:59,655
+nos permite inverter a dependencias do código-fonte
+
+1089
+01:02:59,655 --> 01:03:02,473
+sem inverter o fluxo do controle
+
+1090
+01:03:02,473 --> 01:03:07,396
+isso significa que a aplicação ainda 
+pode chamar a camada do banco de dados
+
+1091
+01:03:07,396 --> 01:03:11,889
+mesmo não sabendo que a camada de base de dados existe
+
+1092
+01:03:12,787 --> 01:03:16,443
+mas se a aplicação não depende da camada
+
+1093
+01:03:16,443 --> 01:03:20,480
+então a aplicação não pode ter conhecimento algum do banco de dados
+
+1094
+01:03:20,480 --> 01:03:22,800
+não sabe do nome das tabelas
+
+1095
+01:03:22,800 --> 01:03:24,024
+ou do nome das colunas 
+
+1096
+01:03:24,024 --> 01:03:27,735
+ou qualquer parte dos dados na base de dados
+
+1097
+01:03:27,735 --> 01:03:32,393
+isso pode parecer absurdo, mas considere isso:
+
+1098
+01:03:34,129 --> 01:03:37,310
+uma tabela de banco de dados é uma estrutura de dados
+
+1099
+01:03:37,310 --> 01:03:40,596
+possuí dados expostos e nenhum método
+
+1100
+01:03:40,596 --> 01:03:44,246
+isso significa, que é o oposto de uma classe
+
+1101
+01:03:44,246 --> 01:03:47,212
+tabelas de banco de dados são tão concretas
+
+1102
+01:03:47,212 --> 01:03:50,572
+que não tem chance alguma de ser polimórficas
+
+1103
+01:03:52,080 --> 01:03:53,636
+a incompatibilidade de impedância.
+
+1104
+01:03:55,587 --> 01:04:02,436
+e agora chegamos do velho problema
+ da incompatibilidade de impedância.
+
+1105
+01:04:02,436 --> 01:04:06,978
+entre banco de dados relacionais 
+e programação orientada a objetos
+
+1106
+01:04:06,978 --> 01:04:09,704
+a imcompatibilidade é uma imcompatibilidade
+
+1107
+01:04:09,704 --> 01:04:13,083
+porque uma linha de tabela não é um objeto
+
+1108
+01:04:13,083 --> 01:04:15,630
+é o oposto de um objeto
+
+1109
+01:04:15,630 --> 01:04:17,956
+é uma estrutura de dados
+
+1110
+01:04:18,781 --> 01:04:22,873
+sua base de dados, não contém objetos de domínio
+
+1111
+01:04:22,873 --> 01:04:25,476
+elas não contém objetos do négocio
+
+1112
+01:04:25,476 --> 01:04:28,843
+elas não contém nenhum tipo de objeto
+
+1113
+01:04:29,230 --> 01:04:32,480
+base de dados contém estruturas de dados
+
+1114
+01:04:32,652 --> 01:04:38,196
+e vc não pode forçar uma estrutura de dados ser um objeto
+
+1115
+01:04:38,196 --> 01:04:42,227
+mas e os mapeadores de objeto-relacional, como Hibernate?
+
+1116
+01:04:42,227 --> 01:04:43,821
+eu acho que essas ferramentas são adoráveis
+
+1117
+01:04:43,821 --> 01:04:46,830
+eu acho que servem um propósito maravilhoso
+
+1118
+01:04:46,830 --> 01:04:50,344
+mas elas não são mapeadoras de objeto-relacional de verdade
+
+1119
+01:04:50,344 --> 01:04:55,409
+porque não há mapeamento direto
+ entre uma linha de tabela e um objeto
+
+1120
+01:04:55,409 --> 01:04:57,193
+um é uma estrutra de dados 
+
+1121
+01:04:57,193 --> 01:04:59,206
+o outro é um objeto
+
+1122
+01:04:59,206 --> 01:05:01,378
+o que essas ferramentas são de verdade
+
+1123
+01:05:01,378 --> 01:05:05,987
+são mapeadoras de tabela relacional para estrutura de dados 
+
+1124
+01:05:05,987 --> 01:05:09,532
+hibernate, por exemplo é uma ferramneta maravilhosa
+
+1125
+01:05:09,532 --> 01:05:12,430
+por pegar uma estrutra de dados na base de dados
+
+1126
+01:05:12,430 --> 01:05:15,796
+e mover para uma estrutura de dados em memória
+
+1127
+01:05:17,150 --> 01:05:22,381
+o que gostamos do lado da aplicação, são objetos de domínio
+
+1128
+01:05:22,381 --> 01:05:26,326
+os métodos desses objetos de
+ domínios serão regras de négocio
+
+1129
+01:05:26,326 --> 01:05:31,470
+acontece que quando vc junta um monte 
+de regras de negócio em um objeto de domínio
+
+1130
+01:05:31,470 --> 01:05:35,304
+então vc tem classes, que surpreendentemente 
+
+1131
+01:05:35,304 --> 01:05:39,864
+não parece muito com as tabelas de banco de dados ou schema
+
+1132
+01:05:39,860 --> 01:05:42,744
+essa é a verdadeira incompatibilidade de impedância
+
+1133
+01:05:42,744 --> 01:05:46,713
+entre banco de dados relacional e modelagem orientada a objetos
+
+1134
+01:05:46,713 --> 01:05:49,655
+e tem uma explicação bem simples
+
+1135
+01:05:50,941 --> 01:05:54,116
+A maioria das bases de dados são modeladas para as empresas
+
+1136
+01:05:54,116 --> 01:05:57,120
+e não para uma aplicação em particular
+
+1137
+01:05:57,120 --> 01:05:59,113
+o schema dessa base de dados
+
+1138
+01:05:59,120 --> 01:06:04,012
+são adaptadas para a segurança e performance dessa empresa
+
+1139
+01:06:04,012 --> 01:06:09,495
+aplicações específicas, podem desejar ter schemas diferentes
+
+1140
+01:06:09,495 --> 01:06:16,153
+mas ao invés disso, devem estar de 
+acordo com as necessidades da empresa como um todo
+
+1141
+01:06:16,541 --> 01:06:18,960
+do lado da fronteira da aplicação
+
+1142
+01:06:18,960 --> 01:06:22,424
+podemos nos separar do schema da empresa 
+
+1143
+01:06:22,420 --> 01:06:26,406
+modelando os objetos que gostaríamos de usar
+
+1144
+01:06:26,406 --> 01:06:28,529
+estes serão objetos de verdade
+
+1145
+01:06:28,529 --> 01:06:31,643
+com métodos expostos e dados escondidos
+
+1146
+01:06:31,643 --> 01:06:35,913
+isso tornará a aplicação mais natural e fácil de entender
+
+1147
+01:06:35,913 --> 01:06:39,027
+ao invés de manipular linhas de tabela
+
+1148
+01:06:39,027 --> 01:06:42,209
+iremos manipular objetos do négocio
+
+1149
+01:06:43,076 --> 01:06:46,024
+é responsabilidade da camada do banco de dados
+
+1150
+01:06:46,024 --> 01:06:49,470
+de conververter o vai entre a estrutura de dados
+
+1151
+01:06:49,470 --> 01:06:51,126
+que vivem na base de dados
+
+1152
+01:06:51,126 --> 01:06:55,095
+e os objetos do négocio que a aplicação quer usar
+
+1153
+01:06:55,095 --> 01:06:57,076
+além disso, as camadas tem que fazer isso
+
+1154
+01:06:57,076 --> 01:07:00,689
+sem que a aplicação saiba que existe
+
+1155
+01:07:00,689 --> 01:07:03,329
+porque todas as dependenncias do código-fonte
+
+1156
+01:07:03,329 --> 01:07:07,107
+devem cruzar a fronteira, do lado da base de dados
+
+1157
+01:07:07,107 --> 01:07:09,950
+em direção ao lado aplicação
+
+1158
+01:07:11,120 --> 01:07:12,129
+isso significa
+
+1159
+01:07:12,129 --> 01:07:15,126
+que no lado da aplicação 
+
+1160
+01:07:15,126 --> 01:07:17,784
+gostaríamos de ver um conjunto de interfaces
+
+1161
+01:07:17,784 --> 01:07:20,603
+que declaram métodos de acessos a dados
+
+1162
+01:07:20,603 --> 01:07:22,633
+gostaríamos que nossos objetos de negócio
+
+1163
+01:07:22,633 --> 01:07:24,430
+que usassem essas interfaces 
+
+1164
+01:07:24,430 --> 01:07:26,818
+para acessar os dados que precisam
+
+1165
+01:07:26,818 --> 01:07:28,486
+do outro lado da fronteira
+
+1166
+01:07:28,486 --> 01:07:30,984
+gostaríamos de um conjunto de classes
+
+1167
+01:07:30,984 --> 01:07:33,846
+que derivam dessas interfaces
+
+1168
+01:07:33,846 --> 01:07:36,609
+e implementam os métodos de acesso a dados
+
+1169
+01:07:36,609 --> 01:07:39,526
+interrogando estrutura de dados
+
+1170
+01:07:39,526 --> 01:07:41,956
+que foram buscadas da base de dados
+
+1171
+01:07:41,956 --> 01:07:45,667
+poderíamos usar um ORM como Hibernate
+
+1172
+01:07:45,667 --> 01:07:49,113
+para buscar esses dados da base de dados
+
+1173
+01:07:50,633 --> 01:07:52,006
+e assim
+
+1174
+01:07:52,006 --> 01:07:54,418
+nada na minha manga
+
+1175
+01:07:54,418 --> 01:07:57,033
+a camanda depende da aplicação
+
+1176
+01:07:57,033 --> 01:07:59,790
+usando um monte de relacionamento de  herança
+
+1177
+01:07:59,790 --> 01:08:02,190
+e é exatamente como queremos
+
+1178
+01:08:04,190 --> 01:08:08,018
+percebeu a separaçao entre estrutura de dados e classes?
+
+1179
+01:08:08,018 --> 01:08:10,504
+isso é bem típico de cruzamente de fronteiras
+
+1180
+01:08:10,504 --> 01:08:14,332
+frequentemente, o lado mais concreto 
+será composto de estrutura de dados
+
+1181
+01:08:14,332 --> 01:08:15,901
+que usa switch-cases
+
+1182
+01:08:15,901 --> 01:08:19,206
+claro, nós vimos isso antes no episódio anterior
+
+1183
+01:08:19,200 --> 01:08:23,052
+lembra que a partição Main é composta de factories concretas
+
+1184
+01:08:23,052 --> 01:08:25,150
+que usam switch-cases
+
+1185
+01:08:26,381 --> 01:08:30,141
+podemos fazer o mesmo tipo de argumento sobre views
+
+1186
+01:08:30,141 --> 01:08:32,184
+views são concretas
+
+1187
+01:08:32,184 --> 01:08:34,953
+e as dependencias que cruzam a fronteira 
+
+1188
+01:08:34,953 --> 01:08:37,692
+entre a aplicação e as views
+
+1189
+01:08:37,692 --> 01:08:40,720
+devem apontar em direção aos objetos abstratos do domínio
+
+1190
+01:08:40,720 --> 01:08:42,646
+e longe das views
+
+1191
+01:08:42,646 --> 01:08:45,815
+as views devem conhecer a aplicação
+
+1192
+01:08:45,815 --> 01:08:49,132
+a aplicação não deve saber nada sobre as views
+
+1193
+01:08:50,523 --> 01:08:55,089
+esta regra de fronteiras é fundamental 
+para boa modelagem de orientação a objetos
+
+1194
+01:08:55,089 --> 01:08:57,840
+é fundamental para boa modelagem de software
+
+1195
+01:08:57,840 --> 01:09:00,670
+dependencias de código fonte que cruza uma fonteira
+
+1196
+01:09:00,670 --> 01:09:02,990
+devem apontar em direção as abstrações
+
+1197
+01:09:02,990 --> 01:09:05,846
+e longe do lado concreto
+
+1198
+01:09:05,846 --> 01:09:08,935
+isso é apneas um aspecto de um princípio chamado 
+
+1199
+01:09:08,935 --> 01:09:11,532
+de princípio da inverção de dependencia
+
+1200
+01:09:11,532 --> 01:09:15,735
+que vamos estudar bastante em episódios futuros
+
+1201
+01:09:19,747 --> 01:09:22,387
+Conclusão
+
+1202
+01:09:25,021 --> 01:09:26,467
+que bom que está aqui
+
+1203
+01:09:26,467 --> 01:09:28,104
+entre
+
+1204
+01:09:28,104 --> 01:09:29,864
+apenas siga em frente por alí
+
+1205
+01:09:29,864 --> 01:09:33,083
+temos um monte de coisas para falar
+
+1206
+01:09:33,821 --> 01:09:35,267
+comentários
+
+1207
+01:09:35,267 --> 01:09:38,886
+toda vesz que vc escreve um comentário, vc falhou
+
+1208
+01:09:38,880 --> 01:09:41,698
+vc talvez tenha que escreve-los de vez em quando
+
+1209
+01:09:41,698 --> 01:09:43,347
+mas mantenham eles raros
+
+1210
+01:09:43,347 --> 01:09:47,895
+quero que trabalhe duro para encontrar
+ formas de não precisar escrever comentários
+
+1211
+01:09:47,895 --> 01:09:51,027
+comentários nunca devem ser mandatórios
+
+1212
+01:09:51,027 --> 01:09:52,664
+e lembre-se disso
+
+1213
+01:09:52,660 --> 01:09:54,990
+código comentado, é uma abominação 
+
+1214
+01:09:54,990 --> 01:09:57,587
+que precisa ser eliminado antes que se espalhe
+
+1215
+01:09:59,193 --> 01:10:00,566
+formatação
+
+1216
+01:10:00,566 --> 01:10:03,243
+diciplina de espaço em branco é importante
+
+1217
+01:10:03,240 --> 01:10:06,086
+não seja preguiçosos
+
+1218
+01:10:06,080 --> 01:10:11,489
+saiba quando usar elas e seja consistente
+
+1219
+01:10:11,489 --> 01:10:12,670
+lembre-se
+
+1220
+01:10:12,670 --> 01:10:16,276
+barra de rolagem horizontal não será tolerada
+
+1221
+01:10:16,276 --> 01:10:19,415
+mantenha a largura das suas linhas sob controle
+
+1222
+01:10:19,415 --> 01:10:22,326
+deve ter em média 40 caracteres
+
+1223
+01:10:22,326 --> 01:10:25,433
+e nunca exceder 120 
+
+1224
+01:10:25,433 --> 01:10:28,880
+e mantenha o tamanho dos seus arquivos sob controle
+
+1225
+01:10:28,880 --> 01:10:30,529
+tamanho médio dos arquivos devem ter
+
+1226
+01:10:30,529 --> 01:10:35,507
+menos que 100 linhas e nunca exceder 500
+
+1227
+01:10:37,040 --> 01:10:41,230
+classes são bolsas de funções que  escondema implementação
+
+1228
+01:10:41,230 --> 01:10:43,458
+dos dados que manipulam
+
+1229
+01:10:43,458 --> 01:10:48,030
+use "diga não peça" para evitar escrever gets e sets
+
+1230
+01:10:48,030 --> 01:10:50,615
+quando gets são absolutamente necessários
+
+1231
+01:10:50,615 --> 01:10:53,403
+certifique-se de esconder a implementação dos dados
+
+1232
+01:10:53,403 --> 01:10:55,526
+abstraindo ela
+
+1233
+01:10:55,526 --> 01:10:59,815
+e use classes para se proteger de novos tipos
+
+1234
+01:10:59,815 --> 01:11:01,815
+mas não funções novas
+
+1235
+01:11:03,286 --> 01:11:07,766
+estrutura de dados são bolsas de dados sem métodos coesos
+
+1236
+01:11:07,766 --> 01:11:11,341
+não bote regras de negócio dentro da estrutura de dados
+
+1237
+01:11:11,341 --> 01:11:14,873
+manipule elas com switch-cases se precisa
+
+1238
+01:11:14,873 --> 01:11:18,393
+e use eles para se proteger de funções novas
+
+1239
+01:11:18,393 --> 01:11:20,873
+mas não para tipos novos
+
+1240
+01:11:21,698 --> 01:11:24,412
+fronteiras cruzam nossa aplicação
+
+1241
+01:11:24,412 --> 01:11:28,904
+separando as coisas que são concretas das coisas abstratas
+
+1242
+01:11:28,904 --> 01:11:30,855
+e todas as dependências de código-fonte
+
+1243
+01:11:30,855 --> 01:11:32,670
+cruzam essas fronteiras
+
+1244
+01:11:32,670 --> 01:11:35,175
+apontando longe das coisas concretas
+
+1245
+01:11:35,175 --> 01:11:37,544
+em direção as coisas abstratas
+
+1246
+01:11:38,670 --> 01:11:41,606
+lembre-se, objetos de domínio e tabelas de banco de dados
+
+1247
+01:11:41,606 --> 01:11:42,953
+não são a mesma coisa
+
+1248
+01:11:42,953 --> 01:11:45,747
+e nem são fortemente relacionadas
+
+1249
+01:11:45,747 --> 01:11:48,732
+separe seus objetos de domínio da sua base de dados
+
+1250
+01:11:48,732 --> 01:11:51,076
+inserindo uma camada entre eles
+
+1251
+01:11:51,076 --> 01:11:55,421
+e essa camada deve depender para cima da aplicação
+
+1252
+01:11:55,421 --> 01:11:57,415
+e para baixo da base de dados
+
+1253
+01:11:57,415 --> 01:12:00,541
+a aplicação não deve conhecer sobre a camada
+
+1254
+01:12:00,541 --> 01:12:03,876
+e definitivamente não deve conhecer a base de dados
+
+1255
+01:12:05,341 --> 01:12:10,892
+e assim terminamos outro episódio divertido de clean code
+
+1256
+01:12:10,892 --> 01:12:14,221
+e nem arranhamos a superfice ainda
+
+1257
+01:12:14,221 --> 01:12:19,636
+e sobre princípios de modelagem, padrões de modelagem e  tetes de unidade
+
+1258
+01:12:19,636 --> 01:12:23,095
+e depois tem testes voltado ao comportamento
+
+1259
+01:12:23,095 --> 01:12:24,886
+e testes de aceitação
+
+1260
+01:12:24,886 --> 01:12:27,673
+e tópico inteiro de métodos agéis
+
+1261
+01:12:27,673 --> 01:12:31,956
+vc não vai querer perder o próximo episódio de  clean code
+
+1262
+01:12:31,956 --> 01:12:36,160
+episodio 5 : desenvolvimento voltado a testes (TDD)
+
+1263
+01:12:36,160 --> 01:12:40,129
+legendado por: André Castilho
+

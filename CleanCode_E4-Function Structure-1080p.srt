@@ -1,0 +1,6110 @@
+﻿1
+00:00:16,216 --> 00:00:20,320
+Oi , eu sou o tio bob e
+isto é clean code
+
+2
+00:00:59,912 --> 00:01:01,136
+No últio episódio
+
+3
+00:01:01,136 --> 00:01:04,696
+decidimos que queremos que nossas
+funçoes sejam bem pequenas
+
+4
+00:01:04,696 --> 00:01:07,664
+mais ou menos 4 linhas de código
+
+5
+00:01:07,664 --> 00:01:11,176
+queremos o menor nível
+de identação possível
+
+6
+00:01:11,176 --> 00:01:13,056
+1 é o ideal
+
+7
+00:01:13,056 --> 00:01:16,952
+e não queremos muitas chaves
+dentro de nossas funções
+
+8
+00:01:16,952 --> 00:01:19,008
+nossas funçoes devem ser bem nomeadas
+
+9
+00:01:19,008 --> 00:01:21,872
+e devem estar organizadas
+dentro de classes bem nomeadas
+
+10
+00:01:21,872 --> 00:01:24,104
+dentro de namespaces bem nomeados
+
+11
+00:01:26,512 --> 00:01:28,800
+nós também decidimos
+
+12
+00:01:28,800 --> 00:01:33,072
+que funçoes grandes é onde as
+classes vão para se esconder
+
+13
+00:01:33,072 --> 00:01:36,360
+que se vc quizer encontrar
+todas as classes da sua aplicação
+
+14
+00:01:36,360 --> 00:01:39,016
+vc deve manter suas funções o
+mais pequena possível
+
+15
+00:01:39,016 --> 00:01:41,320
+nós também argumentamos
+
+16
+00:01:41,320 --> 00:01:45,576
+para que sua função faça somente uma coisa
+
+17
+00:01:45,576 --> 00:01:48,744
+de novo, vc deveria manter suas
+funções o mais pequena possível
+
+18
+00:01:48,744 --> 00:01:52,024
+e então introduzimos a diciplina de
+
+19
+00:01:52,024 --> 00:01:54,032
+extrair até cair!
+
+20
+00:01:55,808 --> 00:02:00,616
+Agora, neste episódio
+vamos falar de de estrutura de função
+
+21
+00:02:00,616 --> 00:02:05,768
+e para isso vamos pedir uma ajuda
+do artesão da 8th light Inc.
+
+22
+00:02:07,312 --> 00:02:08,264
+Sou o Collin Jones
+
+23
+00:02:08,264 --> 00:02:09,088
+Eric Smith
+
+24
+00:02:09,088 --> 00:02:10,136
+????
+
+25
+00:02:10,136 --> 00:02:11,632
+meu nome é Steven
+
+26
+00:02:12,272 --> 00:02:16,104
+Nós iremos mostrar que  as assinaturas
+de função devem ser pequenas
+
+27
+00:02:16,104 --> 00:02:18,840
+quanto menos argumentos melhor
+
+28
+00:02:18,840 --> 00:02:22,960
+vamos falar também sobre quais tipos
+de argumentos devem ser passados
+
+29
+00:02:22,960 --> 00:02:24,960
+e quais tipos não devem
+
+30
+00:02:25,896 --> 00:02:27,520
+vc já viu uma classe que
+
+31
+00:02:27,520 --> 00:02:30,696
+parece não tem nenhuma
+estrutura interna clara
+
+32
+00:02:30,696 --> 00:02:36,160
+parece ser um saco de
+funcões e variáveis aleatórias
+
+33
+00:02:36,600 --> 00:02:40,032
+vamos falar sobre uma forma 
+de organizar nossas classes
+
+34
+00:02:40,032 --> 00:02:42,752
+para que a organização 
+seja auto-evidente
+
+35
+00:02:44,296 --> 00:02:48,904
+vc sabe pq switch-cases causa
+tanto mal na estrutura de software ?
+
+36
+00:02:49,296 --> 00:02:52,256
+Sabia que os Ifs tem o mesmo problema?
+
+37
+00:02:53,416 --> 00:02:56,080
+Neste episódio, vamos falar sobre
+
+38
+00:02:56,080 --> 00:02:58,080
+como nos livrar da maioria deles
+
+39
+00:02:58,096 --> 00:03:01,776
+e o que fazer com o resto deles
+para que não causem problema?
+
+40
+00:03:03,472 --> 00:03:06,792
+sabia que assignments tbem são
+considerados prejudiciais?
+
+41
+00:03:06,792 --> 00:03:08,792
+isso pode te parecer estranho
+
+42
+00:03:08,792 --> 00:03:11,184
+mas nos tornamos mais convencidos
+
+43
+00:03:11,184 --> 00:03:13,832
+que muitos problemas de software podem ser evitados
+
+44
+00:03:13,832 --> 00:03:19,632
+criando restriçoes a mudança
+de estados e efeitos colaterais
+
+45
+00:03:21,392 --> 00:03:26,520
+já viu uma função cheia de validaçoes de erro, nulls
+
+46
+00:03:26,520 --> 00:03:28,672
+que vc não conseguia dizer o que ela estava fazendo ?
+
+47
+00:03:28,672 --> 00:03:31,280
+e que tal aquelas funções que são
+
+48
+00:03:31,280 --> 00:03:35,672
+lotadas de blocos try-catch aninhados
+
+49
+00:03:35,672 --> 00:03:37,872
+que obscurecem tudo
+
+50
+00:03:38,184 --> 00:03:41,680
+vamos olhar uma forma de estruturar nossas funções
+
+51
+00:03:41,680 --> 00:03:43,752
+para que o tratamento de erros sejam feitos
+
+52
+00:03:43,752 --> 00:03:46,256
+de uma forma limpa e de fácil manutenção
+
+53
+00:03:47,816 --> 00:03:50,832
+em 1972, Edsger Dijkstra
+
+54
+00:03:50,832 --> 00:03:51,976
+nos disse que
+
+55
+00:03:51,976 --> 00:03:54,984
+GoTo poderia não ser uma ótima idéia.
+
+56
+00:03:54,984 --> 00:03:57,944
+ele e C.A.R. Hore
+
+57
+00:03:57,944 --> 00:03:59,832
+e Ole-Johan Dahl
+
+58
+00:03:59,832 --> 00:04:04,984
+escrevam o livro cássico de egenharia
+de software: STRUCTURED PROGRAMMING
+
+59
+00:04:04,984 --> 00:04:08,176
+nós iremos falar sobre
+essa diciplina fascinante
+
+60
+00:04:08,176 --> 00:04:11,280
+e discutir pq é importante até hoje
+
+61
+00:04:13,304 --> 00:04:15,880
+heheh..então  se preparem
+
+62
+00:04:15,936 --> 00:04:21,864
+pq estamos prestes a mergulhar no
+tópico sobre estrutura de função!
+
+63
+00:04:27,656 --> 00:04:31,488
+Fusão
+
+64
+00:04:32,256 --> 00:04:33,376
+O Sol
+
+65
+00:04:33,896 --> 00:04:38,536
+é uma bola de gazes de milhoes
+de kilometros de diâmetro
+
+66
+00:04:38,536 --> 00:04:43,928
+ele pesa 2x10^30 Kilogramas
+
+67
+00:04:43,928 --> 00:04:47,768
+isso é 3000000 vezes maior que o peso da terra
+
+68
+00:04:47,768 --> 00:04:51,640
+imagina a gravidade desse objeto
+
+69
+00:04:52,112 --> 00:04:57,336
+imaginem o núcleo interno do
+Sol nos 10% mais internos
+
+70
+00:04:57,336 --> 00:04:59,936
+Como deve ser a pressão neles
+
+71
+00:04:59,936 --> 00:05:03,544
+com milhoes de kilometros de hidrogênio acima
+
+72
+00:05:03,544 --> 00:05:07,712
+sendo rebaixados por aquele
+incrível campo gravitacional
+
+73
+00:05:07,712 --> 00:05:10,488
+e como deve ser a temperatura lá dentro
+
+74
+00:05:10,488 --> 00:05:14,104
+sendo cada vez mais comprimido por aquele peso
+
+75
+00:05:15,992 --> 00:05:16,944
+De fato
+
+76
+00:05:16,944 --> 00:05:21,392
+A temperatura é tão alta quanto
+14 milhores de graus kelvin
+
+77
+00:05:21,392 --> 00:05:22,808
+isso é mais que suficiente
+
+78
+00:05:22,808 --> 00:05:25,712
+para arrancar os elétrons
+dos atomos de hidrogenio
+
+79
+00:05:25,712 --> 00:05:28,480
+e expor os prótons em seus centros
+
+80
+00:05:30,232 --> 00:05:33,016
+esses protóns são todos de carga positiva
+
+81
+00:05:33,016 --> 00:05:35,712
+eles se repelem como esses imãs
+
+82
+00:05:35,712 --> 00:05:38,032
+e a força dessa repulção
+
+83
+00:05:38,032 --> 00:05:40,072
+é inversamente proporcional
+
+84
+00:05:40,072 --> 00:05:42,096
+ao quadrado da distância
+
+85
+00:05:42,096 --> 00:05:45,272
+toda vez que corto a distância ao meio
+
+86
+00:05:45,272 --> 00:05:47,512
+a força quadruplica
+
+87
+00:05:47,512 --> 00:05:50,304
+então qualquer próton
+
+88
+00:05:50,304 --> 00:05:51,992
+que estão em rota de colisão
+
+89
+00:05:51,992 --> 00:05:54,464
+irão desviar um do outro
+
+90
+00:05:54,464 --> 00:05:55,936
+mantendo sua distância
+
+91
+00:05:58,192 --> 00:05:59,440
+acontence
+
+92
+00:05:59,440 --> 00:06:01,288
+existe outra força
+
+93
+00:06:01,288 --> 00:06:03,744
+é chamada de Força Nuclear Forte
+
+94
+00:06:03,744 --> 00:06:05,744
+e é fortemente atraída
+
+95
+00:06:05,744 --> 00:06:09,352
+é o que une os protons em núcleos
+
+96
+00:06:09,352 --> 00:06:12,152
+pode ser 100 vezes mais poderoso
+
+97
+00:06:12,152 --> 00:06:14,376
+que a força que está tentando repeli-los
+
+98
+00:06:14,520 --> 00:06:18,344
+infelizmente, esta força
+tem um limite de distância
+
+99
+00:06:18,832 --> 00:06:24,496
+se os dois não estiverem a 10/cm^-13 cm um do outro
+
+100
+00:06:24,496 --> 00:06:27,280
+eles não podem sentir a força nuclear forte
+
+101
+00:06:27,280 --> 00:06:30,552
+então a repulsão eletroestática ganha
+
+102
+00:06:31,928 --> 00:06:32,640
+entretanto
+
+103
+00:06:32,640 --> 00:06:37,880
+se 2 protons conseguirem ficar 10/cm^-13 um do outro
+
+104
+00:06:37,880 --> 00:06:40,128
+então eles irão correr juntos
+
+105
+00:06:40,616 --> 00:06:42,656
+se atraindo ferozmente
+
+106
+00:06:43,280 --> 00:06:47,168
+se fundindo em hélio com tanto entusiasmo
+
+107
+00:06:47,168 --> 00:06:49,600
+que uma quantidade tremenda de energia é liberada
+
+108
+00:06:49,904 --> 00:06:53,336
+esse processo é conhecido como fusão
+
+109
+00:06:55,608 --> 00:06:57,032
+O problema é
+
+110
+00:06:57,328 --> 00:07:00,752
+para conseguir deixar esses 2
+protons tão próximos para fusão
+
+111
+00:07:00,752 --> 00:07:04,520
+precisamos superar essa força de repulsão gigante
+
+112
+00:07:04,520 --> 00:07:06,520
+lembre que a repulsão
+
+113
+00:07:06,520 --> 00:07:11,208
+é inversamente proporcional à
+distancia entre eles ao quadrado
+
+114
+00:07:11,440 --> 00:07:16,664
+então para trazer eles 10/cm^-13 um do outro
+
+115
+00:07:16,704 --> 00:07:21,984
+temos que superar uma
+repulsão que é 10/de alguma coisa^26
+
+116
+00:07:22,224 --> 00:07:24,592
+e não importa muito o
+que essa "alguma coisa" é
+
+117
+00:07:24,592 --> 00:07:26,592
+quando tem 10^26 delas
+
+118
+00:07:27,464 --> 00:07:31,792
+A força é, na verdade, cerca de meio milionésimo de um Newton
+
+119
+00:07:31,792 --> 00:07:35,320
+ou forçadamente o peso de uma rede(de mosquito)
+
+120
+00:07:36,480 --> 00:07:38,312
+mas no núcleo do sol
+
+121
+00:07:38,312 --> 00:07:40,312
+a temperatura é tão alta
+
+122
+00:07:40,312 --> 00:07:44,400
+que todos esses protons estão se movendo a 600km/s
+
+123
+00:07:44,400 --> 00:07:46,504
+e a pressão é tão alta
+
+124
+00:07:46,504 --> 00:07:50,160
+que a densidade é 115 vezes maior que o da água
+
+125
+00:07:50,160 --> 00:07:54,424
+esses protons estão sempre dentro de um
+bilionésimo de um centímetro um do outro
+
+126
+00:07:55,048 --> 00:07:57,296
+e o resultado líquido desses extremos
+
+127
+00:07:57,544 --> 00:08:02,872
+são 4 milhões de toneladas de hidrogenio
+se fundindo em hélio a cada segundo
+
+128
+00:08:03,176 --> 00:08:06,272
+Isso pode parecer muito , e é!
+
+129
+00:08:06,272 --> 00:08:09,304
+Mas tem bastante hidrogenio no núcleo do sol
+
+130
+00:08:09,304 --> 00:08:11,584
+para durar por 12 bilhões de anos
+
+131
+00:08:11,584 --> 00:08:14,552
+e só usamos 6 bilhões até agora
+
+132
+00:08:14,552 --> 00:08:18,536
+então ainda temos tempo,
+não precisamos se preocupar ainda
+
+133
+00:08:19,896 --> 00:08:22,184
+A energia produzida por esse processo
+
+134
+00:08:22,184 --> 00:08:25,752
+mantém as temperaturas e a
+pressão no núcleo bem altas
+
+135
+00:08:25,952 --> 00:08:30,336
+então o núcleo puxa de volta
+contra toda a onda de hidrogenio acima
+
+136
+00:08:30,672 --> 00:08:34,648
+o sol está em constante estado de equilíbrio dinâmico
+
+137
+00:08:34,648 --> 00:08:37,248
+é como o atlas segurando o mundo inteiro
+
+138
+00:08:37,248 --> 00:08:39,128
+constantemente puxando para cima
+
+139
+00:08:39,120 --> 00:08:41,120
+queimando combustivél furiosamente
+
+140
+00:08:41,120 --> 00:08:44,072
+para permanecer com o mesmo tamanho
+
+141
+00:08:44,712 --> 00:08:48,101
+Um dia, daqui 6 bilhões de anos
+
+142
+00:08:48,101 --> 00:08:52,298
+uma grande massa de héio irá acumular no núcleo do sol
+
+143
+00:08:52,320 --> 00:08:55,905
+e a temperatura dessa massa irá crescer
+
+144
+00:08:55,905 --> 00:08:59,047
+e a pressão irá subir até...
+
+145
+00:08:59,723 --> 00:09:02,967
+...mas isso é uma história para outro dia
+
+146
+00:09:12,145 --> 00:09:14,021
+quantos argumentos uma função deve ter ?
+
+147
+00:09:14,792 --> 00:09:16,712
+-no geral, quanto menos melhor.
+
+148
+00:09:17,840 --> 00:09:19,490
+argumentos de função são difíceis
+
+149
+00:09:19,490 --> 00:09:22,450
+-é difiícil de descobrir o que o parâmetro significa
+
+150
+00:09:22,850 --> 00:09:25,949
+são difícieis de ler e de entender
+
+151
+00:09:25,949 --> 00:09:29,170
+cada um pode confundir e confundem
+
+152
+00:09:29,425 --> 00:09:34,080
+cada um pode quebrar seu fluxo enquanto le o código
+
+153
+00:09:34,327 --> 00:09:37,149
+cada um faz vc trabalhar dobrado
+
+154
+00:09:38,116 --> 00:09:41,149
+se quisermos estar de acordo com a regra de Cunningham
+
+155
+00:09:41,149 --> 00:09:44,145
+e manter nosso código bem o que esperamos
+
+156
+00:09:44,763 --> 00:09:50,269
+então precisamos eliminar o numero de
+confusão gerada pelos argumentos da função
+
+157
+00:09:50,800 --> 00:09:54,167
+ao invés de tratar argumentos da função como..
+
+158
+00:09:54,574 --> 00:09:58,349
+conveniências que usamos sem cuidado
+
+159
+00:09:58,712 --> 00:10:02,923
+precisamos usar uma diciplina restritiva
+
+160
+00:10:02,920 --> 00:10:06,080
+devemos tratar cada argumento de uma função
+
+161
+00:10:06,080 --> 00:10:08,930
+como uma desvantagem e não como recurso
+
+162
+00:10:09,410 --> 00:10:13,534
+no máximo 3 argumentos
+
+163
+00:10:16,138 --> 00:10:18,930
+as melhores funções tem menos argumentos possíveis
+
+164
+00:10:19,396 --> 00:10:20,720
+zero é o melhor
+
+165
+00:10:20,785 --> 00:10:22,232
+um é ok
+
+166
+00:10:22,392 --> 00:10:24,232
+2 é ok
+
+167
+00:10:26,901 --> 00:10:31,665
+bem, eu faria com 3 algumas vezes
+mas seria qse um desleixo
+
+168
+00:10:35,141 --> 00:10:36,087
+particularmente
+
+169
+00:10:36,109 --> 00:10:39,098
+eu não gosto de minhas funções
+com mais de 3 argumentos
+
+170
+00:10:39,236 --> 00:10:41,330
+até mesmo 3 é muito.
+
+171
+00:10:41,330 --> 00:10:43,869
+-eu tento manter 2 como uma diretriz
+
+172
+00:10:43,869 --> 00:10:48,007
+o problema de 3 é que pode
+ser difícil de lembrar a ordem
+
+173
+00:10:48,007 --> 00:10:50,923
+-uma vez que tem mais de 3
+é difil de lembrar o que eles fazem
+
+174
+00:10:50,923 --> 00:10:52,007
+então, lembrem-se
+
+175
+00:10:52,007 --> 00:10:55,461
+não queremos que nossos leitores trabalhem dobrado
+
+176
+00:11:00,210 --> 00:11:01,338
+além do que
+
+177
+00:11:01,338 --> 00:11:04,596
+se 3 ou mais variáveis são tão coesas
+
+178
+00:11:04,596 --> 00:11:06,974
+que podem ser passadas juntas em uma função
+
+179
+00:11:07,670 --> 00:11:09,323
+por que não estão no objeto ?
+
+180
+00:11:10,501 --> 00:11:13,258
+eu até penso assim com argumentos de construtores
+
+181
+00:11:13,258 --> 00:11:15,258
+-construtores seguem a mesma regra
+
+182
+00:11:15,258 --> 00:11:16,989
+-mesma diretrizes que antes
+
+183
+00:11:17,658 --> 00:11:22,698
+eu prefiro muito mais um conjunto de setters bem nomeados
+
+184
+00:11:22,698 --> 00:11:25,520
+do que um construtor com um monte de argumentos
+
+185
+00:11:26,021 --> 00:11:28,916
+- eu provavemente usaria um padrão Builder
+
+186
+00:11:28,938 --> 00:11:32,363
+- adicionaria um monte de sets para
+construir a classe e adicionar os dados
+
+187
+00:11:33,141 --> 00:11:35,381
+-alguma forma de estrutura que vc passa para o construtor
+
+188
+00:11:36,276 --> 00:11:39,360
+-vc sempre pssa um mapa de opçoes ou algo do tipo
+
+189
+00:11:39,927 --> 00:11:44,850
+é.. passar estruturas e mapas é até ok
+
+190
+00:11:45,200 --> 00:11:47,687
+mas eu ainda prefiro usar as funçoes sets
+
+191
+00:11:48,050 --> 00:11:49,454
+eu sei o que isso significa
+
+192
+00:11:49,454 --> 00:11:52,130
+significa que tem um pequeno período
+
+193
+00:11:52,130 --> 00:11:55,549
+que o objeto está incompleto e portanto, perigoso
+
+194
+00:11:55,832 --> 00:11:57,549
+mas isso não me incomoda
+
+195
+00:11:57,614 --> 00:11:59,847
+pq eu tenho um monte de testes de unidade
+
+196
+00:11:59,847 --> 00:12:04,196
+que garantem que eu não use tais
+objetos incompletos inapropriadamente
+
+197
+00:12:07,287 --> 00:12:07,949
+então...
+
+198
+00:12:07,949 --> 00:12:09,730
+para ser gentil com meus leitores
+
+199
+00:12:09,730 --> 00:12:11,730
+e para manter minha própria sanidade
+
+200
+00:12:11,730 --> 00:12:15,949
+eu tendo a limitar minhas funções
+para não mais que 3 argumentos
+
+201
+00:12:17,760 --> 00:12:21,774
+nenhum argumento booleano, jamais!
+
+202
+00:12:22,040 --> 00:12:25,614
+-geralmente não gosto de passar booleanos
+
+203
+00:12:25,614 --> 00:12:26,850
+Na maioria do tempo
+
+204
+00:12:26,850 --> 00:12:29,716
+quando vc passa um boolean para função
+
+205
+00:12:29,716 --> 00:12:33,090
+o que vc está fazendo é gritando para o mundo
+
+206
+00:12:33,090 --> 00:12:36,567
+que vc acabou de escrever uma funçao que faz 2 coisas!
+
+207
+00:12:36,567 --> 00:12:38,880
+faz uma coisa para quando é true
+
+208
+00:12:38,880 --> 00:12:40,880
+e outra para o false
+
+209
+00:12:41,432 --> 00:12:44,625
+o que vc deveria fazer é escrever 2 funções
+
+210
+00:12:44,625 --> 00:12:46,203
+uma para o caso true
+
+211
+00:12:46,203 --> 00:12:48,109
+e a outra para o false
+
+212
+00:12:51,214 --> 00:12:54,240
+um boolean pendurado em uma lista de argumentos
+
+213
+00:12:54,560 --> 00:12:56,625
+pode ser uma fonte significativa de
+
+214
+00:12:56,625 --> 00:12:58,174
+erros e confusão
+
+215
+00:12:58,174 --> 00:13:00,661
+o que siginifica se for true ?
+
+216
+00:13:01,105 --> 00:13:02,661
+o que significa se for false ?
+
+217
+00:13:02,661 --> 00:13:07,607
+se o nome do método e do
+argumento não deixa isso bem claro
+
+218
+00:13:07,607 --> 00:13:10,749
+isso pode ser uma fonte
+significativa de confusão e erro
+
+219
+00:13:14,094 --> 00:13:15,280
+não sei de vc
+
+220
+00:13:15,941 --> 00:13:18,785
+mas quando eu vejo um boolean 
+em uma lista de argumento
+
+221
+00:13:19,221 --> 00:13:21,105
+meus olhos chegam a embaçar
+
+222
+00:13:21,905 --> 00:13:25,207
+eu não sei se está no estado correto ou não
+
+223
+00:13:25,570 --> 00:13:30,138
+eu tipo confio no que o autor sabia o que
+estava fazendo quando escreveu a função
+
+224
+00:13:30,138 --> 00:13:32,138
+e passou o booleano correto
+
+225
+00:13:35,490 --> 00:13:38,101
+passar 2 booleanos é ainda pior
+
+226
+00:13:38,618 --> 00:13:42,690
+uma função que passa 2 booleanos faz 4 coisas
+
+227
+00:13:42,690 --> 00:13:45,090
+além do que, em que ordem elas entram ?
+
+228
+00:13:45,090 --> 00:13:50,189
+já viu uma função que passa 2 booleans : true, false ?
+
+229
+00:13:50,189 --> 00:13:53,643
+e já se perguntou que merda
+fazem e em que ordem entram ?
+
+230
+00:13:54,501 --> 00:13:57,738
+2 booleans vai causar
+trabalho dobrado de fato
+
+231
+00:14:02,734 --> 00:14:04,625
+-como se sente sobre argumentos de output
+
+232
+00:14:04,705 --> 00:14:06,240
+-eu odeio
+
+233
+00:14:06,240 --> 00:14:08,647
+-eu sei que, em algumas bibliotecas em C
+
+234
+00:14:08,647 --> 00:14:10,712
+-e se vc já trabalhou com bibliotecas da microsoft
+
+235
+00:14:10,712 --> 00:14:12,654
+-vc não tem muita escolha e usa eles
+
+236
+00:14:12,654 --> 00:14:16,887
+-mas toda vez que eu uso me sinto mal
+
+237
+00:14:17,701 --> 00:14:21,069
+-mas em java, ruby e closure eu nunca precisei
+
+238
+00:14:22,494 --> 00:14:23,796
+-eu prefiro dessa forma
+
+239
+00:14:24,326 --> 00:14:25,556
+sem argumentos de output, por favor.
+
+240
+00:14:25,550 --> 00:14:27,864
+não gosto de argumentos output
+
+241
+00:14:29,316 --> 00:14:35,009
+o povo não espera que dados saiam da
+funçao para ir dentro de um argumento
+
+242
+00:14:35,009 --> 00:14:37,009
+quando seu leitor ve um argumento
+
+243
+00:14:37,009 --> 00:14:42,640
+eles esperam que os dados no argumento irá para
+dentro da funçao e não para fora
+
+244
+00:14:43,310 --> 00:14:45,969
+se os dados vem pra fora, irá confundí-los
+
+245
+00:14:45,969 --> 00:14:49,735
+irão ter trabalho dobrado, e não gostamos disso
+
+246
+00:14:49,735 --> 00:14:52,824
+então se tiver que
+tirar algum dado de uma funçao
+
+247
+00:14:52,824 --> 00:14:54,640
+passe no valor do retorno
+
+248
+00:14:54,640 --> 00:14:56,640
+não use argumentos output
+
+249
+00:14:59,876 --> 00:15:02,873
+quantas vezes vc já estudou uma chamada de função
+
+250
+00:15:03,132 --> 00:15:07,864
+olhando para algum argumento se
+perguntando pq o esse argumento estava entrando
+
+251
+00:15:08,227 --> 00:15:12,646
+apenas para descobrir que o
+argumento não estava entrando
+
+252
+00:15:12,646 --> 00:15:16,658
+de fato, estava lá para receber
+algum valor de saída na função
+
+253
+00:15:17,920 --> 00:15:20,578
+argumentos output causa trabalho dobrado
+
+254
+00:15:20,578 --> 00:15:22,492
+eles não são esperados
+
+255
+00:15:22,492 --> 00:15:24,683
+então eu os evito quando possível
+
+256
+00:15:27,120 --> 00:15:29,649
+a defesa null
+
+257
+00:15:30,203 --> 00:15:32,449
+passar null em uma função
+
+258
+00:15:32,449 --> 00:15:36,504
+ou escrever uma que espere que null seja passado
+
+259
+00:15:37,323 --> 00:15:41,347
+é tão ruim quanto passar um valor booleano na função
+
+260
+00:15:41,704 --> 00:15:46,116
+de fato, pode até ser
+pior pq não é sempre óbvio
+
+261
+00:15:46,116 --> 00:15:48,572
+que há dois estados possíveis
+
+262
+00:15:49,095 --> 00:15:49,821
+mas existem!
+
+263
+00:15:50,701 --> 00:15:54,227
+tem o comportamento para o não-null
+
+264
+00:15:54,227 --> 00:15:56,627
+e tem o comportamento para o null
+
+265
+00:15:56,923 --> 00:15:58,652
+o que vc deveria ter feito
+
+266
+00:15:58,652 --> 00:16:00,652
+é criar 2 funções
+
+267
+00:16:00,652 --> 00:16:03,661
+uma que aceita o argumento null
+
+268
+00:16:03,661 --> 00:16:06,603
+e outra que não aceita ele
+
+269
+00:16:07,064 --> 00:16:10,541
+não use null como um pseudo-boolean
+
+270
+00:16:13,790 --> 00:16:16,916
+além do que, eu não gosto
+de programação defensiva
+
+271
+00:16:16,916 --> 00:16:21,403
+odeio encher meu código
+com validaçoes de erros e nulos
+
+272
+00:16:21,476 --> 00:16:24,030
+eu odeio pensar que meus colegas
+
+273
+00:16:24,030 --> 00:16:27,981
+estão descuidosamente deixando
+passar nulos nas minhas funções
+
+274
+00:16:30,000 --> 00:16:32,178
+programção defensiva é um "smell"
+
+275
+00:16:32,880 --> 00:16:34,529
+-eu confio nos meus testes
+
+276
+00:16:34,529 --> 00:16:37,163
+-programação defensiva leva a código ofensivo
+
+277
+00:16:37,163 --> 00:16:38,640
+-é uma perda de tempo
+
+278
+00:16:38,640 --> 00:16:40,818
+programação defensiva significa
+
+279
+00:16:40,818 --> 00:16:44,658
+que não confia no seu time
+ou nos testes de unidade deles
+
+280
+00:16:45,046 --> 00:16:48,627
+se vc está constantemente
+checando seus argumentos para null
+
+281
+00:16:48,627 --> 00:16:53,587
+significa que seus testes de unidade
+não estão impedindo-o de passar esses nulos
+
+282
+00:16:54,240 --> 00:16:58,523
+claro que em API's públicas eu
+estarei programando defensivamente
+
+283
+00:16:58,523 --> 00:17:03,156
+pq quem sabe o que as pessoas
+vão estar passando nas minhas funções?!
+
+284
+00:17:03,156 --> 00:17:07,538
+mas para código dentro do meu
+sistema e escrita pelo meu time
+
+285
+00:17:07,538 --> 00:17:09,427
+eu tenho uma política bem diferente
+
+286
+00:17:09,427 --> 00:17:13,569
+essa política é que a melhor
+defesa é uma boa ofensiva
+
+287
+00:17:13,569 --> 00:17:17,384
+e uma boa ofensiva é um bom conjunto de testes
+
+288
+00:17:21,618 --> 00:17:24,461
+a regra de descida
+
+289
+00:17:24,929 --> 00:17:28,092
+muito tempo atrás na galáxia de c++
+
+290
+00:17:28,092 --> 00:17:29,267
+tinhamos uma regra
+
+291
+00:17:29,267 --> 00:17:31,643
+era chamada de regra da tesoura
+
+292
+00:17:31,643 --> 00:17:34,960
+dizia que vc deveria organizar sua classe
+
+293
+00:17:34,960 --> 00:17:38,209
+onde seus metodos publicos estivessem no topo
+
+294
+00:17:38,209 --> 00:17:41,360
+e todos os privados embaixo
+
+295
+00:17:41,360 --> 00:17:43,981
+e depois vc pode obter uma listagem
+
+296
+00:17:43,981 --> 00:17:48,393
+e cortar essa listagem entre
+as partes publicas e privadas
+
+297
+00:17:48,393 --> 00:17:52,646
+e poderia entregar a parte
+publica para seus usuários
+
+298
+00:17:56,110 --> 00:17:57,778
+esta é uma boa regra
+
+299
+00:17:57,778 --> 00:18:02,406
+e gostaria que ainda seguissemos em c# e java
+
+300
+00:18:02,406 --> 00:18:05,956
+mas por alguma razão os primeiros programadores em java
+
+301
+00:18:05,956 --> 00:18:07,520
+adotaram uma regra diferente
+
+302
+00:18:07,520 --> 00:18:09,618
+eles pegaram as coisas privadas
+
+303
+00:18:09,618 --> 00:18:12,916
+as coisas que estavam tentando
+se esconder em um muro de privacidade
+
+304
+00:18:12,916 --> 00:18:15,593
+e eles colocaram bem no topo da classe
+
+305
+00:18:17,913 --> 00:18:18,830
+agora veja
+
+306
+00:18:19,156 --> 00:18:21,784
+não estou aqui para
+brigar com essa convenção
+
+307
+00:18:21,784 --> 00:18:24,560
+de fato, eu sigo essa convenção
+
+308
+00:18:24,560 --> 00:18:27,784
+eu sigo, pq é a convenção
+
+309
+00:18:27,784 --> 00:18:33,156
+e é melhor seguir o que é uma
+convenção não das melhores
+
+310
+00:18:33,156 --> 00:18:37,815
+do que confundir todo mundo,
+fazendo algo inesperado
+
+311
+00:18:38,750 --> 00:18:41,563
+não, eu estou aqui para
+introduzir uma nova regra
+
+312
+00:18:41,563 --> 00:18:43,304
+chamada de regra da descida
+
+313
+00:18:43,304 --> 00:18:47,033
+essa regra irá nos ajudar impor
+alguma ordem nos nossos métodos
+
+314
+00:18:47,033 --> 00:18:50,873
+apesar da regra besta de colocar os privados no topo
+
+315
+00:18:52,098 --> 00:18:55,883
+quando um escritor escreve um artigo ou uma notícia
+
+316
+00:18:55,883 --> 00:18:57,883
+eles seguem uma regra simples
+
+317
+00:18:57,883 --> 00:19:00,073
+coisas em portantes vão em cima
+
+318
+00:19:00,073 --> 00:19:02,073
+detalhes vão embaixo
+
+319
+00:19:02,073 --> 00:19:04,560
+por exemplo, da uma olhada neste artigo
+
+320
+00:19:04,560 --> 00:19:06,504
+começa com um título
+
+321
+00:19:06,500 --> 00:19:12,215
+depois tem um parágrafo de sinopse
+que tipo resume todo o artigo
+
+322
+00:19:12,215 --> 00:19:17,409
+e depois disso, cada parágrafo
+entra em cada vez mais detalhes
+
+323
+00:19:19,243 --> 00:19:22,609
+tem 2 beneficios em uma regra como essa
+
+324
+00:19:22,609 --> 00:19:23,846
+a primeira é
+
+325
+00:19:23,846 --> 00:19:28,320
+que o editor que precisa
+encaixar o artigo em uma revista
+
+326
+00:19:28,320 --> 00:19:34,504
+pode cortar os últimos parágrafos
+sem perder a essencia do artigo
+
+327
+00:19:34,806 --> 00:19:37,790
+a segunda razão é que os leitores
+
+328
+00:19:37,790 --> 00:19:43,126
+podem começar do topo, ler até
+ficarm entediados e depois parar.
+
+329
+00:19:44,732 --> 00:19:48,676
+se possível eu gosto de seguir
+a mesma regra no meu software
+
+330
+00:19:48,676 --> 00:19:51,556
+-...métodos grandes que iremos
+chamar no topo, outros métodos abaixo
+
+331
+00:19:51,556 --> 00:19:54,726
+-os métodos publicos estão me dizendo
+o que eu posso fazer com aquilo
+
+332
+00:19:54,720 --> 00:19:59,520
+-eu gosto de agrupar eles e ter
+os métodos privados embaixo
+
+333
+00:19:59,840 --> 00:20:00,430
+certo
+
+334
+00:20:00,886 --> 00:20:02,916
+as coisas públicas devem estar no topo
+
+335
+00:20:02,916 --> 00:20:05,956
+as idéias importantes estão no topo
+
+336
+00:20:05,956 --> 00:20:09,747
+e então, quando descemos eu
+quero ir aumentando em detalhes
+
+337
+00:20:09,747 --> 00:20:12,406
+eu quero as coisas privadas embaixo dos públicos
+
+338
+00:20:12,406 --> 00:20:15,895
+e os metodos privados que são
+chamadas pelos primeiros métodos privados
+
+339
+00:20:15,895 --> 00:20:18,941
+e então aqueles chamados
+pelo segundo método privado
+
+340
+00:20:18,941 --> 00:20:21,600
+eu não quero nenhuma
+refêrencia ao contrário
+
+341
+00:20:21,600 --> 00:20:25,913
+eu quero todas as chamadas
+de funçoes apontem para baixo
+
+342
+00:20:27,292 --> 00:20:30,024
+chamo isso de regra da descida
+
+343
+00:20:30,024 --> 00:20:32,935
+pq, enquanto le de cima para baixo
+
+344
+00:20:32,935 --> 00:20:37,575
+as funções descem um level de abstração de cada vez
+
+345
+00:20:37,575 --> 00:20:40,461
+as funçoes no topo são de alto nível
+
+346
+00:20:40,461 --> 00:20:44,664
+as debaixo são de nível mais baixo e bem detalhadas
+
+347
+00:20:44,664 --> 00:20:49,938
+e tem essa descida de nível de abstração, um nível a cada vez
+
+348
+00:20:51,175 --> 00:20:54,910
+aqui tem uma classe que eu escolhi
+
+349
+00:20:54,910 --> 00:20:58,270
+da aplicação FitNess
+
+350
+00:20:58,523 --> 00:21:01,372
+para demonstrar a regra da descida
+
+351
+00:21:01,372 --> 00:21:04,787
+e eu fiz algumas modificações nesta classe
+
+352
+00:21:04,787 --> 00:21:07,840
+para acentuar a regra da descida
+
+353
+00:21:07,840 --> 00:21:11,544
+essas modificaçoes, infelizmente não podem persistir
+
+354
+00:21:11,544 --> 00:21:14,676
+porque a IDE não permitiria
+
+355
+00:21:14,676 --> 00:21:17,815
+além de violar a convenção em JAVA
+
+356
+00:21:18,535 --> 00:21:23,150
+vc ve as variáveis privadas aqui em cima
+
+357
+00:21:23,150 --> 00:21:26,190
+devido a convenção JAVA
+
+358
+00:21:26,190 --> 00:21:28,830
+eu preferiria, é claro, que estivessem embaixo
+
+359
+00:21:28,830 --> 00:21:30,584
+de acordo com a regra da tesoura
+
+360
+00:21:30,584 --> 00:21:33,304
+mas essa não é a convenção
+
+361
+00:21:34,289 --> 00:21:37,987
+eu tbem tenhum algumas váriaveis
+publicas que estão mais acima
+
+362
+00:21:37,987 --> 00:21:40,332
+que me parece apropriado
+
+363
+00:21:41,981 --> 00:21:44,006
+seguindo isso, tem um construtor
+
+364
+00:21:45,323 --> 00:21:50,621
+e seguindo isso, tem a alma desta
+classe que é o metodo publico
+
+365
+00:21:51,772 --> 00:21:55,224
+eu escolhi uma classe, com um método público
+
+366
+00:21:55,224 --> 00:21:57,741
+para realçar a regra da descida
+
+367
+00:21:57,741 --> 00:22:00,689
+e no final disso, iremos falar sobre
+
+368
+00:22:01,003 --> 00:22:03,913
+como vc lida com mais de um método público
+
+369
+00:22:04,840 --> 00:22:08,843
+note que esse método publico chamado serve chama...
+
+370
+00:22:09,993 --> 00:22:13,150
+3 funções: tryProcessInstructions,
+
+371
+00:22:14,221 --> 00:22:16,553
+close e closeEnclosing
+
+372
+00:22:18,553 --> 00:22:24,172
+tryProcessInstructions é um filho da função "serve"
+
+373
+00:22:24,172 --> 00:22:28,750
+é como uma sub-função de "serve"
+
+374
+00:22:28,750 --> 00:22:33,753
+então, note que eu coloquei
+ela aqui embaixo de "serve"
+
+375
+00:22:33,753 --> 00:22:36,443
+obviamente a IDE não irá tolerar isso
+
+376
+00:22:36,443 --> 00:22:41,083
+uma vez que eu fizer uma
+reformatação irá desfazer essa identação
+
+377
+00:22:41,083 --> 00:22:43,747
+eu fico um pouco encomodado com isso
+
+378
+00:22:43,747 --> 00:22:47,310
+seria ótimo se essa identação pudesse persistir
+
+379
+00:22:47,310 --> 00:22:53,230
+seria ainda melhor se o JAVA me
+permitisse ter funções internas
+
+380
+00:22:53,230 --> 00:22:57,969
+uma verdadeira linguagem
+estruturada em blocos como ALGOL
+
+381
+00:22:57,969 --> 00:23:02,061
+mas, essã não é a realidade em que vivemos
+
+382
+00:23:03,163 --> 00:23:07,981
+eu mantive essa identação para que
+pudessemos ver a regra da descida
+
+383
+00:23:07,981 --> 00:23:12,670
+mas depois irei desfaze-la
+para vc verem o resultado final
+
+384
+00:23:12,670 --> 00:23:16,646
+"tryProcessIntruction" chama "initialize"
+
+385
+00:23:16,646 --> 00:23:20,701
+e tbem chama "processOneSetOfInstructions"
+
+386
+00:23:21,304 --> 00:23:25,440
+aqui está "initialize, é um filho de "tryProcessIntructions"
+
+387
+00:23:25,440 --> 00:23:29,766
+que parece que não chama nada a mais
+
+388
+00:23:29,766 --> 00:23:34,166
+dentro desta classe, ele faz o trabalho de menor nível
+
+389
+00:23:34,744 --> 00:23:38,966
+"processOneSetInstructions"que é chamado aqui em cima
+
+390
+00:23:40,738 --> 00:23:49,544
+essa chama "getInstructionsFromClient" e processTheInstructions
+
+391
+00:23:49,544 --> 00:23:55,489
+"getInstructionsFromClient é um
+filho de processOneSetOfInstruction
+
+392
+00:23:55,753 --> 00:23:59,323
+e faz o menor nível de trababalho que pode
+
+393
+00:23:59,661 --> 00:24:07,649
+e então "processTheInstructions" é
+chamado por "processOneSetOfInstructions"
+
+394
+00:24:07,790 --> 00:24:11,033
+e também tem alguns filhos
+
+395
+00:24:11,033 --> 00:24:14,313
+ele chama "executeInstructions"
+
+396
+00:24:14,313 --> 00:24:17,163
+e então, "sendResultsToClient"
+
+397
+00:24:17,163 --> 00:24:19,778
+o qual vc vê aqui
+
+398
+00:24:19,778 --> 00:24:26,178
+e finalmente temos as ultimas 2 funçoes que
+são chamadas pela funçao de nível alto
+
+399
+00:24:26,178 --> 00:24:29,360
+close e closeEnclosingServiceInSeperateThread
+
+400
+00:24:29,360 --> 00:24:34,763
+e pode ver que elas foram chamadas bem pra cima aqui
+
+401
+00:24:37,310 --> 00:24:40,492
+isso mostra a regra da descida
+
+402
+00:24:40,492 --> 00:24:44,726
+toda função chama funções filhas
+
+403
+00:24:44,726 --> 00:24:48,147
+que por sua vez, chamam suas
+próprias funções filhas
+
+404
+00:24:48,147 --> 00:24:51,833
+e nós ordenamos elas na
+ordem em que são chamadas
+
+405
+00:24:51,833 --> 00:24:55,058
+e por ordem de hierarquia delas
+
+406
+00:24:55,058 --> 00:24:57,169
+filhos vão embaixo dos pais
+
+407
+00:24:57,169 --> 00:24:58,916
+diretamente embaixo dos pais
+
+408
+00:24:58,916 --> 00:25:01,710
+e aparecem na ordem em que são chamadas
+
+409
+00:25:01,710 --> 00:25:04,400
+não há nenhuma referência ao contrário
+
+410
+00:25:04,400 --> 00:25:09,507
+nenhuma função embaixo chama uma função acima
+
+411
+00:25:12,073 --> 00:25:15,704
+como lidamos com outra função pública ?
+
+412
+00:25:15,704 --> 00:25:20,326
+todas as funções públicas deveriam ficar no topo ?
+
+413
+00:25:21,316 --> 00:25:30,104
+bem, em JAVA, como não há nenhuma
+forma de preservar essa identação
+
+414
+00:25:31,809 --> 00:25:33,796
+eu não faço isso
+
+415
+00:25:34,529 --> 00:25:39,138
+em JAVA, o que geralmente eu faço
+é iniciar a próxima função pública
+
+416
+00:25:39,138 --> 00:25:44,541
+no final da hierarquia da primeira função pública
+
+417
+00:25:44,541 --> 00:25:46,541
+eu acho isso um pouco chato
+
+418
+00:25:46,541 --> 00:25:50,670
+pq eu gostaria de todas as funções públicas no topo
+
+419
+00:25:50,836 --> 00:25:52,196
+o que eu realmente gostaria
+
+420
+00:25:52,196 --> 00:25:57,120
+é que minha IDE soubesse
+que essas são funçoes filhas
+
+421
+00:25:57,120 --> 00:26:02,418
+para que eu pudesse colapsar elas
+abaixo da função pública
+
+422
+00:26:02,418 --> 00:26:06,424
+e então eu poderia ver todas
+as funçoes públicas no topo
+
+423
+00:26:06,424 --> 00:26:08,781
+e expandir elas se quizesse
+
+424
+00:26:10,787 --> 00:26:14,080
+a forma que eu trabalho em JAVA
+
+425
+00:26:14,080 --> 00:26:19,341
+eu ponho a função pública
+seguida de todos seus privados
+
+426
+00:26:19,341 --> 00:26:21,483
+seguido de todos os privados deles
+
+427
+00:26:21,483 --> 00:26:26,560
+até que eu esgotasse
+completamente essa hierarquia
+
+428
+00:26:26,560 --> 00:26:30,387
+e então eu botaria a
+próxima função pública bem aí
+
+429
+00:26:31,932 --> 00:26:34,350
+eu posso entender se
+vc não quizer fazer isso
+
+430
+00:26:34,350 --> 00:26:39,630
+é um pouco de um dilema para mim
+
+431
+00:26:40,578 --> 00:26:43,920
+se quizer colocar todos os na frente
+
+432
+00:26:43,920 --> 00:26:47,150
+e depois expandir as árvores
+
+433
+00:26:47,150 --> 00:26:51,593
+eu posso entender. Não é a escolha
+que eu fiz até o momento
+
+434
+00:26:52,264 --> 00:26:56,067
+agora irei desfazer todo
+esse trabalho de identação
+
+435
+00:26:56,320 --> 00:26:58,812
+e mostrar como isso realmente se parece
+
+436
+00:26:59,778 --> 00:27:02,030
+veja o quanto de informação foi perdida
+
+437
+00:27:03,021 --> 00:27:06,160
+vc não consegue dizer onde essas funções pertecem
+
+438
+00:27:06,178 --> 00:27:08,147
+eu gostaria que pudessemos
+
+439
+00:27:08,730 --> 00:27:15,175
+eu gostaria que houvesse alguma ação
+que pudessemos fazer em nossas IDEs
+
+440
+00:27:15,766 --> 00:27:20,320
+ou nossa linguagem, que pudessemos
+dizer que uma função é filha de outra
+
+441
+00:27:21,544 --> 00:27:26,756
+vc pode pensar que se vc tem uma funçao filha de outra
+
+442
+00:27:26,756 --> 00:27:29,556
+isso não significa que vc tem uma classe separada?
+
+443
+00:27:29,556 --> 00:27:35,495
+neste caso, não. estas funções
+pequenas compartilham as mesmas variáveis
+
+444
+00:27:35,495 --> 00:27:41,144
+elas são realmente procedimentos filhos, não classes filhas
+
+445
+00:27:41,575 --> 00:27:43,833
+então, isso é a regra da descida.
+
+446
+00:27:43,833 --> 00:27:46,320
+todas funções estão na ordem apropriada
+
+447
+00:27:46,320 --> 00:27:49,883
+vc consegue ler facilmente do topo
+
+448
+00:27:50,621 --> 00:27:52,141
+para a função serve
+
+449
+00:27:52,141 --> 00:27:56,566
+depois para a tryProcessInstructions
+
+450
+00:27:56,566 --> 00:27:58,566
+depois para initialize e assim por diante
+
+451
+00:27:59,876 --> 00:28:01,563
+uma última coisa...
+
+452
+00:28:01,563 --> 00:28:06,276
+perceba a forma que construímos os blocos try
+
+453
+00:28:06,276 --> 00:28:10,584
+perceba que os blocos try chama apenas uma única função
+
+454
+00:28:12,073 --> 00:28:16,670
+iremos falar sobre isso em um segmento posterior
+
+455
+00:28:23,292 --> 00:28:26,400
+switches e cases
+
+456
+00:28:27,095 --> 00:28:30,861
+vamos discutir sobre switch-cases
+
+457
+00:28:31,052 --> 00:28:34,787
+-isso é algo que me marcou a muito tempo atrás
+
+458
+00:28:35,729 --> 00:28:40,701
+-eles sempre diziam que switch-cases são
+oportunidades perdidas de se usar polimorfismo
+
+459
+00:28:41,698 --> 00:28:44,633
+-é eu não faço
+
+460
+00:28:44,633 --> 00:28:47,175
+-eu não acho que há uma regra, eu só não uso frequentemente
+
+461
+00:28:48,596 --> 00:28:51,735
+-não diria que tenho uma regra, eu só não uso eles
+
+462
+00:28:52,240 --> 00:28:54,621
+pq odiamos tanto switch-cases?
+
+463
+00:28:54,621 --> 00:28:57,600
+o que há por trás dessa repugnância?
+
+464
+00:28:58,504 --> 00:29:00,203
+existem várias explicações
+
+465
+00:29:00,203 --> 00:29:04,172
+algumas pessoas dizem que switch-cases não são O.O.
+
+466
+00:29:04,172 --> 00:29:06,670
+não é orientado a objetos
+
+467
+00:29:07,095 --> 00:29:09,181
+não é uma resposta muito satisfatória
+
+468
+00:29:09,181 --> 00:29:11,993
+por que não são orientado a objeto ?
+
+469
+00:29:11,993 --> 00:29:15,526
+e é importante que não são orientado a objeto?
+
+470
+00:29:15,526 --> 00:29:20,356
+e é realmente verdade que não gostamos de switch-cases?
+
+471
+00:29:21,464 --> 00:29:25,273
+é, realmente é vedade que não gostamos
+
+472
+00:29:25,273 --> 00:29:29,255
+e a razão tem a ver com o fato de não serem O.O.
+
+473
+00:29:29,384 --> 00:29:31,255
+mas pq não são O.O.?
+
+474
+00:29:31,255 --> 00:29:35,101
+e o que é tão bom em O.O., afinal?
+
+475
+00:29:35,940 --> 00:29:42,843
+em um próximo episódio iremos discutir
+uma definição final e indiscutível de O.O.
+
+476
+00:29:42,996 --> 00:29:47,144
+para este momento, vou apenas dizer que
+um dos grandes benefícios de O.O.
+
+477
+00:29:47,144 --> 00:29:49,938
+é a habilidade de gerenciar dependências
+
+478
+00:29:49,938 --> 00:29:53,206
+imagine por exemplo, que temos dois módulos
+
+479
+00:29:53,206 --> 00:29:55,600
+módulo A e módulo B
+
+480
+00:29:56,153 --> 00:29:59,956
+vamos imaginar tbem que modulo A tem uma função
+
+481
+00:29:59,956 --> 00:30:02,984
+que chama uma função do módulo B
+
+482
+00:30:02,984 --> 00:30:07,883
+isso quer dizer que há uma
+dependência do módulo A para o módulo B
+
+483
+00:30:09,612 --> 00:30:12,553
+essa dependência tem 2 componentes
+
+484
+00:30:12,923 --> 00:30:15,433
+claramente, em modo de execução
+
+485
+00:30:15,433 --> 00:30:18,073
+módulo A depende de módulo B
+
+486
+00:30:18,070 --> 00:30:20,412
+existe então, uma dependência em modo de execução
+
+487
+00:30:20,849 --> 00:30:22,529
+mas existe outra dependência
+
+488
+00:30:23,027 --> 00:30:25,286
+o código fonte do módulo A
+
+489
+00:30:25,286 --> 00:30:29,901
+em linguagens como JAVA, c# e c++
+
+490
+00:30:29,987 --> 00:30:32,676
+devem contem alguma declaração
+
+491
+00:30:32,676 --> 00:30:35,784
+como import, include ou using
+
+492
+00:30:35,784 --> 00:30:38,695
+que se refere ao módulo B
+
+493
+00:30:38,855 --> 00:30:42,830
+é essa dependência no código
+fonte que estamos interessados
+
+494
+00:30:44,313 --> 00:30:48,627
+e se vc quizer publicar
+módulo A e B separadamente ?
+
+495
+00:30:48,707 --> 00:30:53,101
+por exemplo: o se o módulo B
+fosse um plugin do módulo A?
+
+496
+00:30:53,347 --> 00:30:57,310
+se o módulo A tem uma dependência
+no código fonte do módulo B
+
+497
+00:30:57,310 --> 00:30:59,907
+então os 2 não podem ser publicados separadamente
+
+498
+00:30:59,907 --> 00:31:02,578
+eles não podem nem ser compilados separadamente
+
+499
+00:31:02,578 --> 00:31:09,009
+qualquer alteraçao no módulo B irá
+forçar um re-build e re-deploy do módulo A
+
+500
+00:31:11,009 --> 00:31:14,086
+OO nos permite fazer algo espetacular
+
+501
+00:31:14,086 --> 00:31:17,009
+nós podemos inverter essa dependência de código-fonte
+
+502
+00:31:17,009 --> 00:31:19,963
+e ainda assim deixar a dependência
+de modo de execuçao inalterada
+
+503
+00:31:19,963 --> 00:31:21,858
+veja como fazemos isso
+
+504
+00:31:22,135 --> 00:31:28,996
+nós removemos a dependencia original e
+inserimos uma interface polimórfica
+
+505
+00:31:30,529 --> 00:31:37,181
+módulo A depende da interface,
+módulo B deriva dessa interface
+
+506
+00:31:37,796 --> 00:31:40,584
+isso altera a dependência do código fonte
+
+507
+00:31:40,584 --> 00:31:43,415
+a dependência aponto agora para essa direção
+
+508
+00:31:43,415 --> 00:31:46,683
+pelo menos para o ponto de vista do B
+
+509
+00:31:46,904 --> 00:31:52,424
+então B aponta contra a a
+dependência do modo de execução
+
+510
+00:31:52,720 --> 00:31:58,510
+a dependencia do código fonte
+aponta contra o fluxo de controle
+
+511
+00:31:58,510 --> 00:32:01,833
+se opõe ao fluxo de controle
+
+512
+00:32:03,076 --> 00:32:07,790
+e isso permite que o módulo A e B
+sejam publicados separadamente
+
+513
+00:32:07,790 --> 00:32:10,313
+módulo B pode plugar em A
+
+514
+00:32:10,313 --> 00:32:14,843
+de fato, pode haver vários módulos B
+diferentes que podem plugar em A
+
+515
+00:32:14,843 --> 00:32:17,243
+cada um fazendo coisas interessantes
+
+516
+00:32:17,243 --> 00:32:20,560
+e o código fonde de A não tem
+nenhum conhecimento sobre eles
+
+517
+00:32:21,673 --> 00:32:25,396
+e isso é apenas uma das
+coisas que é tão bom em O.O.
+
+518
+00:32:25,396 --> 00:32:27,987
+implantabilidade independente
+
+519
+00:32:29,058 --> 00:32:33,790
+switch-cases é a antítese de
+implantabilidade independente
+
+520
+00:32:34,369 --> 00:32:41,304
+cada case do switch provavelmente terá
+uma dependência em um módulo externo
+
+521
+00:32:41,304 --> 00:32:46,449
+quando tem muitos cases, terá muitas dependências externas
+
+522
+00:32:46,449 --> 00:32:49,649
+nos chamamos isso de problema de fan-out
+
+523
+00:32:50,529 --> 00:32:52,258
+em um switch-case
+
+524
+00:32:52,258 --> 00:32:57,440
+a dependencia do código-fonde aponta
+para mesma direção do fluxo de controle
+
+525
+00:32:57,870 --> 00:33:02,504
+isso significa que o switch-case
+depende de todos os módulos debaixo
+
+526
+00:33:02,898 --> 00:33:06,350
+se qualquer um desses módulos debaixo muda
+
+527
+00:33:06,350 --> 00:33:11,107
+terá um impacto no switch e qualquer
+um que dependa do switch
+
+528
+00:33:11,446 --> 00:33:14,670
+e isso significa que se isso muda
+
+529
+00:33:14,670 --> 00:33:22,030
+o switch e a aplicação que depende dela,
+provavelmente terá que ser recompilada e republicada
+
+530
+00:33:22,332 --> 00:33:27,150
+em outras palavra, o switch-case
+cria um nó de dependências
+
+531
+00:33:27,150 --> 00:33:31,452
+que torna publicação independente impossível
+
+532
+00:33:32,787 --> 00:33:36,516
+quando vemos um switch-case, temos duas opções:
+
+533
+00:33:36,516 --> 00:33:45,101
+a primeira opção é inverter a dependência com
+polimorfismo como fizemos no último episódio
+
+534
+00:33:45,532 --> 00:33:51,033
+a outra opção é remover o switch-case, para
+outro lugar que não cause nenhum dano
+
+535
+00:33:52,707 --> 00:33:57,280
+como vimos no exemplo da locadora, não é tão difícil
+
+536
+00:33:57,280 --> 00:34:00,135
+substituir switch-case com polimorfismo
+
+537
+00:34:00,523 --> 00:34:05,532
+o truque é pegar o argumento do switch
+que é um tipo de código compacto
+
+538
+00:34:05,532 --> 00:34:13,440
+e substituir por uma classe abstrata base
+que contem o método usado no switch
+
+539
+00:34:13,796 --> 00:34:18,984
+então cada case do switch se
+torna uma classe derivada
+
+540
+00:34:18,984 --> 00:34:22,572
+que implementa aquele método
+que faz o que  case fazia
+
+541
+00:34:23,723 --> 00:34:26,824
+note que a dependência em runtime
+
+542
+00:34:26,824 --> 00:34:29,710
+o fluxo de controle se mantem o mesmo
+
+543
+00:34:29,710 --> 00:34:33,581
+ainda corre para baixo em direção aos métodos do case
+
+544
+00:34:33,704 --> 00:34:37,212
+mas agora a dependência do
+código-fonte foi invertida
+
+545
+00:34:37,212 --> 00:34:40,209
+pq os métodos do case vivem em subtipos
+
+546
+00:34:40,209 --> 00:34:44,640
+e esses subtipos dependem
+para cima, na classe abstrata
+
+547
+00:34:45,729 --> 00:34:47,667
+a única coisa que temos que fazer agora
+
+548
+00:34:47,667 --> 00:34:51,766
+é descobrir onde e quando criar essas instâncias
+
+549
+00:34:51,932 --> 00:34:54,947
+tipicamente fazemos isso
+com algum tipo de Factory
+
+550
+00:34:55,556 --> 00:35:00,061
+e isso traz um tópico interessante sobre Main
+
+551
+00:35:01,803 --> 00:35:04,338
+em toda aplicação que vc escreve
+
+552
+00:35:04,338 --> 00:35:07,255
+vc deve ser capaz de desenhar uma linha
+
+553
+00:35:07,335 --> 00:35:09,476
+através do diagrama do módulo
+
+554
+00:35:09,476 --> 00:35:14,123
+que separa o núcleo central da aplicação
+
+555
+00:35:14,123 --> 00:35:16,381
+dos detalhes de baixo nível
+
+556
+00:35:16,695 --> 00:35:20,633
+do lado esquerdo, temos a partição da aplicação
+
+557
+00:35:20,633 --> 00:35:24,572
+aqui é onde a maioria do
+código da aplicação vive
+
+558
+00:35:24,935 --> 00:35:31,704
+mas do lado direito temos coisas de baixo
+nível como factories, configuração de dados
+
+559
+00:35:31,760 --> 00:35:35,316
+e neste lado, temos o programa main
+
+560
+00:35:35,704 --> 00:35:40,080
+então eu chamo essa partição de partição main
+
+561
+00:35:41,249 --> 00:35:46,726
+a partição da aplicação geralmente é
+subdividida em um monte de diferentes módulos
+
+562
+00:35:46,898 --> 00:35:49,747
+mas a partição main deve ser mantida pequena
+
+563
+00:35:49,815 --> 00:35:52,123
+e subdivisão deve ser limitada
+
+564
+00:35:53,089 --> 00:35:59,021
+as dependência entre essas duas partições
+devem apontar para somente uma direção
+
+565
+00:35:59,341 --> 00:36:03,175
+elas devem cruzar a linha apontando
+para frente da aplicação
+
+566
+00:36:03,575 --> 00:36:06,689
+a partição main deve depender da aplicação
+
+567
+00:36:06,689 --> 00:36:10,695
+a partição da aplicação não deve
+ter nenhuma denpencia com main
+
+568
+00:36:10,855 --> 00:36:14,529
+em essência, main é um plugin para a aplicação
+
+569
+00:36:16,215 --> 00:36:19,064
+isso é uma técnica chamada
+de injeção de dependência
+
+570
+00:36:19,064 --> 00:36:21,495
+e existe vários frameworks
+que nos ajudam com isso
+
+571
+00:36:21,766 --> 00:36:25,255
+de fato, alguns devs usam
+exageradamente esses frameworks
+
+572
+00:36:25,255 --> 00:36:29,630
+eles constroem um ninho de ratos
+com arquivos xmls, arquivos config
+
+573
+00:36:29,630 --> 00:36:32,104
+ao invés de dependerem de
+um bom particionamento
+
+574
+00:36:33,840 --> 00:36:36,104
+o truque para injeção de dependência ?
+
+575
+00:36:39,335 --> 00:36:42,923
+definir cuidadosamente
+e manter seu particionamento
+
+576
+00:36:43,458 --> 00:36:45,286
+vai em frente e use o framework
+
+577
+00:36:45,286 --> 00:36:51,618
+mas somente injete alguns pontos de
+entrada do main para o resto da aplicação
+
+578
+00:36:51,618 --> 00:36:56,393
+e depois deixe main fazer o resto
+do trabalho com Factories e Strategies
+
+579
+00:36:57,809 --> 00:37:02,283
+Switch-cases que permanecem no main,
+geralmente não causam nenhum mal
+
+580
+00:37:02,283 --> 00:37:06,393
+desde que os cases fiquem aqui na main
+
+581
+00:37:06,393 --> 00:37:11,556
+e desde que todas as dependencia
+cruzem a linha em direção a aplicação
+
+582
+00:37:11,556 --> 00:37:16,086
+então qualquer coisa que aconteça na
+aplicação não pode afetar a partição main
+
+583
+00:37:16,227 --> 00:37:19,895
+e assim a partição main, permanece
+independentemente implantável
+
+584
+00:37:19,895 --> 00:37:22,683
+e os switch-cases aqui, não causam nenhum mal
+
+585
+00:37:24,240 --> 00:37:27,544
+switch-cases dentro do main é seguro
+
+586
+00:37:27,544 --> 00:37:29,963
+pq particionamos main
+
+587
+00:37:29,963 --> 00:37:32,633
+para ser um plugin
+independentemente implantável
+
+588
+00:37:32,633 --> 00:37:35,932
+todas as dependências do código-fonte
+apontam para direção correta
+
+589
+00:37:36,203 --> 00:37:39,889
+e de fato, isso é verdadeiro para qualquer
+módulo independentemente implantável
+
+590
+00:37:39,889 --> 00:37:42,984
+switch-cases nestes modulos estão seguros
+
+591
+00:37:42,984 --> 00:37:47,464
+contanto que todas as dependências do
+código-fonte apontem para direção correta
+
+592
+00:37:48,861 --> 00:37:53,200
+se sua aplicação é composta por
+plugins inplantáveis independentemente
+
+593
+00:37:53,200 --> 00:37:54,560
+e deveria ser
+
+594
+00:37:55,236 --> 00:38:00,036
+então todos esses plugins devem
+conhecer o núcleo central da aplicação
+
+595
+00:38:00,036 --> 00:38:04,129
+e o núcleo central não devem
+saber de nada sobre os plugins
+
+596
+00:38:04,129 --> 00:38:10,892
+toda dependência do código-fonte deve
+apontarde dentro dos plugins para o núcleo
+
+597
+00:38:10,892 --> 00:38:16,276
+nenhuma dependencia de software deve
+apontar de fora do núcleo para os plugins
+
+598
+00:38:17,286 --> 00:38:19,587
+switch-cases e plugins não causam dano
+
+599
+00:38:19,587 --> 00:38:22,553
+contanto que as dependências
+apontem para a direção correta
+
+600
+00:38:22,553 --> 00:38:24,923
+e os plugins estão isolados
+
+601
+00:38:24,923 --> 00:38:28,270
+mas e se os plugins tiverem
+seus próprios plugins ?
+
+602
+00:38:29,526 --> 00:38:31,809
+na maioria das aplicações bem escritas
+
+603
+00:38:31,809 --> 00:38:36,633
+a linha entre aplicação e plugin é tênue
+
+604
+00:38:36,633 --> 00:38:41,076
+ainda existe uma partição
+main que é independentemente implantável
+
+605
+00:38:41,403 --> 00:38:46,030
+mas os outros módulos do sistema
+formam uma espécie de quebra-cabeça
+
+606
+00:38:46,030 --> 00:38:49,101
+de módulos que se plugam entre si
+
+607
+00:38:49,101 --> 00:38:53,089
+por exemplo: módulo A se pluga no módulo B
+
+608
+00:38:53,089 --> 00:38:55,889
+módulo B se pluga no módulo C
+
+609
+00:38:55,889 --> 00:38:59,255
+e módulo C se pluga de volta com módulo A
+
+610
+00:38:59,501 --> 00:39:02,406
+estes não são plugins isolados
+
+611
+00:39:02,406 --> 00:39:04,332
+então temos que ser cuidadosos
+
+612
+00:39:04,332 --> 00:39:07,341
+sobre como implantamos switch-cases dentro deles
+
+613
+00:39:08,596 --> 00:39:10,960
+o objetivo de todo esse particionamento
+
+614
+00:39:11,040 --> 00:39:16,024
+é criar um sistema composto de
+módulos independentemente implantáveis
+
+615
+00:39:17,612 --> 00:39:21,446
+é claro que a muitos sistemas
+não são independentemente publicados
+
+616
+00:39:21,440 --> 00:39:26,049
+de fato, na maioria dos casos juntamos
+um monte de módulos em um único arquivo
+
+617
+00:39:26,049 --> 00:39:28,338
+e lançamos como uma unidade inteira
+
+618
+00:39:28,750 --> 00:39:32,129
+mas isso não significa que não
+queremos implantação independente
+
+619
+00:39:32,627 --> 00:39:36,012
+um sistema que é independentemente inplantável
+
+620
+00:39:36,295 --> 00:39:39,347
+é também independentemente desenvolvido
+
+621
+00:39:40,763 --> 00:39:42,984
+quando tempos uma estrutura de plugins
+
+622
+00:39:43,070 --> 00:39:46,473
+então os times de desenvolvimento
+trabalhando nesses módulos plugáveis
+
+623
+00:39:46,473 --> 00:39:48,240
+podem trabalhar independentemente
+
+624
+00:39:48,240 --> 00:39:53,587
+pq a estrutura de plugins torna pouco
+provável que os times irão se interferir
+
+625
+00:39:54,295 --> 00:39:59,335
+de outro lado, um switch-case que
+estraga essa estrutura de plugins
+
+626
+00:39:59,335 --> 00:40:02,978
+também estraga o desenvolvimento independente
+
+627
+00:40:02,978 --> 00:40:06,129
+agora os times irão colidir entre si
+
+628
+00:40:08,233 --> 00:40:11,587
+teremos mais o que dizer sobre
+isso em um episódio futuro
+
+629
+00:40:11,587 --> 00:40:13,858
+por enquanto, apenas lembrem-se
+
+630
+00:40:13,858 --> 00:40:18,424
+switch-cases quebra a estrutura de plugins
+que desejamos para nossas aplicações
+
+631
+00:40:18,640 --> 00:40:24,209
+e introduzem um impedimento significativo
+para o desenvolvimento independente
+
+632
+00:40:26,000 --> 00:40:34,387
+ah, e a propósito, cadeias grandes de if elses
+tem o mesmo problema de fan-out
+
+633
+00:40:34,732 --> 00:40:39,710
+então, certifiquem-se de substituir a maioria com polimorfismo
+
+634
+00:40:39,827 --> 00:40:45,107
+e mova o resto para um módulo seguro e independente
+
+635
+00:40:50,498 --> 00:40:53,532
+Paradigmas
+
+636
+00:40:54,406 --> 00:40:56,000
+nos últimos 15 anos
+
+637
+00:40:56,000 --> 00:40:59,341
+vimos inúmeras revoluções
+na indústria de software
+
+638
+00:40:59,526 --> 00:41:02,566
+algumas delas são
+modas que vem e vão
+
+639
+00:41:02,756 --> 00:41:07,076
+mas 3 delas tem sido persistente e profunda
+
+640
+00:41:07,673 --> 00:41:09,027
+a funcional
+
+641
+00:41:09,353 --> 00:41:10,190
+estruturada
+
+642
+00:41:10,190 --> 00:41:12,498
+e orientada a objetos
+
+643
+00:41:13,046 --> 00:41:17,864
+no último segmento demos uma olhada superficial
+no paradigma de orientaçao à objetos
+
+644
+00:41:18,160 --> 00:41:21,409
+neste segmento também daremos uma olhada superficial
+
+645
+00:41:21,409 --> 00:41:24,098
+nos paradigmas funcional e estruturado
+
+646
+00:41:24,098 --> 00:41:28,683
+episódios futuros irão lidar
+com esses tópicos com mais detalhe
+
+647
+00:41:29,815 --> 00:41:33,341
+Programação Funcional
+
+648
+00:41:34,166 --> 00:41:38,080
+programação funcional, foi o
+primeiro paradigmas inventado
+
+649
+00:41:38,350 --> 00:41:43,169
+podemos rastrear seu nascimento
+em 1957 com advento do LISP
+
+650
+00:41:43,335 --> 00:41:46,898
+ironicamente, foi um dos últimos
+paradigmas a se tornar popular
+
+651
+00:41:48,055 --> 00:41:49,950
+o que é programação funcional?
+
+652
+00:41:50,461 --> 00:41:53,040
+-vc não pode mudar o estado das variáveis
+
+653
+00:41:53,064 --> 00:41:54,621
+-não existe efeitos colaterais
+
+654
+00:41:55,206 --> 00:41:58,738
+-programação funcional é a nova moda
+
+655
+00:41:58,738 --> 00:42:03,040
+-ouvi dizer que é a nova moda do momento
+
+656
+00:42:04,307 --> 00:42:05,433
+-é bem divertido
+
+657
+00:42:06,830 --> 00:42:10,196
+programação funcional pode
+parecer bem radical no começo
+
+658
+00:42:10,196 --> 00:42:13,624
+se nunca pesquisou sobre, acho que ficaria surpreso
+
+659
+00:42:13,624 --> 00:42:18,640
+e vc pode até ficar cético de que é
+possível escrever programas dessa forma
+
+660
+00:42:18,640 --> 00:42:24,683
+programação funcional nos diz para
+escrever funções sem declaração de atributos
+
+661
+00:42:27,058 --> 00:42:29,298
+sem declaração de atributos ?
+
+662
+00:42:29,298 --> 00:42:31,920
+isso pode parecer um absurdo e irracional
+
+663
+00:42:31,920 --> 00:42:34,320
+mas de fato, é perfeitamente possível
+
+664
+00:42:34,320 --> 00:42:36,824
+e é até fácil quando vc pega o jeito
+
+665
+00:42:37,120 --> 00:42:40,996
+ao invés de setar um monte de valores em variáveis
+
+666
+00:42:40,996 --> 00:42:45,230
+vc passa esses valores como argumentos em funções
+
+667
+00:42:45,230 --> 00:42:48,578
+ao invés de iterar um conjunto de variáveis
+
+668
+00:42:48,578 --> 00:42:52,560
+vc recorre através de um conjunto de argumento de função
+
+669
+00:42:55,353 --> 00:42:57,052
+o resultado é
+
+670
+00:42:57,052 --> 00:43:01,458
+que uma função em programação funcional
+é uma verdadeira função matemática
+
+671
+00:43:02,104 --> 00:43:04,873
+-vc chama funções que sempre
+retornam o mesmo valor
+
+672
+00:43:05,372 --> 00:43:06,338
+-se vc dá o mesmo input
+
+673
+00:43:06,330 --> 00:43:07,138
+certo!
+
+674
+00:43:07,532 --> 00:43:11,138
+o valor da função depende
+somente dos argumentos de input
+
+675
+00:43:11,138 --> 00:43:13,298
+e não a qualquer estado do sistema
+
+676
+00:43:13,569 --> 00:43:16,843
+então toda vez que chama essa
+funçao com os mesmos inputs
+
+677
+00:43:16,843 --> 00:43:18,843
+vc recepe exatamente o mesmo output
+
+678
+00:43:19,353 --> 00:43:20,603
+-não há efeitos colaterais
+
+679
+00:43:21,400 --> 00:43:25,956
+e isso nos leva ao interessante tópico de: efeitos colaterais
+
+680
+00:43:27,107 --> 00:43:31,027
+Efeitos colaterrais
+
+681
+00:43:31,470 --> 00:43:35,926
+quando uma função muda uma variável
+que sobrevive a chamada
+
+682
+00:43:35,926 --> 00:43:39,790
+por exemplo: quando muda o estado
+de uma variável de instância
+
+683
+00:43:39,790 --> 00:43:42,904
+então essa função tem um efeito colateral
+
+684
+00:43:42,904 --> 00:43:46,658
+e esse efeito colateral pode
+alterar o comportamento dessa função
+
+685
+00:43:46,658 --> 00:43:49,649
+ou alguma outra função, na próxima vez que é chamada
+
+686
+00:43:50,129 --> 00:43:56,307
+esse tipo de ação assustadora à distancia
+é que deixa programas difíceis de enteder
+
+687
+00:43:56,307 --> 00:43:59,218
+e é uma fonte de persistente de erros
+
+688
+00:44:00,990 --> 00:44:04,283
+freqüentemente, funções de efeito colateral vem em pares
+
+689
+00:44:04,283 --> 00:44:05,932
+set/get
+
+690
+00:44:05,932 --> 00:44:07,501
+open/close
+
+691
+00:44:07,501 --> 00:44:11,649
+e é claro: new e delete
+
+692
+00:44:11,649 --> 00:44:15,975
+agora vc sabe pq chamo isso de
+fonte de persistente de erros.
+
+693
+00:44:16,769 --> 00:44:19,661
+as funçoes tem que ser chamadas em ordem
+
+694
+00:44:19,661 --> 00:44:22,141
+open deve ser chamada antes de close
+
+695
+00:44:22,141 --> 00:44:24,320
+new deve ser chamada antes de delete
+
+696
+00:44:24,781 --> 00:44:27,870
+e quando funções tem que ser chamadas em ordem
+
+697
+00:44:27,870 --> 00:44:30,787
+chamamos isso de acoplamento temporal
+
+698
+00:44:31,360 --> 00:44:38,295
+-acoplamento temporal é quando vc depende de uma coisa
+acontecer antes ou depois de outra coisa
+
+699
+00:44:38,295 --> 00:44:41,132
+-como toda vez que vc usa um banco de dados
+
+700
+00:44:41,132 --> 00:44:44,061
+-vc está acoplado ao fato que uma
+vez q abriu a conexão de banco
+
+701
+00:44:44,061 --> 00:44:47,956
+-vc vai fazer as suas coisas e
+depois vai fechar a conexão do banco
+
+702
+00:44:47,956 --> 00:44:51,064
+-então as coisas acontecem em uma ordem
+
+703
+00:44:51,064 --> 00:44:54,695
+-acoplamento temporal é quando
+a ordem das operações importam
+
+704
+00:44:54,824 --> 00:44:57,218
+-eu acho que é tipo aquele poder da mente
+
+705
+00:44:57,218 --> 00:44:58,436
+-ah.. igual o Spock?
+
+706
+00:44:58,769 --> 00:45:03,132
+-acoplamento temporal... igual lobo temporal
+
+707
+00:45:03,132 --> 00:45:04,449
+-sei... ok
+
+708
+00:45:05,852 --> 00:45:09,224
+-vc com certeza já enfrentou os
+problemas de acoplamento temporal
+
+709
+00:45:09,224 --> 00:45:10,935
+todo mundo já enfrentou
+
+710
+00:45:11,206 --> 00:45:13,101
+vc tem alguma falha de sistema
+
+711
+00:45:13,101 --> 00:45:14,880
+e a razão pela qual o sistema está falhando
+
+712
+00:45:14,880 --> 00:45:18,516
+é pq 2 funçoes foram chamadas fora de ordem
+
+713
+00:45:18,941 --> 00:45:22,055
+e geralmente não é tão simples como open e close
+
+714
+00:45:22,055 --> 00:45:26,873
+vc pode olhar para open e close e perceber
+o  acomplamento temporal entre eles
+
+715
+00:45:26,873 --> 00:45:30,763
+mas na maioria dos sistemas os
+acoplamentos temporais estão escondidos
+
+716
+00:45:30,763 --> 00:45:32,412
+eles fazem parte do plano de fundo
+
+717
+00:45:32,412 --> 00:45:36,073
+vc olha para 2 funções que devem
+ser chamadas em uma certa ordem
+
+718
+00:45:36,073 --> 00:45:39,255
+e não consegue explicar o porquê
+
+719
+00:45:39,255 --> 00:45:42,006
+só sabe que o sistema falha se não o fizer
+
+720
+00:45:43,113 --> 00:45:44,873
+vc pode eliminar o acoplamento temporal?
+
+721
+00:45:45,329 --> 00:45:46,584
+geralmente vc pode
+
+722
+00:45:46,978 --> 00:45:48,529
+imagine esse caso aqui
+
+723
+00:45:48,529 --> 00:45:51,101
+é o caso do open e close
+
+724
+00:45:51,101 --> 00:45:53,938
+o problema do open é que tem um efeito colateral
+
+725
+00:45:53,938 --> 00:45:56,498
+ele deixa o sistema em um estado de mudança
+
+726
+00:45:56,498 --> 00:45:58,400
+ele deixa o arquivo aberto
+
+727
+00:45:58,400 --> 00:46:01,033
+e se implementarmos open dessa forma
+
+728
+00:46:01,033 --> 00:46:05,489
+open recebe um de seus argumentos: fileCommand
+
+729
+00:46:05,489 --> 00:46:07,944
+depois open vai abrir o arquivo
+
+730
+00:46:08,252 --> 00:46:10,756
+vai acessar o arquivo
+
+731
+00:46:10,756 --> 00:46:13,200
+e depois irá fechar o arquivo
+
+732
+00:46:13,200 --> 00:46:16,443
+isso deixa o sistema no mesmo estado de antes
+
+733
+00:46:16,443 --> 00:46:18,455
+e elimina o acoplamento temporal
+
+734
+00:46:18,781 --> 00:46:22,769
+essa é uma técnica chamada "passando o bloco"
+
+735
+00:46:24,640 --> 00:46:27,440
+toda vez que tem um par de acoplamento temporal
+
+736
+00:46:27,440 --> 00:46:29,643
+como open e close
+
+737
+00:46:30,067 --> 00:46:33,464
+vc pode resolver o acoplamento temporal passando um bloco"
+
+738
+00:46:33,827 --> 00:46:36,996
+vc esconde a segunda função dentro da primeira
+
+739
+00:46:37,353 --> 00:46:40,024
+então vc passa o camando para a primeira
+
+740
+00:46:40,024 --> 00:46:44,203
+e a primeira irá executar open ou a função
+
+741
+00:46:44,203 --> 00:46:48,652
+depois executa o bloco e então irá executar o close
+
+742
+00:46:49,033 --> 00:46:52,024
+isso garante que tudo permanece consistente
+
+743
+00:46:52,024 --> 00:46:55,218
+que as funções sempre são executadas na ordem certa
+
+744
+00:46:55,218 --> 00:46:59,396
+e há efeitos colaterais limitados
+
+745
+00:47:00,455 --> 00:47:02,818
+no fim, não podemos nos livrar
+de todos os efeitos colaterais
+
+746
+00:47:02,818 --> 00:47:04,775
+e de fato, não queremos isso
+
+747
+00:47:04,775 --> 00:47:07,200
+nós precisamos ser capazes de mudar arquivos
+
+748
+00:47:07,200 --> 00:47:09,458
+nós precisamos ser capazes de atualizar banco de dados
+
+749
+00:47:09,458 --> 00:47:12,086
+nós precisamos ser capazes de gerar outputs
+
+750
+00:47:12,086 --> 00:47:14,467
+tudo isso são efeitos colaterais
+
+751
+00:47:14,467 --> 00:47:16,646
+e são efeitos colaterais desejáveis
+
+752
+00:47:16,646 --> 00:47:19,716
+então nosso objetivo não é eliminar efeitos colaterais
+
+753
+00:47:19,716 --> 00:47:25,212
+nosso objetivo é impor disciplina sobre
+quando e onde esses efeitos colaterais acontecem
+
+754
+00:47:27,212 --> 00:47:30,276
+Separaçao de comando e consulta
+
+755
+00:47:31,569 --> 00:47:35,329
+uma disciplina de muito sucesso
+para gerenciar efeitos colaterais
+
+756
+00:47:35,384 --> 00:47:39,686
+é criar uma separação forte entre comandos e consultas
+
+757
+00:47:40,123 --> 00:47:44,006
+neste contexto, um comando altera o estado do sistema
+
+758
+00:47:44,006 --> 00:47:45,741
+tem um efeito colateral
+
+759
+00:47:45,741 --> 00:47:47,507
+uma consulta não altera
+
+760
+00:47:47,507 --> 00:47:50,898
+uma consulta retorna o valor de uma computação
+
+761
+00:47:50,898 --> 00:47:52,898
+ou o estado do sistema
+
+762
+00:47:53,273 --> 00:47:56,560
+um comando, muda o estado do sistema
+
+763
+00:47:56,560 --> 00:47:58,166
+e retorna nada
+
+764
+00:48:00,110 --> 00:48:02,726
+os casos óbivos são os getters e setters
+
+765
+00:48:03,033 --> 00:48:04,627
+getters são consultas
+
+766
+00:48:04,627 --> 00:48:07,981
+vc nunca espera que alterem o estado do sistema
+
+767
+00:48:07,981 --> 00:48:10,744
+se chama uma função "getAmount"
+
+768
+00:48:10,744 --> 00:48:13,913
+vc espera ser possível chamá-la quando quizer
+
+769
+00:48:13,913 --> 00:48:17,009
+vc ficaria horrorizado se descobri-se mais tarde que
+
+770
+00:48:17,366 --> 00:48:20,227
+"getAmount" na verdade altera o estado do sistema
+
+771
+00:48:22,652 --> 00:48:27,169
+com a mesma razão, "SetAmount, claramente tem efeitos colaterais
+
+772
+00:48:27,169 --> 00:48:30,640
+estará envolvida com acoplamentos temporais
+
+773
+00:48:30,640 --> 00:48:34,861
+mas o que espera que "SetAmount" retorne ?
+
+774
+00:48:34,929 --> 00:48:36,603
+vc pode inventar alguma coisa, é claro.
+
+775
+00:48:36,603 --> 00:48:40,498
+mas não há um valor claro que vc espera
+
+776
+00:48:42,283 --> 00:48:45,630
+separação de comando e consulta formaliza isso
+
+777
+00:48:45,920 --> 00:48:50,966
+ela diz q funções que mudam estado,
+não devem retornar valores
+
+778
+00:48:50,966 --> 00:48:54,578
+funções que retornam valores, não devem mudar estado
+
+779
+00:48:55,747 --> 00:48:59,452
+isso pode soar meio bobo e arbitrário no começo
+
+780
+00:48:59,452 --> 00:49:02,744
+mas há de fato, algumas vantagens distintas
+
+781
+00:49:04,449 --> 00:49:05,981
+as vantagens são:
+
+782
+00:49:05,981 --> 00:49:10,609
+que é fácil de reconhecer se uma
+funçao tem efeitos colaterais ou não
+
+783
+00:49:10,609 --> 00:49:12,923
+uma função que retorna um valor
+
+784
+00:49:12,923 --> 00:49:14,424
+não tem efeitos colaterais
+
+785
+00:49:14,424 --> 00:49:15,876
+é uma consulta
+
+786
+00:49:15,876 --> 00:49:17,809
+uma função que retorna vazio
+
+787
+00:49:17,809 --> 00:49:19,070
+tem efeitos colaterais
+
+788
+00:49:20,892 --> 00:49:23,206
+vamos olhar isso de outra forma
+
+789
+00:49:23,716 --> 00:49:25,378
+de uma olhada nessa chamada
+
+790
+00:49:25,809 --> 00:49:29,280
+claramente isso muda o estado do sistema
+
+791
+00:49:29,280 --> 00:49:32,972
+o authorizer criou um novo login de usuário
+
+792
+00:49:33,507 --> 00:49:36,578
+mas o authorizer voltou o usuário de volta para vc
+
+793
+00:49:36,578 --> 00:49:38,283
+o que vc deveria fazer com isso ?
+
+794
+00:49:38,283 --> 00:49:40,024
+deveria gerenciá-lo ?
+
+795
+00:49:40,024 --> 00:49:43,612
+vc está agora de frente com um grande acoplamento temporal ?
+
+796
+00:49:43,612 --> 00:49:47,655
+vc é aquele que deveria chamar o
+logout desse usuário  em algum momento?
+
+797
+00:49:48,541 --> 00:49:52,227
+não acha que o authorizer deveria manter o controle sobre o user?
+
+798
+00:49:52,227 --> 00:49:55,273
+não acha que o authorizer deveria gerenciá-lo?
+
+799
+00:49:55,273 --> 00:49:57,747
+vc não deveria ser capaz de fazer isso ?
+
+800
+00:49:57,747 --> 00:50:02,941
+e se vc pode, então por que o authorizer
+passa o user de volta para vc ?
+
+801
+00:50:02,941 --> 00:50:06,301
+por que a função de login retorna o user ?
+
+802
+00:50:07,766 --> 00:50:14,135
+talvez retorna o user para poder
+retornar null caso o login falhe...
+
+803
+00:50:14,135 --> 00:50:18,689
+muitas vezes somos tentados a retornar
+algum tipo de erro como esse
+
+804
+00:50:18,689 --> 00:50:22,043
+para meus comandos, caso eles falhem em mudar estado
+
+805
+00:50:22,043 --> 00:50:24,855
+mas ao invés disso é melhor retornar uma exceção
+
+806
+00:50:24,855 --> 00:50:29,046
+mantendo a convenção que comandos retornam void
+
+807
+00:50:30,147 --> 00:50:33,556
+claro que threds múltiplas complicam as coisas
+
+808
+00:50:33,556 --> 00:50:38,756
+imagine por exemplo que temos uma
+funçao que altera o estado do sistema
+
+809
+00:50:38,756 --> 00:50:41,809
+mas também retorna o estado anterior
+
+810
+00:50:41,809 --> 00:50:45,304
+para que possamos salvar e restaurar depois
+
+811
+00:50:45,692 --> 00:50:51,735
+não queremos separar isso em 2 chamadas
+da forma que comandos e consultas fariam
+
+812
+00:50:51,735 --> 00:50:56,953
+pq não queremos que uma thread separada
+se encaixe entre essas duas chamadas
+
+813
+00:50:57,569 --> 00:51:02,430
+mas note como isso é similar
+com o problema de open e close
+
+814
+00:51:02,430 --> 00:51:05,975
+e se vc pensar sobre isso,
+vc pode resolver da mesma forma
+
+815
+00:51:05,975 --> 00:51:07,963
+passando um bloco
+
+816
+00:51:18,904 --> 00:51:21,175
+não confunda seus leitores
+
+817
+00:51:21,470 --> 00:51:23,095
+funções que retornam valores
+
+818
+00:51:23,095 --> 00:51:25,273
+não devem alterar estado
+
+819
+00:51:25,273 --> 00:51:27,526
+e funções que alteram estado
+
+820
+00:51:27,526 --> 00:51:31,735
+podem jogar exceptions, mas não devem retornar valores
+
+821
+00:51:33,649 --> 00:51:35,981
+diga, não peça
+
+822
+00:51:37,076 --> 00:51:39,975
+uma forma extrema de
+separação de comandos e consultas
+
+823
+00:51:39,975 --> 00:51:43,015
+nos diz para evitar consultas todas juntas
+
+824
+00:51:43,501 --> 00:51:46,910
+quão frequentemente vc já
+viu código que parece com esse ?
+
+825
+00:51:47,753 --> 00:51:52,024
+não seria melhore se usássemos exceçao, assim
+
+826
+00:51:53,230 --> 00:51:59,846
+e isso não seria melhor se deixassemos o
+user lidar inteiramente com o problema?
+
+827
+00:51:59,846 --> 00:52:04,972
+depois de tudo, é o objeto user que
+sabe se está logado ou não
+
+828
+00:52:04,972 --> 00:52:08,129
+esse estado pertence ao objeto user
+
+829
+00:52:08,120 --> 00:52:13,938
+pq iriamos extrair este estado
+e tomar decisões pelo user aqui
+
+830
+00:52:13,938 --> 00:52:16,566
+deveríamos deixar o user lidar com o problema
+
+831
+00:52:18,178 --> 00:52:21,095
+aquilo foi um exemplo de "diga, não peça"
+
+832
+00:52:21,550 --> 00:52:22,892
+o que é "diga, não peça?
+
+833
+00:52:23,735 --> 00:52:28,621
+-que vc deveria dizer a outros objetos pra
+fazer o trabalho deles e não pedir a eles
+
+834
+00:52:28,880 --> 00:52:31,913
+-eu não sei, eu não ando seguindo
+essa política ultimamente
+
+835
+00:52:31,910 --> 00:52:34,369
+de forma simples, "diga não peça"
+
+836
+00:52:34,369 --> 00:52:38,744
+é uma regra que nos aconselha a
+dizer à outros objetos o que fazer
+
+837
+00:52:38,740 --> 00:52:42,104
+e não pedir à objetos o estado deles
+
+838
+00:52:42,116 --> 00:52:44,898
+nunca queremos pedir à um objeto o seu estado
+
+839
+00:52:44,898 --> 00:52:48,184
+e depois tomar decisões em nome desse objeto
+
+840
+00:52:48,350 --> 00:52:52,769
+o objeto sabe seu próprio estado e
+pode tomar suas próprias decisões, obrigado
+
+841
+00:52:54,880 --> 00:52:59,938
+se dizemos à objetos o que devem fazer ao
+invés de pedir a eles sobre seus estados
+
+842
+00:52:59,938 --> 00:53:03,600
+então talvez não precisaríamos
+de tantas funçoes de consulta
+
+843
+00:53:03,600 --> 00:53:05,550
+e isso seria uma coisa boa
+
+844
+00:53:05,550 --> 00:53:10,184
+por que funções de consulta
+podem sair do controle bem rápido
+
+845
+00:53:11,575 --> 00:53:16,695
+tenho certeza que já viu grandes correntes
+de funçoes que se parecem com isso
+
+846
+00:53:16,695 --> 00:53:19,384
+chamamos isso de trem descarrilhado
+
+847
+00:53:19,384 --> 00:53:23,003
+pq se parecem com vagões parelhados juntos
+
+848
+00:53:23,003 --> 00:53:26,129
+eles são uma violação
+clara de "diga não peça"
+
+849
+00:53:26,129 --> 00:53:31,421
+pq nós g e pedimos e
+pedimos antes de dizer alguma coisa
+
+850
+00:53:32,570 --> 00:53:35,846
+não seria melhor assim ?
+
+851
+00:53:36,412 --> 00:53:39,876
+agora, nos livramos do problema
+
+852
+00:53:39,876 --> 00:53:41,920
+dizemos à "o" para fazer alguma coisa
+
+853
+00:53:41,920 --> 00:53:45,046
+e "o" tem que descobrir como chegar em "z"
+
+854
+00:53:45,046 --> 00:53:47,200
+"o" provavelmente também não sabe onde "z" está
+
+855
+00:53:47,200 --> 00:53:50,467
+mas "o" conhece alguem que pode dizer
+
+856
+00:53:50,460 --> 00:53:56,775
+e isso se propagará até eventualmente chegar em "z"
+
+857
+00:53:59,058 --> 00:54:02,892
+trens descarilhados, grandes correntes de consultas
+
+858
+00:54:02,892 --> 00:54:06,375
+viola algo chamado de Lei de Demeter
+
+859
+00:54:06,375 --> 00:54:08,000
+essa lei nos diz
+
+860
+00:54:08,000 --> 00:54:09,803
+que é uma má idéia
+
+861
+00:54:09,803 --> 00:54:14,960
+para uma única funçao saber a
+estrutura inteira de navegação do sistema
+
+862
+00:54:14,960 --> 00:54:19,280
+considere o quanto de conhecimento
+essa linha de código possuí
+
+863
+00:54:19,280 --> 00:54:23,526
+ela sabe que "o" tem um "x", que "x"tem um "y"
+
+864
+00:54:23,526 --> 00:54:27,735
+que "y"tem um "z" e que "z" pode fazer algo
+
+865
+00:54:27,920 --> 00:54:31,889
+é uma quantidade absurda de
+conhecimento para uma linha de código
+
+866
+00:54:31,889 --> 00:54:36,627
+e acopla muito as funções ao sistema inteiro
+
+867
+00:54:38,418 --> 00:54:42,886
+não queremos que nossas funçoes
+saibam muito sobre o sistema inteiro
+
+868
+00:54:42,886 --> 00:54:47,230
+funções individuais devem ter uma
+quantidade bem limitada de conhecimento
+
+869
+00:54:47,230 --> 00:54:52,276
+não queremos que uma função seja capaz de andar
+sobre a configuração inteira de banco de dados
+
+870
+00:54:52,276 --> 00:54:59,058
+não queremos que as funções ganhem acesso o
+mapa de objetos de todo o sistema
+
+871
+00:54:59,058 --> 00:55:02,670
+o que nós queremos, é dizer aos objetos vizinhos
+
+872
+00:55:02,670 --> 00:55:04,436
+o que nós precisamos que seja feito
+
+873
+00:55:04,436 --> 00:55:10,184
+e depender deles para propagar essa
+mensagem a fora para os destinos apropriados
+
+874
+00:55:11,643 --> 00:55:15,126
+A lei de Demeter, formaliza "diga, não peça"
+
+875
+00:55:15,126 --> 00:55:17,126
+com esse conjunto de regras
+
+876
+00:55:17,476 --> 00:55:22,252
+vc pode chamar os métodos de objetos, somente se esses objetos forem:
+
+877
+00:55:22,252 --> 00:55:24,135
+passados como argumentos
+
+878
+00:55:24,135 --> 00:55:26,775
+criado localmente para seu método
+
+879
+00:55:27,003 --> 00:55:31,206
+forem instancias de variáveis de classes do seu método
+
+880
+00:55:31,206 --> 00:55:33,280
+ou são globais
+
+881
+00:55:33,280 --> 00:55:35,981
+em particular, vc não pode
+
+882
+00:55:35,981 --> 00:55:42,092
+chamar métodos do objeto se esse objeto
+foi retornado do último método chamado
+
+883
+00:55:42,092 --> 00:55:45,852
+vc não quer essa cadeia de métodos
+
+884
+00:55:47,944 --> 00:55:49,753
+seguir essa regra é difícil
+
+885
+00:55:49,950 --> 00:55:54,707
+de fato, tem sido chamado de
+sugestão de Demeter, por ser tão difícil
+
+886
+00:55:54,707 --> 00:55:57,421
+mas os benefícios são óbvios
+
+887
+00:55:57,421 --> 00:55:59,501
+qualquer função que segue essa regra
+
+888
+00:55:59,501 --> 00:56:02,541
+qualquer função que diz ao invéz de pedir
+
+889
+00:56:02,541 --> 00:56:04,676
+é desacoplada dos seus arredores
+
+890
+00:56:05,852 --> 00:56:07,661
+sistemas biológicos
+
+891
+00:56:07,661 --> 00:56:10,535
+são um exemplo extremo de "diga não peça"
+
+892
+00:56:11,212 --> 00:56:14,104
+células fazem perguntas entre si
+
+893
+00:56:14,104 --> 00:56:16,338
+elas dizem a cada uma o que fazer
+
+894
+00:56:16,338 --> 00:56:21,538
+isso quer dizer que vc é um exemplo
+do sistema de "diga não peça"
+
+895
+00:56:21,538 --> 00:56:25,587
+dentro de vc a lei de Demeter prevalece
+
+896
+00:56:25,587 --> 00:56:30,369
+talvez essa lei não seja
+tão difícil de seguir assim
+
+897
+00:56:32,209 --> 00:56:33,680
+Programação estruturada
+
+898
+00:56:36,104 --> 00:56:39,864
+nossa última parada nessa exploração de paradigmas
+
+899
+00:56:40,393 --> 00:56:43,329
+será na mais jovem das 3
+
+900
+00:56:43,329 --> 00:56:45,255
+programação estruturada
+
+901
+00:56:45,255 --> 00:56:46,486
+isso talvez te surpreenda
+
+902
+00:56:46,486 --> 00:56:48,658
+programação estruturada, a mais nova ?
+
+903
+00:56:48,658 --> 00:56:50,529
+mas é, de fato, é verdade
+
+904
+00:56:50,529 --> 00:56:52,584
+programação funcional é a mais velha
+
+905
+00:56:52,584 --> 00:56:55,913
+iniciou-se em 1957
+
+906
+00:56:55,913 --> 00:56:59,747
+O.O. veio depois entre 62 e 66
+
+907
+00:57:00,018 --> 00:57:05,969
+e apesar de que algumas das idéias da programação
+estruturada podem ser vistas lá em 1940
+
+908
+00:57:05,969 --> 00:57:15,760
+não se amadureceu até Dikestra publicar seu
+seminário "goto statment considered harmful" em 1967
+
+909
+00:57:18,153 --> 00:57:20,246
+eu acho isso incrível:
+
+910
+00:57:20,246 --> 00:57:25,335
+todas esses 3 paradigmas, foram
+inventados nesse intervalo de 10 anos
+
+911
+00:57:25,335 --> 00:57:27,618
+à 50 anos atrás
+
+912
+00:57:27,963 --> 00:57:29,686
+e desde então
+
+913
+00:57:29,686 --> 00:57:33,440
+não houve nenhum novo paradigma
+persistente inventado
+
+914
+00:57:35,144 --> 00:57:41,372
+programação estruturada, diz que todo algoritmo
+deve ser composto de três operaçoes básicas
+
+915
+00:57:41,372 --> 00:57:42,984
+sequence
+
+916
+00:57:42,984 --> 00:57:44,800
+selection
+
+917
+00:57:44,800 --> 00:57:46,289
+iteration
+
+918
+00:57:46,572 --> 00:57:50,916
+sequence é o arranjo de 2 blocos em tempo
+
+919
+00:57:50,916 --> 00:57:54,923
+a saída do primeiro bloco alimenta a entrada do segundo
+
+920
+00:57:55,809 --> 00:57:59,427
+selection, é apenas uma expressão booleana
+
+921
+00:57:59,427 --> 00:58:02,836
+que separa o fluxo de controle entre 2 caminhos
+
+922
+00:58:02,836 --> 00:58:05,544
+cada um, desses caminhos contem um bloco
+
+923
+00:58:05,544 --> 00:58:07,729
+um desses blocos é executado
+
+924
+00:58:07,729 --> 00:58:09,907
+depois os 2 caminhos se juntam
+
+925
+00:58:09,907 --> 00:58:11,907
+e há uma única saída
+
+926
+00:58:12,326 --> 00:58:16,701
+iteration, é simplesmente a
+repetição da execução de um bloco
+
+927
+00:58:16,701 --> 00:58:19,913
+até que uma expressão booleana é satisfeita
+
+928
+00:58:19,913 --> 00:58:22,123
+onde a a iteraçao é finalizada
+
+929
+00:58:24,049 --> 00:58:28,430
+Dykstra mostra que, se você compuser seus
+algoritmos a partir dessas três estruturas
+
+930
+00:58:28,430 --> 00:58:31,470
+é possível racionalizar elas sequencialmente.
+
+931
+00:58:31,470 --> 00:58:36,406
+isso porque cada estrutura não depende de nenhuma das outras
+
+932
+00:58:36,406 --> 00:58:38,406
+ele tbem mostrou que, contanto que vc
+
+933
+00:58:38,406 --> 00:58:43,495
+não viole a estrutura de bloco
+recursiva com "GOTOs" sem restrições
+
+934
+00:58:43,495 --> 00:58:46,910
+vc pode contruir uma prova de corretude
+
+935
+00:58:48,461 --> 00:58:51,569
+contruir provas, geralmente não é nosso objetivo
+
+936
+00:58:51,956 --> 00:58:53,667
+mas pense nisto:
+
+937
+00:58:54,227 --> 00:58:58,412
+se é possível construir uma
+prova que seu código é correto
+
+938
+00:58:58,873 --> 00:59:01,963
+então é possível entender seu código
+
+939
+00:59:02,683 --> 00:59:04,916
+ums sistema comprovável
+
+940
+00:59:04,916 --> 00:59:07,341
+é um sistema compreensível
+
+941
+00:59:09,206 --> 00:59:11,969
+a estrutura de bloco recursiva de
+
+942
+00:59:11,969 --> 00:59:14,775
+sequence, selection e iteration
+
+943
+00:59:14,775 --> 00:59:19,292
+se deve ao fato de que todas as
+três estruturas são auto-similares.
+
+944
+00:59:19,292 --> 00:59:24,393
+todas tem uma única entrada no topo
+e uma única saída na parde debaixo
+
+945
+00:59:24,393 --> 00:59:27,778
+então de fora, eles parecem iguais
+
+946
+00:59:27,778 --> 00:59:31,329
+e quando vc compõe essas estruturas em algoritmos
+
+947
+00:59:31,329 --> 00:59:34,055
+esses algoritmos, continuam tendo
+
+948
+00:59:34,055 --> 00:59:38,252
+uma única entrada no topo e uma única saída embaixo
+
+949
+00:59:38,250 --> 00:59:41,680
+e quando compões esses algoritmos em módulos
+
+950
+00:59:41,680 --> 00:59:44,061
+esses módulos continuam tendo
+
+951
+00:59:44,061 --> 00:59:48,350
+uma única entrada no topo e uma única saída embaixo
+
+952
+00:59:48,350 --> 00:59:52,055
+e quando vc compõe esses módulos em sistemas
+
+953
+00:59:52,055 --> 00:59:58,264
+esses sistemas tem uma única entrada
+no topo e uma única saída embaixo
+
+954
+00:59:58,260 --> 01:00:05,003
+todas as etruturas, algoritmos, partes
+de algoritmos, sistemas módulos
+
+955
+01:00:05,033 --> 01:00:07,089
+compartilham essa característica:
+
+956
+01:00:07,080 --> 01:00:11,089
+uma única entrada no topo e uma única saída embaixo
+
+957
+01:00:13,064 --> 01:00:14,867
+retornos precoces
+
+958
+01:00:16,984 --> 01:00:20,984
+a regra da única entrada e única saída significa
+
+959
+01:00:20,984 --> 01:00:24,067
+que vc não pode ter vários returns em uma função ?
+
+960
+01:00:24,486 --> 01:00:25,760
+não, de forma alguma.
+
+961
+01:00:25,760 --> 01:00:28,092
+retornos precoces e de guarda
+
+962
+01:00:28,092 --> 01:00:31,335
+simplesmente te leva para o final
+da função onde a saída está
+
+963
+01:00:31,335 --> 01:00:34,172
+então não há nenhuma violação da estrutura
+
+964
+01:00:34,523 --> 01:00:40,043
+de outro lado, há um pequeno problema
+em retornar no meio de um loop
+
+965
+01:00:40,043 --> 01:00:45,360
+returns no meio de um loop adiciona uma
+condição de saída indireta e inexpressiva
+
+966
+01:00:45,360 --> 01:00:52,166
+e embora isso não viole exatamente a estrutura,
+torna o loop muito mais complicado
+
+967
+01:00:53,704 --> 01:00:57,187
+e breaks e continues dentro dos loops ?
+
+968
+01:00:57,187 --> 01:01:00,812
+acontece que continue não é problema algum
+
+969
+01:01:00,812 --> 01:01:05,667
+pq o continue é apenas um atalho para parte inferior do loop
+
+970
+01:01:05,667 --> 01:01:07,993
+e em seguida o loop vai para próxima iteraçao
+
+971
+01:01:07,993 --> 01:01:10,664
+então não viola estrutura de forma alguma
+
+972
+01:01:11,926 --> 01:01:15,267
+break, por outro lado é um pouco mais problemático
+
+973
+01:01:15,267 --> 01:01:17,846
+igual returns precoces em um loop
+
+974
+01:01:17,846 --> 01:01:22,424
+o break cria uma condição de saída indireta e inexpressiva
+
+975
+01:01:22,424 --> 01:01:24,529
+um "labeled break", é ainda pior
+
+976
+01:01:24,529 --> 01:01:27,643
+porque termina mais de um loop ao mesmo tempo
+
+977
+01:01:28,203 --> 01:01:33,593
+é verdade que esses caras
+não viola estrutura explicitamente
+
+978
+01:01:33,593 --> 01:01:37,440
+mas torna os loops muito mais complicados.
+
+979
+01:01:38,756 --> 01:01:40,535
+vc acha que isso importa?
+
+980
+01:01:40,646 --> 01:01:42,307
+é...importa.
+
+981
+01:01:42,440 --> 01:01:49,175
+qualquer coisa que deixa seu código complexo importa muito
+
+982
+01:01:49,175 --> 01:01:53,587
+lembre-se que sua primeira
+responsabilidade é com seus leitores
+
+983
+01:01:53,587 --> 01:01:57,310
+é mais importante para vc deixar seu código compreensível
+
+984
+01:01:57,310 --> 01:01:59,526
+do que é para vc fazer seu código funcionar
+
+985
+01:02:00,455 --> 01:02:05,636
+por essa razão eu evito usar
+breaks e returns no meio de loops
+
+986
+01:02:08,123 --> 01:02:11,673
+eu não estou falando de loops simplezinhos igual a esse
+
+987
+01:02:11,673 --> 01:02:15,833
+que scaneiam um array e faz um return precoce
+
+988
+01:02:15,833 --> 01:02:20,252
+estou falando de loops complexos como esse aqui
+
+989
+01:02:20,252 --> 01:02:25,070
+todos esses breaks nos loops fazem
+eles ficaram difíceis de se entender
+
+990
+01:02:27,138 --> 01:02:30,387
+tenha isso em mente também:
+
+991
+01:02:30,387 --> 01:02:35,907
+se vc manter suas funções pequenas
+como vimos no episódio 3
+
+992
+01:02:35,907 --> 01:02:39,926
+então será bem difícil de não seguir programação estruturada
+
+993
+01:02:39,926 --> 01:02:45,421
+até porque, uma função de 4 linhas sempre
+tem uma única entrada e uma única saída.
+
+994
+01:02:45,421 --> 01:02:50,892
+e é bem difícil fazer elas terem
+returns e breaks no meio de loops
+
+995
+01:02:55,132 --> 01:02:57,544
+tratamento de erro
+
+996
+01:02:58,621 --> 01:03:00,652
+Michael Feathers, uma vez escreveu:
+
+997
+01:03:00,652 --> 01:03:03,298
+que tratamento de erro é importante
+
+998
+01:03:03,298 --> 01:03:06,947
+mas se obscurece a lógica, está errado
+
+999
+01:03:06,947 --> 01:03:08,947
+ele está muito certo sobre isso
+
+1000
+01:03:08,947 --> 01:03:12,880
+como evitamos, obscurecer a lógica
+
+1001
+01:03:12,880 --> 01:03:14,867
+como tratamos nossos erros
+
+1002
+01:03:14,867 --> 01:03:17,636
+qual estratégia devemos empregar
+
+1003
+01:03:17,636 --> 01:03:21,870
+nós vamos ver esse problema tratando alguns erros
+
+1004
+01:03:21,870 --> 01:03:26,320
+vamos sentar e escrever um algoritmo de stack do zero
+
+1005
+01:03:27,740 --> 01:03:34,006
+começamos criando um pacote chamado stack
+
+1006
+01:03:34,006 --> 01:03:36,873
+e depois um arquivo chamado stack test
+
+1007
+01:03:36,873 --> 01:03:41,993
+abrimos um teste fictício só pra provar que podemos executar
+
+1008
+01:03:41,993 --> 01:03:44,387
+podemos, então deletamos esse teste
+
+1009
+01:03:44,387 --> 01:03:48,283
+agora iremos escrever o teste que cria o Stack
+
+1010
+01:03:48,283 --> 01:03:53,680
+vamos usar o nome "MyStack" para evitar
+colisão com a biblioteca "Stack"
+
+1011
+01:03:53,680 --> 01:03:55,803
+uma vez que conseguimos fazer compilar
+
+1012
+01:03:55,803 --> 01:03:59,433
+nós podemos mudar o nome de MyStack de volta para Stack
+
+1013
+01:03:59,433 --> 01:04:01,858
+isso deve executar é claro
+
+1014
+01:04:01,858 --> 01:04:07,353
+então vamos validar se o Stack está vazio
+
+1015
+01:04:07,353 --> 01:04:11,415
+teremos que implementar a função "isEmpty"
+
+1016
+01:04:11,415 --> 01:04:16,652
+e teremos que perder tempo com uns imports, scopes e assim por diante
+
+1017
+01:04:16,652 --> 01:04:20,400
+mas eventualmente faremos o teste executar e falhar
+
+1018
+01:04:20,400 --> 01:04:24,160
+e podemos fazer passar, declarando a flag para true
+
+1019
+01:04:24,160 --> 01:04:27,692
+para que o Stack seja Empty quando criado
+
+1020
+01:04:27,690 --> 01:04:33,803
+agora vamos mudar o nome do teste para algo melhor
+
+1021
+01:04:33,803 --> 01:04:36,123
+isso passa obviamente
+
+1022
+01:04:36,123 --> 01:04:39,526
+vamos validar tbem se o tamanho é zero
+
+1023
+01:04:39,520 --> 01:04:47,372
+isso é facil, temos que criar a função "getSize"
+
+1024
+01:04:47,372 --> 01:04:50,929
+e eventualmente faremos o teste passar
+
+1025
+01:04:52,713 --> 01:04:54,301
+excelente
+
+1026
+01:04:54,701 --> 01:04:58,320
+agora vamos nos certificar que estamos
+manipulando a variável size corretamente
+
+1027
+01:04:58,320 --> 01:04:59,741
+quando fizermos o "push" e "pop"
+
+1028
+01:04:59,741 --> 01:05:02,400
+vamos tentar o push primeiro
+
+1029
+01:05:02,400 --> 01:05:07,901
+vamos nos certificar que quando usarmos
+o push, o tamanho é incrementado
+
+1030
+01:05:07,901 --> 01:05:11,920
+teremos que refatorar a variável stack, faremos isso em um minuto
+
+1031
+01:05:11,920 --> 01:05:14,473
+aqui está nosso push, criamos a funçao
+
+1032
+01:05:14,473 --> 01:05:17,987
+então validamos para ter certeza que o tamanho é um
+
+1033
+01:05:17,987 --> 01:05:20,664
+isso falaha é claro
+
+1034
+01:05:20,664 --> 01:05:25,790
+mas podemos fazer passar incrementando o size e dar push
+
+1035
+01:05:25,790 --> 01:05:30,504
+e vamos validar se o stack não está mais vazio
+
+1036
+01:05:30,504 --> 01:05:31,913
+e é claro isso ele falha
+
+1037
+01:05:31,913 --> 01:05:37,292
+mas podemos fazer passar, substituindo
+aquela flag vazia  com size == 0
+
+1038
+01:05:39,661 --> 01:05:42,160
+e o teste passa
+
+1039
+01:05:42,160 --> 01:05:45,907
+agora vamos validar se o
+tamanho é diminuído com o pop
+
+1040
+01:05:45,907 --> 01:05:46,110
+então depois de um push e pop o
+stack deve estar vazio novamente.
+agora vamos validar se o
+tamanho é diminuído com o pop
+
+1041
+01:05:46,110 --> 01:05:50,670
+então depois de um push e pop o
+stack deve estar vazio novamente.
+
+1042
+01:05:50,670 --> 01:05:55,144
+mais uma vez temos que refatorar essa variável stack
+
+1043
+01:05:55,144 --> 01:05:57,716
+certificar que ela inicializa no setUp
+
+1044
+01:05:57,716 --> 01:06:02,227
+e vamos nos livrar dela no teste, isso deixa um pouco mais limpo
+
+1045
+01:06:02,227 --> 01:06:08,227
+agora vamos executar os testes, vamos dar push e depois pop
+
+1046
+01:06:08,227 --> 01:06:12,073
+temos que escrever a função pop
+
+1047
+01:06:12,073 --> 01:06:15,193
+e agora o stack deve estar vazio novamente
+
+1048
+01:06:18,061 --> 01:06:20,738
+e é claro isso vai falhar
+
+1049
+01:06:20,738 --> 01:06:24,781
+mas podemos fazer passar,
+diminuíndo o tamanho dentro do pop
+
+1050
+01:06:27,021 --> 01:06:28,560
+excelente
+
+1051
+01:06:30,560 --> 01:06:32,775
+erros primeiramente
+
+1052
+01:06:34,430 --> 01:06:40,092
+é sempre melhor que vc escreva o tratamento
+de erros antes de escrever o resto do código
+
+1053
+01:06:40,092 --> 01:06:46,960
+desa forma vc não se vê em uma implementação que
+não consegue tratar bem os erros
+
+1054
+01:06:46,960 --> 01:06:50,984
+em nosso caso, nos preocupamos sobre basicamente 2 erros
+
+1055
+01:06:50,984 --> 01:06:55,741
+o underflow e o overflow
+
+1056
+01:06:59,267 --> 01:07:03,452
+agora iremos fazer o teste de overflow
+
+1057
+01:07:03,452 --> 01:07:07,593
+quando passamos do limite o Stack deve dar overflow
+
+1058
+01:07:07,593 --> 01:07:10,640
+o que significa passar do limite?
+
+1059
+01:07:10,640 --> 01:07:12,350
+bem, teremos que setar um limite
+
+1060
+01:07:12,350 --> 01:07:14,480
+faremos isso no construtor do Stack
+
+1061
+01:07:14,480 --> 01:07:16,867
+faremos o limite ser 2
+
+1062
+01:07:16,867 --> 01:07:22,904
+e então mudaremos o construtor
+para um método de Factory
+
+1063
+01:07:22,904 --> 01:07:27,341
+faremos esse método statico dentro da classe Stack
+
+1064
+01:07:27,340 --> 01:07:33,273
+vamos retornar o construtor devidamente
+
+1065
+01:07:33,273 --> 01:07:35,698
+movemos ele aqui em cima
+
+1066
+01:07:35,690 --> 01:07:38,763
+vamos implementar esse construtor
+
+1067
+01:07:38,763 --> 01:07:40,836
+ele recebe capacity
+
+1068
+01:07:40,836 --> 01:07:46,332
+e depois faremos ele privado
+
+1069
+01:07:46,332 --> 01:07:48,818
+para não poder ser chamado de fora
+
+1070
+01:07:50,603 --> 01:07:52,978
+agora temos um Stack com capacidade
+
+1071
+01:07:52,970 --> 01:07:58,990
+então vamos puxar para além do limite
+
+1072
+01:07:58,990 --> 01:08:01,741
+e depois ... bem...
+
+1073
+01:08:03,286 --> 01:08:05,033
+prefira exceptions
+
+1074
+01:08:07,575 --> 01:08:13,181
+neste ponto, podemos fazer o push ou pop
+retornar um código de erro ou algo do tipo
+
+1075
+01:08:13,180 --> 01:08:19,415
+por exemplo, push pode retornar false, pop pode retornar null
+
+1076
+01:08:19,784 --> 01:08:24,375
+mas isso me remete aos horrores dos anos 70 e 80
+
+1077
+01:08:24,375 --> 01:08:29,846
+quando todo retorno de função era
+usurpado por algum tipo de código de erro
+
+1078
+01:08:29,846 --> 01:08:31,846
+certamente não queremos isso
+
+1079
+01:08:31,846 --> 01:08:36,276
+então eu acho que seria melhor lançar uma exceção
+
+1080
+01:08:36,276 --> 01:08:40,320
+eu acho que o que eu deveria
+fazer aqui é experar uma exception
+
+1081
+01:08:41,200 --> 01:08:42,633
+então..
+
+1082
+01:08:45,138 --> 01:08:48,270
+e que exceção eu deveria esperar ?
+
+1083
+01:08:49,636 --> 01:08:50,867
+exceptions são para callers
+
+1084
+01:08:53,520 --> 01:08:56,221
+que exceção deveríamos lançar aqui ?
+
+1085
+01:08:56,220 --> 01:08:58,110
+eu lancei stack.overflow
+
+1086
+01:08:58,110 --> 01:09:03,600
+mas eu suponho que poderia lançar subscriptionOutOfRangeException
+
+1087
+01:09:03,600 --> 01:09:07,310
+ou BufferOverflowException
+
+1088
+01:09:07,310 --> 01:09:10,935
+ou até mesmo IlegalStateException
+
+1089
+01:09:10,935 --> 01:09:16,135
+mas eu não gosto de reusar exceptions da biblioteca JAVA
+
+1090
+01:09:16,135 --> 01:09:17,790
+quando eu lanço uma exception
+
+1091
+01:09:17,790 --> 01:09:21,156
+eu quero que esteja no escopo da classe que a lançou
+
+1092
+01:09:21,156 --> 01:09:26,836
+e quero que seja nomeada com a maior informação específica possível
+
+1093
+01:09:29,163 --> 01:09:34,135
+eu acho que vou esperar minha própria exception
+
+1094
+01:09:36,135 --> 01:09:41,335
+gosto de deixar minha exceção dentro da classe que eu criei
+
+1095
+01:09:42,350 --> 01:09:44,215
+aqui está minha exception
+
+1096
+01:09:44,689 --> 01:09:46,996
+e deve derivar de ...
+
+1097
+01:09:48,750 --> 01:09:49,858
+use exceptions não verificadas
+
+1098
+01:09:52,184 --> 01:09:56,024
+o experimento com exceptions verificadas acabou e falhou
+
+1099
+01:09:56,024 --> 01:10:01,495
+falhou em c++, falhou em JAVA...C# nem tentou
+
+1100
+01:10:01,963 --> 01:10:06,473
+o problema com exception verificadas é que cria uma dependencia reversa
+
+1101
+01:10:06,473 --> 01:10:10,701
+uma dependencia que sobe a hierarquia da herança ao inves de descer
+
+1102
+01:10:11,138 --> 01:10:14,541
+se tiver um método em uma classe derivada
+
+1103
+01:10:14,541 --> 01:10:17,593
+que de repende lança um nullException
+
+1104
+01:10:17,593 --> 01:10:21,021
+então vc tem que mudar a declaração do método na classe base
+
+1105
+01:10:21,021 --> 01:10:25,809
+e terá que recompilar e republicar
+todos usuários dessa classe base
+
+1106
+01:10:25,809 --> 01:10:28,781
+isso viola publicaçao independente
+
+1107
+01:10:28,781 --> 01:10:33,803
+quebra o princípio do aberto-fechado
+que falaremos sobre, num episódio futuro
+
+1108
+01:10:33,803 --> 01:10:37,021
+e geralmente é um pé no saco
+
+1109
+01:10:37,021 --> 01:10:40,640
+então não quero mais q vc use exceptions verificadas
+
+1110
+01:10:40,640 --> 01:10:42,412
+de agora em diante, em JAVA
+
+1111
+01:10:42,412 --> 01:10:46,412
+derive suas funçoes de RunTimeException
+
+1112
+01:10:48,578 --> 01:10:52,098
+então vamos herdad de RunTimeException
+
+1113
+01:10:52,098 --> 01:10:54,018
+e agora..
+
+1114
+01:10:54,018 --> 01:10:56,018
+claro que falha pois não é lançada
+
+1115
+01:10:56,018 --> 01:10:58,467
+mas podemos fazer passar
+
+1116
+01:10:58,467 --> 01:11:00,393
+validando a capacidade
+
+1117
+01:11:00,393 --> 01:11:03,427
+teremos que salvar a capacidade no construtor
+
+1118
+01:11:03,427 --> 01:11:07,901
+e na função push vamos comparar o tamanho com a capacidade
+
+1119
+01:11:07,901 --> 01:11:09,501
+se o tamanho é igual a capacidade
+
+1120
+01:11:09,501 --> 01:11:12,227
+então lançamos a exception overflow
+
+1121
+01:11:12,227 --> 01:11:14,590
+e isso deve fazer passar
+
+1122
+01:11:14,590 --> 01:11:17,544
+vamos fazer também o underflow pq é fácil
+
+1123
+01:11:17,544 --> 01:11:24,547
+podemos verificar se quando dar pop em um
+stack vazio ir irá lançar um underflow
+
+1124
+01:11:24,603 --> 01:11:27,101
+demos um pop bem alí
+
+1125
+01:11:27,101 --> 01:11:30,560
+vamos esperar um underflow exception
+
+1126
+01:11:30,560 --> 01:11:32,443
+vamos criar essa exceção
+
+1127
+01:11:32,443 --> 01:11:35,587
+vamos dericar de runtimeexception
+
+1128
+01:11:35,587 --> 01:11:37,470
+isso deve falhar
+
+1129
+01:11:37,470 --> 01:11:41,372
+depois iremos verificar o tamanho dentro do pop
+
+1130
+01:11:41,372 --> 01:11:43,870
+e isso deve fazer passar
+
+1131
+01:11:49,741 --> 01:11:53,206
+que mensagem vc acha que
+eu deveria colocar nessa exceção ?
+
+1132
+01:11:53,206 --> 01:11:54,683
+-geralmente não boto muito
+
+1133
+01:11:56,436 --> 01:11:57,347
+certo!
+
+1134
+01:11:57,870 --> 01:12:01,550
+de fato, neste caso não precisa de mensagem
+
+1135
+01:12:01,550 --> 01:12:03,704
+e essa é a forma que eu gosto
+
+1136
+01:12:03,704 --> 01:12:08,492
+eu acredito que o melhor caso de
+exception é de não ter nenhuma mensagem
+
+1137
+01:12:08,492 --> 01:12:14,307
+eu gosto que minhas exceptions sejam tão
+precisas, que não precisam de mensagens
+
+1138
+01:12:14,732 --> 01:12:18,818
+o melhor comentário é aquele
+que vc não precisa escrever
+
+1139
+01:12:18,810 --> 01:12:22,338
+isso não significa que eu não
+coloco mensagens nas minhas exceptions
+
+1140
+01:12:22,338 --> 01:12:23,292
+algumas vezes eu coloco
+
+1141
+01:12:23,292 --> 01:12:28,018
+algumas vezes existe uma pequena
+informação que seja útil passar para frente
+
+1142
+01:12:28,018 --> 01:12:35,421
+mas eu sempre quero que o nome, contexto
+e escopo da exception façam a maior parte do trabalho
+
+1143
+01:12:38,141 --> 01:12:43,458
+certo, agora vamos fazer esse stack parecer um stack
+
+1144
+01:12:46,006 --> 01:12:51,390
+vamos tentar dar push em um e
+certificar de dar pop depois
+
+1145
+01:12:53,698 --> 01:12:59,107
+e é claro que var falhar, pois não demos pop em nada no momento
+
+1146
+01:13:02,098 --> 01:13:05,618
+vamos retornar -1 no pop, vai falhar
+
+1147
+01:13:05,618 --> 01:13:09,095
+mas é bem simples fazer isso passar
+
+1148
+01:13:09,095 --> 01:13:13,630
+vamos transformar aquele -1 em uma variável element
+
+1149
+01:13:13,630 --> 01:13:16,916
+e vamos inicializar essa variável na funçao push
+
+1150
+01:13:16,910 --> 01:13:20,713
+agora, essencialmente temos um stack de um elemento
+
+1151
+01:13:20,713 --> 01:13:22,824
+e isso passa bem
+
+1152
+01:13:22,824 --> 01:13:25,920
+o próximo teste é bem óbvio
+
+1153
+01:13:25,920 --> 01:13:28,067
+é quando vc passa 1 e 2
+
+1154
+01:13:28,067 --> 01:13:32,295
+vc deve dar pop na ordem reversa, 2 e 1
+
+1155
+01:13:32,295 --> 01:13:38,640
+teste simples de escrever,
+push 1 push 2 pop 2 pop 1
+
+1156
+01:13:40,092 --> 01:13:42,947
+e isso falha, é claro
+
+1157
+01:13:42,947 --> 01:13:46,049
+mas é bem fácil de fazer passar
+
+1158
+01:13:46,049 --> 01:13:51,107
+convertemos o element em um array elements
+
+1159
+01:13:51,100 --> 01:13:53,796
+inicializamos esse array no construtor
+
+1160
+01:13:53,796 --> 01:13:55,796
+com a capacidade
+
+1161
+01:13:57,329 --> 01:14:00,836
+depois é uma questão de ir no push e pop
+
+1162
+01:14:00,836 --> 01:14:03,126
+e indexar o array apropriadamente
+
+1163
+01:14:03,126 --> 01:14:06,350
+felizmente, nós já temos o tamanho para nos ajudar
+
+1164
+01:14:06,350 --> 01:14:08,966
+e faz exatamente o que queremos
+
+1165
+01:14:08,966 --> 01:14:11,870
+faremos isso em ambos: push e pop
+
+1166
+01:14:11,870 --> 01:14:14,843
+roubando o incrementador, enfiando no índice
+
+1167
+01:14:14,843 --> 01:14:18,750
+voilá, vc tem seu adorável teste passando
+
+1168
+01:14:25,403 --> 01:14:30,049
+mas agora, o que acontece se criar um stack de tamanho negativo?
+
+1169
+01:14:30,049 --> 01:14:31,870
+o que deveria fazer?
+
+1170
+01:14:31,870 --> 01:14:36,098
+vamos fazer lançar um illegalCapacityException
+
+1171
+01:14:36,098 --> 01:14:39,009
+vamos fazer esse stack com -1
+
+1172
+01:14:39,009 --> 01:14:43,630
+e vamos esperar a exception illegalCapacity
+
+1173
+01:14:43,630 --> 01:14:47,815
+vamos criar essa exception e claro,
+derivar de runtimeexception
+
+1174
+01:14:47,815 --> 01:14:56,904
+e depois é uma questão de colocar
+essa validação próxima do construtor
+
+1175
+01:15:16,270 --> 01:15:17,593
+casos especiais
+
+1176
+01:15:19,150 --> 01:15:22,160
+ahá! nós temos outro erro
+
+1177
+01:15:22,160 --> 01:15:27,876
+é possível alguem construir
+um stack de tamanho zero
+
+1178
+01:15:27,876 --> 01:15:31,335
+suponho que podemos lançar uma nova exception
+
+1179
+01:15:31,335 --> 01:15:34,861
+stackCreatedWithZeroSizeException
+
+1180
+01:15:34,861 --> 01:15:38,332
+mas não queremos proliferar exceptions, queremos ?
+
+1181
+01:15:38,332 --> 01:15:41,680
+além disso, isso é realmente um erro ?
+
+1182
+01:15:41,680 --> 01:15:47,396
+ou tem alguma definição razoável para o
+comportamento de um stack de tamano zero?
+
+1183
+01:15:48,486 --> 01:15:50,060
+=)
+
+1184
+01:15:56,338 --> 01:16:00,184
+acontece que,  um stack de tamanho zero
+
+1185
+01:16:00,184 --> 01:16:03,070
+tem uma comportamento bem definido
+
+1186
+01:16:03,070 --> 01:16:05,618
+se chamar o push.. dá overflow
+
+1187
+01:16:05,618 --> 01:16:08,196
+se chamar o pop dá underflow
+
+1188
+01:16:08,196 --> 01:16:11,347
+se perguntar o tamanho, retorna zero
+
+1189
+01:16:14,344 --> 01:16:16,535
+nós provavelmente podemos implementar isso
+
+1190
+01:16:16,535 --> 01:16:19,975
+adicionando os IFs apropriados no código do Stack
+
+1191
+01:16:19,975 --> 01:16:22,603
+para garantir que se comporte corretamente
+
+1192
+01:16:22,603 --> 01:16:25,150
+se o tamanho é zero
+
+1193
+01:16:25,150 --> 01:16:27,329
+mas provavelmente tem um jeito melhor
+
+1194
+01:16:27,329 --> 01:16:30,775
+eu acho que devemos usar o padrão do objeto nulo
+
+1195
+01:16:30,775 --> 01:16:34,018
+para retornar um stack degenerado
+
+1196
+01:16:34,018 --> 01:16:37,913
+que simplesmente se comporta apropriadamente para o caso de tamanho zero
+
+1197
+01:16:39,421 --> 01:16:44,080
+ok, vamos começar a construir esse padrão de objeto nulo
+
+1198
+01:16:44,080 --> 01:16:47,513
+algumas vezes é chamado de padrão do caso especial
+
+1199
+01:16:47,513 --> 01:16:53,249
+quando criar um stack de capacidade zero,
+qualquer push deve dar overflow
+
+1200
+01:16:53,249 --> 01:16:54,701
+isso é fácil de escrever
+
+1201
+01:16:54,701 --> 01:16:58,898
+devemos esperar a exception stack.overflow
+
+1202
+01:16:58,898 --> 01:17:06,018
+e simplesmente vamos criar um stack de
+capacidade zero, usando nossa Factory
+
+1203
+01:17:06,018 --> 01:17:11,292
+e depois vamos dar push e deve dar overflow exception
+
+1204
+01:17:11,292 --> 01:17:14,430
+e claro dá
+
+1205
+01:17:14,430 --> 01:17:19,864
+pq já estamos validando se o tamanho é ou não igual à capacidade
+
+1206
+01:17:19,864 --> 01:17:22,363
+e já que ambos são iguais a zero...
+
+1207
+01:17:22,363 --> 01:17:25,778
+o que vamos fazer agora é separar essa classe em duas
+
+1208
+01:17:25,778 --> 01:17:28,744
+vamos extrair uma interface dela
+
+1209
+01:17:28,744 --> 01:17:32,080
+e nos restará uma interface de Stack
+
+1210
+01:17:32,080 --> 01:17:36,467
+e a classe derivada chamada BoundedStack
+
+1211
+01:17:37,580 --> 01:17:42,449
+isso é uma refatoração simples,
+extrair interface.. kaboom
+
+1212
+01:17:51,809 --> 01:17:53,040
+aqui está nossa BoundedStack
+
+1213
+01:17:53,040 --> 01:17:55,766
+nossa Stack não é tão bonita
+
+1214
+01:17:55,907 --> 01:17:58,806
+agora a mágica vai acontecer aqui
+
+1215
+01:17:58,806 --> 01:18:00,738
+mas antes de olharmos isso
+
+1216
+01:18:00,738 --> 01:18:03,366
+vamos verificar como nossos testes estão
+
+1217
+01:18:03,366 --> 01:18:03,470
+nosso teste ainda está usando o Stack
+vamos verificar como nossos testes estão
+
+1218
+01:18:03,470 --> 01:18:06,596
+nosso teste ainda está usando o Stack
+
+1219
+01:18:06,596 --> 01:18:09,532
+a interface, mas criando um BoundedStack
+
+1220
+01:18:09,532 --> 01:18:13,575
+e notará que está criando um BoundedStack
+em todo lugar que Make é chamado
+
+1221
+01:18:13,575 --> 01:18:18,190
+mas a interface que estamo usando no teste do Stack é a Stack
+
+1222
+01:18:18,190 --> 01:18:21,280
+agora, nesse método de Factory, faremos a mágica
+
+1223
+01:18:21,280 --> 01:18:28,104
+se a capacidade é zero, vamos retornar
+uma nova classe anonima, baseada na interface
+
+1224
+01:18:28,100 --> 01:18:32,215
+que implementa todo os métodos para fazer exatamente o que vc espera
+
+1225
+01:18:32,215 --> 01:18:35,132
+de um Stack de capacidade zero
+
+1226
+01:18:35,132 --> 01:18:37,267
+push vai lançar overflow
+
+1227
+01:18:37,267 --> 01:18:39,735
+dar pop vai lançar underflow
+
+1228
+01:18:39,735 --> 01:18:46,929
+e temos um Stack que tem automaticamente
+capacidade zero sem usar IFs!
+
+1229
+01:18:52,010 --> 01:18:58,916
+agora iremos pegar esse retorno anônimo e extrair para uma clase ZeroCapacityStack
+
+1230
+01:18:58,916 --> 01:19:02,627
+para não tomar muito espaço no método da Factory
+
+1231
+01:19:02,627 --> 01:19:04,658
+e isso ainda passa
+
+1232
+01:19:04,658 --> 01:19:08,018
+agora vamos escrever uma nova feature
+
+1233
+01:19:08,018 --> 01:19:12,646
+o topo do Stack, queremos ser
+capazes de visualizar o topo do Stack
+
+1234
+01:19:12,646 --> 01:19:15,969
+quando 1 é imcrementado esse 1 deve estar no topo
+
+1235
+01:19:15,969 --> 01:19:20,067
+vamos dar push em 1, e esperamos que 1 seja o topo do Stack
+
+1236
+01:19:20,067 --> 01:19:22,572
+teremos que implementar a funçao top
+
+1237
+01:19:22,572 --> 01:19:26,227
+e quando fizer, colocaremos na interface primeiro
+
+1238
+01:19:26,227 --> 01:19:29,163
+e depois temos que implementar as funçoes da interface
+
+1239
+01:19:29,163 --> 01:19:36,135
+faremos a BondedStack para
+retornar o elements com tamanho -1
+
+1240
+01:19:37,827 --> 01:19:41,686
+e depois vamos também implementar a ZeroCapacityStack
+
+1241
+01:19:41,686 --> 01:19:47,335
+para .. meu deus.. bem,
+vamos retornar -1 por enquanto
+
+1242
+01:19:47,335 --> 01:19:50,313
+maravilha, isso passa
+
+1243
+01:19:50,313 --> 01:19:54,184
+agora vamos escrever um novo teste
+
+1244
+01:19:54,184 --> 01:19:57,889
+quando Stack está vazio...
+
+1245
+01:19:59,440 --> 01:20:00,744
+null não é um erro
+
+1246
+01:20:02,929 --> 01:20:05,458
+hmmm...top
+
+1247
+01:20:05,458 --> 01:20:09,864
+a funçao top retorna o valor que está no topo do Stack
+
+1248
+01:20:09,864 --> 01:20:13,766
+mas o que deveria retornar se o Stack está vazio
+
+1249
+01:20:13,766 --> 01:20:16,116
+poderiamos retornar null, é claro
+
+1250
+01:20:16,110 --> 01:20:21,655
+mas, ninguém que está chamando a função
+top,  iria esperar um retorno nulo
+
+1251
+01:20:21,655 --> 01:20:24,116
+e nulls, especialmente quando não são esperados
+
+1252
+01:20:24,116 --> 01:20:31,858
+tem essa tendência de escorregar e deslizar
+pelo sistema até causar um nullpointException
+
+1253
+01:20:31,858 --> 01:20:35,889
+então eu acho melhor, lançar uma exception totalmente nova
+
+1254
+01:20:35,889 --> 01:20:39,446
+um StackEmptyException
+
+1255
+01:20:40,935 --> 01:20:44,744
+vamos lançar uma EmptyException aqui
+
+1256
+01:20:44,744 --> 01:20:49,218
+vamos perguntar pelo topo do Stack em um Stack vazio
+
+1257
+01:20:49,218 --> 01:20:51,458
+vamos esperar um Empty
+
+1258
+01:20:51,458 --> 01:20:54,129
+teremos que crirar essa exception, é claro
+
+1259
+01:20:54,129 --> 01:20:56,307
+e vai derivar de runtime
+
+1260
+01:20:56,300 --> 01:20:57,889
+note que eu faço elas estáticas
+
+1261
+01:20:57,889 --> 01:20:59,889
+e todas essa exception devem ser estáticas
+
+1262
+01:21:01,427 --> 01:21:04,763
+isso falha, é caro, pq não estamos lançando
+
+1263
+01:21:04,763 --> 01:21:13,046
+vamos implementar a função para que se o
+tamanho é zero, ou melhor se é vazio
+
+1264
+01:21:13,046 --> 01:21:15,932
+então vamos lançar Empty
+
+1265
+01:21:15,932 --> 01:21:17,932
+isso deve passar
+
+1266
+01:21:17,932 --> 01:21:23,156
+sim, e perceba que tem outro size = 0,
+podemos substituir com isEmpty
+
+1267
+01:21:23,156 --> 01:21:25,569
+e isso também passa, bom.
+
+1268
+01:21:26,800 --> 01:21:34,547
+certo, agora estamos no Stack de capacidade zero que vai lançar empty
+
+1269
+01:21:35,920 --> 01:21:41,286
+e vamos escrever um teste especial para isso
+
+1270
+01:21:42,929 --> 01:21:50,086
+com um Stack de capacidade zero qualquer "pop" deve lançar Empty
+
+1271
+01:21:50,086 --> 01:21:54,320
+então vamos fazer um Stack de capacidade zero
+
+1272
+01:21:54,320 --> 01:21:58,203
+e depois vamos chamar top nele, e deve lançar essa Exception
+
+1273
+01:21:58,203 --> 01:22:01,267
+vamos apenas copiar e colar essa cláusula expected
+
+1274
+01:22:01,267 --> 01:22:03,384
+isso funciona bem
+
+1275
+01:22:03,384 --> 01:22:06,726
+agora, vamos escrever uma nova feature
+
+1276
+01:22:06,726 --> 01:22:09,495
+uma feature Find
+
+1277
+01:22:09,495 --> 01:22:12,369
+dado um stack com 1 e 2
+
+1278
+01:22:12,369 --> 01:22:14,209
+encontre o 1
+
+1279
+01:22:14,209 --> 01:22:15,593
+aqui está o 1 e o 2
+
+1280
+01:22:15,593 --> 01:22:19,569
+agora iremos encontrar o índice de um elemento
+
+1281
+01:22:19,569 --> 01:22:22,818
+iniciando com o topo do Stack que é 0
+
+1282
+01:22:22,818 --> 01:22:24,670
+e depois vamos subindo
+
+1283
+01:22:24,670 --> 01:22:28,320
+então o índice de 2 deve ser 1
+
+1284
+01:22:28,320 --> 01:22:31,033
+desde que é 1 posiçao longe do topo
+
+1285
+01:22:31,033 --> 01:22:34,233
+temos que criar a função find, é claro
+
+1286
+01:22:35,003 --> 01:22:37,353
+então criaremos, adicionando na interface
+
+1287
+01:22:37,353 --> 01:22:40,812
+isso significa que teremos que adicionar nas 2 implementações
+
+1288
+01:22:40,812 --> 01:22:42,812
+mais tarde, é claro
+
+1289
+01:22:42,812 --> 01:22:48,972
+vamos certificar que podemos encontrar o topo do stack também
+
+1290
+01:22:48,972 --> 01:22:52,516
+aqui está o topo do stack... maravilha
+
+1291
+01:22:52,812 --> 01:22:54,861
+encontrar o 2 deve ser 0, sim
+
+1292
+01:22:54,861 --> 01:22:59,070
+agora vamos ter que implementar nesses 2 a funçao terrível
+
+1293
+01:22:59,070 --> 01:23:02,640
+vamos fazer no BoundedStack primeiro
+
+1294
+01:23:02,640 --> 01:23:05,341
+e vamos apenas auto-gerar
+
+1295
+01:23:05,341 --> 01:23:10,178
+vamos também implementar na ZeroCapacityStack, auto-gerando
+
+1296
+01:23:11,809 --> 01:23:14,910
+e isso deve fazer o teste falhar
+
+1297
+01:23:17,630 --> 01:23:18,781
+e faz
+
+1298
+01:23:18,780 --> 01:23:22,289
+vamos ver se conseguimos implementar o algoritmo Find
+
+1299
+01:23:22,289 --> 01:23:23,833
+não é tão difícil
+
+1300
+01:23:23,833 --> 01:23:26,363
+vamos apenas iterar pelos elementos do stack
+
+1301
+01:23:26,363 --> 01:23:30,461
+começando pelo topo do stack e ir descendo
+
+1302
+01:23:30,461 --> 01:23:33,009
+iremos decrementar pelo Stack
+
+1303
+01:23:33,009 --> 01:23:37,716
+validaremos se o element é igual
+ao o que estamos procurando
+
+1304
+01:23:37,716 --> 01:23:43,255
+e se for iremos retornar o índice
+computado do elemento encontrado
+
+1305
+01:23:43,255 --> 01:23:46,135
+espero que essa expressão esteja correta...
+
+1306
+01:23:46,135 --> 01:23:49,809
+suponho que nossos testes irão dizer se estão ou não
+
+1307
+01:23:49,809 --> 01:23:54,172
+então vamos retornar.. alguma coisa
+
+1308
+01:23:54,172 --> 01:23:55,901
+opa, isso não funciona
+
+1309
+01:23:55,901 --> 01:24:00,689
+ah é,coloquei o índice de loop errado
+
+1310
+01:24:00,689 --> 01:24:02,030
+isso ainda não funciona
+
+1311
+01:24:02,030 --> 01:24:07,095
+ah é... é porque eu não computei o índice corretamente
+
+1312
+01:24:07,090 --> 01:24:09,033
+ok.. agora está funcionando
+
+1313
+01:24:09,033 --> 01:24:10,049
+maravilha
+
+1314
+01:24:11,304 --> 01:24:16,670
+agora vamos verificar o que
+acontece quando não encontra
+
+1315
+01:24:16,670 --> 01:24:18,670
+o que deveria fazer?
+
+1316
+01:24:22,886 --> 01:24:24,184
+Null é um valor
+
+1317
+01:24:29,421 --> 01:24:33,698
+find é um método que busca
+o stack do topo até o fundo
+
+1318
+01:24:33,698 --> 01:24:37,372
+e retorna o índice do primeiro
+elemento que encontra
+
+1319
+01:24:37,372 --> 01:24:39,286
+que bate com o argumento de entrada
+
+1320
+01:24:39,286 --> 01:24:41,464
+então ele retorna um inteiro
+
+1321
+01:24:41,932 --> 01:24:46,227
+mas o que deve retornar se
+ele não encontra o argumento?
+
+1322
+01:24:46,227 --> 01:24:48,418
+poderíamos lançar uma exceção
+
+1323
+01:24:48,418 --> 01:24:50,861
+mas isso seria estranho
+
+1324
+01:24:50,861 --> 01:24:54,966
+pq nós esperamos que find
+falhe de tempos e tempos
+
+1325
+01:24:54,966 --> 01:24:59,353
+e geralmente reservamos exceptions
+para coisas que não são esperadas
+
+1326
+01:24:59,353 --> 01:25:03,360
+o que precisamos é um valor
+que podemos retornar no Find
+
+1327
+01:25:03,360 --> 01:25:05,895
+que significa: não encontrado
+
+1328
+01:25:07,360 --> 01:25:10,664
+na conveção JAVA é retornar -1
+
+1329
+01:25:10,664 --> 01:25:11,587
+por exemplo:
+
+1330
+01:25:11,587 --> 01:25:13,766
+String.IndexOf
+
+1331
+01:25:13,766 --> 01:25:15,975
+mas -1 ainda é um inteiro
+
+1332
+01:25:15,975 --> 01:25:17,790
+pode ser usado em uma computação
+
+1333
+01:25:17,790 --> 01:25:20,929
+acho que é melhor retornar null
+
+1334
+01:25:21,329 --> 01:25:23,901
+null é um valor que significa nada
+
+1335
+01:25:23,901 --> 01:25:26,726
+-1 não é nada!
+
+1336
+01:25:27,803 --> 01:25:31,680
+bem...acredito que iremos retornar null, não vamos?!
+
+1337
+01:25:31,680 --> 01:25:34,935
+certo, vamos retornar um null
+
+1338
+01:25:34,930 --> 01:25:43,230
+e...meu deus, vamos ter que gastar mais um tempo
+esses Asserts
+
+1339
+01:25:43,230 --> 01:25:46,424
+ok, nós podemos fazer isso..e...
+
+1340
+01:25:46,424 --> 01:25:50,584
+é... testes que falham...
+
+1341
+01:25:50,584 --> 01:25:53,156
+acho que iremos...
+
+1342
+01:25:53,156 --> 01:25:55,993
+jesus..vamos retornar um Integer
+
+1343
+01:25:55,993 --> 01:25:57,495
+vamos encaixotar
+
+1344
+01:25:57,495 --> 01:26:00,855
+bem..ok..vamos encaixotar algumas coisas
+
+1345
+01:26:00,855 --> 01:26:05,704
+vamos retornar null..ótimo...ok..retornar null
+
+1346
+01:26:05,704 --> 01:26:11,458
+eu só...eu só não estou seguro
+que eu posso continuar com isso
+
+1347
+01:26:11,450 --> 01:26:14,787
+isso tem se estendido...eu não sei
+
+1348
+01:26:14,787 --> 01:26:17,243
+eu só não sei.. olha..olha
+
+1349
+01:26:17,243 --> 01:26:19,040
+estamos brincando com os testes agora
+
+1350
+01:26:19,040 --> 01:26:22,067
+olha isso, estamos tentando desencaixar as coisas no teste
+
+1351
+01:26:22,067 --> 01:26:25,827
+sei lá... é tão frustrante
+
+1352
+01:26:25,827 --> 01:26:28,670
+o merda.. agora vamo s desfazer isso
+
+1353
+01:26:28,670 --> 01:26:31,618
+meu deus.. não consigo me decidir
+
+1354
+01:26:31,618 --> 01:26:35,101
+int..a não ele vai usar intValue()
+
+1355
+01:26:35,101 --> 01:26:37,686
+meu deus ele tá fazendo intValue no teste
+
+1356
+01:26:37,686 --> 01:26:40,240
+cara, ele digitou errado
+
+1357
+01:26:40,240 --> 01:26:41,987
+ele conseguiu? conseguiu?
+
+1358
+01:26:41,987 --> 01:26:43,304
+oh! ele está tirando eles
+
+1359
+01:26:43,304 --> 01:26:44,646
+a não..não..não
+
+1360
+01:26:44,646 --> 01:26:46,215
+o que ele vai fazer??
+
+1361
+01:26:46,215 --> 01:26:48,215
+ele tá criando variáveis
+
+1362
+01:26:48,215 --> 01:26:51,575
+variáveis!variáveis náo...meu deus ele vai fazer
+
+1363
+01:26:51,575 --> 01:26:53,163
+variáveis explicativas
+
+1364
+01:26:53,163 --> 01:26:56,787
+ele vai mudar o tipo delas, omg
+
+1365
+01:26:56,787 --> 01:26:59,095
+eu sei lá.. eu...não...
+
+1366
+01:27:00,141 --> 01:27:05,390
+eu acho que é hora de eu deixar pra lá agora
+
+1367
+01:27:05,390 --> 01:27:07,390
+meu deus
+
+1368
+01:27:09,476 --> 01:27:10,886
+Trying é uma coisa
+
+1369
+01:27:14,326 --> 01:27:16,258
+uma última coisa
+
+1370
+01:27:16,258 --> 01:27:19,070
+eu tenho uma regra quando assunto é blocos try
+
+1371
+01:27:19,070 --> 01:27:22,160
+se a palavra "try" aparece em uma função
+
+1372
+01:27:22,160 --> 01:27:27,144
+deve ser a primeira palavra nesta função
+depois de qualquer declaração de variável
+
+1373
+01:27:27,144 --> 01:27:29,230
+o corpo do bloco try
+
+1374
+01:27:29,230 --> 01:27:31,046
+deve conter um única linha
+
+1375
+01:27:31,046 --> 01:27:32,356
+uma chamada de função
+
+1376
+01:27:32,356 --> 01:27:37,846
+e o bloco close e finally, deve
+ser a última coisa dessa função
+
+1377
+01:27:40,775 --> 01:27:45,403
+e lembre-se: uma função deve fazer "uma coisa"
+
+1378
+01:27:45,403 --> 01:27:48,646
+tratamento de erro é "uma coisa"
+
+1379
+01:27:48,646 --> 01:27:53,335
+uma função deve fazer algo ou deve tratar erros
+
+1380
+01:27:53,335 --> 01:27:55,680
+mas não deve fazer ambos
+
+1381
+01:27:59,261 --> 01:28:02,627
+conclusão
+
+1382
+01:28:03,089 --> 01:28:04,923
+venham crianças
+
+1383
+01:28:04,920 --> 01:28:09,027
+eu sinto que devo resumir agora, se reunam
+
+1384
+01:28:09,027 --> 01:28:13,643
+aprendemos que assinaturas de função devem ser pequenas
+
+1385
+01:28:13,643 --> 01:28:18,295
+que devem ter poucos argumentos nelas, talvez 3 ou menos
+
+1386
+01:28:18,295 --> 01:28:23,667
+e vc não deve passar booleans ou null
+
+1387
+01:28:23,667 --> 01:28:28,793
+e por favor, sem argumentos out
+
+1388
+01:28:30,080 --> 01:28:34,861
+devemos organizar nossos métodos de
+acordo com o princípio da descida
+
+1389
+01:28:34,861 --> 01:28:38,036
+isso mesmo, onde temos os métodos públicos no topo
+
+1390
+01:28:38,036 --> 01:28:41,446
+e depois os métodos abaixo deles, que são chamados por eles
+
+1391
+01:28:41,446 --> 01:28:43,476
+e assim por diante abaixo da corrente
+
+1392
+01:28:43,470 --> 01:28:47,058
+não queremos nenhuma referência invertida
+
+1393
+01:28:48,258 --> 01:28:51,156
+aprendemos sobre switch-cases, não foi?
+
+1394
+01:28:51,156 --> 01:28:56,455
+sim, nós aprendemos que os switch-cases violo o paradigma da O.O
+
+1395
+01:28:56,455 --> 01:29:00,812
+e interfere com publicação independente
+
+1396
+01:29:00,812 --> 01:29:05,212
+e desenvolvimento independente
+
+1397
+01:29:05,212 --> 01:29:09,987
+aprendemos que devemos substituí-los
+com polimorfismo quando possível
+
+1398
+01:29:09,987 --> 01:29:16,387
+ou pelo menos mover eles para um
+módulo seguro e independente como Main
+
+1399
+01:29:16,387 --> 01:29:21,723
+onde eles podem viver felizes,
+talvez dentro de uma Factory
+
+1400
+01:29:21,723 --> 01:29:24,166
+aprendemos sobre alguns paradigmas
+
+1401
+01:29:24,160 --> 01:29:26,670
+aprendemos sobre o paradigma funcional
+
+1402
+01:29:26,670 --> 01:29:28,836
+aprendemos sobre o paradigma estrutural
+
+1403
+01:29:28,836 --> 01:29:32,633
+a sim, aprendemos sobre acoplamentos temporais
+
+1404
+01:29:32,633 --> 01:29:37,581
+o horror que são e como resolver passando um bloco
+
+1405
+01:29:38,720 --> 01:29:42,923
+e tbem aprendemos sobre separação de comando e consulta
+
+1406
+01:29:42,923 --> 01:29:47,292
+e tbem "diga, não peça"
+
+1407
+01:29:47,292 --> 01:29:50,030
+lembrem-se da lei de Demeter, crianças
+
+1408
+01:29:50,030 --> 01:29:55,021
+e os perigos de muito conhecimento
+em uma única linha de código
+
+1409
+01:29:55,020 --> 01:30:02,381
+não queremos que uma função
+conheça toda a estrutura do sistema
+
+1410
+01:30:02,380 --> 01:30:07,132
+e aprendemos sobre programação estruturada, lembram ?
+
+1411
+01:30:07,130 --> 01:30:11,163
+toda aquela coisa de entrada
+única e saída única que falamos
+
+1412
+01:30:11,163 --> 01:30:20,123
+aprendemos o porque de breaks e returns no meio de loop
+causam complicações que não precisamos enfrentar
+
+1413
+01:30:20,123 --> 01:30:22,689
+gastamos um tempo com tratamento de erros, não foi?
+
+1414
+01:30:22,689 --> 01:30:25,483
+sim, falamos sobre tratamento de erros
+
+1415
+01:30:25,483 --> 01:30:32,030
+e como devemos considerar nosso tratamento de
+erros primeiro, antes da real implementação
+
+1416
+01:30:32,030 --> 01:30:37,095
+falamos que é melhor ter exception ques código de erros
+
+1417
+01:30:37,095 --> 01:30:40,553
+não queremos retornar código de erros
+
+1418
+01:30:40,553 --> 01:30:43,569
+gostamos de lançar exceptions quando possível
+
+1419
+01:30:43,560 --> 01:30:50,246
+e lembrem-se que essas exception devem
+estar no escopo de nossas classes
+
+1420
+01:30:50,246 --> 01:30:55,409
+não reusem aquelas exception horríveis
+
+1421
+01:30:55,870 --> 01:31:02,375
+também aprendemos que exception não verificadas
+são melhores que exceptions verificadas
+
+1422
+01:31:02,375 --> 01:31:05,741
+isso mesmo, não queremos mais ter exceptions verificas
+
+1423
+01:31:06,098 --> 01:31:09,070
+aprendemos que o padrão do objeto nulo
+
+1424
+01:31:09,070 --> 01:31:14,153
+e o padrão do caso especial são
+frequentemente melhores que erros
+
+1425
+01:31:14,153 --> 01:31:20,510
+e tbem aprendemos que valor nulo não é um erro
+
+1426
+01:31:20,510 --> 01:31:25,747
+vão em paz crianças e considere essas coisa com sabedoria
+
+1427
+01:31:32,535 --> 01:31:34,055
+isso foi bem divertido
+
+1428
+01:31:34,055 --> 01:31:35,772
+e espero que tenham se divertido
+
+1429
+01:31:35,772 --> 01:31:38,086
+e talvez até aprendido alguma coisa
+
+1430
+01:31:38,086 --> 01:31:41,193
+mas, tem muito mais coisas para falarmos
+
+1431
+01:31:41,193 --> 01:31:43,353
+não estamos nem perto de acabar
+
+1432
+01:31:43,353 --> 01:31:45,840
+que tal sobre comentários ?
+
+1433
+01:31:45,840 --> 01:31:47,870
+que tal sobre formataçao de código?
+
+1434
+01:31:47,870 --> 01:31:52,356
+e qual a diferença de estrutura de dados e objetos ?
+
+1435
+01:31:52,356 --> 01:31:56,418
+e depois tem todo um tópico sobre testes e TDD
+
+1436
+01:31:56,418 --> 01:31:58,861
+e princípios de orientaçao a objetos
+
+1437
+01:31:58,861 --> 01:32:03,286
+vc não vai querer perder o próximo episódio de clean code:
+
+1438
+01:32:03,286 --> 01:32:06,301
+Episódio 5 - Form
+

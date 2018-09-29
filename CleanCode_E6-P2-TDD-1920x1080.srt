@@ -1,0 +1,5602 @@
+﻿1
+00:00:16,246 --> 00:00:18,153
+Oi, sou o tio Bob
+
+2
+00:00:18,153 --> 00:00:20,363
+e isso é Clean Code
+
+3
+00:00:51,100 --> 00:00:54,615
+Bem vindo a parte 2 do episódio 6
+
+4
+00:00:54,615 --> 00:00:56,313
+TDD
+
+5
+00:00:56,313 --> 00:00:57,981
+começamos no episódio passado
+
+6
+00:00:57,981 --> 00:01:00,793
+aprendendo um pouco sobre a lua
+
+7
+00:01:00,793 --> 00:01:03,163
+de fato, a origem da lua
+
+8
+00:01:03,163 --> 00:01:04,886
+e depois voltamos ao trabalho
+
+9
+00:01:04,886 --> 00:01:08,676
+discutimos como e porque o código apodrece
+
+10
+00:01:08,676 --> 00:01:12,320
+aprendemos que apodrece porque temos medo de limpar
+
+11
+00:01:12,320 --> 00:01:14,867
+mostrei o conjunto de teste no FitNess
+
+12
+00:01:14,867 --> 00:01:17,624
+e disso que se esses testes passam
+
+13
+00:01:17,624 --> 00:01:19,452
+nós publicamos esse produto
+
+14
+00:01:19,452 --> 00:01:22,369
+os testes são o processo de QA
+
+15
+00:01:22,369 --> 00:01:24,800
+depois fiz uma demonstraçao de limpeza
+
+16
+00:01:24,800 --> 00:01:27,316
+de um método feio que achei no FitNess
+
+17
+00:01:27,316 --> 00:01:30,320
+Os testes feitos no Fitness fez possível
+
+18
+00:01:30,320 --> 00:01:32,670
+limpar bem aquele código
+
+19
+00:01:32,670 --> 00:01:35,870
+os testes eliminaram o medo
+
+20
+00:01:35,870 --> 00:01:38,990
+depois aprendemos as 3 leis do TDD
+
+21
+00:01:38,990 --> 00:01:40,024
+a primeira lei diz
+
+22
+00:01:40,024 --> 00:01:42,320
+que nãso tem permissão de
+escrever nenhum código de produção
+
+23
+00:01:42,320 --> 00:01:45,120
+até escrever um teste de unidade que falha
+
+24
+00:01:45,120 --> 00:01:46,295
+a segunda lei diz
+
+25
+00:01:46,295 --> 00:01:48,400
+que não pode escrever mais de um teste de unidade
+
+26
+00:01:48,400 --> 00:01:50,049
+do que é suficiente para falhar
+
+27
+00:01:50,049 --> 00:01:52,455
+e não compilar é falhar
+
+28
+00:01:52,450 --> 00:01:53,544
+a terceira lei diz
+
+29
+00:01:53,540 --> 00:01:56,135
+que vc não tem permissão de
+escrever mais código de produção
+
+30
+00:01:56,135 --> 00:01:59,833
+do que aquele que é suficiente para passar o teste atual
+
+31
+00:01:59,833 --> 00:02:01,372
+nosso visitante do universo paralelo
+
+32
+00:02:01,372 --> 00:02:03,513
+quase teve um treco por causa disso
+
+33
+00:02:03,513 --> 00:02:05,163
+ele teve muitas objeções
+
+34
+00:02:05,163 --> 00:02:08,449
+algumas que nós respondemos na última parte
+
+35
+00:02:08,449 --> 00:02:10,209
+respondemos elas rápidamente
+
+36
+00:02:10,209 --> 00:02:14,332
+e satisfazemos sua ira temporariamente
+
+37
+00:02:14,332 --> 00:02:18,190
+mostramos que TDD encurta o tempo de debug
+
+38
+00:02:18,190 --> 00:02:21,390
+cria documentação de baixo nível confiável
+
+39
+00:02:21,390 --> 00:02:23,464
+leva a modelagem desacopladaa
+
+40
+00:02:23,464 --> 00:02:24,873
+e acima de tudo
+
+41
+00:02:24,873 --> 00:02:28,061
+elimina o medo de limpar o código
+
+42
+00:02:28,246 --> 00:02:31,741
+e então, isso aconteceu
+
+43
+00:02:31,803 --> 00:02:33,015
+sim tipo Bob
+
+44
+00:02:33,015 --> 00:02:34,787
+eu entendi tudo agora
+
+45
+00:02:34,787 --> 00:02:36,787
+a lógica é impecável
+
+46
+00:02:37,341 --> 00:02:39,452
+mas aquilo que é lógico
+
+47
+00:02:39,452 --> 00:02:41,852
+não é necessariamente prático
+
+48
+00:02:42,301 --> 00:02:45,218
+vc tem uma lógica fraca
+
+49
+00:02:45,218 --> 00:02:47,698
+se não conseguir estabelecer que TDD
+
+50
+00:02:47,698 --> 00:02:50,024
+também é prático
+
+51
+00:02:51,050 --> 00:02:54,658
+então o tempo de esclarecimentos chegou
+
+52
+00:02:55,667 --> 00:02:59,126
+me permita te mostrar uma demonstração
+
+53
+00:03:06,732 --> 00:03:10,307
+vermelho verde Refatorar
+
+54
+00:03:10,978 --> 00:03:12,480
+bem-vindo
+
+55
+00:03:12,480 --> 00:03:14,867
+o que vamos falar hoje
+
+56
+00:03:14,860 --> 00:03:16,203
+é sobre o jogo de boliche
+
+57
+00:03:16,200 --> 00:03:17,686
+este é um exemplo velho
+
+58
+00:03:17,686 --> 00:03:20,196
+que tenho feito por quase 10 anos
+
+59
+00:03:20,196 --> 00:03:23,821
+é uma boa forma de demonstrar TDD
+
+60
+00:03:23,821 --> 00:03:25,495
+vamo lá
+
+61
+00:03:26,849 --> 00:03:29,126
+um jogo de boliche, consiste em
+
+62
+00:03:29,126 --> 00:03:30,960
+10 quadros
+
+63
+00:03:30,960 --> 00:03:32,560
+esses 10 quadros
+
+64
+00:03:32,560 --> 00:03:36,006
+cada um consiste, em duas jogadas
+
+65
+00:03:36,006 --> 00:03:40,892
+vc tem 2 tentativas para derrubar
+10 pinos no final do corredor
+
+66
+00:03:40,892 --> 00:03:43,556
+se olhar neste exemplo em particular
+
+67
+00:03:43,556 --> 00:03:45,556
+no primeiro quadro, este cara conseguiu
+
+68
+00:03:45,556 --> 00:03:49,636
+derrubar um pino na sua primeira jogada
+
+69
+00:03:49,636 --> 00:03:51,298
+e depois na sua segunda jogada
+
+70
+00:03:51,298 --> 00:03:53,187
+ele derrubou mais quatro
+
+71
+00:03:53,187 --> 00:03:55,261
+totalizando 5
+
+72
+00:03:56,486 --> 00:03:58,664
+no seu segundo quadro
+
+73
+00:03:58,660 --> 00:04:02,129
+ele derrubou 4 pinos de primeira
+
+74
+00:04:02,129 --> 00:04:05,033
+e na segunda tentativa ele derrubou cinco
+
+75
+00:04:05,033 --> 00:04:06,603
+totalizando 9
+
+76
+00:04:06,603 --> 00:04:09,501
+9 + 4 é 14
+
+77
+00:04:10,375 --> 00:04:12,541
+no seu terceiro quadro
+
+78
+00:04:12,541 --> 00:04:16,129
+ele derrubou 6 pinos na primeira jogada
+
+79
+00:04:16,129 --> 00:04:19,913
+na segunda jogada ele derrubou os 4 que sobrou
+
+80
+00:04:19,913 --> 00:04:22,196
+isso é chamado de "spare"
+
+81
+00:04:22,196 --> 00:04:24,916
+essa é a forma que desenhamos um "spare"
+
+82
+00:04:24,910 --> 00:04:30,166
+um "spare" é pontuado como 10 mais
+a próxima bola que jogar
+
+83
+00:04:30,166 --> 00:04:31,827
+que seria um 5
+
+84
+00:04:31,827 --> 00:04:34,412
+então a pontuação para esse quadro
+
+85
+00:04:34,412 --> 00:04:36,381
+é 15
+
+86
+00:04:36,381 --> 00:04:38,350
+10 + 5
+
+87
+00:04:38,350 --> 00:04:40,923
+e 15 + 13 é 29
+
+88
+00:04:41,501 --> 00:04:43,427
+ele consegue um "spare"no segundo quadro
+
+89
+00:04:43,427 --> 00:04:46,184
+e então no quinto quadro
+
+90
+00:04:46,184 --> 00:04:47,907
+ele faz um "strike"
+
+91
+00:04:47,907 --> 00:04:50,596
+um "strike", é quando derruba todos os 10 pinos
+
+92
+00:04:50,596 --> 00:04:52,080
+de primeira
+
+93
+00:04:52,910 --> 00:04:55,987
+a pontuação de um strike é 10
+
+94
+00:04:55,987 --> 00:04:58,720
+mais as próximas 2 bolas que vc joga
+
+95
+00:04:58,720 --> 00:05:01,390
+o qual esse cara cagou tudo
+
+96
+00:05:01,390 --> 00:05:02,701
+ele jogou uma bola fora
+
+97
+00:05:02,701 --> 00:05:03,809
+seguido de um pino
+
+98
+00:05:03,809 --> 00:05:06,713
+isso é de cortar o coração
+depois que consegue um "strike"
+
+99
+00:05:06,713 --> 00:05:10,590
+o total para esse quadro foi 11
+
+100
+00:05:11,501 --> 00:05:14,566
+11 + 49 é 60
+
+101
+00:05:14,566 --> 00:05:17,821
+mais o 1 do próximo quadro que dá 61
+
+102
+00:05:17,821 --> 00:05:19,520
+e assim por diante
+
+103
+00:05:19,520 --> 00:05:21,372
+até chgar no décimo quadro
+
+104
+00:05:21,372 --> 00:05:23,507
+o décimo quadro é um pouco diferente
+
+105
+00:05:23,500 --> 00:05:26,603
+no décimo, se vc rolar um e depois 4
+
+106
+00:05:26,603 --> 00:05:28,436
+igual no primeiro quadro
+
+107
+00:05:28,436 --> 00:05:30,560
+então o décimo quadro estaria acabado
+
+108
+00:05:30,560 --> 00:05:33,575
+mas, esse cara conseguiu um "spare"
+
+109
+00:05:33,575 --> 00:05:36,615
+o que significa que ele consegue mais uma bola
+
+110
+00:05:36,615 --> 00:05:38,824
+para completar o "spare"
+
+111
+00:05:38,820 --> 00:05:41,963
+se tivesse feito um "strike"
+
+112
+00:05:41,960 --> 00:05:45,304
+então teria conseguido mais 2
+bolas para completar o strike
+
+113
+00:05:45,304 --> 00:05:46,707
+isso é como vc joga boliche
+
+114
+00:05:46,707 --> 00:05:48,116
+essas são as regras
+
+115
+00:05:48,116 --> 00:05:52,030
+agora, nosso objetivo para esse exemplo
+
+116
+00:05:52,030 --> 00:05:55,981
+é crirar uma classe chamada Game
+
+117
+00:05:55,981 --> 00:05:58,935
+a classe terá 2 métodos
+
+118
+00:05:58,935 --> 00:06:00,590
+um método chamado Roll
+
+119
+00:06:00,590 --> 00:06:02,615
+e um método chamado Score
+
+120
+00:06:02,615 --> 00:06:03,636
+o método roll
+
+121
+00:06:03,636 --> 00:06:07,003
+será chamado toda vez que jogar a bola
+
+122
+00:06:07,003 --> 00:06:10,430
+e passará o número de pinos que vc derrubou
+
+123
+00:06:10,430 --> 00:06:13,661
+o método score só será chamado no final do jogo
+
+124
+00:06:13,661 --> 00:06:16,295
+e retornará a pontuação do jogo
+
+125
+00:06:16,295 --> 00:06:18,867
+para fazer essa demonstração um pouco mais rápido
+
+126
+00:06:18,867 --> 00:06:21,507
+não iremos considerar nenhuma entrada inválida
+
+127
+00:06:21,507 --> 00:06:23,870
+não vamos considerar nenhuma jogada negativa
+
+128
+00:06:23,870 --> 00:06:27,895
+não iremos lidar com jogadas de 12 ou 15
+
+129
+00:06:27,895 --> 00:06:31,396
+não iremos lidar com uma jogada de 5 seguida por uma de 7
+
+130
+00:06:31,396 --> 00:06:33,181
+todas essas entradas inválidas
+
+131
+00:06:33,181 --> 00:06:34,418
+iremos ignorar
+
+132
+00:06:34,418 --> 00:06:36,633
+normalmente, é claro, não iríamos
+
+133
+00:06:36,633 --> 00:06:40,363
+mas para acabar com essa demo, é isso que iremos fazer
+
+134
+00:06:41,772 --> 00:06:43,150
+agora, como todo bom designer
+
+135
+00:06:43,150 --> 00:06:46,418
+iremos começar com uma breve sessão de design
+
+136
+00:06:46,418 --> 00:06:48,221
+sabemos que precisaremos de uma classe
+
+137
+00:06:48,221 --> 00:06:48,867
+que se chama Game
+
+138
+00:06:48,867 --> 00:06:51,378
+que tem 2 métodos: roll e score
+
+139
+00:06:51,378 --> 00:06:52,258
+mas o que mais precisamos ?
+
+140
+00:06:52,258 --> 00:06:55,273
+quais os outros objetos nesse sistema?
+
+141
+00:06:55,858 --> 00:06:57,280
+bem, é bem fácil de achar
+
+142
+00:06:57,280 --> 00:06:59,076
+que temos um objeto Quadro
+
+143
+00:06:59,076 --> 00:07:02,184
+de fato, um Jogo tem 10 quadros
+
+144
+00:07:02,184 --> 00:07:03,501
+vc pode ver o UML aqui
+
+145
+00:07:03,501 --> 00:07:07,212
+ele mostra que um Jogo possuí 10 quadros
+
+146
+00:07:07,212 --> 00:07:09,107
+e o que os quadros tem?
+
+147
+00:07:09,107 --> 00:07:10,701
+bem, quadros possuem jogadas
+
+148
+00:07:10,701 --> 00:07:12,486
+uma ou duas jogadas
+
+149
+00:07:12,486 --> 00:07:14,043
+uma em caso de strike
+
+150
+00:07:14,043 --> 00:07:15,987
+duas em qualquer outro caso
+
+151
+00:07:15,987 --> 00:07:18,984
+exceto é claro, pelo décimo quadro
+
+152
+00:07:18,984 --> 00:07:22,492
+o décimo quadro, tem 2 ou 3 jogadas
+
+153
+00:07:22,490 --> 00:07:25,169
+como lidamos em um design orientado a objetos
+
+154
+00:07:25,169 --> 00:07:29,575
+com o conceito que é similar mas não exatamente igual
+
+155
+00:07:29,575 --> 00:07:32,153
+é claro que temos uma subclasse
+
+156
+00:07:32,153 --> 00:07:33,304
+o DecimoQuadro
+
+157
+00:07:33,304 --> 00:07:35,692
+o DécimoQuadro herda de Quadro
+
+158
+00:07:35,692 --> 00:07:37,735
+e contém uma jogada extra
+
+159
+00:07:37,735 --> 00:07:40,036
+ele herda as 2 jogadas
+
+160
+00:07:40,036 --> 00:07:42,350
+e tem outra jogada além
+
+161
+00:07:42,350 --> 00:07:45,440
+então teremos duas ou três jogadas
+
+162
+00:07:47,532 --> 00:07:49,483
+agora vamos pensar sobre a função score
+
+163
+00:07:49,483 --> 00:07:53,206
+qual o algoritmo para função de pontuação
+
+164
+00:07:53,206 --> 00:07:56,849
+bem, vai ter que iterar por todos os quadros
+
+165
+00:07:56,849 --> 00:07:59,021
+adicionando a pontuação dos quadros
+
+166
+00:07:59,021 --> 00:08:02,603
+então precisamos de algum método dentro do quadro
+
+167
+00:08:02,603 --> 00:08:05,932
+para que o loop peça para o quadro, por sua pontuação
+
+168
+00:08:05,932 --> 00:08:09,083
+provavelmente será o método score
+
+169
+00:08:09,083 --> 00:08:12,024
+qual o algoritmo deste método?
+
+170
+00:08:12,024 --> 00:08:14,898
+bem.. terá que iterar as jogadas
+
+171
+00:08:14,890 --> 00:08:16,276
+mas é mais difícil do que isso
+
+172
+00:08:16,276 --> 00:08:17,107
+porque
+
+173
+00:08:17,107 --> 00:08:19,526
+no caso de um strike ou spare
+
+174
+00:08:19,526 --> 00:08:22,307
+terá que olhar os próximos quadros
+
+175
+00:08:22,300 --> 00:08:25,378
+para poder completar a jogada
+
+176
+00:08:25,378 --> 00:08:28,049
+então precisaremos de alguma forma de olhar para frente
+
+177
+00:08:28,049 --> 00:08:31,618
+algum link que nos aponte para o próximo quadro
+
+178
+00:08:32,744 --> 00:08:35,378
+ok, muito bem, temos um design
+
+179
+00:08:35,378 --> 00:08:37,661
+eu não gastaria mais tempo do que isso
+
+180
+00:08:37,661 --> 00:08:41,089
+isso nos dá o vocabulário do sistema
+
+181
+00:08:41,089 --> 00:08:43,132
+os componentes básicos
+
+182
+00:08:43,132 --> 00:08:44,184
+então agora
+
+183
+00:08:44,184 --> 00:08:46,775
+iremos realizar o TDD
+
+184
+00:08:46,775 --> 00:08:48,756
+E no TDD
+
+185
+00:08:48,756 --> 00:08:50,640
+nós fazemos algo interessante
+
+186
+00:08:50,640 --> 00:08:52,049
+nós ignoramos o design
+
+187
+00:08:52,040 --> 00:08:53,507
+bem... nem tanto
+
+188
+00:08:53,507 --> 00:08:57,052
+nós não ignoramos, mas não o seguimos
+
+189
+00:08:57,052 --> 00:09:00,510
+usamos como um tipo de diretriz
+
+190
+00:09:01,840 --> 00:09:04,258
+aqui vc ve na tela
+
+191
+00:09:04,250 --> 00:09:07,932
+o começo de um teste
+
+192
+00:09:07,932 --> 00:09:11,286
+e acredito que possa ver que ele executa
+
+193
+00:09:11,286 --> 00:09:13,396
+executa com uma função
+
+194
+00:09:13,396 --> 00:09:15,187
+chamada de "nada"
+
+195
+00:09:15,187 --> 00:09:17,858
+isso porque eu sempre começo assim
+
+196
+00:09:17,858 --> 00:09:22,289
+eu sempre começo o projeto com algo executando
+
+197
+00:09:22,289 --> 00:09:26,320
+então eu já to rodando, mesmo não tendo nenhum código
+
+198
+00:09:26,320 --> 00:09:28,898
+essa função não é interessante
+
+199
+00:09:31,563 --> 00:09:34,209
+qual testes vou ter que escrever
+
+200
+00:09:34,209 --> 00:09:36,947
+agora, lembre da primeira lei do TDD
+
+201
+00:09:36,947 --> 00:09:39,390
+vc não tem permissão de escrever nenhum código de produção
+
+202
+00:09:39,390 --> 00:09:41,673
+até ter um teste de unidade que falhe
+
+203
+00:09:41,673 --> 00:09:44,215
+eu sei o tipo de código de produção que gostaria de escrever
+
+204
+00:09:44,215 --> 00:09:46,658
+eu gostaria de escrever "public class Jogo"
+
+205
+00:09:46,658 --> 00:09:47,784
+mas não posso
+
+206
+00:09:47,784 --> 00:09:49,993
+eu tenho que escrever um
+teste de unidade primeiro
+
+207
+00:09:49,993 --> 00:09:54,024
+então eu tenho que jogar
+esse jogo estranho, comigo mesmo
+
+208
+00:09:54,024 --> 00:09:57,064
+esse jogo que diz:
+
+209
+00:09:57,064 --> 00:10:00,443
+que teste eu preciso escrever
+
+210
+00:10:00,443 --> 00:10:04,701
+que me force a escrever o
+código eu sei que quero escrever
+
+211
+00:10:06,067 --> 00:10:12,332
+opa.. é hora do ciclo verde-vermelho
+
+212
+00:10:12,332 --> 00:10:14,412
+eu estou na fase vermelha
+
+213
+00:10:14,412 --> 00:10:18,381
+preciso escrever um teste de unidade que falhe
+
+214
+00:10:18,381 --> 00:10:19,470
+certo
+
+215
+00:10:19,470 --> 00:10:22,436
+que teste preciso escrever
+
+216
+00:10:22,436 --> 00:10:25,396
+que me force a escrever "public class Jogo"
+
+217
+00:10:25,396 --> 00:10:31,360
+bem, vou escrever um PodeCriarJogo
+
+218
+00:10:31,360 --> 00:10:35,796
+Jogo j = new Jogo();
+
+219
+00:10:42,258 --> 00:10:45,489
+Deus do céu, isso não compila!
+
+220
+00:10:45,489 --> 00:10:47,846
+Eu preciso fazer compilar
+
+221
+00:10:47,846 --> 00:10:49,286
+então agora
+
+222
+00:10:49,975 --> 00:10:52,406
+eu vou criar a classe Jogo
+
+223
+00:10:52,406 --> 00:10:54,129
+Sim, no pacote atual
+
+224
+00:10:54,129 --> 00:10:56,615
+aqui está, a classe Jogo
+
+225
+00:10:56,615 --> 00:10:59,476
+e se eu voltar para meu teste
+
+226
+00:10:59,470 --> 00:11:03,255
+veja, o teste passa!!!
+
+227
+00:11:03,267 --> 00:11:09,224
+é hora de eu ir para a fase verde
+
+228
+00:11:09,224 --> 00:11:11,220
+e na fase verde
+
+229
+00:11:11,220 --> 00:11:13,827
+e hora de refatorar
+
+230
+00:11:13,820 --> 00:11:15,390
+tem alguma coisa que eu possa refatorar aqui?
+
+231
+00:11:15,390 --> 00:11:18,147
+não.. nada para refatorar
+
+232
+00:11:18,160 --> 00:11:21,980
+então eu terminei esse teste
+
+233
+00:11:22,769 --> 00:11:25,046
+de volta para a fase vermelha
+
+234
+00:11:26,904 --> 00:11:28,701
+o próximo teste...
+
+235
+00:11:28,701 --> 00:11:32,418
+bem, eu sei que quero escrever aquele método "roll"
+
+236
+00:11:32,418 --> 00:11:33,033
+certo..
+
+237
+00:11:45,040 --> 00:11:46,547
+o que eu devo jogar?
+
+238
+00:11:46,547 --> 00:11:49,076
+vamos jogar um zero
+
+239
+00:11:49,963 --> 00:11:51,766
+hm... isso não compila
+
+240
+00:11:51,766 --> 00:11:55,464
+certo, hora de me focar a fazer isso funcionar
+
+241
+00:11:56,080 --> 00:12:00,123
+eu vou criar o método roll
+
+242
+00:12:02,061 --> 00:12:04,498
+e deve receber pinos
+
+243
+00:12:04,490 --> 00:12:05,600
+isso é adorável
+
+244
+00:12:05,643 --> 00:12:09,760
+e acredito que irá passar
+
+245
+00:12:09,950 --> 00:12:12,541
+porque eu não estou testando nada na verdade
+
+246
+00:12:12,541 --> 00:12:15,692
+opa.. hora de refatorar, eu tenho um teste que passou
+
+247
+00:12:15,692 --> 00:12:17,495
+o que tem para refatorar?
+
+248
+00:12:17,495 --> 00:12:20,535
+eita.. eu tenho código duplicado aqui
+
+249
+00:12:23,144 --> 00:12:25,483
+é melhor eu pegar isso e refatorar
+
+250
+00:12:26,067 --> 00:12:29,464
+criar um campo chamado g
+
+251
+00:12:29,464 --> 00:12:34,935
+vou inicializa-lo no SetUp
+
+252
+00:12:34,935 --> 00:12:37,538
+o qual eu não tenho mas isso vai criar
+
+253
+00:12:37,538 --> 00:12:39,600
+vou manter privado
+
+254
+00:12:40,775 --> 00:12:42,387
+agora eu tenho um bom conjunto de método
+
+255
+00:12:42,387 --> 00:12:45,421
+irá criro Jogo
+
+256
+00:12:45,421 --> 00:12:48,941
+que vou colocar no campo privado g
+
+257
+00:12:48,940 --> 00:12:51,156
+PodeCriarJogo está vazio agora
+
+258
+00:12:51,156 --> 00:12:53,298
+porque não faz nada
+
+259
+00:12:53,290 --> 00:12:55,993
+e acho que posso me livar dessa linha
+
+260
+00:12:57,138 --> 00:12:59,520
+e tudo isso deve passar
+
+261
+00:13:02,012 --> 00:13:05,421
+passa, acho que posso me livrar desse teste vazio agora
+
+262
+00:13:05,421 --> 00:13:06,633
+isso é normal, a propósito
+
+263
+00:13:06,633 --> 00:13:08,972
+vc escreve um teste só pra deletar depois
+
+264
+00:13:15,212 --> 00:13:18,018
+próximo caso de teste interessante
+
+265
+00:13:18,018 --> 00:13:19,753
+de volta para vermelho
+
+266
+00:13:21,396 --> 00:13:22,615
+bem...
+
+267
+00:13:23,329 --> 00:13:24,713
+o que posso fazer falhar agora
+
+268
+00:13:25,476 --> 00:13:27,249
+a eu tenho que escrever a função score
+
+269
+00:13:27,249 --> 00:13:30,086
+hmm..mas eu não posso chamar score
+
+270
+00:13:30,086 --> 00:13:32,227
+até eu terminar um jogo inteiro
+
+271
+00:13:32,227 --> 00:13:37,556
+ok.. aqui entramos em detalhes técnicos do TDD
+
+272
+00:13:38,129 --> 00:13:40,683
+quando precisa escrever código real
+
+273
+00:13:40,683 --> 00:13:43,815
+vc escreve o mais simples que pode
+
+274
+00:13:43,815 --> 00:13:47,753
+neste caso, eu terei que jogar uma partida inteira
+
+275
+00:13:47,753 --> 00:13:53,600
+qual a partida mais simples que eu posso jogar?
+
+276
+00:13:54,713 --> 00:13:57,673
+o jogo de "GutterGame" (bola fora)
+
+277
+00:14:08,560 --> 00:14:10,609
+quantas bolas no gutterGame?
+
+278
+00:14:11,230 --> 00:14:11,790
+vinte
+
+279
+00:14:16,873 --> 00:14:19,778
+isso vai jogar 20 zeros... isso é gutterGame
+
+280
+00:14:19,778 --> 00:14:22,904
+e agora vamos validar que a pontuação
+
+281
+00:14:23,950 --> 00:14:25,723
+é zero
+
+282
+00:14:25,796 --> 00:14:29,126
+o céus... isso não compila!
+
+283
+00:14:29,126 --> 00:14:31,883
+eu devo fazer passar!
+
+284
+00:14:31,883 --> 00:14:35,372
+excelente, eu devo fazer isto compilar
+
+285
+00:14:36,990 --> 00:14:40,966
+eu vou fazer retornar -1
+
+286
+00:14:40,966 --> 00:14:43,698
+porque ainda quero ver falhar
+
+287
+00:14:43,698 --> 00:14:45,280
+deve falhar
+
+288
+00:14:45,280 --> 00:14:46,006
+sim!
+
+289
+00:14:46,006 --> 00:14:50,055
+e agora vou fazer passar, retornando zero
+
+290
+00:14:50,050 --> 00:14:55,698
+isto é estúpido, mas fácil
+
+291
+00:14:55,698 --> 00:15:00,043
+agora já vi meu teste falhar e passar
+
+292
+00:15:00,043 --> 00:15:02,566
+eu sei que meu teste funciona
+
+293
+00:15:02,763 --> 00:15:05,273
+não me custou nada, mas agora eu sei
+
+294
+00:15:05,273 --> 00:15:08,547
+que meu teste irá falhar, se não conseguir zero
+
+295
+00:15:11,240 --> 00:15:13,550
+qual será o próximo caso de teste ?
+
+296
+00:15:13,569 --> 00:15:16,486
+ou... tem alguma refatoração pra fazer?
+
+297
+00:15:18,024 --> 00:15:18,867
+não
+
+298
+00:15:19,341 --> 00:15:21,587
+próximo caso interessante
+
+299
+00:15:23,144 --> 00:15:25,969
+bem... eu tenho um "gutterGame"
+
+300
+00:15:25,969 --> 00:15:28,689
+o próximo jogo complicado
+
+301
+00:15:28,689 --> 00:15:30,652
+ainda bem simples
+
+302
+00:15:30,652 --> 00:15:32,523
+mas o próximo jogo, pode ser interessante
+
+303
+00:15:32,523 --> 00:15:34,646
+pode ser "all ones"
+
+304
+00:15:34,646 --> 00:15:35,963
+tem uma pontuação trivial
+
+305
+00:15:35,963 --> 00:15:36,824
+pontuação 20
+
+306
+00:15:41,938 --> 00:15:45,556
+acho que posso copiar esse código aqui..
+
+307
+00:15:47,212 --> 00:15:50,098
+código duplicado.. eu tenho código duplicado aqui
+
+308
+00:15:50,098 --> 00:15:51,772
+certo.. eu vou refatorar em um minuto
+
+309
+00:15:51,772 --> 00:15:53,920
+calma.. eu ainda estou na fase vermelha
+
+310
+00:15:55,280 --> 00:15:56,873
+vou jogar 21 vezes...
+
+311
+00:15:56,873 --> 00:15:59,396
+e a pontuação para esse jogo será 20
+
+312
+00:15:59,396 --> 00:16:01,396
+isso deve falhar
+
+313
+00:16:04,098 --> 00:16:05,458
+falha
+
+314
+00:16:05,901 --> 00:16:08,695
+esperava 20 e foi 0
+
+315
+00:16:08,695 --> 00:16:10,892
+agora vamos fazer passar
+
+316
+00:16:10,892 --> 00:16:13,298
+como farei isso passar?
+
+317
+00:16:14,184 --> 00:16:16,904
+bem.. eu poderia retornar 20
+
+318
+00:16:16,904 --> 00:16:20,135
+mas isso não fará o primeiro teste passar
+
+319
+00:16:20,130 --> 00:16:21,987
+agora o primeiro teste vai falhar
+
+320
+00:16:22,010 --> 00:16:23,704
+mesmo o segundo passando
+
+321
+00:16:23,723 --> 00:16:25,175
+isso não é bom o suficiente
+
+322
+00:16:25,187 --> 00:16:27,833
+acho que terei que fazer algo..
+
+323
+00:16:27,833 --> 00:16:30,369
+um pouco inteligente
+
+324
+00:16:31,753 --> 00:16:34,763
+vamos adicionar todos os pinos em "roll"
+
+325
+00:16:52,984 --> 00:16:54,966
+eu acho que irá passar
+
+326
+00:16:58,381 --> 00:17:01,796
+passou.. eu sou um gênio eu sou um programador
+
+327
+00:17:05,476 --> 00:17:06,252
+a propósito..
+
+328
+00:17:06,252 --> 00:17:08,307
+quanto de vcs são programadores
+
+329
+00:17:08,307 --> 00:17:10,861
+porque conseguiu fazer rodar alguma coisa uma vez
+
+330
+00:17:10,861 --> 00:17:12,861
+e querem sentir isso de novo?
+
+331
+00:17:13,476 --> 00:17:15,236
+eu acabo de sentir isso
+
+332
+00:17:15,236 --> 00:17:19,058
+então.. isso parece funcionar
+
+333
+00:17:19,058 --> 00:17:22,578
+não é o melhor algoritmo, mas parece que funcina
+
+334
+00:17:22,578 --> 00:17:25,667
+vamos para a fase de refatoração
+
+335
+00:17:25,667 --> 00:17:27,735
+alguma coisa errada com esse código?
+
+336
+00:17:28,420 --> 00:17:29,643
+código duplicado!
+
+337
+00:17:29,643 --> 00:17:32,160
+olha isso, esse loop está duplicado
+
+338
+00:17:32,160 --> 00:17:34,960
+céus.. como permitimos isso, neste código?
+
+339
+00:17:34,960 --> 00:17:37,464
+que bagunça...é código duplicado
+
+340
+00:17:37,464 --> 00:17:38,960
+certo
+
+341
+00:17:38,960 --> 00:17:43,298
+acredito que posso extrair em uma função
+
+342
+00:17:44,006 --> 00:17:47,569
+que irá conter esse loop
+
+343
+00:17:48,252 --> 00:17:49,981
+gostaria de chamar essa função
+
+344
+00:17:49,981 --> 00:17:52,080
+de rollMany
+
+345
+00:17:52,080 --> 00:17:53,600
+para extraí-la
+
+346
+00:17:53,600 --> 00:17:55,920
+primeiro vou tirar esse 20
+
+347
+00:17:55,920 --> 00:17:59,236
+tornar uma variaiável N
+
+348
+00:17:59,236 --> 00:18:01,181
+vou pegar esse zero
+
+349
+00:18:01,181 --> 00:18:05,686
+transformar em uma variável "pinos"
+
+350
+00:18:05,686 --> 00:18:08,381
+vou tirar a variável do loop
+
+351
+00:18:08,381 --> 00:18:11,046
+agora o loop é parametrizável
+
+352
+00:18:13,046 --> 00:18:17,298
+e agora vou extrair o método
+
+353
+00:18:17,298 --> 00:18:20,104
+chamar de rollMany
+
+354
+00:18:20,104 --> 00:18:23,593
+terá n e pinos como argumentos
+
+355
+00:18:24,203 --> 00:18:27,476
+detectou que um pedaço similar de código existe
+
+356
+00:18:27,476 --> 00:18:28,812
+sim, pode fazer isso
+
+357
+00:18:28,812 --> 00:18:30,646
+sim, faça tudo por favor.
+
+358
+00:18:31,624 --> 00:18:33,452
+aqui está a chamada "rollMany"
+
+359
+00:18:33,450 --> 00:18:35,206
+tem outra aqui
+
+360
+00:18:36,141 --> 00:18:37,710
+não é bonito?
+
+361
+00:18:37,710 --> 00:18:41,292
+vou continuar refatorando
+isto removendo as variáveis
+
+362
+00:18:41,292 --> 00:18:44,227
+só precisei delas para extrair o método
+
+363
+00:18:44,923 --> 00:18:46,196
+jogue 20 zeros
+
+364
+00:18:46,196 --> 00:18:47,193
+pontua zero
+
+365
+00:18:47,193 --> 00:18:48,769
+está claro
+
+366
+00:18:49,618 --> 00:18:51,144
+jogue 21
+
+367
+00:18:51,144 --> 00:18:52,541
+pontuação deve ser 20
+
+368
+00:18:52,541 --> 00:18:53,569
+está bem claro
+
+369
+00:18:53,569 --> 00:18:54,621
+eu gosto disso
+
+370
+00:18:54,621 --> 00:18:58,123
+vou pegar essa função e mover para o topo
+
+371
+00:18:58,123 --> 00:19:00,055
+quero fora do caminho
+
+372
+00:19:00,055 --> 00:19:02,824
+veja essa função "canRoll" aqui
+
+373
+00:19:02,824 --> 00:19:05,821
+ela não é mais necessária, vou me livar dela
+
+374
+00:19:06,763 --> 00:19:08,707
+tudo deve passar
+
+375
+00:19:10,055 --> 00:19:11,538
+maravilha
+
+376
+00:19:16,793 --> 00:19:20,067
+próximo caso de teste interessante
+
+377
+00:19:20,067 --> 00:19:22,818
+eu tenho guttergame, allOne
+
+378
+00:19:22,818 --> 00:19:23,913
+eu poderia fazer allTwos
+
+379
+00:19:23,913 --> 00:19:25,040
+mas eu sei que iria passar
+
+380
+00:19:25,040 --> 00:19:29,058
+e não escrevemos testes que sabemos que irão passar
+
+381
+00:19:29,058 --> 00:19:31,193
+allThress, vai passar
+
+382
+00:19:31,193 --> 00:19:32,880
+allFours, vai passar
+
+383
+00:19:32,880 --> 00:19:34,135
+allFives, não vai!
+
+384
+00:19:34,135 --> 00:19:37,286
+porque allFives, significa "spares"
+
+385
+00:19:37,286 --> 00:19:40,326
+então o próximo teste que irei escrever
+
+386
+00:19:40,326 --> 00:19:42,418
+será sobre "spares"
+
+387
+00:19:42,418 --> 00:19:47,889
+qual seria o spare mais simples
+que eu posso escrever aqui?
+
+388
+00:19:47,889 --> 00:19:50,504
+um spare seguido de gutterball
+
+389
+00:19:50,504 --> 00:19:52,129
+isso é bem simples
+
+390
+00:20:01,236 --> 00:20:02,695
+isso é um spare
+
+391
+00:20:02,695 --> 00:20:03,790
+cometário feio
+
+392
+00:20:03,790 --> 00:20:05,409
+tenho um comentário feio aqui
+
+393
+00:20:05,409 --> 00:20:06,510
+terei que refatorar
+
+394
+00:20:06,510 --> 00:20:08,923
+mas não agora!
+
+395
+00:20:08,923 --> 00:20:11,156
+preciso de uma bola depois do spare
+
+396
+00:20:11,156 --> 00:20:12,443
+que tal um 3
+
+397
+00:20:13,581 --> 00:20:15,187
+e o resto será gutterballs
+
+398
+00:20:15,187 --> 00:20:17,790
+quantas precisamos?
+
+399
+00:20:19,076 --> 00:20:20,086
+17
+
+400
+00:20:23,895 --> 00:20:26,227
+e a pontuação deste jogo
+
+401
+00:20:30,658 --> 00:20:32,338
+13 + 3 , 16
+
+402
+00:20:32,338 --> 00:20:34,406
+aquele 3 é contado em dobro
+
+403
+00:20:34,406 --> 00:20:35,938
+esse é o bônus pelo spare
+
+404
+00:20:38,516 --> 00:20:39,833
+passa ou falha?
+
+405
+00:20:41,366 --> 00:20:44,473
+vai... falhar!
+
+406
+00:20:45,427 --> 00:20:48,264
+experado 16, foi 13
+
+407
+00:20:49,544 --> 00:20:51,083
+preciso fazer passar!
+
+408
+00:20:51,083 --> 00:20:53,267
+como faço passar?
+
+409
+00:20:55,452 --> 00:20:56,486
+eu não sei!
+
+410
+00:20:56,486 --> 00:20:58,984
+digo, o que eu terei que fazer?
+
+411
+00:21:01,630 --> 00:21:03,643
+calcular a pontuação aqui
+
+412
+00:21:04,830 --> 00:21:06,781
+se eu conseguir dois 5 aqui...
+
+413
+00:21:06,781 --> 00:21:08,369
+não, não dois 5 seguidos...
+
+414
+00:21:08,369 --> 00:21:11,889
+se duas bolas juntas, somarem dez
+
+415
+00:21:11,889 --> 00:21:13,556
+mas eu só tenho uma bola aqui
+
+416
+00:21:13,556 --> 00:21:15,113
+ok....
+
+417
+00:21:16,830 --> 00:21:17,766
+se...
+
+418
+00:21:19,550 --> 00:21:20,578
+pinos
+
+419
+00:21:20,578 --> 00:21:21,920
+mais
+
+420
+00:21:22,806 --> 00:21:24,523
+último pinos
+
+421
+00:21:24,523 --> 00:21:25,815
+isto seria uma variável estática
+
+422
+00:21:25,815 --> 00:21:27,556
+vou carregá-la depois
+
+423
+00:21:27,556 --> 00:21:30,080
+se isso igual à 10
+
+424
+00:21:30,080 --> 00:21:32,080
+isso é o spare!
+
+425
+00:21:32,381 --> 00:21:34,024
+agora..
+
+426
+00:21:34,024 --> 00:21:35,581
+isto deveria te incomodar
+
+427
+00:21:35,581 --> 00:21:37,200
+profundamente
+
+428
+00:21:37,200 --> 00:21:40,523
+seu cu deveria estar piscando
+
+429
+00:21:40,523 --> 00:21:44,061
+estou adicionando uma flag horrível aqui
+
+430
+00:21:44,061 --> 00:21:44,966
+isto é ruim
+
+431
+00:21:44,966 --> 00:21:46,646
+não quero adicionar uma flag
+
+432
+00:21:46,646 --> 00:21:48,910
+não quero ter uma variável estática
+
+433
+00:21:49,550 --> 00:21:54,289
+sempre quando o código pede que
+faça algo horrível como isto
+
+434
+00:21:54,289 --> 00:21:56,295
+vc tem que dar um passo para trás
+
+435
+00:21:56,295 --> 00:21:59,772
+algo deve estar errado com a modelagem
+
+436
+00:21:59,772 --> 00:22:01,975
+que modelagem?? só tem 2 linhas de código
+
+437
+00:22:02,369 --> 00:22:03,883
+sim...mas...
+
+438
+00:22:03,883 --> 00:22:07,513
+algo deve estar errado com a modelagem
+
+439
+00:22:07,513 --> 00:22:08,886
+na verdade tem
+
+440
+00:22:08,886 --> 00:22:13,723
+tem o princípio de modelagem sendo violado aqui
+
+441
+00:22:13,723 --> 00:22:15,864
+um princípio que todo mundo conhece
+
+442
+00:22:15,864 --> 00:22:18,043
+é um dos primeiros que vc aprende
+
+443
+00:22:18,043 --> 00:22:19,716
+é bem popular
+
+444
+00:22:19,716 --> 00:22:21,803
+alguém sabe qual é?
+
+445
+00:22:21,803 --> 00:22:23,846
+vou dizer qual é..
+
+446
+00:22:24,116 --> 00:22:25,446
+qual dessas funções
+
+447
+00:22:25,446 --> 00:22:26,806
+pelo seu nome
+
+448
+00:22:26,806 --> 00:22:29,963
+implica que calcula a pontuação
+
+449
+00:22:29,963 --> 00:22:32,855
+ah.. a função score!
+
+450
+00:22:33,378 --> 00:22:37,704
+qual delas relamente calcula a pontuação
+
+451
+00:22:38,880 --> 00:22:41,052
+a função roll...
+
+452
+00:22:41,052 --> 00:22:43,169
+responsabilidade deslocada
+
+453
+00:22:43,169 --> 00:22:46,960
+é o nome desse princípio de design ou desse "design smell"
+
+454
+00:22:46,960 --> 00:22:49,169
+responsabilidade deslocada
+
+455
+00:22:49,169 --> 00:22:52,467
+vc vai para a função que diz que faz algo
+
+456
+00:22:52,467 --> 00:22:54,338
+e a função não a faz!
+
+457
+00:22:54,338 --> 00:22:56,756
+quantas vezes vc já foi pego por isto?
+
+458
+00:22:56,756 --> 00:22:59,341
+vc tem mudar algum comportamento no sistema
+
+459
+00:22:59,341 --> 00:23:02,049
+vc vai na função que diz que o faz
+
+460
+00:23:02,049 --> 00:23:04,018
+e aquela função não o faz!
+
+461
+00:23:04,018 --> 00:23:05,587
+onde está no sistema?
+
+462
+00:23:05,587 --> 00:23:06,615
+está em algum lugar
+
+463
+00:23:06,615 --> 00:23:08,627
+mas não aonde diz que faz
+
+464
+00:23:08,627 --> 00:23:10,344
+então onde está???
+
+465
+00:23:10,344 --> 00:23:12,086
+os programadores ficam espertos
+
+466
+00:23:12,086 --> 00:23:13,840
+eles sabem como o sistema funciona
+
+467
+00:23:13,840 --> 00:23:19,150
+eles escondem a função onde não é esperada
+
+468
+00:23:19,150 --> 00:23:22,486
+e vc tem que descobrir onde diabos está!
+
+469
+00:23:22,486 --> 00:23:24,012
+nós não vamos fazer isso!
+
+470
+00:23:24,012 --> 00:23:26,080
+vamos colocar a funcionalidade
+
+471
+00:23:26,080 --> 00:23:27,846
+na funçao onde diz que faz
+
+472
+00:23:27,846 --> 00:23:31,206
+vamos fazer "score", calcular a pontuação
+
+473
+00:23:31,643 --> 00:23:34,670
+claro, que isso significa que
+terei que salvar todas as jogadas(rolls)
+
+474
+00:23:34,670 --> 00:23:37,870
+eu não posso somar a pontuação das jogadas
+
+475
+00:23:37,870 --> 00:23:39,846
+meu deus.. tenho trabalho a fazer
+
+476
+00:23:39,846 --> 00:23:41,409
+o que devo fazer?
+
+477
+00:23:45,292 --> 00:23:46,436
+eu vou refatorar!
+
+478
+00:23:46,436 --> 00:23:46,966
+mas, espera
+
+479
+00:23:46,966 --> 00:23:48,596
+eu tenho um teste falhando
+
+480
+00:23:48,596 --> 00:23:49,944
+não tenho não!
+
+481
+00:23:49,940 --> 00:23:53,520
+vou voltar para o meu teste
+e eu vou ignorar
+
+482
+00:23:59,686 --> 00:24:00,843
+meus testes passam agora!
+
+483
+00:24:00,843 --> 00:24:02,055
+tem um pequeno lembrete aqui
+
+484
+00:24:02,055 --> 00:24:03,987
+que me diz que ignorei o teste
+
+485
+00:24:03,987 --> 00:24:05,544
+mas os meus testes passaram agora
+
+486
+00:24:05,544 --> 00:24:06,886
+eu posso refatorar
+
+487
+00:24:06,886 --> 00:24:09,107
+vamos refatorar
+
+488
+00:24:09,544 --> 00:24:11,193
+eu quero salvar todos esses pinos
+
+489
+00:24:11,193 --> 00:24:13,273
+vou botar em algum lugar bacana
+
+490
+00:24:13,273 --> 00:24:15,606
+vou botar eles em um array
+
+491
+00:24:15,606 --> 00:24:17,440
+vamos fazer isso
+
+492
+00:24:28,781 --> 00:24:32,043
+quantas jogadas possíveis em um jogo de boliche?
+
+493
+00:24:33,390 --> 00:24:35,889
+18...19...20...21
+
+494
+00:24:35,889 --> 00:24:36,830
+21
+
+495
+00:24:38,781 --> 00:24:40,978
+e vou precisar de algum index para esse array
+
+496
+00:24:46,861 --> 00:24:49,556
+dentro da função roll, vou dizer...
+
+497
+00:24:55,526 --> 00:24:59,273
+provando de uma vez por todas, que sou um velho hacker em c++
+
+498
+00:24:59,273 --> 00:25:01,003
+e então, na funçao score
+
+499
+00:25:01,003 --> 00:25:04,418
+vou iterar o array
+
+500
+00:25:06,603 --> 00:25:09,255
+a sim, vou dizer...
+
+501
+00:25:14,996 --> 00:25:18,258
+e o que eu devo fazer é retornar o score
+
+502
+00:25:19,415 --> 00:25:20,455
+um pouco mais de refatoração
+
+503
+00:25:20,455 --> 00:25:23,680
+não acho que vou precisar mais dessa variável score
+
+504
+00:25:23,680 --> 00:25:26,510
+na verdade pode ser uma local da função score
+
+505
+00:25:31,809 --> 00:25:33,415
+passa ou falha?
+
+506
+00:25:36,904 --> 00:25:38,689
+passa
+
+507
+00:25:38,689 --> 00:25:40,153
+eu refatorei
+
+508
+00:25:41,833 --> 00:25:43,840
+o algoritmo é totalmente diferente
+
+509
+00:25:43,840 --> 00:25:47,113
+e agora, eu não tenho responsabilidade deslocada
+
+510
+00:25:47,113 --> 00:25:51,243
+agora a função score, calcula a pontuação
+
+511
+00:25:53,021 --> 00:25:54,350
+de volta ao vermelho
+
+512
+00:25:55,107 --> 00:25:57,353
+vamos tirar o ignore daqui
+
+513
+00:25:57,353 --> 00:25:59,206
+deve falhar
+
+514
+00:26:02,326 --> 00:26:04,880
+falha, pelo mesmo motivo de antes também!
+
+515
+00:26:04,880 --> 00:26:07,495
+então não mudamos nenhum comportamento sequer
+
+516
+00:26:07,490 --> 00:26:09,698
+só movemos onde estava
+
+517
+00:26:12,147 --> 00:26:14,276
+como fazemos isso passar?
+
+518
+00:26:17,200 --> 00:26:18,726
+o que gostaria de fazer...
+
+519
+00:26:18,726 --> 00:26:20,707
+é algo como isto
+
+520
+00:26:33,366 --> 00:26:35,501
+isso seria o spare
+
+521
+00:26:35,501 --> 00:26:37,858
+eu vejo alguns de vocês, balançando a cabeça...
+
+522
+00:26:37,858 --> 00:26:39,403
+vc não concorda comigo?!
+
+523
+00:26:39,403 --> 00:26:41,920
+vc não acha que isso seja o spare?!
+
+524
+00:26:41,920 --> 00:26:43,255
+ah... entendi...
+
+525
+00:26:43,255 --> 00:26:44,492
+porque...
+
+526
+00:26:44,492 --> 00:26:47,169
+pode não estar no quadro
+
+527
+00:26:47,169 --> 00:26:49,070
+este teste passaria
+
+528
+00:26:49,070 --> 00:26:51,784
+se a última bola do primeiro quadro
+
+529
+00:26:51,784 --> 00:26:54,455
+e a primeira bola do segundo quadro
+
+530
+00:26:54,455 --> 00:26:55,778
+somassem 10
+
+531
+00:26:55,778 --> 00:26:57,643
+isso não é um spare
+
+532
+00:26:57,643 --> 00:26:59,926
+ah! mas talvez possamos fazer isto
+
+533
+00:27:03,821 --> 00:27:06,750
+nós encotramos quem fez isto
+anos atrás e matamos todos!
+
+534
+00:27:06,750 --> 00:27:09,963
+não, isso não vai ser como faremos isto
+
+535
+00:27:11,692 --> 00:27:17,021
+na verdade, acho que teremos que refatorar!
+
+536
+00:27:17,021 --> 00:27:17,347
+opa..
+
+537
+00:27:17,347 --> 00:27:19,723
+não posso testar pois está falhando
+
+538
+00:27:19,723 --> 00:27:22,375
+de volta para ignore
+
+539
+00:27:25,864 --> 00:27:27,710
+agora deve passar
+
+540
+00:27:32,855 --> 00:27:34,830
+por que eu quero refatorar?
+
+541
+00:27:35,507 --> 00:27:37,206
+quero refatorar esse loop
+
+542
+00:27:37,206 --> 00:27:41,415
+para que itere as jogadas um quadro de cada vez
+
+543
+00:27:41,415 --> 00:27:43,224
+não uma bola de cada vez
+
+544
+00:27:43,224 --> 00:27:45,723
+se eu fizer isso, então eu posso escrever aquele IF
+
+545
+00:27:45,723 --> 00:27:48,947
+e o IF sempre estaria dentro do quadro
+
+546
+00:27:49,661 --> 00:27:52,553
+deixa eu reescrever o loop
+
+547
+00:28:05,673 --> 00:28:07,704
+...e acho que o que vou fazer é...
+
+548
+00:28:11,113 --> 00:28:12,744
+eu não tenho essa variável "i", tenho?
+
+549
+00:28:12,904 --> 00:28:14,406
+preciso criá-la
+
+550
+00:28:19,200 --> 00:28:22,732
+agora estou percorrendo o array
+
+551
+00:28:24,326 --> 00:28:26,190
+um quadro por vez
+
+552
+00:28:26,190 --> 00:28:29,846
+estou adicionando as duas jogadas dentro do quadro
+
+553
+00:28:29,846 --> 00:28:32,166
+eu preciso incrementar o "i", não é mesmo?!
+
+554
+00:28:34,080 --> 00:28:38,135
+então estou andando pelo array, duas bolas por vez
+
+555
+00:28:38,135 --> 00:28:39,304
+um quadro, 2 bolas
+
+556
+00:28:39,304 --> 00:28:40,843
+sim... eu sei... strikes são diferentes...
+
+557
+00:28:40,843 --> 00:28:42,621
+mas ainda não chegamos no teste do strike ainda!
+
+558
+00:28:42,621 --> 00:28:44,233
+então está bom
+
+559
+00:28:44,990 --> 00:28:46,596
+passa ou falha?
+
+560
+00:28:50,338 --> 00:28:51,815
+passa!
+
+561
+00:28:51,815 --> 00:28:54,547
+outra refatoração com sucesso!
+
+562
+00:28:55,593 --> 00:28:56,633
+certo
+
+563
+00:29:02,073 --> 00:29:03,729
+de volta ao vermelho
+
+564
+00:29:07,200 --> 00:29:09,360
+falhou.. experava 16, foi 13
+
+565
+00:29:09,360 --> 00:29:11,643
+mesmo resultado de antes, excelente!
+
+566
+00:29:13,723 --> 00:29:14,744
+agora...
+
+567
+00:29:14,744 --> 00:29:18,449
+será que consigo fazer esse caso de "spare", passar?
+
+568
+00:29:20,843 --> 00:29:21,643
+bem
+
+569
+00:29:21,643 --> 00:29:23,710
+acho que aquele IF vai funcionar agora
+
+570
+00:29:35,612 --> 00:29:36,984
+comentário feio
+
+571
+00:29:39,421 --> 00:29:41,409
+devo colocar um ELSE aqui
+
+572
+00:29:47,760 --> 00:29:49,150
+o que eu devo colocar aqui dentro?
+
+573
+00:29:49,150 --> 00:29:51,747
+este é o caso de spare
+
+574
+00:29:55,821 --> 00:29:58,092
+bem.. a pontuação de um score é 10
+
+575
+00:29:58,806 --> 00:30:01,458
+mais, a próxima bola que vc joga
+
+576
+00:30:05,846 --> 00:30:08,153
+e por quanto devemos incrementar o "i"?
+
+577
+00:30:08,153 --> 00:30:10,553
+bem.. tem duas bolas neste quadro
+
+578
+00:30:13,932 --> 00:30:15,563
+passa ou falha?
+
+579
+00:30:19,710 --> 00:30:21,446
+passa...
+
+580
+00:30:22,676 --> 00:30:25,415
+eu consegui o caso spare
+
+581
+00:30:27,286 --> 00:30:28,338
+hora de refatorar
+
+582
+00:30:28,338 --> 00:30:30,732
+e tem um monte de refatoração pra fazer
+
+583
+00:30:30,732 --> 00:30:32,430
+este código tá bem feio
+
+584
+00:30:36,110 --> 00:30:38,252
+precisamos de um nome melhor para isso
+
+585
+00:30:39,495 --> 00:30:40,923
+o que é essa variável "i"
+
+586
+00:30:40,923 --> 00:30:46,670
+ele é o indexDaPrimeiraBolaDoQuadro
+
+587
+00:30:47,901 --> 00:30:49,716
+isso o que é.. mas esse nome é horrível
+
+588
+00:30:49,716 --> 00:30:51,440
+então vamos voltar
+
+589
+00:30:51,440 --> 00:30:54,147
+iDpBnQ
+
+590
+00:30:54,147 --> 00:30:56,301
+hmmm...não!
+
+591
+00:30:57,538 --> 00:30:59,052
+primeiraBola
+
+592
+00:31:02,418 --> 00:31:03,993
+primeiraNoQuadro
+
+593
+00:31:07,273 --> 00:31:08,375
+eu gosto disso
+
+594
+00:31:08,375 --> 00:31:10,455
+primeira no quadro
+
+595
+00:31:13,169 --> 00:31:14,313
+este cometário....
+
+596
+00:31:14,313 --> 00:31:16,036
+preciso me livrar desse cometário feio
+
+597
+00:31:16,036 --> 00:31:17,046
+o que é fácil de fazer
+
+598
+00:31:17,046 --> 00:31:19,353
+vou tirar essa expressão
+
+599
+00:31:19,353 --> 00:31:24,609
+e vou remove-la como um método "IsSpare"
+
+600
+00:31:28,467 --> 00:31:32,812
+agora posso me livra do comentáriom, pois é supérfluo
+
+601
+00:31:32,812 --> 00:31:34,670
+isso ainda deve passar
+
+602
+00:31:36,935 --> 00:31:38,141
+ainda passa
+
+603
+00:31:38,141 --> 00:31:39,858
+posso ir para meus testes
+
+604
+00:31:39,858 --> 00:31:42,006
+veja, outro comentário feio
+
+605
+00:31:42,006 --> 00:31:44,153
+eu posso refatorar meu teste
+
+606
+00:31:44,153 --> 00:31:45,993
+o que, à propósito, sempre fazemos!
+
+607
+00:31:45,993 --> 00:31:49,575
+tratamos os testes, como
+se fossem código de produção!
+
+608
+00:31:49,575 --> 00:31:52,923
+não tratamos testes como
+se fossem cidadãos de segunda classe
+
+609
+00:31:52,923 --> 00:31:55,821
+testes são tão importantes
+quanto código de produção
+
+610
+00:31:55,821 --> 00:31:58,781
+e vc mantenha seus testes limpos!
+
+611
+00:32:00,855 --> 00:32:02,424
+o nome desta função?
+
+612
+00:32:04,233 --> 00:32:06,412
+isso tá legal       
+
+613
+00:32:06,412 --> 00:32:07,963
+eu não preciso mais deste comentário
+
+614
+00:32:07,963 --> 00:32:09,809
+é totalmente redundante
+
+615
+00:32:09,846 --> 00:32:11,956
+acredito que isso ainda vai passar
+
+616
+00:32:14,000 --> 00:32:17,009
+ainda passa, aleluia!
+
+617
+00:32:17,009 --> 00:32:21,409
+vou pegar essa funçao e mover para cima um pouco
+
+618
+00:32:21,409 --> 00:32:23,218
+onde todos os utiliátios estão
+
+619
+00:32:28,775 --> 00:32:31,261
+próximo caso de teste interessante
+
+620
+00:32:33,218 --> 00:32:34,800
+bem.. fizemos um spare
+
+621
+00:32:34,800 --> 00:32:36,486
+vamos fazer um strike
+
+622
+00:32:45,064 --> 00:32:46,449
+cometário feio
+
+623
+00:32:46,449 --> 00:32:47,938
+mas é nosso strike
+
+624
+00:32:49,458 --> 00:32:51,556
+agora precisamos mais 2 bolas depois do strike
+
+625
+00:32:59,563 --> 00:33:00,880
+agora precisamos de "gutterballs"
+
+626
+00:33:00,880 --> 00:33:02,301
+quantas precisamos?
+
+627
+00:33:02,301 --> 00:33:03,667
+oh.. oi Twinkles
+
+628
+00:33:05,027 --> 00:33:06,486
+Twinkles veio me visitar
+
+629
+00:33:06,486 --> 00:33:08,707
+ela é uma animal bonzinha
+
+630
+00:33:10,410 --> 00:33:12,147
+isso não é vermelho-verde-azul
+
+631
+00:33:12,147 --> 00:33:13,655
+isso é outra cor
+
+632
+00:33:13,655 --> 00:33:16,147
+é chamado de fazer seu pequeno cachorro feliz
+
+633
+00:33:32,412 --> 00:33:33,883
+boa menina, Twinkles
+
+634
+00:33:42,018 --> 00:33:43,095
+quer sentar no meu colo?
+
+635
+00:33:44,227 --> 00:33:45,267
+ou quer descer?
+
+636
+00:33:45,267 --> 00:33:46,652
+ok, pode descer
+
+637
+00:33:46,652 --> 00:33:48,849
+obrigado pela vizita, tchau tchau
+
+638
+00:33:51,126 --> 00:33:54,818
+ok, precisamos terminar isso jogando gutterballs
+
+639
+00:33:56,572 --> 00:33:57,840
+quantas gutterballs?
+
+640
+00:33:57,840 --> 00:33:58,947
+bem...
+
+641
+00:33:58,947 --> 00:34:00,947
+tem 8 quadros faltando... 16
+
+642
+00:34:02,996 --> 00:34:05,495
+e qual a pontuação deste jogo?
+
+643
+00:34:05,495 --> 00:34:08,283
+ah... é 10 mais as próximas 2 bolas
+
+644
+00:34:08,283 --> 00:34:11,181
+na verdade, aquele 7 alí é contado em dobro
+
+645
+00:34:12,769 --> 00:34:13,975
+24
+
+646
+00:34:17,015 --> 00:34:18,726
+passa ou falha?
+
+647
+00:34:18,726 --> 00:34:21,224
+eu to com meu chapéu vermelho, então é bom falhar!
+
+648
+00:34:22,092 --> 00:34:23,390
+falha, isso aí
+
+649
+00:34:23,390 --> 00:34:25,907
+esperava 24 e foi 17
+
+650
+00:34:28,380 --> 00:34:30,203
+como fazemos isso passar?
+
+651
+00:34:30,203 --> 00:34:31,532
+bem...
+
+652
+00:34:32,621 --> 00:34:35,636
+temos um tipo de padrão de
+projeto acontecendo aqui, não temos?
+
+653
+00:34:37,440 --> 00:34:39,335
+acho que posso colocar mais um IF aqui...
+
+654
+00:34:45,089 --> 00:34:47,138
+bem, isso seria um strike
+
+655
+00:34:48,098 --> 00:34:49,409
+comentário feio
+
+656
+00:34:51,889 --> 00:34:54,233
+melhor colocar um ELSE na frente desse IF
+
+657
+00:34:54,233 --> 00:34:55,476
+bom...
+
+658
+00:34:55,476 --> 00:34:57,735
+agora aqui, tudo que precisamos fazer é dizer...
+
+659
+00:35:03,680 --> 00:35:07,243
+pontuação de strike é 10 mais as próximas duas bolas
+
+660
+00:35:11,550 --> 00:35:13,415
+isso seria a próxima bola
+
+661
+00:35:22,098 --> 00:35:25,316
+e por quanto incrementamos a "primeiraNoQuadro"?
+
+662
+00:35:27,040 --> 00:35:29,760
+só tem uma bola no quadro de strike
+
+663
+00:35:33,470 --> 00:35:35,236
+passa ou falha?
+
+664
+00:35:38,929 --> 00:35:43,052
+passa...huehuehue
+
+665
+00:35:43,772 --> 00:35:45,446
+refatorar
+
+666
+00:35:45,963 --> 00:35:48,221
+céus... coisas terríveis aqui
+
+667
+00:35:48,221 --> 00:35:50,510
+temos um comentário feio
+
+668
+00:35:50,510 --> 00:35:51,649
+podemos nos livrar disso
+
+669
+00:35:51,640 --> 00:35:55,255
+isso será o método "IsStrike"
+
+670
+00:35:56,320 --> 00:35:58,923
+não precismo mais deste comentário
+
+671
+00:35:59,433 --> 00:36:01,686
+olhe para essa expressão horrível também!
+
+672
+00:36:01,686 --> 00:36:03,181
+muita coisa acontecendo
+
+673
+00:36:03,181 --> 00:36:04,996
+vamos pegar isso
+
+674
+00:36:04,996 --> 00:36:10,553
+e extrair para nextTwoBallsForStrike
+
+675
+00:36:11,156 --> 00:36:14,720
+é isto está bom.. ok ok ok
+
+676
+00:36:16,350 --> 00:36:17,538
+já que fizemos isso
+
+677
+00:36:17,538 --> 00:36:20,436
+provavelmente devemos fazer isto
+
+678
+00:36:21,280 --> 00:36:24,092
+isso seria "nextBallForSpare"
+
+679
+00:36:24,092 --> 00:36:25,920
+isso torna as coisas melhores e simetricas
+
+680
+00:36:27,796 --> 00:36:30,892
+agora isso parece totalmente deslocado e muito grande
+
+681
+00:36:30,890 --> 00:36:32,890
+então vamos pegar isso e fazer
+
+682
+00:36:33,175 --> 00:36:36,043
+"twoBallsInFrame"
+
+683
+00:36:37,323 --> 00:36:40,356
+não, não faça mais nada,obrigado.
+
+684
+00:36:40,356 --> 00:36:41,704
+ok, isso parece bom
+
+685
+00:36:41,704 --> 00:36:43,009
+vamos ir para o teste
+
+686
+00:36:43,009 --> 00:36:45,384
+a propósito, eu acho que isso ainda passa
+
+687
+00:36:47,458 --> 00:36:49,200
+sim, ainda passa
+
+688
+00:36:49,200 --> 00:36:52,467
+eita, ainda temos código horrível no teste
+
+689
+00:36:52,467 --> 00:36:53,796
+tem esse método strike
+
+690
+00:36:53,796 --> 00:36:58,652
+vamos tirar isso fora e dizer.. rollStrike
+
+691
+00:36:58,652 --> 00:37:02,270
+bom, agora podemos nos livrar desse comentário
+
+692
+00:37:03,120 --> 00:37:05,513
+vc sabe como me sinto sobre comentários
+
+693
+00:37:05,513 --> 00:37:08,615
+vc viu isso,  em um episódio passado
+
+694
+00:37:10,430 --> 00:37:12,221
+isso deve passar
+
+695
+00:37:16,160 --> 00:37:21,624
+vou pegar esse método e mover
+junto com os outros utilitários
+
+696
+00:37:21,624 --> 00:37:23,667
+bom, aqui está
+
+697
+00:37:23,772 --> 00:37:26,443
+aqui está meu código, vamos ver
+
+698
+00:37:26,443 --> 00:37:28,443
+ainda passa
+
+699
+00:37:30,270 --> 00:37:34,424
+próximo caso de teste interessante
+
+700
+00:37:34,424 --> 00:37:35,852
+bem...
+
+701
+00:37:35,852 --> 00:37:36,713
+fizemos strikes
+
+702
+00:37:36,713 --> 00:37:37,969
+fizemos spares
+
+703
+00:37:38,890 --> 00:37:42,320
+provavelmente devemos pensar
+em strikes múltiplos ou spares
+
+704
+00:37:42,320 --> 00:37:44,584
+de fato, precisamos pensar no décimo quadro
+
+705
+00:37:44,584 --> 00:37:47,304
+pois ignorámos ele completamente até agora
+
+706
+00:37:47,304 --> 00:37:48,646
+então
+
+707
+00:37:48,646 --> 00:37:50,024
+tem uma escolha óbvia aqui
+
+708
+00:37:50,024 --> 00:37:52,006
+vamos fazer um jogo perfeito
+
+709
+00:37:52,006 --> 00:37:53,741
+o jogo perfeito é um monte de strikes
+
+710
+00:37:53,741 --> 00:37:55,409
+todo mundo sabe a pontuação
+
+711
+00:37:55,821 --> 00:37:57,126
+vamos ver
+
+712
+00:38:03,950 --> 00:38:06,873
+quantos strikes em um jogo perfeito?
+
+713
+00:38:06,873 --> 00:38:09,667
+9...10..11...12
+
+714
+00:38:09,667 --> 00:38:11,175
+doze dez
+
+715
+00:38:11,175 --> 00:38:13,409
+esse é o jogo perfeito
+
+716
+00:38:13,980 --> 00:38:15,907
+e a pontuação para esse jogo é...
+
+717
+00:38:15,907 --> 00:38:19,144
+todo mundo sabe... 300
+
+718
+00:38:20,787 --> 00:38:23,243
+ok, passa ou falha?
+
+719
+00:38:24,393 --> 00:38:25,840
+deve falhar certo?!
+
+720
+00:38:25,840 --> 00:38:26,775
+passa!
+
+721
+00:38:26,775 --> 00:38:28,264
+pera aí... eu to com meu chapéu vermelho!
+
+722
+00:38:28,264 --> 00:38:29,624
+isso deveria falhar!
+
+723
+00:38:29,624 --> 00:38:30,880
+não, passou!
+
+724
+00:38:30,880 --> 00:38:33,058
+por que passou???
+
+725
+00:38:33,058 --> 00:38:35,532
+bem, vamos olhar o código
+
+726
+00:38:35,532 --> 00:38:39,913
+FOR cada quadro todos os 10
+
+727
+00:38:39,913 --> 00:38:41,606
+se o quadro for strike
+
+728
+00:38:41,606 --> 00:38:45,280
+a pontuação é 10 mais as próximas 2 bolas
+
+729
+00:38:46,283 --> 00:38:47,150
+do contrário
+
+730
+00:38:47,150 --> 00:38:49,335
+se o quadro for um spare
+
+731
+00:38:49,335 --> 00:38:53,206
+então a pontuação é 10 mais a próxima bola
+
+732
+00:38:53,206 --> 00:38:54,276
+do contrário
+
+733
+00:38:54,276 --> 00:38:57,329
+a pontuação é as 2 bolas no quadro
+
+734
+00:39:00,387 --> 00:39:02,393
+isso lê como as regras do boliche
+
+735
+00:39:04,080 --> 00:39:06,461
+ok... quebrando o suspense
+
+736
+00:39:06,461 --> 00:39:08,400
+acabamos
+
+737
+00:39:08,400 --> 00:39:09,729
+este é o algoritmo
+
+738
+00:39:09,729 --> 00:39:12,744
+o algoritmo é um loop FOR e 2 IFs
+
+739
+00:39:12,744 --> 00:39:15,255
+o algoritmo não chega a 14 linhas de código
+
+740
+00:39:15,255 --> 00:39:17,575
+provavelmente poderíamos encurtar um pouco mais
+
+741
+00:39:17,575 --> 00:39:21,120
+mas este é o algoritmo; é absurdamente simples
+
+742
+00:39:21,901 --> 00:39:23,341
+por que não percebemos?
+
+743
+00:39:23,340 --> 00:39:24,264
+entrando nele
+
+744
+00:39:24,264 --> 00:39:27,938
+digo, vc se lembra disso?
+
+745
+00:39:27,938 --> 00:39:30,227
+iríamos fazer isso
+
+746
+00:39:31,193 --> 00:39:32,584
+imagina se tivessemos feito isso
+
+747
+00:39:32,584 --> 00:39:34,781
+poderíamos ter desenhado isso no quadro
+
+748
+00:39:34,781 --> 00:39:35,409
+poderiamos ter dito:
+
+749
+00:39:35,409 --> 00:39:37,021
+"ok, eu faço a classe Jogo"
+
+750
+00:39:37,021 --> 00:39:38,246
+"vc faz a classe Quadro"
+
+751
+00:39:38,246 --> 00:39:39,963
+"vc alí, faz o DecimoQuadro"
+
+752
+00:39:39,963 --> 00:39:41,027
+"vc faz a classe Jogada"
+
+753
+00:39:41,027 --> 00:39:43,040
+vamos nos encontrar aqui na próxima terça-feira
+
+754
+00:39:43,040 --> 00:39:44,430
+e vamos integrar
+
+755
+00:39:44,430 --> 00:39:46,332
+com 400 linhas de código
+
+756
+00:39:46,332 --> 00:39:48,289
+e faremos funcionar
+
+757
+00:39:48,289 --> 00:39:49,483
+e teríamos
+
+758
+00:39:49,483 --> 00:39:51,741
+teríamos feito funcionar
+
+759
+00:39:51,741 --> 00:39:53,803
+sem sequer saber
+
+760
+00:39:54,609 --> 00:39:57,193
+que isso seria um loop FOR e 2 IFs
+
+761
+00:39:57,193 --> 00:40:01,550
+sem saber que seriam 14 linhas de código
+
+762
+00:40:01,926 --> 00:40:05,778
+nós abordariamos para esse problema
+
+763
+00:40:05,778 --> 00:40:09,452
+nós abordariamos fazendo um conjunto de passos
+
+764
+00:40:09,450 --> 00:40:12,326
+cada um.. muito simples para pensar
+
+765
+00:40:12,326 --> 00:40:17,778
+cada um tão estúpido que nã valeira a pena pensar
+
+766
+00:40:17,778 --> 00:40:20,375
+e no final, teríamos resolvido o problema
+
+767
+00:40:20,375 --> 00:40:24,073
+e nem saberíamos que resolvemos o problema
+
+768
+00:40:24,073 --> 00:40:25,495
+isso sempre acontece?
+
+769
+00:40:25,495 --> 00:40:26,110
+não não...
+
+770
+00:40:26,110 --> 00:40:26,960
+algumas vezess não
+
+771
+00:40:26,960 --> 00:40:28,916
+algumas vezes, vc colocaria seu design
+
+772
+00:40:28,916 --> 00:40:30,203
+no quadro
+
+773
+00:40:30,203 --> 00:40:31,944
+vc sentaria e faría seus testes
+
+774
+00:40:31,944 --> 00:40:35,618
+e eis que seus testes seguem seu design
+
+775
+00:40:35,618 --> 00:40:36,929
+e todos ficarão felizes
+
+776
+00:40:36,929 --> 00:40:40,430
+seus testes e design estão em harmonia
+
+777
+00:40:40,430 --> 00:40:43,046
+mas acontece o suficiente
+
+778
+00:40:43,046 --> 00:40:44,350
+que vc faz o seu design
+
+779
+00:40:44,350 --> 00:40:46,307
+e claro, vc deveria
+
+780
+00:40:46,307 --> 00:40:47,790
+mas então vc começa a escrever os testes
+
+781
+00:40:47,790 --> 00:40:51,649
+e os teste o levam para um caminho totalmente diferente
+
+782
+00:40:51,649 --> 00:40:53,741
+eu fiz isto muitos anos atrás
+
+783
+00:40:53,741 --> 00:40:55,883
+10 anos atrás, talvez mais
+
+784
+00:40:55,883 --> 00:40:58,356
+acho que foi em 1999
+
+785
+00:40:58,356 --> 00:41:00,812
+Bob Koss e eu nos sentamos
+
+786
+00:41:00,812 --> 00:41:03,292
+em um hotel, durante uma conferencia
+
+787
+00:41:03,292 --> 00:41:05,378
+acredito que na C++ World
+
+788
+00:41:05,378 --> 00:41:06,535
+e fizemos isto
+
+789
+00:41:06,535 --> 00:41:09,403
+desenhamos este diagrama em um guardanapo
+
+790
+00:41:09,403 --> 00:41:11,636
+e começamos a fazer TDD
+
+791
+00:41:11,636 --> 00:41:14,018
+e foi uma das primeiras, fazendo isso
+
+792
+00:41:14,018 --> 00:41:15,747
+e nos debatemos um monte
+
+793
+00:41:15,747 --> 00:41:17,907
+tentamos seguir a modelagem
+
+794
+00:41:17,900 --> 00:41:21,323
+tentamos escrever os testes para a classe Jogada
+
+795
+00:41:21,323 --> 00:41:23,661
+mas descobrimos, que não tinha nenhum teste
+
+796
+00:41:23,661 --> 00:41:26,061
+nada...nenhum comportamnto que poderia testar
+
+797
+00:41:26,061 --> 00:41:26,818
+então recuamos um pouco
+
+798
+00:41:26,818 --> 00:41:28,110
+fomos até a classe Quadro
+
+799
+00:41:28,110 --> 00:41:30,258
+deve ter testes aqui que podemos escrever
+
+800
+00:41:30,258 --> 00:41:34,326
+mas descobrimos que não tinha
+nenhum comportamento para a classe Quadro
+
+801
+00:41:35,969 --> 00:41:38,510
+então recuamos mais uma vez, para a classe Jogo
+
+802
+00:41:38,510 --> 00:41:40,984
+e então econtramos comportamentos
+
+803
+00:41:40,984 --> 00:41:44,172
+e começamos implementar um teste por vez
+
+804
+00:41:44,172 --> 00:41:46,276
+como me viu fazendo aqui
+
+805
+00:41:46,276 --> 00:41:49,796
+e vagarosamente, aquele loop FOR com os 2 IFs
+
+806
+00:41:49,796 --> 00:41:53,489
+começaram a aparecer naquele monte de código que estávamos produzindo
+
+807
+00:41:53,489 --> 00:41:55,249
+e eu olhei aquilo em algum ponto e disse:
+
+808
+00:41:55,249 --> 00:41:58,880
+"Meu deus Bob, isso lê como as regras do boliche"
+
+809
+00:41:58,880 --> 00:42:00,984
+e refatoramos tudo
+
+810
+00:42:00,984 --> 00:42:03,329
+e sentamos lá e caímos o queixo
+
+811
+00:42:03,329 --> 00:42:06,504
+que o desenho que fizemos naquele guardanapo
+
+812
+00:42:06,504 --> 00:42:08,793
+não se tornou realidade
+
+813
+00:42:08,793 --> 00:42:13,624
+mas ao invés, um algoritmo muito mais simples apareceu
+
+814
+00:42:13,624 --> 00:42:17,070
+ainda me arrepio até hoje
+
+815
+00:42:17,070 --> 00:42:18,535
+então...
+
+816
+00:42:18,535 --> 00:42:20,246
+aí está o jogo de boliche
+
+817
+00:42:20,246 --> 00:42:24,720
+a famosa demonstração que foi feita tantas vezes
+
+818
+00:42:24,720 --> 00:42:26,375
+por tantas pessoas
+
+819
+00:42:26,375 --> 00:42:27,587
+espero que tenha gostado
+
+820
+00:42:27,587 --> 00:42:29,612
+espero que tenha aprendigo algo
+
+821
+00:42:30,012 --> 00:42:31,427
+obrigado
+
+822
+00:42:35,741 --> 00:42:39,556
+Respondendo as objeções
+
+823
+00:42:40,609 --> 00:42:41,956
+sim, tio Bob
+
+824
+00:42:41,956 --> 00:42:44,080
+tudo muito convincente
+
+825
+00:42:44,080 --> 00:42:45,200
+mas como sabemos
+
+826
+00:42:45,200 --> 00:42:49,495
+tem muitas objeções lógicas para o TDD
+
+827
+00:42:49,513 --> 00:42:53,440
+é hora de vc responder essas objeções
+
+828
+00:42:54,301 --> 00:42:55,864
+claro, vai em frente
+
+829
+00:42:55,864 --> 00:42:57,655
+manda sua melhor
+
+830
+00:42:59,009 --> 00:43:02,264
+testes são código, tio Bob
+
+831
+00:43:02,264 --> 00:43:04,381
+seguindo TDD
+
+832
+00:43:04,381 --> 00:43:06,867
+vc escreve muito mais código do que o normal
+
+833
+00:43:06,867 --> 00:43:11,329
+portanto, TDD, deve te deixar mais lento
+
+834
+00:43:12,110 --> 00:43:15,483
+não, TDD te deixa ir mais rápido
+
+835
+00:43:15,483 --> 00:43:19,027
+primeiramente, vc passa muito menos tempo debugando
+
+836
+00:43:19,027 --> 00:43:21,310
+pense em quanto tempo vc pode salvar
+
+837
+00:43:21,310 --> 00:43:24,443
+se não tivesse que caçar bug atrás de bug
+
+838
+00:43:24,443 --> 00:43:28,510
+mas isso é coisa pequena, comparado a velocidade que consegue
+
+839
+00:43:28,510 --> 00:43:31,993
+por trabalhar constantemente com um código limpo
+
+840
+00:43:31,993 --> 00:43:35,292
+TDD te permite limpar seu código
+
+841
+00:43:35,292 --> 00:43:40,683
+assim vc não perde tempo
+lidando com a bagunça de todo mundo
+
+842
+00:43:40,683 --> 00:43:43,033
+se vc quer ir rápido
+
+843
+00:43:43,033 --> 00:43:45,107
+pratique TDD
+
+844
+00:43:46,584 --> 00:43:48,535
+lógico, tio Bob
+
+845
+00:43:48,535 --> 00:43:50,843
+mas não substanciado
+
+846
+00:43:50,843 --> 00:43:54,966
+verificar esses fatos, irá
+requerer tentativas e experimentos
+
+847
+00:43:55,833 --> 00:43:58,603
+e isso me leva para minha próxima objeção
+
+848
+00:43:58,603 --> 00:44:01,089
+existem gerentes, tio Bob
+
+849
+00:44:01,089 --> 00:44:04,258
+que ou são ignorantes ou não concordam
+
+850
+00:44:04,467 --> 00:44:08,892
+nunca irão permitir que programadores pratiquem TDD
+
+851
+00:44:10,276 --> 00:44:12,935
+mas porque seu chefe precisaria saber???
+
+852
+00:44:12,935 --> 00:44:17,298
+digo, vc pergunta para seu
+chefe se pode usar ponto e virgula???
+
+853
+00:44:17,298 --> 00:44:20,836
+vc pergunta para seu chefe se deve identar seus IFs?
+
+854
+00:44:20,836 --> 00:44:24,972
+quando foi a última vez que vc perguntou
+para seu chefe se poderia ir ao banheiro?
+
+855
+00:44:24,972 --> 00:44:28,547
+TDD, é uma prática pessoal...
+
+856
+00:44:28,547 --> 00:44:31,095
+permissão não é requerida
+
+857
+00:44:32,135 --> 00:44:35,175
+e ainda assim, eles irão se opor
+
+858
+00:44:36,086 --> 00:44:39,341
+se seu chefe te questiona sobre TDD
+
+859
+00:44:39,341 --> 00:44:42,289
+diga a ele que vc faz para ir mais rápido
+
+860
+00:44:42,289 --> 00:44:43,563
+se ele se opor
+
+861
+00:44:43,563 --> 00:44:47,126
+diga que vc terá que drobrar todas suas estimativas
+
+862
+00:44:47,126 --> 00:44:49,292
+se ele ainda se opor
+
+863
+00:44:49,292 --> 00:44:51,587
+então diga a ele para cuidar da vida dele
+
+864
+00:44:51,587 --> 00:44:53,501
+porque, depois de tudo
+
+865
+00:44:53,501 --> 00:44:55,827
+vc é o especialista em software
+
+866
+00:44:55,827 --> 00:44:57,704
+não o seu chefe
+
+867
+00:44:59,015 --> 00:45:00,387
+fascinante
+
+868
+00:45:00,387 --> 00:45:02,849
+programadores, se comportanto como profissionais!?
+
+869
+00:45:03,384 --> 00:45:05,021
+nunca pensei ser possível
+
+870
+00:45:06,209 --> 00:45:08,344
+minha próxima objeção, tio Bob
+
+871
+00:45:09,132 --> 00:45:12,646
+é que refatorar é retrabalho
+
+872
+00:45:13,218 --> 00:45:17,643
+seria melhor, escrever o código corretamente de primeira
+
+873
+00:45:19,249 --> 00:45:22,516
+bem, quando vc descobrir como fazer isso me avise!
+
+874
+00:45:22,516 --> 00:45:23,944
+porque eu estaria bem interessado!
+
+875
+00:45:23,944 --> 00:45:25,581
+enquanto isso
+
+876
+00:45:25,581 --> 00:45:27,612
+todo esforço criativo no planeta
+
+877
+00:45:27,612 --> 00:45:29,298
+é feito de forma iterativa
+
+878
+00:45:29,298 --> 00:45:33,046
+pintores não pintam o retrato perfeito de primeira
+
+879
+00:45:33,046 --> 00:45:36,424
+compositores, não compõe a música perfeita de primeira
+
+880
+00:45:36,424 --> 00:45:39,901
+jornalistas, não escrevem o artigo perfeito de primeira
+
+881
+00:45:39,901 --> 00:45:43,864
+e programadores, não escrevem o código perfeito de primeira
+
+882
+00:45:45,550 --> 00:45:50,166
+quando vc está no terceiro ano, sua professora
+provavelmente te pediu para escrever uma estória
+
+883
+00:45:50,166 --> 00:45:51,753
+e então ela te diz como fazer
+
+884
+00:45:51,753 --> 00:45:53,076
+ela diz...
+
+885
+00:45:53,076 --> 00:45:54,824
+primeiro elabore um esboço
+
+886
+00:45:54,824 --> 00:45:57,058
+depois faça um rascunho
+
+887
+00:45:57,058 --> 00:45:58,726
+depois um segundo rascunho
+
+888
+00:45:58,726 --> 00:46:00,147
+depois um terceiro rascunho
+
+889
+00:46:00,147 --> 00:46:03,193
+e então, talvez a cópia final
+
+890
+00:46:03,193 --> 00:46:06,769
+somos ensinados, desde pequeno
+
+891
+00:46:06,769 --> 00:46:09,372
+que trabalho criativo requer
+
+892
+00:46:09,372 --> 00:46:11,415
+iteração e retrabalho
+
+893
+00:46:13,089 --> 00:46:16,024
+e então, quando nos tornamos programadores
+
+894
+00:46:16,024 --> 00:46:17,913
+podemos alterar a realidade
+
+895
+00:46:17,913 --> 00:46:21,698
+e escrever tudo corretamente de primeira
+
+896
+00:46:21,698 --> 00:46:24,000
+isso é uma piada, certo?
+
+897
+00:46:24,000 --> 00:46:28,086
+é claro que tomará várias passos para conseguir o código certo
+
+898
+00:46:28,086 --> 00:46:31,169
+é claro que requer refinamento e retrabalho
+
+899
+00:46:31,169 --> 00:46:32,695
+para fazer as coisas bem
+
+900
+00:46:32,695 --> 00:46:37,458
+é claro que não iremos escrever certo de primeira
+
+901
+00:46:38,430 --> 00:46:39,526
+sim, tio Bob
+
+902
+00:46:39,526 --> 00:46:41,064
+eu concordo completamente
+
+903
+00:46:41,064 --> 00:46:42,836
+toda construção da lógica
+
+904
+00:46:42,836 --> 00:46:45,212
+deve ser abordado iterativamente
+
+905
+00:46:45,784 --> 00:46:47,040
+mas agora...
+
+906
+00:46:47,040 --> 00:46:48,824
+me diga uma coisa, tio Bob
+
+907
+00:46:49,390 --> 00:46:52,424
+quem testa os testes?
+
+908
+00:46:53,895 --> 00:46:56,055
+nós temos 2 fluxos de código
+
+909
+00:46:56,055 --> 00:46:58,467
+os testes e o código de produção
+
+910
+00:46:58,467 --> 00:47:01,206
+e o testes, testam o código de produção
+
+911
+00:47:01,206 --> 00:47:04,609
+mas o código de produção, testa os testes
+
+912
+00:47:05,569 --> 00:47:06,689
+entendo
+
+913
+00:47:06,689 --> 00:47:12,012
+os dois fluxos de código se abraçam mutualmente em testes
+
+914
+00:47:12,301 --> 00:47:13,563
+fascinante
+
+915
+00:47:14,455 --> 00:47:16,332
+mas agora, tio Bob
+
+916
+00:47:16,929 --> 00:47:18,676
+me disseram
+
+917
+00:47:18,676 --> 00:47:21,298
+que uma única alteração em código de produção
+
+918
+00:47:21,298 --> 00:47:25,206
+pode quebrar centenas de testes
+
+919
+00:47:25,206 --> 00:47:31,889
+talvez, manter todos esses testes é simplesmente muito caro.
+
+920
+00:47:32,412 --> 00:47:34,990
+bem só se tiverem mal modelados
+
+921
+00:47:34,990 --> 00:47:36,769
+modele seus testes bem
+
+922
+00:47:36,769 --> 00:47:38,584
+e se descobrir designs melhores
+
+923
+00:47:38,584 --> 00:47:40,461
+refatore seus testes!
+
+924
+00:47:40,461 --> 00:47:42,750
+testes são tão importantes quanto código de produção
+
+925
+00:47:42,750 --> 00:47:44,683
+talvez ainda mais importante
+
+926
+00:47:44,683 --> 00:47:48,867
+então trate seus testes da mesma
+forma que trata o código de produção
+
+927
+00:47:48,867 --> 00:47:51,698
+não permita que se tornem uma bagunça
+
+928
+00:47:52,892 --> 00:47:53,926
+lembre-se
+
+929
+00:47:53,926 --> 00:47:56,510
+se uma única alteração no código
+
+930
+00:47:56,510 --> 00:47:59,495
+causa um monte de testes quebrados
+
+931
+00:47:59,495 --> 00:48:01,520
+tem algo errado com seus testes
+
+932
+00:48:01,520 --> 00:48:04,664
+seus testes estão muito acoplados com o seu código de produção
+
+933
+00:48:04,664 --> 00:48:07,895
+então ache alguma forma de introduzir algumas abstrações
+
+934
+00:48:07,895 --> 00:48:10,196
+e outros desacoplamentos no seus testes
+
+935
+00:48:10,196 --> 00:48:16,535
+para que quando alterar seu código de produção,
+não consiga um monte de testes falhando
+
+936
+00:48:17,544 --> 00:48:21,040
+uma modelagem para testes...
+
+937
+00:48:21,040 --> 00:48:24,313
+isso irá requerer alguma meditação
+
+938
+00:48:25,083 --> 00:48:27,107
+então, agora, tio Bob
+
+939
+00:48:28,036 --> 00:48:31,544
+testes podem provar a presença de bugs
+
+940
+00:48:31,544 --> 00:48:35,335
+mas testes não podem provar a ausência de bugs
+
+941
+00:48:35,335 --> 00:48:40,049
+um conjunto de testes, não irá
+provar que esse programa está correto
+
+942
+00:48:40,818 --> 00:48:44,283
+veja, nosso objetivo não é provar que o software está correto
+
+943
+00:48:44,283 --> 00:48:46,603
+você está certo, isso é inviável
+
+944
+00:48:46,603 --> 00:48:49,218
+nosso objetivo, é criar um paraquedas
+
+945
+00:48:49,218 --> 00:48:52,246
+para eliminar o medo de fazer alterações
+
+946
+00:48:52,240 --> 00:48:55,440
+talvez nunca consigamos atingir 100% de certeza
+
+947
+00:48:55,440 --> 00:48:59,403
+mas 99.999 já é bom demais
+
+948
+00:49:00,744 --> 00:49:02,818
+seu ponto é bem aceito
+
+949
+00:49:02,818 --> 00:49:05,870
+certeza absoluta é desejável
+
+950
+00:49:05,870 --> 00:49:08,172
+mas raramente atingível
+
+951
+00:49:09,883 --> 00:49:11,575
+tio Bob
+
+952
+00:49:11,852 --> 00:49:14,529
+TDD é um dogma
+
+953
+00:49:14,529 --> 00:49:15,938
+uma diciplina
+
+954
+00:49:15,938 --> 00:49:21,987
+encoraja pessoas a seguirem regras,
+ao invés de usar suas mentes à pensar
+
+955
+00:49:22,923 --> 00:49:24,658
+bem...é, isso é verdade
+
+956
+00:49:24,658 --> 00:49:26,812
+isso é o que diciplinas são
+
+957
+00:49:26,812 --> 00:49:29,975
+diciplinas são, decisões pré feitas
+
+958
+00:49:29,975 --> 00:49:31,606
+a razão que seguimos diciplinas
+
+959
+00:49:31,606 --> 00:49:35,815
+é para que não precisemos tomar sempre as mesmas decisões
+
+960
+00:49:37,538 --> 00:49:40,406
+agora isso é ambos, sua força e fraqueza
+
+961
+00:49:40,406 --> 00:49:43,384
+nós queremos uma parcela de dogma
+
+962
+00:49:43,384 --> 00:49:45,920
+porque no calor da batalha
+
+963
+00:49:45,920 --> 00:49:48,412
+queremos ser capazes de recorrer ao nosso treinamento
+
+964
+00:49:48,412 --> 00:49:50,843
+e mover efetivamente e de forma eficiente
+
+965
+00:49:50,843 --> 00:49:53,200
+sem ter que questionar constantemente
+
+966
+00:49:56,516 --> 00:49:57,827
+contudo
+
+967
+00:49:57,827 --> 00:49:58,941
+de tempo em tempo
+
+968
+00:49:58,941 --> 00:50:00,861
+vale a pena, dar um passo para trás
+
+969
+00:50:00,861 --> 00:50:04,092
+e reavaliar seus dogmas e diciplinas
+
+970
+00:50:04,326 --> 00:50:06,646
+vc pode fazer mudanças significativas
+
+971
+00:50:06,646 --> 00:50:08,806
+vc pode fazer mudanças sutis
+
+972
+00:50:08,806 --> 00:50:08,812
+de qualquer modo
+vc pode fazer mudanças sutis
+
+973
+00:50:08,812 --> 00:50:09,501
+de qualquer modo
+
+974
+00:50:09,501 --> 00:50:12,658
+é apropriado e necessário
+
+975
+00:50:14,073 --> 00:50:16,406
+considere RCP
+
+976
+00:50:16,406 --> 00:50:20,800
+aprendemos o dogma e diciplina do RCP
+
+977
+00:50:20,800 --> 00:50:23,089
+para que em uma emergencia
+
+978
+00:50:23,089 --> 00:50:24,529
+não precisamos ficar pensando
+
+979
+00:50:24,529 --> 00:50:28,609
+podemos apenas seguir o negócio de salvar a vida de alguem
+
+980
+00:50:28,609 --> 00:50:29,920
+por outro lado
+
+981
+00:50:29,920 --> 00:50:33,433
+RCP é constantemente revisado
+
+982
+00:50:33,433 --> 00:50:35,852
+se vc tirar certificação em RCP
+
+983
+00:50:35,852 --> 00:50:38,787
+vc terá que se requalificar a cada poucos anos
+
+984
+00:50:38,787 --> 00:50:41,600
+para que se atualize nas mudanças
+
+985
+00:50:43,107 --> 00:50:47,870
+eu já notei que humanos, frequentemente precisam de diciplina
+
+986
+00:50:47,870 --> 00:50:52,830
+e também é verdade que diciplina não impede o pensamento
+
+987
+00:50:54,603 --> 00:50:56,904
+então agora, tio Bob
+
+988
+00:50:57,710 --> 00:51:00,055
+para conseguiur esse conjunto de testes
+
+989
+00:51:00,055 --> 00:51:02,320
+é os testes que importam
+
+990
+00:51:02,320 --> 00:51:04,886
+não quando escrevemos eles
+
+991
+00:51:06,086 --> 00:51:07,760
+lengalenga!
+
+992
+00:51:07,760 --> 00:51:09,840
+se escrever seus testes no final
+
+993
+00:51:09,840 --> 00:51:13,846
+eles não estarão completos e vc não irá confiar neles
+
+994
+00:51:13,846 --> 00:51:16,473
+isso é simplesmente natureza humana
+
+995
+00:51:16,470 --> 00:51:19,993
+humanos consideram que coisas importantes vem primeiro
+
+996
+00:51:19,993 --> 00:51:24,633
+e coisas que vem no final são menos
+importantes e de alguma forma, opcional
+
+997
+00:51:24,633 --> 00:51:26,695
+por isso que estão no final
+
+998
+00:51:26,695 --> 00:51:30,363
+para que possamos deixar de fora se precisarmos
+
+999
+00:51:31,452 --> 00:51:33,323
+quando vc escreve testes primeiro
+
+1000
+00:51:33,323 --> 00:51:35,120
+vc confia nesses testes
+
+1001
+00:51:35,120 --> 00:51:38,756
+porque cada linha de código de produção está testado
+
+1002
+00:51:38,756 --> 00:51:41,267
+testes vem primeiro, porque são importantes
+
+1003
+00:51:41,267 --> 00:51:44,590
+talvez mais importante que o código de produção
+
+1004
+00:51:44,590 --> 00:51:48,861
+porque são os testes que torna
+o código de produção flexível
+
+1005
+00:51:48,861 --> 00:51:50,689
+sem os testes
+
+1006
+00:51:50,689 --> 00:51:53,163
+o código de produção apodrece
+
+1007
+00:51:54,738 --> 00:51:57,280
+eu tenho que concordar
+
+1008
+00:51:57,280 --> 00:52:03,298
+humanos sempre adiam aquilo que
+consideram opcional ou desagradável
+
+1009
+00:52:03,870 --> 00:52:05,809
+se os testes são críticos
+
+1010
+00:52:05,809 --> 00:52:07,624
+os testes devem vir primeiro
+
+1011
+00:52:08,769 --> 00:52:11,083
+então, tio Bob....
+
+1012
+00:52:11,458 --> 00:52:15,089
+existe um monte de código já escrito
+
+1013
+00:52:15,089 --> 00:52:18,123
+e não possuí esse conjunto de testes
+
+1014
+00:52:18,670 --> 00:52:21,747
+o que fazemos nesse caso, tio Bob?
+
+1015
+00:52:22,880 --> 00:52:24,892
+no seu livro maravilhoso
+
+1016
+00:52:24,892 --> 00:52:28,043
+Trabalhando eficaz com código legado
+
+1017
+00:52:28,043 --> 00:52:34,276
+Michael Feathers, define código legado como código sem teste
+
+1018
+00:52:35,083 --> 00:52:37,150
+é difícil fazer um código legado ser testável
+
+1019
+00:52:37,150 --> 00:52:40,184
+porque não foi modelado para ser testável
+
+1020
+00:52:40,184 --> 00:52:46,369
+a fim de testar, vc tem que fazer uma série
+de pequenas mudanças de desacoplamento
+
+1021
+00:52:47,815 --> 00:52:53,378
+mas sem os testes, vc não tem nenhuma forma
+de saber se essas mudanças irão quebrar algo
+
+1022
+00:52:53,593 --> 00:52:56,461
+isso te deixa em uma sinuca de bico
+
+1023
+00:52:56,461 --> 00:52:59,298
+para escrever testes, vc precisa refatorar
+
+1024
+00:52:59,298 --> 00:53:02,270
+mas vc não pode refatorar, sem testes
+
+1025
+00:53:04,000 --> 00:53:08,676
+o livro do Michael Feathers é cheio de
+idéias boas de como quebrar esse impasse
+
+1026
+00:53:08,676 --> 00:53:11,261
+mas o resultado é simplesmente isto:
+
+1027
+00:53:12,529 --> 00:53:15,563
+encontre uma parte pequena do código legado
+
+1028
+00:53:15,563 --> 00:53:18,633
+que vc possa testar sem fazer mudanças muito grandes
+
+1029
+00:53:18,633 --> 00:53:23,938
+então use esses testes para extender
+essas mudanças de forma mais segura
+
+1030
+00:53:25,495 --> 00:53:28,141
+eu não iniciaria um grande projeto para fazer isso
+
+1031
+00:53:28,141 --> 00:53:32,584
+eu não confio projetos grandes de refatoração ou testes
+
+1032
+00:53:32,584 --> 00:53:35,612
+ao invés disso, eu esperaria uma nova feature aparecer
+
+1033
+00:53:35,612 --> 00:53:38,000
+em alguma parte do código legado
+
+1034
+00:53:38,000 --> 00:53:40,473
+e então eu iria mudar um pouco da modelagem
+
+1035
+00:53:40,473 --> 00:53:43,716
+e adicionar alguns testes na área afetada
+
+1036
+00:53:45,224 --> 00:53:46,406
+mês a mês
+
+1037
+00:53:46,406 --> 00:53:47,335
+ano a ano
+
+1038
+00:53:47,335 --> 00:53:49,680
+este processo lento e gradual
+
+1039
+00:53:49,680 --> 00:53:52,098
+irá eventualmente espalhar testes
+
+1040
+00:53:52,098 --> 00:53:54,960
+através de grande parte do código legado
+
+1041
+00:53:54,960 --> 00:53:58,793
+vai ter partes do legado que nunca conseguirá testar
+
+1042
+00:53:58,793 --> 00:54:01,433
+mas os pedaços mais importantes
+
+1043
+00:54:01,433 --> 00:54:04,233
+com certeza, serão todos testados
+
+1044
+00:54:05,370 --> 00:54:07,753
+e é claro que, qualquer código novo que vc escreva
+
+1045
+00:54:07,753 --> 00:54:09,760
+vc escreve o teste primeiro
+
+1046
+00:54:09,760 --> 00:54:12,123
+e nestas situações que vc tem uma escolha
+
+1047
+00:54:12,123 --> 00:54:15,876
+de modificar o código velho ou escrever um módulo novo
+
+1048
+00:54:15,876 --> 00:54:19,095
+escreva o módulo novo, para que possa escrever os testes primeiro
+
+1049
+00:54:19,095 --> 00:54:21,778
+sempre prefira testes primero
+
+1050
+00:54:23,335 --> 00:54:27,230
+vamos falar muito mais sobre
+código legado em um episódio futuro
+
+1051
+00:54:27,230 --> 00:54:29,243
+então se prepare para esse
+
+1052
+00:54:30,246 --> 00:54:31,636
+tio Bob
+
+1053
+00:54:31,636 --> 00:54:35,452
+Como vc testa interface de usuário gráfica ?
+
+1054
+00:54:36,572 --> 00:54:38,683
+bem.. na maioria das vezes, vc não testa
+
+1055
+00:54:38,683 --> 00:54:42,603
+digo, GUIs são o tipo de coisas que vc toca no lugar
+
+1056
+00:54:42,600 --> 00:54:46,467
+vc move o textbox alguns pixels para direita ou esquerda
+
+1057
+00:54:46,467 --> 00:54:50,473
+vc altera a tonalidade do verde em um botão
+
+1058
+00:54:50,470 --> 00:54:54,055
+vc altera um radioButtom em um textbox
+
+1059
+00:54:54,055 --> 00:54:56,984
+vc altera a fonte de uma linha de texto
+
+1060
+00:54:56,984 --> 00:54:59,489
+vc altera de negrito para itálico
+
+1061
+00:55:01,113 --> 00:55:03,661
+esse tipo de brincadeira é difícil de testar
+
+1062
+00:55:03,661 --> 00:55:06,923
+porque vc não tem certeza do que quer ver na tela
+
+1063
+00:55:06,920 --> 00:55:12,344
+então vc experimenta e brinca
+
+1064
+00:55:12,344 --> 00:55:14,307
+até gostar do que vê
+
+1065
+00:55:15,883 --> 00:55:16,590
+no entanto
+
+1066
+00:55:16,590 --> 00:55:20,892
+isso só se aplica naquela última camada fina do GUI
+
+1067
+00:55:20,892 --> 00:55:23,624
+onde as coisas de formatação estão
+
+1068
+00:55:23,624 --> 00:55:26,147
+existe código uma camada atrás disso
+
+1069
+00:55:26,147 --> 00:55:28,984
+que vc pode e deve testar
+
+1070
+00:55:30,270 --> 00:55:31,427
+por exemplo
+
+1071
+00:55:31,427 --> 00:55:36,012
+a decisão de desabilitar um botão deve ser testada
+
+1072
+00:55:36,012 --> 00:55:41,483
+eu não preciso testar necessariamente
+que botão foi renderizado acinzentado
+
+1073
+00:55:41,483 --> 00:55:45,593
+eu só preciso testar o booleano que controla este estado
+
+1074
+00:55:45,593 --> 00:55:47,458
+foi setado apropriadamente
+
+1075
+00:55:48,916 --> 00:55:52,596
+o formato de uma moeda ou data pode ser testado
+
+1076
+00:55:52,596 --> 00:55:56,473
+os elementos de uma combobox pode ser enumerado e testado
+
+1077
+00:55:56,473 --> 00:55:59,735
+em resumo, o conteúdo da tela
+
+1078
+00:55:59,735 --> 00:56:00,947
+pode ser testado
+
+1079
+00:56:00,947 --> 00:56:04,110
+mesmo se a formato final não pode
+
+1080
+00:56:05,206 --> 00:56:08,812
+nós fazemos isso separando o GUI em dois componentes
+
+1081
+00:56:08,812 --> 00:56:11,193
+o presenter e a view
+
+1082
+00:56:11,193 --> 00:56:14,806
+o presenter integra os objetos de negócio
+
+1083
+00:56:14,806 --> 00:56:17,673
+e então constroe estrutura de dados
+
+1084
+00:56:17,673 --> 00:56:20,172
+que a view renderiza
+
+1085
+00:56:20,170 --> 00:56:24,086
+o presenter, sabe qual botão está ou não ativo
+
+1086
+00:56:24,086 --> 00:56:27,963
+e seta o booleano apropriado nessas estruturas de dados
+
+1087
+00:56:27,963 --> 00:56:31,938
+o presenter sabe como buscar todos os items da combobox
+
+1088
+00:56:31,938 --> 00:56:34,886
+e bota eles na estrutura de dados
+
+1089
+00:56:34,886 --> 00:56:40,043
+o presenter sabe como formatar datas, moedas e outros itens
+
+1090
+00:56:40,043 --> 00:56:43,544
+e coloca as strings formatadas na estrutura de dados
+
+1091
+00:56:43,544 --> 00:56:47,975
+e claro, o presenter, pode ser testado
+
+1092
+00:56:48,923 --> 00:56:51,015
+algum pessoal gosta de escrever testes de view
+
+1093
+00:56:51,015 --> 00:56:52,633
+e se eles escrevem
+
+1094
+00:56:52,633 --> 00:56:54,990
+eles geralmente escrevem depois do fato
+
+1095
+00:56:54,990 --> 00:56:58,252
+eles irão mexer um pouco
+
+1096
+00:56:59,187 --> 00:57:00,529
+colocar as fontes no lugar certo
+
+1097
+00:57:00,520 --> 00:57:01,741
+as posiçoes no lugar certo
+
+1098
+00:57:01,741 --> 00:57:03,064
+as cores no lugar certo
+
+1099
+00:57:03,064 --> 00:57:07,267
+e depois escrevem uns testes, para
+ter certeza que essas coisas não mudaram
+
+1100
+00:57:07,267 --> 00:57:09,458
+eu geralmente não fasso isso
+
+1101
+00:57:09,458 --> 00:57:11,409
+mas tem muita gente que faz
+
+1102
+00:57:12,880 --> 00:57:16,633
+então como vc testa banco de dados?
+
+1103
+00:57:17,507 --> 00:57:19,895
+na maioria das vezes, vc não testa
+
+1104
+00:57:19,895 --> 00:57:21,784
+banco de dados, são caixas pretas
+
+1105
+00:57:21,784 --> 00:57:24,301
+que vc geralmente não precisa testar
+
+1106
+00:57:24,301 --> 00:57:26,055
+o que vc quer testar
+
+1107
+00:57:26,055 --> 00:57:29,772
+é o seu schema e queries, funcionam como esperado
+
+1108
+00:57:30,775 --> 00:57:34,529
+o primeiro passo, é separar a aplicação do banco de dados
+
+1109
+00:57:34,529 --> 00:57:39,643
+usando a técnica da camada, usados no episódio 4 e 5
+
+1110
+00:57:39,643 --> 00:57:40,578
+isso o permitirá
+
+1111
+00:57:41,187 --> 00:57:44,523
+subsitiuir o banco de dados por mocks e stubs
+
+1112
+00:57:44,523 --> 00:57:48,529
+e testar a aplicação sem o banco de dados
+
+1113
+00:57:50,380 --> 00:57:54,966
+depois vc pode testar o banco de dados independentemente daaplicação
+
+1114
+00:57:54,960 --> 00:57:56,141
+vc pode testar, por exemplo
+
+1115
+00:57:56,141 --> 00:57:59,415
+que todos os SQLs foram gerados certos
+
+1116
+00:57:59,415 --> 00:58:03,446
+também pode testar que as queries
+geradas se comportam apropriadamente
+
+1117
+00:58:03,446 --> 00:58:06,412
+carregando uma base com um numero minimo de linhas
+
+1118
+00:58:06,412 --> 00:58:08,713
+e executando essas queries
+
+1119
+00:58:10,246 --> 00:58:15,643
+alguns programadores reclamam, que
+testar não faz parte da descrição de seu cargo
+
+1120
+00:58:15,643 --> 00:58:19,544
+eles afirmam que são programadores, não Testers
+
+1121
+00:58:21,033 --> 00:58:22,886
+eles precisam crescer!
+
+1122
+00:58:24,387 --> 00:58:26,947
+alguns programadores, sugerem que
+
+1123
+00:58:26,947 --> 00:58:30,578
+TDD é simplesmente muito difícil
+
+1124
+00:58:31,723 --> 00:58:35,390
+eles gostariam de um lencinho para esse choro?
+
+1125
+00:58:36,670 --> 00:58:41,156
+essa últimas duas respostas, parecem ser sarcasmo
+
+1126
+00:58:41,156 --> 00:58:45,483
+indicando que as objeções não
+são dignas de uma resposta direta
+
+1127
+00:58:45,483 --> 00:58:47,920
+uma conclusão com que eu concordo
+
+1128
+00:58:49,384 --> 00:58:50,529
+tio Bob
+
+1129
+00:58:50,529 --> 00:58:53,249
+isso tem sido uma seção fascinante
+
+1130
+00:58:53,240 --> 00:58:55,532
+vc respondeu minhas objeções com lógica
+
+1131
+00:58:55,532 --> 00:58:59,033
+que na superfície, parecem sólidas
+
+1132
+00:58:59,033 --> 00:59:04,110
+pode ser que eu tenha que mudar minha conclusão sobre TDD
+
+1133
+00:59:04,738 --> 00:59:05,858
+tio Bob
+
+1134
+00:59:05,901 --> 00:59:08,104
+vou considerar
+
+1135
+00:59:14,763 --> 00:59:18,147
+Disciplina e profissionalismo
+
+1136
+00:59:19,618 --> 00:59:21,889
+no passado eu fiz uma declaração
+
+1137
+00:59:21,889 --> 00:59:27,273
+que TDD pode ser um pré-requisito para comportamento profissionalismo
+
+1138
+00:59:27,273 --> 00:59:29,126
+isso é uma declaração forte
+
+1139
+00:59:29,120 --> 00:59:33,427
+e causou a irritação de alguns amigos meus
+
+1140
+00:59:33,427 --> 00:59:36,393
+alguns amigos que eu tenho alta consideração
+
+1141
+00:59:36,393 --> 00:59:38,160
+então, neste segmento
+
+1142
+00:59:38,160 --> 00:59:41,236
+permita-me explicar meu raciocínio
+
+1143
+00:59:42,898 --> 00:59:44,326
+contabilidade de dupla entrada
+
+1144
+00:59:46,326 --> 00:59:49,187
+software é uma disciplina sensível
+
+1145
+00:59:49,187 --> 00:59:50,492
+com isso eu quero dizer
+
+1146
+00:59:50,492 --> 00:59:54,221
+que existem bits únicos em um binário de uma aplicação
+
+1147
+00:59:54,221 --> 00:59:56,443
+que se setados de forma errada
+
+1148
+00:59:56,443 --> 00:59:58,984
+irá quebrar o sistema com força
+
+1149
+01:00:00,276 --> 01:00:03,372
+muito poucos processos são tão sensíveis assim
+
+1150
+01:00:03,372 --> 01:00:08,369
+poderíamos sair para uma ponte
+ou viaduto e começar a remover parafusos
+
+1151
+01:00:08,369 --> 01:00:11,230
+que a ponte provavelmente não cairia de imediato
+
+1152
+01:00:11,230 --> 01:00:15,827
+não há um único prego em sua casa que você possa arrancar
+
+1153
+01:00:15,827 --> 01:00:18,067
+e fazer com que a casa caia
+
+1154
+01:00:18,067 --> 01:00:24,695
+Não há uma única célula em seu
+corpo que, se você matar, te mate.
+
+1155
+01:00:24,695 --> 01:00:25,993
+e ainda assim
+
+1156
+01:00:25,993 --> 01:00:29,710
+eu posso ir em uma aplicação e trocar um bit
+
+1157
+01:00:29,710 --> 01:00:31,353
+e quebrá-la
+
+1158
+01:00:32,646 --> 01:00:36,904
+existe outra disciplina que
+é tão sensível quanto software
+
+1159
+01:00:36,904 --> 01:00:37,987
+contabilidade
+
+1160
+01:00:37,987 --> 01:00:41,458
+contabilidade é sensível á erros de dígito único
+
+1161
+01:00:41,458 --> 01:00:44,621
+se fizer um erro em um único dígito
+
+1162
+01:00:44,621 --> 01:00:46,516
+em uma planilha certa
+
+1163
+01:00:46,516 --> 01:00:48,578
+e em um lugar e hora certos
+
+1164
+01:00:48,578 --> 01:00:52,566
+eu poderia derrubar a empresa e mandar os executivos à prisão
+
+1165
+01:00:54,129 --> 01:00:57,741
+como os contadores lidam com essa sensibilidade?
+
+1166
+01:00:57,741 --> 01:01:01,655
+setecentos anos atrás, contadores desenvolveram a disciplina
+
+1167
+01:01:01,655 --> 01:01:03,913
+chamada de contabilidade de dupla entrada
+
+1168
+01:01:03,913 --> 01:01:06,621
+agora carrega a força da lei
+
+1169
+01:01:06,621 --> 01:01:10,166
+como parte dos princípios contábeis aceitos em geral
+
+1170
+01:01:11,526 --> 01:01:13,969
+a disciplina é muito simples
+
+1171
+01:01:13,969 --> 01:01:16,387
+toda transação é escrita duas vezes
+
+1172
+01:01:16,387 --> 01:01:17,876
+uma no lado do débito
+
+1173
+01:01:17,876 --> 01:01:19,563
+uma no lado do crédito
+
+1174
+01:01:19,563 --> 01:01:23,015
+as duas seguem caminhos matemáticos completamente diferentes
+
+1175
+01:01:23,015 --> 01:01:27,132
+até que se combinem em uma mágica
+subtração na folha de balanço
+
+1176
+01:01:27,132 --> 01:01:29,323
+essa subtração deve resultar em zero
+
+1177
+01:01:29,323 --> 01:01:36,196
+se não for, então alguém cometeu
+algum erro em uma daquelas transações
+
+1178
+01:01:37,126 --> 01:01:39,587
+é claro que esse processo não é perfeito
+
+1179
+01:01:39,587 --> 01:01:46,492
+é possível que faça erros complementares,
+que resultem em um falso zero, na folha de balanço
+
+1180
+01:01:46,492 --> 01:01:48,892
+mas a chance disso acontecer é muito baixa
+
+1181
+01:01:48,892 --> 01:01:51,593
+por essa razão, contabilidade de entrada dupla
+
+1182
+01:01:51,593 --> 01:01:56,566
+é considerada a diligência adequada para os contadores
+
+1183
+01:01:58,024 --> 01:02:01,310
+TDD é contabilidade de entrada dupla
+
+1184
+01:02:01,310 --> 01:02:03,113
+tudo é dito duas vezes
+
+1185
+01:02:03,113 --> 01:02:04,443
+uma do lado do teste
+
+1186
+01:02:04,443 --> 01:02:06,516
+uma do lado do código de produção
+
+1187
+01:02:06,510 --> 01:02:10,738
+eles seguem caminhos de execução
+ separados, mas complementares
+
+1188
+01:02:10,738 --> 01:02:13,630
+e eles se encontram em uma execução com sucesso
+
+1189
+01:02:13,630 --> 01:02:15,932
+uma barra verde
+
+1190
+01:02:16,541 --> 01:02:21,372
+nossos códigos são de alguma forma,
+menos importantes que planilhas de contabilidade?
+
+1191
+01:02:21,372 --> 01:02:25,710
+nossos empregadores dependem menos da precisão so software
+
+1192
+01:02:25,710 --> 01:02:28,658
+do que dependem em seus livros de contabilidade?
+
+1193
+01:02:28,658 --> 01:02:32,929
+os erros cometidos por programadores
+é de alguma forma, menos severo
+
+1194
+01:02:32,929 --> 01:02:37,224
+ou menos caro que os erros feitos por contadores ?
+
+1195
+01:02:37,224 --> 01:02:40,480
+a resposta de todas essas perguntas, é Não.
+
+1196
+01:02:41,747 --> 01:02:43,298
+então...
+
+1197
+01:02:43,298 --> 01:02:47,716
+como nós programadores, podemos
+tratar nosso trabalho, com menos respeito
+
+1198
+01:02:47,716 --> 01:02:50,190
+do que contadores tratam o dele
+
+1199
+01:02:50,190 --> 01:02:52,363
+nós programadores, não deveriamos
+
+1200
+01:02:52,360 --> 01:02:55,907
+como profissionais, ter uma devida diligência
+
+1201
+01:02:55,907 --> 01:03:00,061
+que é pelo menos seja tão rigorosa e eficaz quanto contadores
+
+1202
+01:03:03,360 --> 01:03:04,800
+a propósito
+
+1203
+01:03:04,800 --> 01:03:09,655
+contadores, não escrevem todos os débitos
+primeiro e os créditos por último
+
+1204
+01:03:09,655 --> 01:03:12,301
+ao invés disso, eles escrevem todos ao mesmo tempo
+
+1205
+01:03:12,301 --> 01:03:15,753
+mantendo a folha de balanço sempre em zero
+
+1206
+01:03:15,753 --> 01:03:18,461
+escrever os testes depois que escreveu o código
+
+1207
+01:03:18,461 --> 01:03:22,147
+é tipo entrar todos os débitos por último
+
+1208
+01:03:22,147 --> 01:03:27,175
+vc nunca sabe qual entrada faz a planiha quebrar o balanço
+
+1209
+01:03:29,033 --> 01:03:30,504
+QA não deve econtrar NADA!
+
+1210
+01:03:32,504 --> 01:03:34,898
+quando um time de desenvolvedores profissionais
+
+1211
+01:03:34,898 --> 01:03:38,036
+lança seu código para QA
+
+1212
+01:03:38,036 --> 01:03:41,113
+o que eles devem esperar que QA encontre?
+
+1213
+01:03:42,738 --> 01:03:44,049
+nada
+
+1214
+01:03:45,144 --> 01:03:49,101
+é claro, que algumas vezes
+QA vai encontrar alguns defeitos
+
+1215
+01:03:49,101 --> 01:03:51,710
+mas então, o time de desenvolvedores profissionais
+
+1216
+01:03:51,710 --> 01:03:54,209
+devem ficar espantados
+
+1217
+01:03:54,209 --> 01:03:58,953
+devem tomar ações para certificar que
+esse tipo de defeito nunca passe de novo
+
+1218
+01:04:00,627 --> 01:04:03,686
+o objetivo de um time de desenvolvedores profissionais
+
+1219
+01:04:03,686 --> 01:04:07,292
+é que QA não encontre nada
+
+1220
+01:04:07,969 --> 01:04:10,750
+isso é apenas ética básica de software
+
+1221
+01:04:10,750 --> 01:04:14,153
+você não lança código que não sabe se funciona
+
+1222
+01:04:14,153 --> 01:04:15,993
+lançar código que vc não tem certeza
+
+1223
+01:04:15,993 --> 01:04:18,861
+é irresponsável e não profissional
+
+1224
+01:04:20,129 --> 01:04:21,950
+eu não conheço forma melhor
+
+1225
+01:04:21,950 --> 01:04:24,190
+de saber que seu código funciona
+
+1226
+01:04:24,190 --> 01:04:26,978
+e de ter certeza que QA não encontre nada
+
+1227
+01:04:26,978 --> 01:04:30,572
+do que praticar as treis leis do TDD
+
+1228
+01:04:32,350 --> 01:04:33,803
+de cobertura de código
+
+1229
+01:04:35,950 --> 01:04:38,904
+quanto do seu código deve estar coberto por teste?
+
+1230
+01:04:38,900 --> 01:04:42,498
+deveria ser 50% ou 60 ou talvez 80
+
+1231
+01:04:42,490 --> 01:04:44,492
+francamente eu acho essa pergunta absurda
+
+1232
+01:04:44,490 --> 01:04:48,492
+qual o sentido de cobrir 
+menos que 100%?
+
+1233
+01:04:49,667 --> 01:04:53,963
+até porque,  se vc só cobre 80% do seu código
+
+1234
+01:04:53,960 --> 01:04:56,461
+vc não sabe se 20% funciona funciona
+
+1235
+01:04:56,461 --> 01:04:58,923
+não tem como isso ser aceitável
+
+1236
+01:04:59,858 --> 01:05:04,590
+vc consegue realmente cobrir 
+100% do seu código com testes?
+
+1237
+01:05:04,590 --> 01:05:07,033
+bem... provavelmente não
+
+1238
+01:05:07,033 --> 01:05:10,443
+mas isso não significa que vc
+deveria aceitar um objetivo menor
+
+1239
+01:05:10,440 --> 01:05:12,824
+100% é o objetivo
+
+1240
+01:05:12,824 --> 01:05:16,123
+nenhum número menor faz sentido como objetivo
+
+1241
+01:05:16,123 --> 01:05:18,190
+o fato de que não é possível
+
+1242
+01:05:18,190 --> 01:05:22,418
+não significa que não deveria
+tentar o possível para chegar nele
+
+1243
+01:05:23,575 --> 01:05:26,510
+FitNess, um dos projetos com que eu trabalho
+
+1244
+01:05:26,510 --> 01:05:29,538
+tem uma cobertura de código de 95%
+
+1245
+01:05:29,538 --> 01:05:31,796
+isso pode soar muito bom para você
+
+1246
+01:05:31,796 --> 01:05:34,560
+mas isso não significa que eu não tento aumentar
+
+1247
+01:05:34,560 --> 01:05:36,258
+eu tento!
+
+1248
+01:05:37,224 --> 01:05:42,547
+vc provavelmente terá que publicar 
+com um número menor que 100%
+
+1249
+01:05:42,540 --> 01:05:46,904
+mas vc nunca pode estar satisfeito 
+com um número menor que 100%
+
+1250
+01:05:48,658 --> 01:05:50,104
+Doutores, lave suas mãos!
+
+1251
+01:05:52,104 --> 01:05:54,006
+em 1847
+
+1252
+01:05:54,000 --> 01:05:58,689
+Ignaz Semmelweis, foi o
+residente chefe de obstetrícia
+
+1253
+01:05:58,689 --> 01:06:01,833
+em um hospital em Viena - Áustria
+
+1254
+01:06:01,833 --> 01:06:07,360
+entre outras coisas, ele era o
+responsável por 2 clinícas de parto
+
+1255
+01:06:07,360 --> 01:06:12,067
+onde mulheres pobres poderiam ir para
+terem seus bebês e receberem cuidados
+
+1256
+01:06:13,433 --> 01:06:15,403
+nessa primeira clínica
+
+1257
+01:06:15,403 --> 01:06:19,316
+algumas vezes, uma entre essas 6 mulheres morreria
+
+1258
+01:06:19,316 --> 01:06:23,353
+de uma doença horrível, chamada de febre de parto
+
+1259
+01:06:23,353 --> 01:06:25,390
+na segunda clínica, no entanto
+
+1260
+01:06:25,390 --> 01:06:28,627
+não mais que uma em 12 morreria
+
+1261
+01:06:29,827 --> 01:06:32,615
+a diferença primária entre as duas clínicas
+
+1262
+01:06:32,615 --> 01:06:36,873
+era que a primeira era uma instalação
+de treinamento para jovens doutores
+
+1263
+01:06:36,873 --> 01:06:40,147
+a segunda era formada de parteiras
+
+1264
+01:06:40,147 --> 01:06:43,956
+poderia a diferença de mortalidade ser devido aos doutores?
+
+1265
+01:06:45,513 --> 01:06:47,975
+Semmelweis notou que
+
+1266
+01:06:47,975 --> 01:06:51,360
+frequentemente os doutores conduziam autópsias
+
+1267
+01:06:51,360 --> 01:06:53,784
+antes de irem para a segunda clínica
+
+1268
+01:06:53,784 --> 01:06:57,790
+para conduzir exames internos nas mulheres
+
+1269
+01:06:57,790 --> 01:06:59,501
+ele começou a se perguntar se de alguma forma
+
+1270
+01:06:59,501 --> 01:07:03,501
+algum sangue ou tecido daqueles cadáveres
+
+1271
+01:07:03,501 --> 01:07:06,836
+que chamava de materiais cadavéricos
+
+1272
+01:07:06,836 --> 01:07:09,021
+poderiam estar infectando as mulheres
+
+1273
+01:07:09,021 --> 01:07:11,169
+e causando essas febres
+
+1274
+01:07:12,615 --> 01:07:16,541
+então ele institucionalizou
+uma política de lavar as mãos
+
+1275
+01:07:16,541 --> 01:07:20,043
+antes dos doutores visitarem pacientes na primeira clínica
+
+1276
+01:07:20,043 --> 01:07:23,396
+ele fazio eles lavarem as mãos com alvejante de cloro
+
+1277
+01:07:23,396 --> 01:07:27,987
+e que maravilha, o índice de mortalidade
+diminuiu para menos que 1 em cada 100
+
+1278
+01:07:29,169 --> 01:07:32,036
+ele instituiu a mesma política para as parteiras
+
+1279
+01:07:32,036 --> 01:07:35,236
+e o índice de mortalidade caiu nessa clínica também!
+
+1280
+01:07:36,418 --> 01:07:40,227
+ele começou a lavar os instrumentos que eram levados na clínica
+
+1281
+01:07:40,227 --> 01:07:42,898
+e o índice de mortalidade desceu ainda mais
+
+1282
+01:07:42,898 --> 01:07:47,846
+Semmelweis descobriu, o milagre do procedimento anti-séptico
+
+1283
+01:07:49,464 --> 01:07:52,695
+é claro que a comunidade médica adotou essa política de vez
+
+1284
+01:07:52,695 --> 01:07:55,476
+e saudaram Semmelweis como heroi
+
+1285
+01:07:55,476 --> 01:07:57,009
+só que não!
+
+1286
+01:07:58,320 --> 01:08:01,796
+na verdade eles rejeitaram o procedimento de cara
+
+1287
+01:08:01,796 --> 01:08:07,790
+na visão deles, doenças não eram causadas
+por pequenas partículas nas mãos de médicos
+
+1288
+01:08:07,790 --> 01:08:12,640
+doenças são causadas por desiquilíbrio de humor ou vapores ruims
+
+1289
+01:08:12,640 --> 01:08:17,292
+que poderiam ser corrigidos por técnicas de sangria
+
+1290
+01:08:18,806 --> 01:08:20,738
+lavar nossas mãos?
+
+1291
+01:08:20,738 --> 01:08:22,227
+besteira!
+
+1292
+01:08:22,227 --> 01:08:24,264
+nós somos cavalheiros, senhor!
+
+1293
+01:08:24,264 --> 01:08:27,058
+nossas mãos já são limpas
+
+1294
+01:08:27,058 --> 01:08:28,061
+além do que
+
+1295
+01:08:28,061 --> 01:08:31,181
+vc sabe quanto tempo tomaria
+
+1296
+01:08:31,181 --> 01:08:33,827
+para lavar as mãos todo tempo?!
+
+1297
+01:08:34,744 --> 01:08:38,356
+nos dificilmente escreveriamos algum código
+
+1298
+01:08:39,230 --> 01:08:45,796
+levou 60 anos, para que a idéia de
+Semmelweis fosse aceita pela comunidade médica
+
+1299
+01:08:45,796 --> 01:08:49,286
+ele morreu como um homem quebrado e desanimado
+
+1300
+01:08:49,286 --> 01:08:53,396
+ele salvou milhares de vidas
+
+1301
+01:08:53,396 --> 01:08:59,064
+e ainda assim foi recompensado sendo
+rejeitado e despresado pela sua profissão
+
+1302
+01:08:59,870 --> 01:09:04,092
+até hoje, profissionais médicos, incluindo doutores
+
+1303
+01:09:04,092 --> 01:09:07,513
+falham em seguir o conselho de Semmelweis
+
+1304
+01:09:07,513 --> 01:09:11,692
+neste exato dia, pacientes em volta do mundo
+
+1305
+01:09:11,692 --> 01:09:13,083
+irão morrer
+
+1306
+01:09:13,083 --> 01:09:15,236
+porque cuidadores descuidados
+
+1307
+01:09:15,236 --> 01:09:18,166
+estavam muito ocupados para lavar as mãos
+
+1308
+01:09:19,440 --> 01:09:20,504
+fascinante
+
+1309
+01:09:20,504 --> 01:09:23,612
+uma atitude totalmente prejudicial
+
+1310
+01:09:27,550 --> 01:09:30,658
+conclusão
+
+1311
+01:09:31,766 --> 01:09:34,190
+então, o que aprendemos?
+
+1312
+01:09:34,584 --> 01:09:35,938
+bem, primeiro aprendemos
+
+1313
+01:09:35,938 --> 01:09:37,698
+que código apodrece
+
+1314
+01:09:37,698 --> 01:09:40,264
+porque temos medo de limpá-lo
+
+1315
+01:09:40,264 --> 01:09:42,824
+e para manter um sistema limpo
+
+1316
+01:09:42,824 --> 01:09:46,541
+precisamos, de alguma forma, eliminar o medo de alteraçao
+
+1317
+01:09:46,541 --> 01:09:47,969
+e que
+
+1318
+01:09:47,969 --> 01:09:52,061
+somente com um conjunto de testes,
+que confia com sua vida
+
+1319
+01:09:52,596 --> 01:09:54,387
+pode eliminar esse medo
+
+1320
+01:09:55,895 --> 01:09:56,966
+depois aprendemos
+
+1321
+01:09:56,966 --> 01:10:00,061
+as três leis de TDD
+
+1322
+01:10:00,061 --> 01:10:01,446
+número 1
+
+1323
+01:10:01,446 --> 01:10:04,270
+vc não tem permissão de escrever
+nenhum código de produção
+
+1324
+01:10:04,270 --> 01:10:08,110
+até ter escrito um teste de unidade que falhe
+
+1325
+01:10:08,110 --> 01:10:09,458
+número 2
+
+1326
+01:10:09,458 --> 01:10:12,147
+vc não tem permissão de escrever
+mais de um teste de unidade
+
+1327
+01:10:12,147 --> 01:10:14,030
+para demonstrar a falha
+
+1328
+01:10:14,030 --> 01:10:16,664
+e não compilar é uma falha
+
+1329
+01:10:17,212 --> 01:10:18,080
+três
+
+1330
+01:10:18,080 --> 01:10:20,695
+vc não tem permissão de escrever mais código de produçao
+
+1331
+01:10:20,695 --> 01:10:24,486
+do que o código para passar o teste atual
+
+1332
+01:10:29,236 --> 01:10:30,695
+seguir essas três leis
+
+1333
+01:10:30,695 --> 01:10:32,701
+resulta em menos defeitos
+
+1334
+01:10:32,701 --> 01:10:34,615
+diminuí tempo de debug
+
+1335
+01:10:34,615 --> 01:10:38,067
+melhor documentação de baixo nível
+
+1336
+01:10:38,067 --> 01:10:40,283
+código altamente desacoplado
+
+1337
+01:10:40,283 --> 01:10:44,092
+e um conjunto de testes que pode confiar a sua vida
+
+1338
+01:10:45,353 --> 01:10:48,510
+nos escutamos e respondemos as objeções mais comuns
+
+1339
+01:10:48,510 --> 01:10:51,569
+levantadas pela indústria nos últimos anos
+
+1340
+01:10:51,569 --> 01:10:54,621
+o resultado dessa discussão é simplesmente isto:
+
+1341
+01:10:54,732 --> 01:10:57,409
+TDD não te deixa mais lento
+
+1342
+01:10:57,409 --> 01:10:59,458
+te deixa mais rápido
+
+1343
+01:11:00,289 --> 01:11:05,433
+depois eu preguei por um tempo
+sobre habilidade e profissionalismo
+
+1344
+01:11:05,433 --> 01:11:11,421
+eu frisei que desenvolvedores
+profissionais devem esperar que QA ache nada
+
+1345
+01:11:11,421 --> 01:11:17,187
+eu também frisei que se contadores fazem, nós devemos fazer também
+
+1346
+01:11:17,187 --> 01:11:22,110
+e finalmente, eu contei a triste história de Semmelweis
+
+1347
+01:11:22,110 --> 01:11:24,455
+e como ele foi rejeitado
+
+1348
+01:11:24,504 --> 01:11:29,138
+por causa de geeks alphas foram
+relutantes em mudar seus modos
+
+1349
+01:11:30,135 --> 01:11:31,169
+eu frequentemente sou questionado
+
+1350
+01:11:31,169 --> 01:11:35,236
+de como faço o restante do time, seguir o TDD
+
+1351
+01:11:36,030 --> 01:11:36,566
+bem...
+
+1352
+01:11:36,566 --> 01:11:38,344
+a resposta curta para isso é
+
+1353
+01:11:38,344 --> 01:11:39,612
+vc não faz
+
+1354
+01:11:39,612 --> 01:11:41,507
+isto é sobre você
+
+1355
+01:11:41,507 --> 01:11:44,720
+isto é uma decisão pessoal que você está fazendo
+
+1356
+01:11:44,720 --> 01:11:50,252
+vc está se comprometendo que
+vai seguir as disciplinas do TDD
+
+1357
+01:11:50,252 --> 01:11:53,329
+deixe as outras pessoas cuidarem delas mesmas
+
+1358
+01:11:54,960 --> 01:11:55,944
+esperançosamente
+
+1359
+01:11:55,944 --> 01:11:57,624
+os outros começarão a notar
+
+1360
+01:11:57,624 --> 01:11:59,852
+que vc está indo mais rápido
+
+1361
+01:11:59,852 --> 01:12:01,520
+que vc tem menos defeitos
+
+1362
+01:12:01,520 --> 01:12:04,295
+que seu código é mais limpo
+
+1363
+01:12:04,830 --> 01:12:07,723
+e talvez então
+
+1364
+01:12:07,723 --> 01:12:10,830
+vc pode fazer eles assistirem esse vídeo
+
+1365
+01:12:10,830 --> 01:12:13,624
+talvez vc possa ensiná-los a disciplina
+
+1366
+01:12:13,624 --> 01:12:15,483
+explicar como funciona
+
+1367
+01:12:15,480 --> 01:12:19,901
+e fazendo isso, talvez consiga converter todo o seu time
+
+1368
+01:12:21,950 --> 01:12:26,689
+e assim chegamos ao fim de
+mais um episódio excitante de clean code
+
+1369
+01:12:26,689 --> 01:12:27,790
+espero que tenha se divertido
+
+1370
+01:12:27,790 --> 01:12:32,516
+e espero que tenha aprendido algo sobre TDD
+
+1371
+01:12:32,516 --> 01:12:35,120
+mas mal arranhamos a superfície
+
+1372
+01:12:35,120 --> 01:12:38,449
+não falamos sobre padrões de projeto
+
+1373
+01:12:38,449 --> 01:12:40,172
+ou princípios de design
+
+1374
+01:12:40,172 --> 01:12:41,310
+ou mocking
+
+1375
+01:12:41,310 --> 01:12:44,067
+eu prometi a vocês um episódio sobre código legado
+
+1376
+01:12:44,067 --> 01:12:46,116
+e que tal sobre arquitetura?
+
+1377
+01:12:46,116 --> 01:12:50,898
+você não vai querer perder
+o próximo episódio de clean code
+
+1378
+01:12:50,898 --> 01:12:52,553
+episódio 7
+
+1379
+01:12:52,553 --> 01:12:56,086
+Casos de uso e design de alto nível
+
+1380
+01:12:56,923 --> 01:13:09,261
+Legendado por André Castilho
+
