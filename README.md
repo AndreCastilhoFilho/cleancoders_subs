@@ -1,6 +1,6 @@
 # Legendas PT-BR - CLEANCODERS
 
-Legendas videos [cleancoders](https://cleancoders.com/videos)
+Legendas vídeos [cleancoders](https://cleancoders.com/videos)
 
 * Programa utilizado :[Aegisub](http://www.aegisub.org/)
 
