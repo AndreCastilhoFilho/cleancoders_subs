@@ -1,4 +1,4 @@
-﻿1
+1
 00:00:16,246 --> 00:00:18,153
 Oi, sou o tio Bob
 
@@ -113,7 +113,7 @@ a terceira lei diz
 
 29
 00:01:53,540 --> 00:01:56,135
-que vc não tem permissão de
+que você não tem permissão de
 escrever mais código de produção
 
 30
@@ -190,7 +190,7 @@ não é necessariamente prático
 
 48
 00:02:42,301 --> 00:02:45,218
-vc tem uma lógica fraca
+você tem uma lógica fraca
 
 49
 00:02:45,218 --> 00:02:47,698
@@ -258,7 +258,7 @@ cada um consiste, em duas jogadas
 
 65
 00:03:36,006 --> 00:03:40,892
-vc tem 2 tentativas para derrubar
+você tem 2 tentativas para derrubar
 10 pinos no final do corredor
 
 66
@@ -376,7 +376,7 @@ a pontuação de um strike é 10
 
 94
 00:04:55,987 --> 00:04:58,720
-mais as próximas 2 bolas que vc joga
+mais as próximas 2 bolas que você joga
 
 95
 00:04:58,720 --> 00:05:01,390
@@ -421,7 +421,7 @@ o décimo quadro é um pouco diferente
 
 105
 00:05:23,500 --> 00:05:26,603
-no décimo, se vc rolar um e depois 4
+no décimo, se você rolar um e depois 4
 
 106
 00:05:26,603 --> 00:05:28,436
@@ -454,7 +454,7 @@ bolas para completar o strike
 
 113
 00:05:45,304 --> 00:05:46,707
-isso é como vc joga boliche
+isso é como você joga boliche
 
 114
 00:05:46,707 --> 00:05:48,116
@@ -490,7 +490,7 @@ será chamado toda vez que jogar a bola
 
 122
 00:06:07,003 --> 00:06:10,430
-e passará o número de pinos que vc derrubou
+e passará o número de pinos que você derrubou
 
 123
 00:06:10,430 --> 00:06:13,661
@@ -578,7 +578,7 @@ de fato, um Jogo tem 10 quadros
 
 144
 00:07:02,184 --> 00:07:03,501
-vc pode ver o UML aqui
+você pode ver o UML aqui
 
 145
 00:07:03,501 --> 00:07:07,212
@@ -762,7 +762,7 @@ usamos como um tipo de diretriz
 
 190
 00:09:01,840 --> 00:09:04,258
-aqui vc ve na tela
+aqui você ve na tela
 
 191
 00:09:04,250 --> 00:09:07,932
@@ -806,7 +806,7 @@ agora, lembre da primeira lei do TDD
 
 201
 00:09:36,947 --> 00:09:39,390
-vc não tem permissão de escrever nenhum código de produção
+você não tem permissão de escrever nenhum código de produção
 
 202
 00:09:39,390 --> 00:09:41,673
@@ -1057,7 +1057,7 @@ isso é normal, a propósito
 
 263
 00:13:06,633 --> 00:13:08,972
-vc escreve um teste só pra deletar depois
+você escreve um teste só pra deletar depois
 
 264
 00:13:15,212 --> 00:13:18,018
@@ -1097,7 +1097,7 @@ quando precisa escrever código real
 
 273
 00:13:40,683 --> 00:13:43,815
-vc escreve o mais simples que pode
+você escreve o mais simples que pode
 
 274
 00:13:43,815 --> 00:13:47,753
@@ -1744,7 +1744,7 @@ faça algo horrível como isto
 
 434
 00:21:54,289 --> 00:21:56,295
-vc tem que dar um passo para trás
+você tem que dar um passo para trás
 
 435
 00:21:56,295 --> 00:21:59,772
@@ -1776,7 +1776,7 @@ um princípio que todo mundo conhece
 
 442
 00:22:15,864 --> 00:22:18,043
-é um dos primeiros que vc aprende
+é um dos primeiros que você aprende
 
 443
 00:22:18,043 --> 00:22:19,716
@@ -1828,7 +1828,7 @@ responsabilidade deslocada
 
 455
 00:22:49,169 --> 00:22:52,467
-vc vai para a função que diz que faz algo
+você vai para a função que diz que faz algo
 
 456
 00:22:52,467 --> 00:22:54,338
@@ -1836,15 +1836,15 @@ e a função não a faz!
 
 457
 00:22:54,338 --> 00:22:56,756
-quantas vezes vc já foi pego por isto?
+quantas vezes você já foi pego por isto?
 
 458
 00:22:56,756 --> 00:22:59,341
-vc tem mudar algum comportamento no sistema
+você tem mudar algum comportamento no sistema
 
 459
 00:22:59,341 --> 00:23:02,049
-vc vai na função que diz que o faz
+você vai na função que diz que o faz
 
 460
 00:23:02,049 --> 00:23:04,018
@@ -1880,7 +1880,7 @@ eles escondem a função onde não é esperada
 
 468
 00:23:19,150 --> 00:23:22,486
-e vc tem que descobrir onde diabos está!
+e você tem que descobrir onde diabos está!
 
 469
 00:23:22,486 --> 00:23:24,012
@@ -2098,11 +2098,11 @@ eu vejo alguns de vocês, balançando a cabeça...
 
 522
 00:26:37,858 --> 00:26:39,403
-vc não concorda comigo?!
+você não concorda comigo?!
 
 523
 00:26:39,403 --> 00:26:41,920
-vc não acha que isso seja o spare?!
+você não acha que isso seja o spare?!
 
 524
 00:26:41,920 --> 00:26:43,255
@@ -2311,7 +2311,7 @@ bem.. a pontuação de um score é 10
 
 575
 00:29:58,806 --> 00:30:01,458
-mais, a próxima bola que vc joga
+mais, a próxima bola que você joga
 
 576
 00:30:05,846 --> 00:30:08,153
@@ -2454,7 +2454,7 @@ quanto código de produção
 
 610
 00:31:55,821 --> 00:31:58,781
-e vc mantenha seus testes limpos!
+e você mantenha seus testes limpos!
 
 611
 00:32:00,855 --> 00:32:02,424
@@ -2783,11 +2783,11 @@ bom, agora podemos nos livrar desse comentário
 
 692
 00:37:03,120 --> 00:37:05,513
-vc sabe como me sinto sobre comentários
+você sabe como me sinto sobre comentários
 
 693
 00:37:05,513 --> 00:37:08,615
-vc viu isso,  em um episódio passado
+você viu isso,  em um episódio passado
 
 694
 00:37:10,430 --> 00:37:12,221
@@ -2993,7 +2993,7 @@ entrando nele
 
 744
 00:39:24,264 --> 00:39:27,938
-digo, vc se lembra disso?
+digo, você se lembra disso?
 
 745
 00:39:27,938 --> 00:39:30,227
@@ -3017,15 +3017,15 @@ poderiamos ter dito:
 
 750
 00:39:37,021 --> 00:39:38,246
-"vc faz a classe Quadro"
+"você faz a classe Quadro"
 
 751
 00:39:38,246 --> 00:39:39,963
-"vc alí, faz o DecimoQuadro"
+"você alí, faz o DecimoQuadro"
 
 752
 00:39:39,963 --> 00:39:41,027
-"vc faz a classe Jogada"
+"você faz a classe Jogada"
 
 753
 00:39:41,027 --> 00:39:43,040
@@ -3101,7 +3101,7 @@ algumas vezess não
 
 771
 00:40:26,960 --> 00:40:28,916
-algumas vezes, vc colocaria seu design
+algumas vezes, você colocaria seu design
 
 772
 00:40:28,916 --> 00:40:30,203
@@ -3109,7 +3109,7 @@ no quadro
 
 773
 00:40:30,203 --> 00:40:31,944
-vc sentaria e faría seus testes
+você sentaria e faría seus testes
 
 774
 00:40:31,944 --> 00:40:35,618
@@ -3129,15 +3129,15 @@ mas acontece o suficiente
 
 778
 00:40:43,046 --> 00:40:44,350
-que vc faz o seu design
+que você faz o seu design
 
 779
 00:40:44,350 --> 00:40:46,307
-e claro, vc deveria
+e claro, você deveria
 
 780
 00:40:46,307 --> 00:40:47,790
-mas então vc começa a escrever os testes
+mas então você começa a escrever os testes
 
 781
 00:40:47,790 --> 00:40:51,649
@@ -3326,7 +3326,7 @@ tem muitas objeções lógicas para o TDD
 
 827
 00:42:49,513 --> 00:42:53,440
-é hora de vc responder essas objeções
+é hora de você responder essas objeções
 
 828
 00:42:54,301 --> 00:42:55,864
@@ -3346,7 +3346,7 @@ seguindo TDD
 
 832
 00:43:04,381 --> 00:43:06,867
-vc escreve muito mais código do que o normal
+você escreve muito mais código do que o normal
 
 833
 00:43:06,867 --> 00:43:11,329
@@ -3358,11 +3358,11 @@ não, TDD te deixa ir mais rápido
 
 835
 00:43:15,483 --> 00:43:19,027
-primeiramente, vc passa muito menos tempo debugando
+primeiramente, você passa muito menos tempo debugando
 
 836
 00:43:19,027 --> 00:43:21,310
-pense em quanto tempo vc pode salvar
+pense em quanto tempo você pode salvar
 
 837
 00:43:21,310 --> 00:43:24,443
@@ -3382,12 +3382,12 @@ TDD te permite limpar seu código
 
 841
 00:43:35,292 --> 00:43:40,683
-assim vc não perde tempo
+assim você não perde tempo
 lidando com a bagunça de todo mundo
 
 842
 00:43:40,683 --> 00:43:43,033
-se vc quer ir rápido
+se você quer ir rápido
 
 843
 00:43:43,033 --> 00:43:45,107
@@ -3428,16 +3428,16 @@ mas porque seu chefe precisaria saber???
 
 852
 00:44:12,935 --> 00:44:17,298
-digo, vc pergunta para seu
+digo, você pergunta para seu
 chefe se pode usar ponto e virgula???
 
 853
 00:44:17,298 --> 00:44:20,836
-vc pergunta para seu chefe se deve identar seus IFs?
+você pergunta para seu chefe se deve identar seus IFs?
 
 854
 00:44:20,836 --> 00:44:24,972
-quando foi a última vez que vc perguntou
+quando foi a última vez que você perguntou
 para seu chefe se poderia ir ao banheiro?
 
 855
@@ -3458,7 +3458,7 @@ se seu chefe te questiona sobre TDD
 
 859
 00:44:39,341 --> 00:44:42,289
-diga a ele que vc faz para ir mais rápido
+diga a ele que você faz para ir mais rápido
 
 860
 00:44:42,289 --> 00:44:43,563
@@ -3466,7 +3466,7 @@ se ele se opor
 
 861
 00:44:43,563 --> 00:44:47,126
-diga que vc terá que drobrar todas suas estimativas
+diga que você terá que drobrar todas suas estimativas
 
 862
 00:44:47,126 --> 00:44:49,292
@@ -3482,7 +3482,7 @@ porque, depois de tudo
 
 865
 00:44:53,501 --> 00:44:55,827
-vc é o especialista em software
+você é o especialista em software
 
 866
 00:44:55,827 --> 00:44:57,704
@@ -3514,7 +3514,7 @@ seria melhor, escrever o código corretamente de primeira
 
 873
 00:45:19,249 --> 00:45:22,516
-bem, quando vc descobrir como fazer isso me avise!
+bem, quando você descobrir como fazer isso me avise!
 
 874
 00:45:22,516 --> 00:45:23,944
@@ -3550,7 +3550,7 @@ e programadores, não escrevem o código perfeito de primeira
 
 882
 00:45:45,550 --> 00:45:50,166
-quando vc está no terceiro ano, sua professora
+quando você está no terceiro ano, sua professora
 provavelmente te pediu para escrever uma estória
 
 883
@@ -3907,16 +3907,16 @@ e reavaliar seus dogmas e diciplinas
 
 970
 00:50:04,326 --> 00:50:06,646
-vc pode fazer mudanças significativas
+você pode fazer mudanças significativas
 
 971
 00:50:06,646 --> 00:50:08,806
-vc pode fazer mudanças sutis
+você pode fazer mudanças sutis
 
 972
 00:50:08,806 --> 00:50:08,812
 de qualquer modo
-vc pode fazer mudanças sutis
+você pode fazer mudanças sutis
 
 973
 00:50:08,812 --> 00:50:09,501
@@ -3956,11 +3956,11 @@ RCP é constantemente revisado
 
 982
 00:50:33,433 --> 00:50:35,852
-se vc tirar certificação em RCP
+se você tirar certificação em RCP
 
 983
 00:50:35,852 --> 00:50:38,787
-vc terá que se requalificar a cada poucos anos
+você terá que se requalificar a cada poucos anos
 
 984
 00:50:38,787 --> 00:50:41,600
@@ -4000,7 +4000,7 @@ se escrever seus testes no final
 
 993
 00:51:09,840 --> 00:51:13,846
-eles não estarão completos e vc não irá confiar neles
+eles não estarão completos e você não irá confiar neles
 
 994
 00:51:13,846 --> 00:51:16,473
@@ -4025,11 +4025,11 @@ para que possamos deixar de fora se precisarmos
 
 999
 00:51:31,452 --> 00:51:33,323
-quando vc escreve testes primeiro
+quando você escreve testes primeiro
 
 1000
 00:51:33,323 --> 00:51:35,120
-vc confia nesses testes
+você confia nesses testes
 
 1001
 00:51:35,120 --> 00:51:38,756
@@ -4111,12 +4111,12 @@ porque não foi modelado para ser testável
 
 1020
 00:52:40,184 --> 00:52:46,369
-a fim de testar, vc tem que fazer uma série
+a fim de testar, você tem que fazer uma série
 de pequenas mudanças de desacoplamento
 
 1021
 00:52:47,815 --> 00:52:53,378
-mas sem os testes, vc não tem nenhuma forma
+mas sem os testes, você não tem nenhuma forma
 de saber se essas mudanças irão quebrar algo
 
 1022
@@ -4125,11 +4125,11 @@ isso te deixa em uma sinuca de bico
 
 1023
 00:52:56,461 --> 00:52:59,298
-para escrever testes, vc precisa refatorar
+para escrever testes, você precisa refatorar
 
 1024
 00:52:59,298 --> 00:53:02,270
-mas vc não pode refatorar, sem testes
+mas você não pode refatorar, sem testes
 
 1025
 00:53:04,000 --> 00:53:08,676
@@ -4146,7 +4146,7 @@ encontre uma parte pequena do código legado
 
 1028
 00:53:15,563 --> 00:53:18,633
-que vc possa testar sem fazer mudanças muito grandes
+que você possa testar sem fazer mudanças muito grandes
 
 1029
 00:53:18,633 --> 00:53:23,938
@@ -4211,15 +4211,15 @@ com certeza, serão todos testados
 
 1044
 00:54:05,370 --> 00:54:07,753
-e é claro que, qualquer código novo que vc escreva
+e é claro que, qualquer código novo que você escreva
 
 1045
 00:54:07,753 --> 00:54:09,760
-vc escreve o teste primeiro
+você escreve o teste primeiro
 
 1046
 00:54:09,760 --> 00:54:12,123
-e nestas situações que vc tem uma escolha
+e nestas situações que você tem uma escolha
 
 1047
 00:54:12,123 --> 00:54:15,876
@@ -4248,35 +4248,35 @@ tio Bob
 
 1053
 00:54:31,636 --> 00:54:35,452
-Como vc testa interface de usuário gráfica ?
+Como você testa interface de usuário gráfica ?
 
 1054
 00:54:36,572 --> 00:54:38,683
-bem.. na maioria das vezes, vc não testa
+bem.. na maioria das vezes, você não testa
 
 1055
 00:54:38,683 --> 00:54:42,603
-digo, GUIs são o tipo de coisas que vc toca no lugar
+digo, GUIs são o tipo de coisas que você toca no lugar
 
 1056
 00:54:42,600 --> 00:54:46,467
-vc move o textbox alguns pixels para direita ou esquerda
+você move o textbox alguns pixels para direita ou esquerda
 
 1057
 00:54:46,467 --> 00:54:50,473
-vc altera a tonalidade do verde em um botão
+você altera a tonalidade do verde em um botão
 
 1058
 00:54:50,470 --> 00:54:54,055
-vc altera um radioButtom em um textbox
+você altera um radioButtom em um textbox
 
 1059
 00:54:54,055 --> 00:54:56,984
-vc altera a fonte de uma linha de texto
+você altera a fonte de uma linha de texto
 
 1060
 00:54:56,984 --> 00:54:59,489
-vc altera de negrito para itálico
+você altera de negrito para itálico
 
 1061
 00:55:01,113 --> 00:55:03,661
@@ -4284,11 +4284,11 @@ esse tipo de brincadeira é difícil de testar
 
 1062
 00:55:03,661 --> 00:55:06,923
-porque vc não tem certeza do que quer ver na tela
+porque você não tem certeza do que quer ver na tela
 
 1063
 00:55:06,920 --> 00:55:12,344
-então vc experimenta e brinca
+então você experimenta e brinca
 
 1064
 00:55:12,344 --> 00:55:14,307
@@ -4312,7 +4312,7 @@ existe código uma camada atrás disso
 
 1069
 00:55:26,147 --> 00:55:28,984
-que vc pode e deve testar
+que você pode e deve testar
 
 1070
 00:55:30,270 --> 00:55:31,427
@@ -4446,11 +4446,11 @@ mas tem muita gente que faz
 
 1102
 00:57:12,880 --> 00:57:16,633
-então como vc testa banco de dados?
+então como você testa banco de dados?
 
 1103
 00:57:17,507 --> 00:57:19,895
-na maioria das vezes, vc não testa
+na maioria das vezes, você não testa
 
 1104
 00:57:19,895 --> 00:57:21,784
@@ -4458,11 +4458,11 @@ banco de dados, são caixas pretas
 
 1105
 00:57:21,784 --> 00:57:24,301
-que vc geralmente não precisa testar
+que você geralmente não precisa testar
 
 1106
 00:57:24,301 --> 00:57:26,055
-o que vc quer testar
+o que você quer testar
 
 1107
 00:57:26,055 --> 00:57:29,772
@@ -4490,11 +4490,11 @@ e testar a aplicação sem o banco de dados
 
 1113
 00:57:50,380 --> 00:57:54,966
-depois vc pode testar o banco de dados independentemente daaplicação
+depois você pode testar o banco de dados independentemente daaplicação
 
 1114
 00:57:54,960 --> 00:57:56,141
-vc pode testar, por exemplo
+você pode testar, por exemplo
 
 1115
 00:57:56,141 --> 00:57:59,415
@@ -4561,7 +4561,7 @@ isso tem sido uma seção fascinante
 
 1130
 00:58:53,240 --> 00:58:55,532
-vc respondeu minhas objeções com lógica
+você respondeu minhas objeções com lógica
 
 1131
 00:58:55,532 --> 00:58:59,033
@@ -4613,7 +4613,7 @@ permita-me explicar meu raciocínio
 
 1143
 00:59:42,898 --> 00:59:44,326
-contabilidade de dupla entrada
+Método das Partidas Dobradas
 
 1144
 00:59:46,326 --> 00:59:49,187
@@ -4712,7 +4712,7 @@ setecentos anos atrás, contadores desenvolveram a disciplina
 
 1167
 01:01:01,655 --> 01:01:03,913
-chamada de contabilidade de dupla entrada
+chamada de Método das Partidas Dobradas
 
 1168
 01:01:03,913 --> 01:01:06,621
@@ -4771,7 +4771,7 @@ mas a chance disso acontecer é muito baixa
 
 1181
 01:01:48,892 --> 01:01:51,593
-por essa razão, contabilidade de entrada dupla
+por essa razão, Método das Partidas Dobradas
 
 1182
 01:01:51,593 --> 01:01:56,566
@@ -4779,7 +4779,7 @@ por essa razão, contabilidade de entrada dupla
 
 1183
 01:01:58,024 --> 01:02:01,310
-TDD é contabilidade de entrada dupla
+TDD é Método das Partidas Dobradas
 
 1184
 01:02:01,310 --> 01:02:03,113
@@ -4884,7 +4884,7 @@ escrever os testes depois que escreveu o código
 
 1208
 01:03:22,147 --> 01:03:27,175
-vc nunca sabe qual entrada faz a planiha quebrar o balanço
+você nunca sabe qual entrada faz a planiha quebrar o balanço
 
 1209
 01:03:29,033 --> 01:03:30,504
@@ -4942,7 +4942,7 @@ você não lança código que não sabe se funciona
 
 1222
 01:04:14,153 --> 01:04:15,993
-lançar código que vc não tem certeza
+lançar código que você não tem certeza
 
 1223
 01:04:15,993 --> 01:04:18,861
@@ -4987,11 +4987,11 @@ menos que 100%?
 
 1233
 01:04:49,667 --> 01:04:53,963
-até porque,  se vc só cobre 80% do seu código
+até porque,  se você só cobre 80% do seu código
 
 1234
 01:04:53,960 --> 01:04:56,461
-vc não sabe se 20% funciona funciona
+você não sabe se 20% funciona funciona
 
 1235
 01:04:56,461 --> 01:04:58,923
@@ -4999,7 +4999,7 @@ não tem como isso ser aceitável
 
 1236
 01:04:59,858 --> 01:05:04,590
-vc consegue realmente cobrir 
+você consegue realmente cobrir 
 100% do seu código com testes?
 
 1237
@@ -5050,12 +5050,12 @@ eu tento!
 
 1248
 01:05:37,224 --> 01:05:42,547
-vc provavelmente terá que publicar 
+você provavelmente terá que publicar 
 com um número menor que 100%
 
 1249
 01:05:42,540 --> 01:05:46,904
-mas vc nunca pode estar satisfeito 
+mas você nunca pode estar satisfeito 
 com um número menor que 100%
 
 1250
@@ -5247,7 +5247,7 @@ além do que
 
 1295
 01:08:28,061 --> 01:08:31,181
-vc sabe quanto tempo tomaria
+você sabe quanto tempo tomaria
 
 1296
 01:08:31,181 --> 01:08:33,827
@@ -5362,7 +5362,7 @@ número 1
 
 1323
 01:10:01,446 --> 01:10:04,270
-vc não tem permissão de escrever
+você não tem permissão de escrever
 nenhum código de produção
 
 1324
@@ -5375,7 +5375,7 @@ número 2
 
 1326
 01:10:09,458 --> 01:10:12,147
-vc não tem permissão de escrever
+você não tem permissão de escrever
 mais de um teste de unidade
 
 1327
@@ -5392,7 +5392,7 @@ três
 
 1330
 01:10:18,080 --> 01:10:20,695
-vc não tem permissão de escrever mais código de produçao
+você não tem permissão de escrever mais código de produçao
 
 1331
 01:10:20,695 --> 01:10:24,486
@@ -5487,7 +5487,7 @@ a resposta curta para isso é
 
 1353
 01:11:38,344 --> 01:11:39,612
-vc não faz
+você não faz
 
 1354
 01:11:39,612 --> 01:11:41,507
@@ -5499,7 +5499,7 @@ isto é uma decisão pessoal que você está fazendo
 
 1356
 01:11:44,720 --> 01:11:50,252
-vc está se comprometendo que
+você está se comprometendo que
 vai seguir as disciplinas do TDD
 
 1357
@@ -5516,11 +5516,11 @@ os outros começarão a notar
 
 1360
 01:11:57,624 --> 01:11:59,852
-que vc está indo mais rápido
+que você está indo mais rápido
 
 1361
 01:11:59,852 --> 01:12:01,520
-que vc tem menos defeitos
+que você tem menos defeitos
 
 1362
 01:12:01,520 --> 01:12:04,295
@@ -5532,11 +5532,11 @@ e talvez então
 
 1364
 01:12:07,723 --> 01:12:10,830
-vc pode fazer eles assistirem esse vídeo
+você pode fazer eles assistirem esse vídeo
 
 1365
 01:12:10,830 --> 01:12:13,624
-talvez vc possa ensiná-los a disciplina
+talvez você possa ensiná-los a disciplina
 
 1366
 01:12:13,624 --> 01:12:15,483
