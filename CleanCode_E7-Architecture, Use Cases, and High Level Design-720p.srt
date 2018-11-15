@@ -1,0 +1,6661 @@
+﻿1
+00:00:06,246 --> 00:00:08,135
+oi, sou o tio Bob
+
+2
+00:00:08,135 --> 00:00:10,449
+e isso é clean code
+
+3
+00:00:55,310 --> 00:00:56,320
+entra
+
+4
+00:00:59,113 --> 00:01:00,221
+em episodio 6
+
+5
+00:01:00,221 --> 00:01:02,566
+aprendemos sobre TDD
+
+6
+00:01:02,566 --> 00:01:04,430
+aprendemos código apodrece
+
+7
+00:01:04,430 --> 00:01:06,689
+porque temos medo de limpar
+
+8
+00:01:06,689 --> 00:01:09,470
+e a única coisa que cura esse medo
+
+9
+00:01:09,470 --> 00:01:12,184
+é um conjunto de testes abrangente
+
+10
+00:01:13,064 --> 00:01:14,535
+aprendemos
+
+11
+00:01:14,535 --> 00:01:16,400
+que apenas um conjunto de testes
+
+12
+00:01:16,400 --> 00:01:18,972
+que você confia com sua vida
+
+13
+00:01:18,972 --> 00:01:20,935
+pode eliminar esse medo
+
+14
+00:01:20,935 --> 00:01:23,193
+então você deve tratar esse conjunto de teste
+
+15
+00:01:23,193 --> 00:01:25,636
+como se fosse um paraquedas
+
+16
+00:01:27,003 --> 00:01:29,833
+aprendemos que TDD
+
+17
+00:01:29,833 --> 00:01:34,652
+é a única forma de
+gerar tal conjunto de testes
+
+18
+00:01:35,944 --> 00:01:38,529
+aprendemos as 3 leis de TDD
+
+19
+00:01:38,529 --> 00:01:40,923
+1 - não pode escrever nenhum código de produção
+
+20
+00:01:40,923 --> 00:01:43,483
+sem antes escrever um teste que falhe
+
+21
+00:01:43,483 --> 00:01:47,372
+2 - não pode escrever
+mais de um teste que falhe
+
+22
+00:01:47,372 --> 00:01:49,772
+e não compilar, é falhar
+
+23
+00:01:49,772 --> 00:01:52,098
+3 - não pode escrever mais código de produção
+
+24
+00:01:52,098 --> 00:01:55,200
+depois de fazer passar o teste atual.
+
+25
+00:01:56,960 --> 00:01:59,858
+aprendemos que se seguir essas 3 leis
+
+26
+00:01:59,858 --> 00:02:02,572
+irá reduzir seu tempo de debug
+
+27
+00:02:02,572 --> 00:02:05,698
+gerar documentação confiável
+
+28
+00:02:05,698 --> 00:02:07,790
+desacopla sua modelagem
+
+29
+00:02:07,790 --> 00:02:09,113
+mas o mais importante
+
+30
+00:02:09,113 --> 00:02:11,298
+você elimina o medo da mudança
+
+31
+00:02:11,298 --> 00:02:12,461
+isso significa
+
+32
+00:02:12,461 --> 00:02:14,818
+você pode limpar seu código
+
+33
+00:02:15,760 --> 00:02:19,760
+respondemos as objeções mais comuns sobre TDD
+
+34
+00:02:19,760 --> 00:02:23,464
+e discutimos como TDD é similar
+
+35
+00:02:23,464 --> 00:02:25,329
+com a prática de contabilidade:
+
+36
+00:02:25,329 --> 00:02:27,132
+Método das partidas dobradas
+
+37
+00:02:27,132 --> 00:02:29,132
+e então fizemos a pergunta:
+
+38
+00:02:29,132 --> 00:02:31,858
+se contadores se importam
+tanto com seus códigos
+
+39
+00:02:31,858 --> 00:02:33,803
+para usar o método das partidas dobradas
+
+40
+00:02:33,803 --> 00:02:35,803
+não deveríamos também?
+
+41
+00:02:36,406 --> 00:02:38,547
+não terminamos com TDD
+
+42
+00:02:38,547 --> 00:02:40,024
+nem de longe
+
+43
+00:02:40,024 --> 00:02:41,003
+precisamos falar sobre
+
+44
+00:02:41,003 --> 00:02:44,049
+Statismo, Mockismo, testes de aceitação
+
+45
+00:02:44,049 --> 00:02:46,018
+um monte de coisa
+
+46
+00:02:46,018 --> 00:02:48,873
+temos um monte de episódios vindo para isso
+
+47
+00:02:50,338 --> 00:02:51,661
+mas agora vamos dar uma olhada
+
+48
+00:02:51,661 --> 00:02:53,692
+em outro tópico importante
+
+49
+00:02:53,692 --> 00:02:55,421
+Arquitetura
+
+50
+00:02:55,421 --> 00:02:57,464
+o que diabos é isso?
+
+51
+00:02:57,464 --> 00:02:58,843
+quem pratica?
+
+52
+00:02:58,843 --> 00:03:00,676
+como fazem?
+
+53
+00:03:00,676 --> 00:03:03,255
+e pra que serve?
+
+54
+00:03:04,443 --> 00:03:07,403
+Eu...sou o arquiteto
+
+55
+00:03:08,141 --> 00:03:09,538
+Arquitetura
+
+56
+00:03:09,538 --> 00:03:12,455
+é a diciplina de montar a fundação
+
+57
+00:03:12,455 --> 00:03:15,175
+de um sistema de software
+
+58
+00:03:15,175 --> 00:03:19,027
+é composta pelas decisões de alto nível
+
+59
+00:03:19,027 --> 00:03:22,123
+decisões que devem ser feitas primeiro
+
+60
+00:03:22,264 --> 00:03:26,726
+decisões que devem durar
+o tempo de vida do software
+
+61
+00:03:28,873 --> 00:03:33,323
+este é parte do problema
+que iremos resolver nesse episódio
+
+62
+00:03:33,323 --> 00:03:36,627
+arquitetura não é apenas a fundação
+
+63
+00:03:36,627 --> 00:03:39,329
+arquitetura é a coisa toda
+
+64
+00:03:39,329 --> 00:03:41,452
+arquitetura incluí
+
+65
+00:03:41,452 --> 00:03:44,381
+a grande forma do sistema
+
+66
+00:03:44,381 --> 00:03:46,935
+e a menor modelagem de baixo nível
+
+67
+00:03:46,935 --> 00:03:51,661
+incluí os módulos de interfaces mais abstratos
+
+68
+00:03:51,661 --> 00:03:55,710
+e as implementaçoes mais concretas dos métodos
+
+69
+00:03:57,280 --> 00:04:00,720
+talvez a lição mais importante deste episódio
+
+70
+00:04:00,720 --> 00:04:02,467
+é que programadores
+
+71
+00:04:02,467 --> 00:04:05,403
+são todos arquitetos de uma forma ou outra
+
+72
+00:04:05,403 --> 00:04:08,092
+e arquitetos que não programam
+
+73
+00:04:08,092 --> 00:04:10,024
+não são arquitetos nenhum
+
+74
+00:04:10,024 --> 00:04:13,126
+eles são... outra coisa
+
+75
+00:04:13,753 --> 00:04:14,480
+então
+
+76
+00:04:14,480 --> 00:04:16,313
+depois da aula de ciência
+
+77
+00:04:16,313 --> 00:04:17,538
+começaremos
+
+78
+00:04:17,538 --> 00:04:22,406
+aprendendo o que é arquitetura e o que faz
+
+79
+00:04:22,406 --> 00:04:23,686
+descobriremos que
+
+80
+00:04:23,686 --> 00:04:26,886
+arquitetura, é a forma que o sistema toma
+
+81
+00:04:26,886 --> 00:04:29,495
+para atender seus casos de uso
+
+82
+00:04:29,495 --> 00:04:33,249
+e para se manter flexível e sustentável
+
+83
+00:04:34,350 --> 00:04:39,409
+vamos aprender a idéia de Ivar Jacobson de casos de uso
+
+84
+00:04:39,400 --> 00:04:41,433
+vamos aprender o que são casos de uso
+
+85
+00:04:41,433 --> 00:04:42,560
+e o que não são
+
+86
+00:04:42,560 --> 00:04:44,873
+como se relacionam com as Histórias de usuário
+
+87
+00:04:44,873 --> 00:04:46,541
+e porque são tão importantes
+
+88
+00:04:46,541 --> 00:04:49,643
+em direcionar a forma de nossas aplicações
+
+89
+00:04:51,089 --> 00:04:53,495
+vamos aprender sobre Model-View-Controller
+
+90
+00:04:53,495 --> 00:04:58,492
+e como é um padrão de
+particionamento de Interface do Usuário
+
+91
+00:04:58,492 --> 00:05:02,836
+mas não é uma boa arquitetura de alto-nível
+
+92
+00:05:02,830 --> 00:05:06,541
+não separa o sistema da forma correta
+
+93
+00:05:06,541 --> 00:05:09,556
+também aprenderemos sobre
+o particionamento de Jacobson
+
+94
+00:05:09,556 --> 00:05:09,563
+o particionamento de Boundary-Control-Entity
+também aprenderemos sobre
+o particionamento de Jacobson
+
+95
+00:05:09,563 --> 00:05:13,956
+o particionamento de Boundary-Control-Entity
+
+96
+00:05:13,956 --> 00:05:17,735
+que divide a arquitetura
+da aplicação muito melhor
+
+97
+00:05:17,735 --> 00:05:23,304
+e pode ser usada com Mvocê
+para formar uma boa estrutura de sistema
+
+98
+00:05:24,049 --> 00:05:26,055
+iremos revisar como moldamos o sistema
+
+99
+00:05:26,055 --> 00:05:28,923
+isolando o núcleo dos periféricos
+
+100
+00:05:28,923 --> 00:05:31,753
+e cruazar as fronteiras de forma apropriada
+
+101
+00:05:32,867 --> 00:05:33,956
+finalmente
+
+102
+00:05:33,956 --> 00:05:36,264
+estudaremos a doença horrenda
+
+103
+00:05:36,264 --> 00:05:37,815
+de amarração de frameworks
+
+104
+00:05:37,815 --> 00:05:40,153
+e econtraremos formas de tratar
+
+105
+00:05:40,153 --> 00:05:43,507
+e até tratar esse flagelo assustador
+
+106
+00:05:45,255 --> 00:05:47,033
+quero que você
+
+107
+00:05:47,033 --> 00:05:48,344
+se abaixe
+
+108
+00:05:48,344 --> 00:05:49,458
+agarre seus calcanhares
+
+109
+00:05:49,458 --> 00:05:51,815
+e diga tchau para sua velha arquitetura
+
+110
+00:05:51,815 --> 00:05:52,892
+porque...
+
+111
+00:05:52,892 --> 00:05:56,067
+estamos prestes a cair no mundo de
+
+112
+00:05:56,067 --> 00:05:56,092
+arquitetura, casos de uso
+estamos prestes a cair no mundo de
+
+113
+00:05:56,092 --> 00:05:58,381
+arquitetura, casos de uso
+
+114
+00:05:58,381 --> 00:06:01,070
+e modelagem de alto nível
+
+115
+00:06:03,889 --> 00:06:07,575
+Relatividade
+
+116
+00:06:08,935 --> 00:06:10,443
+Relatividade
+
+117
+00:06:10,443 --> 00:06:12,553
+quando você pensa em relatividade
+
+118
+00:06:12,553 --> 00:06:15,132
+você pensa neste cara, não é?
+
+119
+00:06:15,132 --> 00:06:16,824
+Albert Einstein
+
+120
+00:06:16,824 --> 00:06:20,196
+ele é o cara que desenvolveu
+a teoria da relatividade
+
+121
+00:06:20,196 --> 00:06:21,316
+certo?
+
+122
+00:06:22,701 --> 00:06:24,867
+na verdade, não!
+
+123
+00:06:24,867 --> 00:06:26,424
+A história da relatividade
+
+124
+00:06:26,424 --> 00:06:29,686
+começa com alguem muito mais velho que Einstein
+
+125
+00:06:29,686 --> 00:06:31,224
+começa
+
+126
+00:06:31,224 --> 00:06:33,175
+com Galileo
+
+127
+00:06:36,160 --> 00:06:37,101
+veja
+
+128
+00:06:37,101 --> 00:06:40,160
+Galileo estudou a forma
+que as coisas se movem
+
+129
+00:06:40,160 --> 00:06:43,384
+ele deslizou blocos em planos inclinados
+
+130
+00:06:43,384 --> 00:06:45,286
+ele jogou coisas
+
+131
+00:06:45,286 --> 00:06:46,326
+e derrubou coisas
+
+132
+00:06:46,326 --> 00:06:47,729
+e rolou coisas
+
+133
+00:06:47,729 --> 00:06:50,424
+e ele mediu como se movem
+
+134
+00:06:50,424 --> 00:06:53,526
+e observou como respondem a forças
+
+135
+00:06:58,923 --> 00:07:01,889
+toda essa medição,fez ele notar algo
+
+136
+00:07:02,246 --> 00:07:03,544
+algo intrigante
+
+137
+00:07:04,030 --> 00:07:05,747
+algo profundo
+
+138
+00:07:07,206 --> 00:07:09,852
+ele descreveu desta forma
+
+139
+00:07:09,852 --> 00:07:12,873
+imagine que está em uma navio no mar
+
+140
+00:07:12,873 --> 00:07:14,301
+está dentro de uma cabine
+
+141
+00:07:14,301 --> 00:07:16,313
+mas não consegue ver fora desta cabine
+
+142
+00:07:16,313 --> 00:07:18,190
+está completamente enclausurado
+
+143
+00:07:18,190 --> 00:07:21,230
+dentro da cabine tem borboletas
+
+144
+00:07:21,230 --> 00:07:23,058
+aves voando
+
+145
+00:07:23,058 --> 00:07:25,606
+e uma garrafa suspensa no teto
+
+146
+00:07:25,600 --> 00:07:30,455
+que permite água cair no chão
+
+147
+00:07:30,450 --> 00:07:31,766
+imagine também
+
+148
+00:07:31,766 --> 00:07:33,686
+que mesmo que o vento esteja soprando
+
+149
+00:07:33,686 --> 00:07:35,249
+e o navio está navegando
+
+150
+00:07:35,249 --> 00:07:37,827
+que o mar é completamente plano
+
+151
+00:07:37,827 --> 00:07:40,683
+o navio não está balançando de nenhuma forma
+
+152
+00:07:40,683 --> 00:07:44,166
+está se movendo em velocidade constante
+
+153
+00:07:45,076 --> 00:07:47,323
+não existe nenhuma observação que possa fazer
+
+154
+00:07:47,320 --> 00:07:50,880
+nem das borboletas ou dos pássaros
+
+155
+00:07:50,880 --> 00:07:54,215
+nem as gotas de água caindo da garrafa
+
+156
+00:07:54,215 --> 00:07:57,673
+podem te dizer o quão
+rápido este navio está navegando
+
+157
+00:07:57,673 --> 00:07:59,624
+a menos que possa olhar para fora
+
+158
+00:07:59,624 --> 00:08:02,787
+você simplesmente não pode medir sua velocidade
+
+159
+00:08:03,760 --> 00:08:08,153
+as leis da física são independentes da velocidade
+
+160
+00:08:08,153 --> 00:08:10,923
+a única velocidade que consegue medir
+
+161
+00:08:10,923 --> 00:08:14,215
+é a velocidade em relação a outra coisa
+
+162
+00:08:14,215 --> 00:08:17,476
+o conceito de velocidade absoluta
+
+163
+00:08:17,476 --> 00:08:20,553
+incluindo a velocidade absoluta de zero
+
+164
+00:08:20,553 --> 00:08:22,529
+é sem sentido
+
+165
+00:08:23,427 --> 00:08:25,218
+isso eventualmente ficou conhecido
+
+166
+00:08:25,218 --> 00:08:27,981
+como princípio da relatividade
+
+167
+00:08:27,981 --> 00:08:30,123
+e nossa vida aqui na terra
+
+168
+00:08:30,123 --> 00:08:33,015
+é uma demonstração diária disto
+
+169
+00:08:34,049 --> 00:08:39,200
+a terra gira a 1609km/h no equador
+
+170
+00:08:39,200 --> 00:08:40,627
+mas as pessoas que vivem no equador
+
+171
+00:08:40,627 --> 00:08:42,640
+parece não notar
+
+172
+00:08:43,741 --> 00:08:48,258
+a terra gira em torno do sol a 107.826 km/h
+
+173
+00:08:48,258 --> 00:08:49,815
+mas em um dia tranquilo de verão
+
+174
+00:08:49,815 --> 00:08:51,636
+enquanto estamos sentados numa praia
+
+175
+00:08:51,636 --> 00:08:54,356
+essa velocidade não nos impressiona muito
+
+176
+00:08:56,196 --> 00:09:00,024
+o sol corre ao redor de nossa galáxia
+
+177
+00:09:00,024 --> 00:09:03,667
+a 2.1 milhões de km/h
+
+178
+00:09:03,667 --> 00:09:05,513
+enaquanto nos, estamos sentados na sala
+
+179
+00:09:05,513 --> 00:09:08,812
+assistindo reprise de star trek
+
+180
+00:09:12,430 --> 00:09:13,926
+O princípio da relatividade
+
+181
+00:09:13,926 --> 00:09:17,200
+foi descrito por Galileo em 1632
+
+182
+00:09:17,520 --> 00:09:19,187
+ela nos diz que
+
+183
+00:09:19,187 --> 00:09:21,501
+que as leis da física são identicas
+
+184
+00:09:21,501 --> 00:09:23,692
+independentemente de sua velocidade
+
+185
+00:09:23,692 --> 00:09:26,116
+não há nenhum experimento que possa fazer
+
+186
+00:09:26,116 --> 00:09:29,040
+nenhuma coisa que possa fazer
+
+187
+00:09:29,040 --> 00:09:31,993
+que te dirá sua velocidade absoluta
+
+188
+00:09:31,993 --> 00:09:35,446
+a única velocidade que você pode saber ou ter
+
+189
+00:09:35,446 --> 00:09:39,741
+é a sua velocidade relativa a alguma coisa externa
+
+190
+00:09:41,489 --> 00:09:43,796
+então,nos anos 1800
+
+191
+00:09:43,796 --> 00:09:47,076
+pessoas como Gauss, Faraday e Ampere
+
+192
+00:09:47,076 --> 00:09:50,849
+estavam estudando fenômenos eletromagneticos
+
+193
+00:09:50,849 --> 00:09:53,920
+e perceberam algo bem estranho
+
+194
+00:09:53,920 --> 00:09:56,381
+eles perceberam que a razão
+
+195
+00:09:56,381 --> 00:09:59,446
+de uma unidade de carga eletroestática
+
+196
+00:09:59,446 --> 00:10:02,560
+para uma carga de uma carga eletrodinâmica
+
+197
+00:10:02,560 --> 00:10:04,695
+era uma velocidade
+
+198
+00:10:05,981 --> 00:10:10,596
+imagine a surpresa deles, a excitação a ansiedade
+
+199
+00:10:10,941 --> 00:10:16,264
+aqui, estava a razão simples de duas quantidades físicas
+
+200
+00:10:16,264 --> 00:10:18,867
+e produziam uma velocidade absoluta
+
+201
+00:10:18,867 --> 00:10:21,606
+uma velocidade sem nenhuma referência
+
+202
+00:10:22,264 --> 00:10:25,292
+Galileo teria jogado eles no mar
+
+203
+00:10:28,178 --> 00:10:29,950
+mas ficou pior
+
+204
+00:10:30,104 --> 00:10:31,827
+em 1856
+
+205
+00:10:32,824 --> 00:10:34,492
+Wilhelm Eduard Weber
+
+206
+00:10:34,492 --> 00:10:37,095
+e seu associado Gauss Carl
+
+207
+00:10:37,095 --> 00:10:40,030
+fizeram uma série de
+experimentos cuidadosos e delicados
+
+208
+00:10:40,030 --> 00:10:42,313
+para poder medir aquela razão
+
+209
+00:10:42,313 --> 00:10:44,676
+o que eles encontraram é assustador
+
+210
+00:10:44,676 --> 00:10:46,012
+aquela razão
+
+211
+00:10:46,012 --> 00:10:49,187
+aquela velocidade sem referência
+
+212
+00:10:49,187 --> 00:10:51,876
+era  3,0 x 10^8 m/s
+
+213
+00:10:52,166 --> 00:10:54,849
+a velocidade da luz
+
+214
+00:10:59,735 --> 00:11:02,461
+Weber nomeou-a de "C"
+
+215
+00:11:04,461 --> 00:11:06,116
+que dilema
+
+216
+00:11:06,116 --> 00:11:08,381
+como que um experimento físico
+
+217
+00:11:08,381 --> 00:11:10,818
+produziu uma velocidade absoluta?
+
+218
+00:11:10,818 --> 00:11:13,692
+alguma coisa tem que estar errada
+
+219
+00:11:14,843 --> 00:11:16,307
+5 anos depois
+
+220
+00:11:16,307 --> 00:11:18,320
+em 1861
+
+221
+00:11:18,320 --> 00:11:20,172
+James Clerk Maxwell
+
+222
+00:11:20,172 --> 00:11:24,252
+possivelmente o maior teórico
+que o mundo já conheceu
+
+223
+00:11:24,252 --> 00:11:26,990
+produziu quatro equações simples
+
+224
+00:11:26,990 --> 00:11:28,369
+essas equações mostram
+
+225
+00:11:28,369 --> 00:11:31,587
+que eletromagnetismo viaja em ondas
+
+226
+00:11:31,587 --> 00:11:32,855
+e mais
+
+227
+00:11:32,855 --> 00:11:36,141
+mostravam que a velocidade das ondas
+
+228
+00:11:36,141 --> 00:11:38,036
+era "C"
+
+229
+00:11:38,972 --> 00:11:42,276
+isto deu aos físicos a
+resposta que estavam procurando
+
+230
+00:11:42,276 --> 00:11:43,310
+depois de tudo
+
+231
+00:11:43,310 --> 00:11:46,326
+se eletromagnetismo se move em ondas
+
+232
+00:11:46,326 --> 00:11:49,015
+alguma coisa deve estar agitando
+
+233
+00:11:49,015 --> 00:11:51,193
+a velocidade C
+
+234
+00:11:51,193 --> 00:11:53,655
+não poderia ser absoluta
+
+235
+00:11:53,655 --> 00:11:57,292
+poderia ser relativa ao meio agitado
+
+236
+00:11:57,292 --> 00:11:58,603
+acima disto
+
+237
+00:11:58,603 --> 00:12:00,627
+físicos já sabiam
+
+238
+00:12:00,627 --> 00:12:03,120
+que a luz viajava a "C"
+
+239
+00:12:03,120 --> 00:12:06,978
+e que a luz era afetada por eletromagnetismo
+
+240
+00:12:06,978 --> 00:12:08,941
+então o que mais a luz poderia ser
+
+241
+00:12:08,941 --> 00:12:11,790
+do que propagar ondas magnéticas
+
+242
+00:12:11,790 --> 00:12:13,163
+por esta razão
+
+243
+00:12:13,163 --> 00:12:16,621
+os físicos nomearam a substancia ondulante
+
+244
+00:12:16,621 --> 00:12:19,021
+de Éter luminífero
+
+245
+00:12:21,944 --> 00:12:24,209
+esta substancia estranha
+
+246
+00:12:24,209 --> 00:12:26,504
+sem massa, sem fricão
+
+247
+00:12:26,504 --> 00:12:29,292
+deve permear todo o espaço
+
+248
+00:12:29,292 --> 00:12:31,975
+e a terra rodam seu eixo
+
+249
+00:12:31,975 --> 00:12:34,633
+e balança em volta do sol em sua orbita
+
+250
+00:12:34,633 --> 00:12:37,261
+e corre ao redor do centro da galáxia
+
+251
+00:12:37,261 --> 00:12:41,956
+deve continuar arando essse éter estranho
+
+252
+00:12:41,956 --> 00:12:45,790
+E esse movimento através
+do Éter deve ser detectável.
+
+253
+00:12:47,396 --> 00:12:51,027
+muitos cientistas tentaram
+detectar esse movimento
+
+254
+00:12:51,027 --> 00:12:54,400
+eles contruiram aparatos
+requintados cuidadosamente
+
+255
+00:12:54,400 --> 00:12:57,193
+conduziram vários experimentos
+
+256
+00:12:57,606 --> 00:12:59,292
+mas todos falharam
+
+257
+00:13:00,123 --> 00:13:00,972
+então
+
+258
+00:13:00,972 --> 00:13:03,316
+em 1887
+
+259
+00:13:04,006 --> 00:13:06,320
+Albert Michelson e Edward Morley
+
+260
+00:13:06,320 --> 00:13:08,990
+conduziram o experimento definitivo
+
+261
+00:13:08,990 --> 00:13:12,160
+eles construíram o aparato mais sensível
+
+262
+00:13:12,160 --> 00:13:16,683
+conduziram o experimento
+mais cuidadoso e delicado
+
+263
+00:13:16,683 --> 00:13:18,633
+mas foi em vão
+
+264
+00:13:19,667 --> 00:13:22,990
+ninguém conseguia detectar um movimento relativo
+
+265
+00:13:22,990 --> 00:13:24,707
+através do éter
+
+266
+00:13:26,258 --> 00:13:27,643
+é difícila para nós atualmente
+
+267
+00:13:27,643 --> 00:13:32,116
+perceber o quanto confuso isso foi
+para cientistas daquela época
+
+268
+00:13:32,116 --> 00:13:38,615
+ou eles definiam essa substância
+que era a referência para "C"
+
+269
+00:13:38,615 --> 00:13:43,236
+ou eles teriam que abandonar completamente
+a idéia de Galilo sobre relatividade
+
+270
+00:13:43,236 --> 00:13:46,867
+para eles deve ter parecido que o navio de Galileo
+
+271
+00:13:46,867 --> 00:13:50,172
+estava afundando nas ondas de Maxwell
+
+272
+00:13:50,916 --> 00:13:51,569
+então
+
+273
+00:13:51,569 --> 00:13:53,520
+em 1905
+
+274
+00:13:53,520 --> 00:13:57,649
+Albert Einstein publicou
+um artigo simples e pequeno
+
+275
+00:13:57,649 --> 00:14:02,836
+com o título :
+"Sobre a eletrodinâmica dos corpos em movimento"
+
+276
+00:14:02,836 --> 00:14:05,046
+no qual ele mostrou
+
+277
+00:14:05,046 --> 00:14:07,009
+que o navio de Galileo
+
+278
+00:14:07,009 --> 00:14:10,098
+poderia navegar tranquilamente
+nas ondas de Maxwell
+
+279
+00:14:10,098 --> 00:14:11,224
+se
+
+280
+00:14:11,224 --> 00:14:15,741
+A velocidade da luz permanecesse
+constante por todos os quadros de referência
+
+281
+00:14:18,172 --> 00:14:20,473
+mas esse é um tópico para outra hora
+
+282
+00:14:29,076 --> 00:14:31,784
+O que é arquitetura
+
+283
+00:14:33,366 --> 00:14:35,495
+como estava explicando antes
+
+284
+00:14:35,495 --> 00:14:37,618
+A arquitetura de um sistema
+
+285
+00:14:37,618 --> 00:14:41,193
+é o conjunto de decisões antecipadas irrevogáveis
+
+286
+00:14:41,193 --> 00:14:42,775
+que estabelece a fundação
+
+287
+00:14:42,775 --> 00:14:46,116
+do sistema inteiro e seu desenvolvimento
+
+288
+00:14:46,116 --> 00:14:47,255
+por exemplo
+
+289
+00:14:47,255 --> 00:14:51,403
+permita me descrever um sistema
+que eu arquitetei recentemente
+
+290
+00:14:51,403 --> 00:14:54,424
+foi um sistema empresarial vasto
+
+291
+00:14:54,621 --> 00:14:59,089
+e eu eu escolhi, depois de muita reflexão
+
+292
+00:14:59,175 --> 00:15:02,221
+Java, como linguagem
+
+293
+00:15:02,221 --> 00:15:04,301
+escolhi eclipse
+
+294
+00:15:04,301 --> 00:15:07,680
+com vários plugins
+
+295
+00:15:07,680 --> 00:15:10,683
+como o ambiente de desenvolvimento
+
+296
+00:15:10,683 --> 00:15:12,830
+então para frameworks
+
+297
+00:15:12,830 --> 00:15:14,393
+eu escolhi
+
+298
+00:15:14,393 --> 00:15:17,772
+sprint, toncat e hibernate
+
+299
+00:15:18,584 --> 00:15:19,686
+eu também escolhi
+
+300
+00:15:19,686 --> 00:15:22,412
+banco de dados MySql
+
+301
+00:15:22,412 --> 00:15:23,723
+e
+
+302
+00:15:23,963 --> 00:15:28,264
+decidi usar Mvocê
+
+303
+00:15:30,080 --> 00:15:32,504
+essas não são decisões de arquitetura
+
+304
+00:15:32,504 --> 00:15:35,686
+não chega nem perto de ser decisões de arquitetura
+
+305
+00:15:35,686 --> 00:15:39,046
+é tipo dizer que arquitetura de uma casa
+
+306
+00:15:39,046 --> 00:15:42,843
+são martelos, pregos, cerras e madeira
+
+307
+00:15:42,843 --> 00:15:46,793
+arquitetura não é sobre
+ferramentas e materiais de construção
+
+308
+00:15:46,793 --> 00:15:47,938
+arquitetura
+
+309
+00:15:47,938 --> 00:15:50,135
+é sobre o uso
+
+310
+00:15:51,218 --> 00:15:52,609
+Arquitetura expõe o uso
+
+311
+00:15:55,144 --> 00:15:58,923
+imagine a arquitetura de uma biblioteca
+
+312
+00:15:58,923 --> 00:16:00,467
+você olha para essas plantas
+
+313
+00:16:00,467 --> 00:16:03,587
+e vê uma grande entrada
+
+314
+00:16:03,587 --> 00:16:05,015
+uma área de recepção
+
+315
+00:16:05,015 --> 00:16:07,593
+para checkins e checkouts de compras
+
+316
+00:16:08,098 --> 00:16:09,107
+algumas
+
+317
+00:16:09,107 --> 00:16:11,027
+pequenas áreas do lado
+
+318
+00:16:11,027 --> 00:16:12,775
+onde pessoas podem sentar e ler
+
+319
+00:16:12,775 --> 00:16:14,541
+ou ter pequenas dicussões
+
+320
+00:16:14,540 --> 00:16:17,846
+talves uma área de conferência
+
+321
+00:16:17,846 --> 00:16:18,873
+e então
+
+322
+00:16:18,873 --> 00:16:20,713
+salas e mais salas,
+
+323
+00:16:20,713 --> 00:16:23,046
+galerias e mais galerias
+
+324
+00:16:23,046 --> 00:16:26,055
+capazes de comportar prateleiras de livros
+
+325
+00:16:27,513 --> 00:16:29,556
+a arquitetura de uma biblioteca
+
+326
+00:16:29,556 --> 00:16:32,812
+iria gritar "BIBLIOTECA" para você
+
+327
+00:16:34,467 --> 00:16:37,883
+ou imagine a arquitetura de uma igreja
+
+328
+00:16:37,883 --> 00:16:39,286
+teria uma entrada óbvia
+
+329
+00:16:39,286 --> 00:16:41,692
+seguida de uma área de encontro
+
+330
+00:16:41,692 --> 00:16:44,449
+essa área seria razoavelmente grande
+
+331
+00:16:44,449 --> 00:16:47,618
+seria rodeada por alguns escritórios
+
+332
+00:16:47,610 --> 00:16:50,221
+talves algumas salas de conferência
+
+333
+00:16:50,541 --> 00:16:54,110
+mas também teria uma ou mais entradas
+
+334
+00:16:54,110 --> 00:16:56,209
+para uma câmara grande
+
+335
+00:16:56,209 --> 00:16:59,581
+essa câmara seria adequada
+para centenas de pessoas
+
+336
+00:16:59,581 --> 00:17:02,756
+onde a atenção delas estaria focada na frente
+
+337
+00:17:02,756 --> 00:17:04,640
+onde o altar estaria
+
+338
+00:17:06,012 --> 00:17:07,870
+a arquitetura da igreja
+
+339
+00:17:07,870 --> 00:17:10,701
+iria gritar "IGREJA" para você
+
+340
+00:17:11,864 --> 00:17:12,910
+de fato
+
+341
+00:17:12,910 --> 00:17:15,163
+não importa qual tipo
+de construção você olhe
+
+342
+00:17:15,433 --> 00:17:18,486
+a arquitetura, se tiver bem projetado
+
+343
+00:17:18,787 --> 00:17:21,009
+sua intenção será gritante
+
+344
+00:17:22,689 --> 00:17:24,972
+isso que é uma boa arquitetura
+
+345
+00:17:24,972 --> 00:17:25,987
+uma boa arquitetura
+
+346
+00:17:25,987 --> 00:17:30,295
+sendo ela de um prédio ou de software
+
+347
+00:17:30,295 --> 00:17:33,267
+é tudo sobre como o sistema é usado
+
+348
+00:17:33,267 --> 00:17:36,984
+uma boa arquitetura, grita casos de uso
+
+349
+00:17:38,510 --> 00:17:40,467
+quando você olha para um sistema de software
+
+350
+00:17:40,467 --> 00:17:45,772
+e tudo que consegue ver é Models Views e Controllers
+
+351
+00:17:46,289 --> 00:17:50,369
+então a arquitetura desse sistema
+está escondendo os casos de uso
+
+352
+00:17:50,369 --> 00:17:53,612
+e está expondo o mecanismo de entrega
+
+353
+00:17:57,409 --> 00:17:59,741
+não queremos ver o mecanismo de entrega
+
+354
+00:17:59,741 --> 00:18:01,809
+queremos ver os casos de uso
+
+355
+00:18:01,809 --> 00:18:02,787
+mais importante
+
+356
+00:18:02,787 --> 00:18:06,947
+não queremos os casos de uso
+acoplados com o mecanismo de entrega
+
+357
+00:18:09,286 --> 00:18:09,889
+de fato
+
+358
+00:18:09,889 --> 00:18:14,664
+queremos que a separação da UI e
+dos casos de uso seja bem forte
+
+359
+00:18:14,664 --> 00:18:19,329
+tão forte que podem ser publicadas independentemente
+
+360
+00:18:19,618 --> 00:18:21,421
+não queremos que os casos de uso
+
+361
+00:18:21,421 --> 00:18:25,341
+saiba qualquer coisa do mecanismo de entrega
+
+362
+00:18:26,410 --> 00:18:28,652
+de fato, queremos que as decisões
+
+363
+00:18:28,652 --> 00:18:32,972
+sobre a UI, banco de dados os frameworks e ferrametas
+
+364
+00:18:32,972 --> 00:18:34,904
+as camadas de serviço
+
+365
+00:18:34,904 --> 00:18:40,535
+queremos que essas decisões sejam
+completamente independentes dos casos de uso
+
+366
+00:18:40,535 --> 00:18:43,833
+os casos de uso devem ficar sozinhos
+
+367
+00:18:45,224 --> 00:18:46,615
+adiando decisões
+
+368
+00:18:49,120 --> 00:18:55,113
+decisões sobre banco de
+dados, UI e camadas de serviço
+
+369
+00:18:55,113 --> 00:18:57,876
+podem e devem ser adiadas
+
+370
+00:18:57,876 --> 00:19:01,655
+isso é um dos objetivos
+principais de boa arquitetura
+
+371
+00:19:01,655 --> 00:19:05,046
+uma boa aruitetura te permite adiar decisões
+
+372
+00:19:05,046 --> 00:19:11,600
+sobre frameworks, web servers e UI, e tudo isso
+
+373
+00:19:11,600 --> 00:19:13,655
+um bom arquiteto
+
+374
+00:19:13,650 --> 00:19:17,144
+sabe como manter as opcões em aberto
+
+375
+00:19:17,144 --> 00:19:19,440
+pelo maior tempo possível
+
+376
+00:19:19,440 --> 00:19:21,390
+uma boa arquitetura
+
+377
+00:19:21,390 --> 00:19:25,483
+maximiza o número de decisões não feitas
+
+378
+00:19:27,341 --> 00:19:28,621
+besteira
+
+379
+00:19:28,621 --> 00:19:30,147
+balela
+
+380
+00:19:30,147 --> 00:19:32,307
+pura asneira
+
+381
+00:19:33,150 --> 00:19:34,258
+asneira?
+
+382
+00:19:34,258 --> 00:19:36,461
+asneira, você disse?
+
+383
+00:19:36,541 --> 00:19:39,636
+deixe  me contar a historia de FitNesse
+
+384
+00:19:41,156 --> 00:19:42,572
+como deve saber
+
+385
+00:19:42,572 --> 00:19:44,178
+FitNesse é uma wiki
+
+386
+00:19:44,178 --> 00:19:48,080
+e uma wiki é um banco de dados de páginas
+
+387
+00:19:48,080 --> 00:19:49,784
+em 2002
+
+388
+00:19:49,784 --> 00:19:53,156
+quando eu e Mike começamos esse projeto
+
+389
+00:19:53,156 --> 00:19:56,024
+escolhemos a base de dados MySql
+
+390
+00:19:56,024 --> 00:19:58,523
+para guardar as páginas
+
+391
+00:19:59,267 --> 00:20:02,338
+primeiro pensamos que precisariamos
+fazer o banco de dados rodar
+
+392
+00:20:02,338 --> 00:20:03,852
+e desenvolver o schema
+
+393
+00:20:03,852 --> 00:20:06,172
+antes de fazer qualquer outra coisa
+
+394
+00:20:06,172 --> 00:20:07,507
+mas então nos ocorreu
+
+395
+00:20:07,507 --> 00:20:10,129
+que isso não era tão necessário
+
+396
+00:20:11,686 --> 00:20:14,830
+focamos no código que iria traduzir
+
+397
+00:20:14,830 --> 00:20:17,483
+o texto da wiki em html
+
+398
+00:20:18,147 --> 00:20:20,787
+percebemos que todo aquele código "parse"
+
+399
+00:20:20,787 --> 00:20:22,953
+e todo aquele código de tradução
+
+400
+00:20:22,953 --> 00:20:25,864
+poderia ser escrito, sem usar o banco dados
+
+401
+00:20:27,624 --> 00:20:32,252
+2 meses depois, Mike e eu tinhamos
+todo o sistema de tradução funcionando
+
+402
+00:20:32,252 --> 00:20:37,538
+ele implementou em volta de
+uma abstração chamada wikiPage
+
+403
+00:20:37,538 --> 00:20:41,360
+essa abstração segurava o texto wiki
+
+404
+00:20:41,360 --> 00:20:44,276
+e tinha um método "toHtml"
+
+405
+00:20:44,276 --> 00:20:47,975
+que traduzia o texto em html
+
+406
+00:20:47,975 --> 00:20:51,661
+a abtração também tinha alguns métodos abstratos
+
+407
+00:20:51,661 --> 00:20:54,203
+para ler e escrever no banco de dados
+
+408
+00:20:54,203 --> 00:20:57,926
+mas sobrescrevemos em um "MockWikiPage"
+
+409
+00:20:57,926 --> 00:20:59,747
+para fazer nada
+
+410
+00:21:03,452 --> 00:21:07,563
+então chegou a hora da wiki
+lidar com mais de uma páginas
+
+411
+00:21:07,563 --> 00:21:09,944
+claro, que isso seria uma ótima oportunidade
+
+412
+00:21:09,944 --> 00:21:12,787
+ligar o banco de dados e desenvolver o schema
+
+413
+00:21:12,787 --> 00:21:14,787
+para lidar com essas páginas
+
+414
+00:21:18,683 --> 00:21:19,993
+mas rapidamente percebemos
+
+415
+00:21:19,993 --> 00:21:21,550
+que podemos evitar o banco de dados
+
+416
+00:21:21,550 --> 00:21:23,304
+pelo menos por enquanto
+
+417
+00:21:23,304 --> 00:21:27,840
+criando um novo derivado da abstração da wikiPage
+
+418
+00:21:27,840 --> 00:21:32,375
+que mantinha as páginas em uma hashTable na memória
+
+419
+00:21:32,370 --> 00:21:36,233
+chamamos essa nova derivada de InMemoryPage
+
+420
+00:21:38,233 --> 00:21:41,452
+não sabíamos lá atrás, mas esse tipo de derivada
+
+421
+00:21:41,452 --> 00:21:43,452
+é chamadda de "Test Double"
+
+422
+00:21:43,452 --> 00:21:46,744
+um test double é um objeto
+que fica no lugar de outro
+
+423
+00:21:46,744 --> 00:21:50,012
+com o propósito de facilitar o
+desenvolvimento orientado a testes
+
+424
+00:21:51,780 --> 00:21:56,510
+usando esse "Test Double" InMemoryPage
+
+425
+00:21:56,510 --> 00:21:58,966
+fomos capazes de fazer
+o sistema inteiro funcionar
+
+426
+00:21:58,966 --> 00:22:02,400
+fomos capazes de implementar várias features
+
+427
+00:22:02,400 --> 00:22:04,043
+podiamos criar páginas
+
+428
+00:22:04,043 --> 00:22:05,870
+ligar outras páginas à elas
+
+429
+00:22:05,870 --> 00:22:08,941
+fazer todo aquele texto wiki funcionar
+
+430
+00:22:08,941 --> 00:22:10,504
+podiamos criar testes
+
+431
+00:22:10,504 --> 00:22:12,492
+podiamos criar conjunto de testes inteiros
+
+432
+00:22:12,492 --> 00:22:14,178
+e podíamos rodá-los
+
+433
+00:22:14,178 --> 00:22:16,418
+a única coisa que não podiamos fazer
+
+434
+00:22:16,418 --> 00:22:19,827
+é salvar qualquer página em disco
+
+435
+00:22:22,892 --> 00:22:23,753
+eventualmente
+
+436
+00:22:23,753 --> 00:22:28,393
+ficamos sem coisas para implementar
+que não precisasse de persistência
+
+437
+00:22:28,393 --> 00:22:33,193
+qualquer teste que imaginassemos,
+precisava de algum tipo de persistência
+
+438
+00:22:33,193 --> 00:22:34,393
+então finalmente decidimos
+
+439
+00:22:34,393 --> 00:22:36,418
+que tinhamos que rodar o banco de dados
+
+440
+00:22:36,418 --> 00:22:38,264
+inventar um schema
+
+441
+00:22:38,264 --> 00:22:42,184
+e descobrir como ler e
+escrever páginas wiki das tabelas
+
+442
+00:22:48,283 --> 00:22:50,196
+mas o Michael Feathers estava lá naquela época
+
+443
+00:22:50,196 --> 00:22:51,347
+e ele nos lembrou
+
+444
+00:22:51,347 --> 00:22:54,086
+que nós não precisávamos
+realmente fazer isso
+
+445
+00:22:54,086 --> 00:22:56,098
+ao invés disso, ele sugeriu
+
+446
+00:22:56,098 --> 00:22:58,289
+que escrevessemos um novo "Test Double"
+
+447
+00:22:58,289 --> 00:23:01,138
+um que nos daria a
+ilusão de um banco de dados
+
+448
+00:23:01,138 --> 00:23:02,855
+sem a complexidade
+
+449
+00:23:02,855 --> 00:23:06,356
+esse "Test Double"nos permitiria
+continuar escrever testes
+
+450
+00:23:06,356 --> 00:23:08,418
+que dependesse de persistência
+
+451
+00:23:08,418 --> 00:23:10,929
+sem precisar implementar o banco de dados
+
+452
+00:23:12,110 --> 00:23:14,289
+ele sugeriu que o novo Test Double
+
+453
+00:23:14,289 --> 00:23:15,790
+deveria escrever as páginas wiki
+
+454
+00:23:15,790 --> 00:23:17,883
+em arquivos flat
+
+455
+00:23:19,132 --> 00:23:21,606
+ele até escreveu o Test Double para nós
+
+456
+00:23:21,606 --> 00:23:22,812
+ele o chamou
+
+457
+00:23:22,812 --> 00:23:24,812
+FileSystemPage
+
+458
+00:23:26,486 --> 00:23:29,858
+esse novo Test Double
+fez FitNesse muito útil
+
+459
+00:23:29,858 --> 00:23:31,606
+podiamos salvar páginas
+
+460
+00:23:31,606 --> 00:23:33,864
+podiamos escrever e rodar testes
+
+461
+00:23:33,864 --> 00:23:36,953
+podiamos criar testes de aceitações completos
+
+462
+00:23:36,953 --> 00:23:39,895
+e rodá-los várias vezes sem parar
+
+463
+00:23:39,895 --> 00:23:42,683
+e a cada teste novo, vinha novas features
+
+464
+00:23:42,683 --> 00:23:46,190
+que fez FitNesse ainda mais útil
+
+465
+00:23:46,190 --> 00:23:50,449
+no final, estávmos até
+usando em cursos e demonstrações
+
+466
+00:23:54,461 --> 00:23:58,744
+e ainda planejávamos em
+fazer o MySql funcionar
+
+467
+00:24:00,086 --> 00:24:01,107
+e então
+
+468
+00:24:01,107 --> 00:24:02,381
+um dia
+
+469
+00:24:02,381 --> 00:24:03,889
+nos ocorreu
+
+470
+00:24:05,889 --> 00:24:07,556
+a primeira versão do FitNesse
+
+471
+00:24:07,556 --> 00:24:09,083
+estava pronta
+
+472
+00:24:10,886 --> 00:24:13,329
+nós não precisamos do banco de dados
+
+473
+00:24:13,329 --> 00:24:15,021
+aquele sistema de arquivo Flat
+
+474
+00:24:15,021 --> 00:24:16,880
+era bom o bastante
+
+475
+00:24:17,660 --> 00:24:24,621
+nós adiamos nossa primeira decisão
+importante até o final do universo
+
+476
+00:24:24,873 --> 00:24:25,760
+esse banco de dados
+
+477
+00:24:25,760 --> 00:24:26,904
+nunca foi implementado
+
+478
+00:24:26,904 --> 00:24:27,833
+porque
+
+479
+00:24:27,833 --> 00:24:29,624
+uma solução mais simples
+
+480
+00:24:29,624 --> 00:24:32,707
+que botamos no lugar
+com o propósito de testar
+
+481
+00:24:32,707 --> 00:24:35,021
+acabou sendo boa o bastante
+
+482
+00:24:35,840 --> 00:24:38,276
+eu poderia parar essa história bem aqui
+
+483
+00:24:38,276 --> 00:24:39,944
+e apenas fazer o argumento
+
+484
+00:24:39,944 --> 00:24:43,316
+que mesmo uma decisão tão importante
+
+485
+00:24:43,316 --> 00:24:45,550
+como o banco de dados e o schema
+
+486
+00:24:45,550 --> 00:24:48,596
+pode ser adiada por um bom tempo
+
+487
+00:24:48,596 --> 00:24:51,624
+talvez até depois do final da vida do projeto
+
+488
+00:24:51,624 --> 00:24:53,378
+mas eu não vou parar a história
+
+489
+00:24:53,378 --> 00:24:55,335
+porque à mais para contar
+
+490
+00:24:57,064 --> 00:25:00,356
+depois de um ano da release de FitNesse
+
+491
+00:25:00,350 --> 00:25:02,092
+um dos nossos clientes veio até nós
+
+492
+00:25:02,092 --> 00:25:03,889
+e disse que realmente precisava
+
+493
+00:25:03,889 --> 00:25:06,369
+de uma implementação em MySql
+
+494
+00:25:06,369 --> 00:25:08,812
+porque tinham uma política corporativa
+
+495
+00:25:08,812 --> 00:25:12,252
+que todos os artefatos
+de software devem estar salvos
+
+496
+00:25:12,252 --> 00:25:14,775
+em uma base de dados "real"
+
+497
+00:25:15,569 --> 00:25:17,501
+é.. essa é uma política boba
+
+498
+00:25:17,606 --> 00:25:20,535
+mas você não pode lutar contra isso
+
+499
+00:25:20,947 --> 00:25:23,212
+então mostramos ao cliente
+
+500
+00:25:23,212 --> 00:25:25,489
+como montamos o Tests Double
+
+501
+00:25:25,489 --> 00:25:31,304
+para MockWikiPage, InMemoryPage e FileSystemPage
+
+502
+00:25:31,612 --> 00:25:38,960
+e sugerimos que tentasse desenvolver o MySqlPage
+
+503
+00:25:39,323 --> 00:25:40,596
+ele voltou no próximo dia
+
+504
+00:25:40,596 --> 00:25:42,080
+com tudo funcionando
+
+505
+00:25:42,080 --> 00:25:45,624
+ele fez essa classe "MySqlPage"
+
+506
+00:25:45,624 --> 00:25:47,938
+constumávamos a publicar essa classe
+
+507
+00:25:47,938 --> 00:25:49,907
+com FitNesse, como um plugins
+
+508
+00:25:49,907 --> 00:25:52,000
+em caso de alguem quiser usar
+
+509
+00:25:52,000 --> 00:25:54,000
+ninguém quis
+
+510
+00:25:54,750 --> 00:25:56,590
+fascinante
+
+511
+00:25:57,353 --> 00:25:58,006
+de fato
+
+512
+00:25:58,006 --> 00:26:00,516
+a lição aqui é incrível
+
+513
+00:26:00,516 --> 00:26:01,575
+muitos arquitetos
+
+514
+00:26:01,575 --> 00:26:03,120
+consideram o banco de dados
+
+515
+00:26:03,120 --> 00:26:05,273
+ser a abstração central
+
+516
+00:26:05,273 --> 00:26:08,190
+o princípio de organização central
+
+517
+00:26:08,190 --> 00:26:10,055
+eles acham inimaginável
+
+518
+00:26:10,055 --> 00:26:11,870
+que você consiga fazer qualquer coisa
+
+519
+00:26:11,870 --> 00:26:15,981
+antes do banco de dados estiver funcionando
+
+520
+00:26:17,778 --> 00:26:20,080
+ainda assim, no projeto FitNesse
+
+521
+00:26:20,080 --> 00:26:21,975
+o principio de organização central
+
+522
+00:26:21,975 --> 00:26:23,556
+era a WikiPage
+
+523
+00:26:23,556 --> 00:26:26,350
+e todos os objetos ao redor
+
+524
+00:26:26,350 --> 00:26:29,181
+isso deixou o banco de dados como um detalhe
+
+525
+00:26:29,181 --> 00:26:31,175
+algo que podíamos adiar
+
+526
+00:26:31,175 --> 00:26:33,840
+e ajustar no último minuto
+
+527
+00:26:35,440 --> 00:26:36,615
+boa arquitetura
+
+528
+00:26:36,615 --> 00:26:39,667
+não são compostas de ferramentas e frameworks
+
+529
+00:26:41,544 --> 00:26:43,058
+boas arquitutras te permitem
+
+530
+00:26:43,058 --> 00:26:47,206
+adiar as decisões de ferramentas e frameworks
+
+531
+00:26:47,206 --> 00:26:48,873
+tipo a UI
+
+532
+00:26:48,873 --> 00:26:50,836
+como web server
+
+533
+00:26:50,830 --> 00:26:54,141
+e até mesmo o framework
+de injetor de dependências
+
+534
+00:26:55,544 --> 00:26:58,449
+como adiamos essas decisões?
+
+535
+00:26:58,449 --> 00:27:01,846
+você modela uma estrutura
+que desacopla delas
+
+536
+00:27:01,846 --> 00:27:04,030
+e faz delas irrelevantes
+
+537
+00:27:07,569 --> 00:27:10,947
+como desacopla de ferramentas,
+frameworks e banco de dados ?
+
+538
+00:27:10,947 --> 00:27:14,701
+você foca sua arquitetura nos casos de uso
+
+539
+00:27:14,701 --> 00:27:16,701
+não no ambiente do software
+
+540
+00:27:21,470 --> 00:27:22,966
+Separação de valor
+
+541
+00:27:25,390 --> 00:27:28,258
+e se todo o valor do sistema
+
+542
+00:27:28,258 --> 00:27:30,418
+está, na verdade, dentro da interface do usuário
+
+543
+00:27:30,418 --> 00:27:32,153
+digo, todos os valores do negócio
+
+544
+00:27:32,153 --> 00:27:34,707
+está realmente na forma que o sistema é entregue
+
+545
+00:27:34,707 --> 00:27:36,830
+e não no que o sistema faz
+
+546
+00:27:36,830 --> 00:27:39,347
+você sabe... tipo um simples sistema em CRUD
+
+547
+00:27:39,347 --> 00:27:41,643
+create, read, update delete
+
+548
+00:27:41,643 --> 00:27:42,898
+esse tipo de sistema
+
+549
+00:27:42,898 --> 00:27:45,433
+e o valor real desse sistema
+
+550
+00:27:45,433 --> 00:27:49,120
+é como esse CRUD é entregue
+
+551
+00:27:49,920 --> 00:27:51,316
+bem, isso é justo
+
+552
+00:27:51,316 --> 00:27:53,489
+tais sistemas são bem comuns
+
+553
+00:27:53,489 --> 00:27:54,750
+a pergunta é
+
+554
+00:27:54,750 --> 00:27:56,763
+isso muda alguma coisa ?
+
+555
+00:27:56,763 --> 00:28:01,513
+a arquitetura da UI deveria se sobre os casos de uso
+
+556
+00:28:01,513 --> 00:28:03,569
+ou deveria ser sobre a UI?
+
+557
+00:28:04,910 --> 00:28:07,310
+essa é a pergunta errada
+
+558
+00:28:07,310 --> 00:28:08,978
+a pergunta certa é
+
+559
+00:28:08,978 --> 00:28:11,483
+já que a UI é tão importante
+
+560
+00:28:11,483 --> 00:28:14,541
+deveria estar acoplada
+com o resto da aplicação?
+
+561
+00:28:14,541 --> 00:28:17,027
+e a resposta para
+isso é claramente não!
+
+562
+00:28:17,027 --> 00:28:19,107
+se a UI é importante
+
+563
+00:28:19,107 --> 00:28:21,735
+não queremos sua arquitetura poluída
+
+564
+00:28:21,735 --> 00:28:24,670
+com as responsabilidades do resto da aplicação
+
+565
+00:28:26,350 --> 00:28:27,821
+outra forma de ver isso
+
+566
+00:28:27,821 --> 00:28:30,547
+é a separação dos valores de negócio
+
+567
+00:28:30,547 --> 00:28:34,941
+considere apenas os casos de uso e a UI
+
+568
+00:28:34,941 --> 00:28:37,833
+digamos que separamos esses dois
+
+569
+00:28:37,833 --> 00:28:42,689
+em componentes independentemente
+desenvolvido e publicavéis
+
+570
+00:28:42,689 --> 00:28:46,812
+tal UI é um plugin para os casos de uso
+
+571
+00:28:48,449 --> 00:28:50,147
+digamos também
+
+572
+00:28:50,147 --> 00:28:51,686
+que a estimativa para desenvolver
+
+573
+00:28:51,686 --> 00:28:53,107
+os casos de uso
+
+574
+00:28:53,107 --> 00:28:55,193
+é 50 mil dolars
+
+575
+00:28:55,190 --> 00:29:01,470
+mas a estimativa para
+UI é 150 mil dolares
+
+576
+00:29:01,944 --> 00:29:04,658
+agora o negócio pode
+comparar esses dois valores
+
+577
+00:29:04,658 --> 00:29:07,649
+e se fazer uma pergunta interessante
+
+578
+00:29:07,649 --> 00:29:12,061
+por que a UI é mais
+cara que os casos de uso
+
+579
+00:29:12,061 --> 00:29:14,344
+e isso deveria ser o caso?
+
+580
+00:29:14,344 --> 00:29:18,436
+talvez a UI não deveria ser mais cara
+
+581
+00:29:18,436 --> 00:29:22,430
+talvez tenha uma forma
+menos cara de fazer a UI
+
+582
+00:29:23,698 --> 00:29:27,778
+é possível que o negócio
+irá olhar para esses números
+
+583
+00:29:27,778 --> 00:29:30,400
+e decida que a UI é tão crítica
+
+584
+00:29:30,400 --> 00:29:35,132
+que não se importam que custe
+3 vezes mais que os casos de uso
+
+585
+00:29:35,433 --> 00:29:36,418
+por outro lado
+
+586
+00:29:36,418 --> 00:29:38,843
+eles podem olhar esses números horrorizados
+
+587
+00:29:38,843 --> 00:29:42,880
+e recuar para um tamanho
+mais apropriado para a UI
+
+588
+00:29:44,455 --> 00:29:45,655
+o principal é
+
+589
+00:29:45,655 --> 00:29:47,575
+que sem essa separacão
+
+590
+00:29:47,575 --> 00:29:49,575
+não teria forma do negócio saber
+
+591
+00:29:49,575 --> 00:29:53,852
+que o custo da UI e o custo dos casos de uso
+
+592
+00:29:53,852 --> 00:29:56,209
+tem a proporção apropriada
+
+593
+00:29:57,384 --> 00:29:59,920
+separar os casos de uso da UI
+
+594
+00:29:59,920 --> 00:30:01,150
+permite o negócio
+
+595
+00:30:01,150 --> 00:30:03,409
+medir o custo de cada
+
+596
+00:30:03,409 --> 00:30:05,095
+e comparar esse custo
+
+597
+00:30:05,095 --> 00:30:07,040
+com o valor correspondente do négocio
+
+598
+00:30:08,960 --> 00:30:12,627
+e isso não está limitado
+apenas aos casos de uso e a UI
+
+599
+00:30:12,627 --> 00:30:14,036
+todos os componentes do sistema
+
+600
+00:30:14,036 --> 00:30:16,030
+podem ser isolados nesta forma
+
+601
+00:30:16,030 --> 00:30:20,258
+o banco de dados, servidor web, frameworks
+
+602
+00:30:20,258 --> 00:30:21,883
+e uma vez isolados
+
+603
+00:30:21,883 --> 00:30:26,658
+pode submete-los ao mesmo
+tipo de analise de  custo X valor
+
+604
+00:30:28,184 --> 00:30:29,587
+então
+
+605
+00:30:33,144 --> 00:30:35,926
+focando a arquitetura do sistema
+
+606
+00:30:35,926 --> 00:30:37,661
+em cima dos casos de uso
+
+607
+00:30:37,661 --> 00:30:41,132
+podemos adiar decisões sobre a UI
+
+608
+00:30:41,132 --> 00:30:44,153
+o banco de dados e outros componentes
+
+609
+00:30:45,680 --> 00:30:46,633
+esse adiamento
+
+610
+00:30:46,630 --> 00:30:50,769
+nos permite manter
+nossas opções em aberto
+
+611
+00:30:50,769 --> 00:30:51,969
+e isso significa
+
+612
+00:30:51,969 --> 00:30:54,627
+que podemos mudar de idéia se precisarmos
+
+613
+00:30:54,627 --> 00:30:58,800
+talvez, várias vezes durante o projeto
+
+614
+00:30:58,800 --> 00:31:01,236
+sem  mudar o custo
+
+615
+00:31:05,747 --> 00:31:10,683
+também cria uma separação forte
+entre os componentes do sistema
+
+616
+00:31:10,683 --> 00:31:13,680
+que permite o negócio comparar seus custos
+
+617
+00:31:13,680 --> 00:31:15,766
+com os valores do negócio
+
+618
+00:31:15,766 --> 00:31:19,083
+apoiando assim a tomada
+de decisões prudentes
+
+619
+00:31:20,264 --> 00:31:23,692
+acho que estabecemos que
+casos de uso são bem importantes
+
+620
+00:31:23,692 --> 00:31:25,981
+isso nos deixa com uma pergunta
+
+621
+00:31:25,981 --> 00:31:28,055
+o que diabos são eles
+
+622
+00:31:32,270 --> 00:31:35,353
+Casos de Uso
+
+623
+00:31:37,101 --> 00:31:39,710
+Se eu te mostrar a
+arquitetura de software
+
+624
+00:31:39,710 --> 00:31:42,898
+de um sistema de contabilidade para web
+
+625
+00:31:43,255 --> 00:31:46,510
+qual a primeira coisa
+que notaria neste software?
+
+626
+00:31:46,510 --> 00:31:49,366
+você notaria que é um
+sistema de contabilidade
+
+627
+00:31:49,366 --> 00:31:51,956
+ou notaria que é um sistema web
+
+628
+00:31:53,569 --> 00:31:56,443
+obviamente que isto sendo
+um sistema de contabilidae
+
+629
+00:31:56,443 --> 00:32:00,418
+é muito mais importante que  ser um sistema web
+
+630
+00:32:00,418 --> 00:32:03,064
+então se olhar a arquitetura do sistema
+
+631
+00:32:03,064 --> 00:32:06,498
+deveria gritar contabildiade para você
+
+632
+00:32:06,498 --> 00:32:08,947
+e mal deveria mencionar web
+
+633
+00:32:10,473 --> 00:32:11,950
+mas muitos sistemas web
+
+634
+00:32:11,950 --> 00:32:13,673
+fazem exatamente o oposto
+
+635
+00:32:13,673 --> 00:32:16,166
+eles gritam WEB
+
+636
+00:32:16,166 --> 00:32:19,261
+e mal citam suas intenções do negócio
+
+637
+00:32:21,076 --> 00:32:23,950
+considere a arquitetura Mvocê
+
+638
+00:32:23,950 --> 00:32:27,360
+que é tão predominante nos sistemas web
+
+639
+00:32:27,883 --> 00:32:29,550
+as views e controllers
+
+640
+00:32:29,550 --> 00:32:31,926
+são fortemente ligadas a web
+
+641
+00:32:31,926 --> 00:32:35,821
+as Models são completamente
+subservientes das controllers
+
+642
+00:32:35,821 --> 00:32:37,427
+e as views e controllers
+
+643
+00:32:37,427 --> 00:32:39,956
+são tão acopladas às Models
+
+644
+00:32:39,956 --> 00:32:44,523
+que tem influência tremenda nessas Models
+
+645
+00:32:45,507 --> 00:32:46,793
+para piorar
+
+646
+00:32:46,793 --> 00:32:47,747
+muitos devs
+
+647
+00:32:47,747 --> 00:32:49,126
+acreditam erroneamente
+
+648
+00:32:49,126 --> 00:32:53,175
+que as Models representam as regras de negócio
+
+649
+00:32:56,036 --> 00:32:58,116
+isso realmente é lamentável
+
+650
+00:32:58,116 --> 00:33:00,264
+tais sistemas fazem a web
+
+651
+00:33:00,264 --> 00:33:02,467
+o princípio de organização central
+
+652
+00:33:02,467 --> 00:33:06,135
+e deixa as regras de negócio
+como detalhes chatos
+
+653
+00:33:07,870 --> 00:33:10,486
+senhoras e senhores
+
+654
+00:33:10,486 --> 00:33:13,741
+é a web que é o detalhe
+
+655
+00:33:13,741 --> 00:33:17,636
+a web nada mais é que
+um mecanismo de entrega
+
+656
+00:33:17,636 --> 00:33:21,230
+quando você ve a arquitetura
+de um sistema de contabilidade
+
+657
+00:33:21,230 --> 00:33:23,938
+você deveria ver sistema de contabilidade
+
+658
+00:33:23,938 --> 00:33:26,166
+não sistema web
+
+659
+00:33:26,166 --> 00:33:30,498
+é a web que é um detalhe chato
+
+660
+00:33:31,538 --> 00:33:35,483
+você deveria ser capaz de
+mudar o mecanismo de entrega
+
+661
+00:33:35,480 --> 00:33:38,307
+sem ter que mudar a
+arquitetura do sistema
+
+662
+00:33:38,307 --> 00:33:40,646
+dado 2 versões do mesmo sistema
+
+663
+00:33:40,646 --> 00:33:42,295
+uma entregue na web
+
+664
+00:33:42,295 --> 00:33:44,707
+e uma entrege em um aplicativo de console
+
+665
+00:33:44,707 --> 00:33:47,206
+a arquitetura desses 2 sistemas
+
+666
+00:33:47,206 --> 00:33:49,058
+devem ser idênticos
+
+667
+00:33:50,000 --> 00:33:51,556
+em outras palavras
+
+668
+00:33:51,556 --> 00:33:53,938
+quando você olhar para a
+arquitetura de um sistema
+
+669
+00:33:53,938 --> 00:33:57,366
+você não deve ser capaz de
+saber se é entregue via web ou não
+
+670
+00:33:57,366 --> 00:34:02,510
+o mecanismo de entrega web não deveria se
+intrometer na arquitetura de alto nível do sistema
+
+671
+00:34:02,510 --> 00:34:05,261
+o mecanismo de entrega web é um detalhe
+
+672
+00:34:06,627 --> 00:34:08,160
+em 1992
+
+673
+00:34:08,160 --> 00:34:10,276
+apenas 1 ano depois de Tim Berners-Lee
+
+674
+00:34:10,276 --> 00:34:12,695
+ter publicado o primeiro site web
+
+675
+00:34:12,695 --> 00:34:14,424
+um amigo meu escreveu
+
+676
+00:34:14,424 --> 00:34:15,833
+este livro
+
+677
+00:34:15,833 --> 00:34:18,603
+o nome dele é Ivar Jacobson
+
+678
+00:34:18,603 --> 00:34:20,289
+e nesse livro
+
+679
+00:34:20,289 --> 00:34:23,212
+ele resolveu o problema
+do mecanismo de entrega
+
+680
+00:34:23,212 --> 00:34:26,836
+fornecendo uma solução de arquitetura elegante
+
+681
+00:34:28,400 --> 00:34:29,636
+essa solução
+
+682
+00:34:29,636 --> 00:34:31,255
+era entender as formas
+
+683
+00:34:31,255 --> 00:34:33,772
+que usuários interagiam com o sistema
+
+684
+00:34:33,772 --> 00:34:37,187
+em uma forma de entrega independente
+
+685
+00:34:38,424 --> 00:34:39,286
+em outras palavras
+
+686
+00:34:39,286 --> 00:34:42,923
+descobrimos como o usuário interage com o sistema
+
+687
+00:34:42,923 --> 00:34:45,704
+sem usar paravras relacionadas a web
+
+688
+00:34:45,704 --> 00:34:47,298
+como link
+
+689
+00:34:47,298 --> 00:34:48,307
+botão
+
+690
+00:34:48,307 --> 00:34:49,058
+click
+
+691
+00:34:49,058 --> 00:34:50,824
+ou página
+
+692
+00:34:50,824 --> 00:34:51,563
+invés disso
+
+693
+00:34:51,563 --> 00:34:53,766
+usamos palavras e conceitos
+
+694
+00:34:53,766 --> 00:34:57,095
+que não implicam com o mecanismo de entrega
+
+695
+00:34:58,375 --> 00:35:01,895
+Jacobson chamou essas descriçoes de interações
+
+696
+00:35:01,895 --> 00:35:03,236
+de Casos de Uso
+
+697
+00:35:03,230 --> 00:35:04,923
+perceba o título deste livro
+
+698
+00:35:04,923 --> 00:35:06,246
+o subtítulo
+
+699
+00:35:06,246 --> 00:35:09,489
+Uma aborgadem orientada a casos de uso
+
+700
+00:35:10,683 --> 00:35:12,492
+A idéia de Jacobson era
+
+701
+00:35:12,492 --> 00:35:14,203
+que o desenvolvimento da aplicação
+
+702
+00:35:14,203 --> 00:35:15,495
+deveria ser conduzido
+
+703
+00:35:15,495 --> 00:35:18,904
+por essa entrega casos de usos independentes
+
+704
+00:35:18,904 --> 00:35:19,981
+em outras palavras
+
+705
+00:35:19,981 --> 00:35:21,544
+são os casos de uso
+
+706
+00:35:21,540 --> 00:35:22,240
+que formam o
+
+707
+00:35:22,240 --> 00:35:24,640
+princípio de organização central
+
+708
+00:35:24,640 --> 00:35:28,073
+e as abstraçoes em volta
+de onde o sistema é construído
+
+709
+00:35:29,520 --> 00:35:30,941
+quando você olha para a arquitetura
+
+710
+00:35:30,941 --> 00:35:32,763
+de um sistema orientado a casos de uso
+
+711
+00:35:32,763 --> 00:35:34,190
+você vê os casos de uso
+
+712
+00:35:34,190 --> 00:35:36,141
+não o mecanismo de entrega
+
+713
+00:35:36,141 --> 00:35:37,353
+o que vê
+
+714
+00:35:37,353 --> 00:35:39,655
+é a intenção do sistema
+
+715
+00:35:44,240 --> 00:35:47,052
+como tal arquitetura se parece?
+
+716
+00:35:47,052 --> 00:35:49,027
+antes de responder isso
+
+717
+00:35:49,027 --> 00:35:52,467
+vamos ter que entender
+o que são casos de uso
+
+718
+00:35:52,467 --> 00:35:54,455
+e o que não são
+
+719
+00:36:00,664 --> 00:36:02,276
+Casos de uso
+
+720
+00:36:04,510 --> 00:36:05,569
+um caso deuso
+
+721
+00:36:05,569 --> 00:36:08,055
+é nada mais nada menos
+
+722
+00:36:08,055 --> 00:36:09,587
+que uma descrição formal
+
+723
+00:36:09,587 --> 00:36:12,621
+de como o usuário interage como sistema
+
+724
+00:36:12,621 --> 00:36:15,458
+para poder atingir um objetivo
+
+725
+00:36:16,535 --> 00:36:17,729
+por exemplo
+
+726
+00:36:17,729 --> 00:36:19,316
+vamos dizer que o obejetivo
+
+727
+00:36:19,316 --> 00:36:20,720
+é criar um pedido
+
+728
+00:36:20,720 --> 00:36:23,126
+dentro de um sistema de ordem de pedidos
+
+729
+00:36:23,126 --> 00:36:26,036
+então o caso de uso, pode parecer como isso
+
+730
+00:36:29,243 --> 00:36:30,332
+agora veja
+
+731
+00:36:30,332 --> 00:36:31,329
+esse caso de uso
+
+732
+00:36:31,329 --> 00:36:33,064
+não menciona nada do tipo
+
+733
+00:36:33,064 --> 00:36:39,390
+telas, botões, campos, combos, popups
+
+734
+00:36:39,390 --> 00:36:42,713
+ou qualquer coisa relacionada com web
+
+735
+00:36:43,156 --> 00:36:44,824
+invés disso
+
+736
+00:36:44,824 --> 00:36:47,593
+ele fala sobre os dados e comandos
+
+737
+00:36:47,593 --> 00:36:49,236
+que entram o sistema
+
+738
+00:36:49,236 --> 00:36:51,840
+e a forma que o sistema responde
+
+739
+00:36:52,596 --> 00:36:54,178
+isso é importante
+
+740
+00:36:54,178 --> 00:36:57,950
+se iremos ter uma
+arquitetura de entrega independente
+
+741
+00:36:57,950 --> 00:37:02,135
+precisamos começar com casos
+de uso independentes da entrega
+
+742
+00:37:03,913 --> 00:37:05,347
+perceba também
+
+743
+00:37:05,347 --> 00:37:07,550
+que a resposta do caso de uso
+
+744
+00:37:07,550 --> 00:37:09,778
+o ID do pedido
+
+745
+00:37:09,778 --> 00:37:12,836
+pode ser completamente
+escondido pelo mecanismo de entrega
+
+746
+00:37:12,836 --> 00:37:15,815
+o usuário final nunca precisará ver
+
+747
+00:37:15,815 --> 00:37:16,547
+ao invés disso
+
+748
+00:37:16,547 --> 00:37:17,852
+o mecanismo de entrega
+
+749
+00:37:17,852 --> 00:37:20,221
+pode mostrar uma tela amigável
+
+750
+00:37:20,221 --> 00:37:23,673
+perguntando ao usuário a
+adicionar itens no pedido
+
+751
+00:37:25,175 --> 00:37:26,086
+finalmente
+
+752
+00:37:26,086 --> 00:37:27,920
+perceba que o caso de uso
+
+753
+00:37:27,920 --> 00:37:30,000
+é essencialmente um algoritmo
+
+754
+00:37:30,000 --> 00:37:32,566
+para interpretação dos dados de input
+
+755
+00:37:32,566 --> 00:37:35,138
+e geração de dados de saída
+
+756
+00:37:35,138 --> 00:37:36,350
+isso significa
+
+757
+00:37:36,350 --> 00:37:38,301
+que podemos criar um objeto
+
+758
+00:37:38,301 --> 00:37:40,720
+que implementa esse caso de uso
+
+759
+00:37:42,073 --> 00:37:43,304
+é claro que existem detalhes
+
+760
+00:37:43,304 --> 00:37:45,636
+que fazem os casos de
+usos serem mais complicados
+
+761
+00:37:45,636 --> 00:37:48,024
+que o cenário que acabei de mostrar
+
+762
+00:37:48,024 --> 00:37:49,267
+por exemplo
+
+763
+00:37:49,267 --> 00:37:50,603
+neste caso de uso
+
+764
+00:37:50,603 --> 00:37:53,526
+o que aconteceria se existissem validações de falha
+
+765
+00:37:53,526 --> 00:37:56,258
+de um ou mais campos de entrada
+
+766
+00:37:56,258 --> 00:37:58,215
+o cenário que acabei de mostar
+
+767
+00:37:58,215 --> 00:38:01,403
+é chamado de curso primário do caso de uso
+
+768
+00:38:01,403 --> 00:38:02,756
+é chamado de curso primário
+
+769
+00:38:02,756 --> 00:38:06,615
+pois mostra o que acontece se nada der errado
+
+770
+00:38:06,615 --> 00:38:08,756
+mas e se algo der errado?
+
+771
+00:38:08,756 --> 00:38:11,686
+isso é tratado pelo curso de exceção
+
+772
+00:38:11,686 --> 00:38:14,640
+ou curso de extensão do caso de uso
+
+773
+00:38:16,418 --> 00:38:17,409
+de novo
+
+774
+00:38:17,400 --> 00:38:18,873
+perceba como essas extensões
+
+775
+00:38:18,873 --> 00:38:20,498
+são simples modificações
+
+776
+00:38:20,498 --> 00:38:23,975
+do algoritmo original do caso de uso
+
+777
+00:38:23,975 --> 00:38:26,418
+seria bem simples
+integrar essas extensões
+
+778
+00:38:26,418 --> 00:38:29,335
+nos objetos que
+implementam esses casos de uso
+
+779
+00:38:31,033 --> 00:38:36,233
+não temos tempo para cobrir
+todos os detahes de casos de uso
+
+780
+00:38:36,233 --> 00:38:38,178
+isso é um vídeo para outra hora
+
+781
+00:38:38,516 --> 00:38:41,347
+enquanto isso, sugiro você
+dar uma olhada nesse livro
+
+782
+00:38:41,340 --> 00:38:42,676
+escrevendo casos de uso eficazes, Alistair Cockburn
+
+783
+00:38:44,830 --> 00:38:46,375
+não tem ninguém melhor que Alistair
+
+784
+00:38:46,375 --> 00:38:49,298
+para mostrar os detalhes de casos de uso
+
+785
+00:38:52,092 --> 00:38:53,858
+e se estiver confunso sobre a diferença
+
+786
+00:38:53,858 --> 00:38:56,510
+entre casos de uso e historia de usuários
+
+787
+00:38:56,510 --> 00:38:57,698
+não fique
+
+788
+00:38:57,690 --> 00:39:01,144
+história de usuário é só o
+começo de um caso de uso
+
+789
+00:39:01,144 --> 00:39:04,553
+ele eventualmente evolui
+para um caso de uso completo
+
+790
+00:39:04,553 --> 00:39:07,840
+se quiser uma descrição boa desse processo
+
+791
+00:39:07,840 --> 00:39:09,489
+consiga uma cópia desse livro
+
+792
+00:39:09,489 --> 00:39:12,578
+User Stories por Mike Chon
+
+793
+00:39:12,578 --> 00:39:14,910
+quando se trata de histórias de usuário
+
+794
+00:39:14,910 --> 00:39:17,870
+Mike é o cara
+
+795
+00:39:18,713 --> 00:39:20,067
+agora olhe novamente
+
+796
+00:39:20,067 --> 00:39:24,430
+para o algoritmo para o
+curso primário deste caso de uso
+
+797
+00:39:24,430 --> 00:39:27,280
+ele menciona outros objetos de negócio
+
+798
+00:39:27,280 --> 00:39:29,273
+tipo clinte e pedido
+
+799
+00:39:29,273 --> 00:39:32,092
+o algoritmo define o caso de uso
+
+800
+00:39:32,092 --> 00:39:35,243
+e claramente tem regras de négocio
+
+801
+00:39:35,243 --> 00:39:40,252
+mas essas regras de negócio não
+pertencem aos objetos do cliente e pedido
+
+802
+00:39:40,252 --> 00:39:41,292
+então a pergunta é
+
+803
+00:39:41,292 --> 00:39:43,181
+onde essas regras pertencem ?
+
+804
+00:39:43,181 --> 00:39:46,283
+que tipo de objeto elas devem estar
+
+805
+00:39:46,283 --> 00:39:52,406
+e onde esse objeto
+caberia em nossa arquitetura?
+
+806
+00:39:53,169 --> 00:39:56,049
+a medida que criamos mais casos de uso
+
+807
+00:39:56,049 --> 00:39:59,372
+vamos descobrir mais objetos de negócio
+
+808
+00:39:59,372 --> 00:40:02,664
+e mais algoritmos de casos de uso
+
+809
+00:40:02,664 --> 00:40:05,415
+isso nos deixa com um problema
+
+810
+00:40:05,415 --> 00:40:07,944
+como particionamos o sistema
+
+811
+00:40:07,944 --> 00:40:09,175
+de certa forma
+
+812
+00:40:09,175 --> 00:40:11,107
+que esses casos de uso se tornem
+
+813
+00:40:11,107 --> 00:40:14,584
+principios de organização central
+
+814
+00:40:18,010 --> 00:40:20,289
+Particionando
+
+815
+00:40:22,627 --> 00:40:24,861
+você deve estar tentando encaixar isso
+
+816
+00:40:24,861 --> 00:40:28,166
+na estrutura de Mvocê
+
+817
+00:40:28,166 --> 00:40:29,033
+se estiver
+
+818
+00:40:29,033 --> 00:40:31,366
+pode parar, não é isso
+que estamos fazendo
+
+819
+00:40:31,366 --> 00:40:34,646
+eu vou mostrar como Mvocê
+se encaixa nisso depois
+
+820
+00:40:34,646 --> 00:40:36,646
+os objetos que estamos falando agora
+
+821
+00:40:36,640 --> 00:40:40,615
+estão em um nível de
+arquitetura mais elevado
+
+822
+00:40:42,123 --> 00:40:44,424
+no seu livro, Jacobson reconheceu
+
+823
+00:40:44,424 --> 00:40:49,766
+que arquiteturas como esta tem
+três tipos objetos fundamentais
+
+824
+00:40:49,766 --> 00:40:51,156
+objetos de negócio
+
+825
+00:40:51,156 --> 00:40:53,544
+o qual ele chama de Entites
+
+826
+00:40:53,544 --> 00:40:55,353
+objetos de interface do usuário
+
+827
+00:40:55,353 --> 00:40:56,449
+o qual ele chama de
+
+828
+00:40:56,449 --> 00:40:57,710
+Bondaries
+
+829
+00:40:57,710 --> 00:40:59,987
+e objetos de casos de uso
+
+830
+00:40:59,987 --> 00:41:01,033
+o que ele chama de
+
+831
+00:41:01,033 --> 00:41:02,196
+Controls
+
+832
+00:41:02,196 --> 00:41:04,800
+mas que iremos chamar de Interactors
+
+833
+00:41:04,800 --> 00:41:07,446
+para evitar confundir com model, view, controller
+
+834
+00:41:09,150 --> 00:41:10,356
+objetos Entity
+
+835
+00:41:10,356 --> 00:41:11,513
+são repositórios
+
+836
+00:41:11,513 --> 00:41:15,021
+regras de negócios independentes da aplicação
+
+837
+00:41:15,021 --> 00:41:18,910
+os métodos neles performam
+funçoes que são válidas
+
+838
+00:41:18,910 --> 00:41:23,163
+em qualquer aplicação
+que o objeto pode ser usado
+
+839
+00:41:24,738 --> 00:41:26,018
+por exemplo
+
+840
+00:41:26,018 --> 00:41:28,873
+considere um objeto de produto
+
+841
+00:41:28,873 --> 00:41:30,873
+tal objeto seria útil para
+
+842
+00:41:30,873 --> 00:41:33,452
+um sistema de ordem  de serviço
+
+843
+00:41:33,452 --> 00:41:35,372
+um sistema de cumprimento de pedidos
+
+844
+00:41:35,372 --> 00:41:37,372
+um sistema de gerenciamento de inventário
+
+845
+00:41:37,372 --> 00:41:40,541
+ou até mesmo um catálogo online
+
+846
+00:41:40,541 --> 00:41:41,944
+na visãode Jacobson
+
+847
+00:41:41,944 --> 00:41:44,467
+os métodos nesse objeto produto
+
+848
+00:41:44,467 --> 00:41:47,649
+deve ser útil para todas essas aplicações
+
+849
+00:41:50,430 --> 00:41:51,901
+mas específico
+
+850
+00:41:51,901 --> 00:41:54,184
+esse objeto não teria nenhum método
+
+851
+00:41:54,184 --> 00:41:57,772
+que seria especifico para
+qualquer uma dessas aplicações
+
+852
+00:41:57,772 --> 00:42:00,356
+qualquer método específico para uma aplicação
+
+853
+00:42:00,356 --> 00:42:02,910
+iria para um objetos Interactor
+
+854
+00:42:04,436 --> 00:42:08,233
+casos de usos são específicos por aplicação
+
+855
+00:42:08,233 --> 00:42:12,178
+casos de usos são
+implementados por objetos Interactor
+
+856
+00:42:12,178 --> 00:42:16,670
+sendo assim, objetos interactors
+são específicos para aplicação
+
+857
+00:42:16,670 --> 00:42:17,452
+isso significa
+
+858
+00:42:17,450 --> 00:42:20,670
+que qualquer regra de negócio específica
+
+859
+00:42:20,670 --> 00:42:23,864
+pertence em um objeto interactor
+
+860
+00:42:23,864 --> 00:42:25,255
+por exemplo
+
+861
+00:42:25,255 --> 00:42:27,741
+imagine os casos de uso para
+
+862
+00:42:27,741 --> 00:42:29,673
+createOrder ou
+
+863
+00:42:29,673 --> 00:42:31,101
+OrderItem
+
+864
+00:42:31,101 --> 00:42:34,209
+esses casos de uso pertencem
+ao sistema de pedidos
+
+865
+00:42:34,209 --> 00:42:36,400
+assim os objectos interactos
+
+866
+00:42:36,400 --> 00:42:38,393
+que implementam esses casos de uso
+
+867
+00:42:38,393 --> 00:42:40,061
+são especificos
+
+868
+00:42:40,073 --> 00:42:42,215
+para o o sistema de pedidos
+
+869
+00:42:43,353 --> 00:42:45,335
+os interactors atingem seu objetivo
+
+870
+00:42:45,335 --> 00:42:48,172
+com lógica específica da aplicação
+
+871
+00:42:48,170 --> 00:42:50,849
+que chama a aplicação agnostica a lógica
+
+872
+00:42:50,849 --> 00:42:52,480
+nas entities
+
+873
+00:42:52,480 --> 00:42:53,704
+por exemplo
+
+874
+00:42:53,704 --> 00:42:55,840
+o interactor create order
+
+875
+00:42:55,840 --> 00:43:00,221
+invoca ambos o construtor e o método getId
+
+876
+00:43:00,221 --> 00:43:02,307
+da entidade Order
+
+877
+00:43:02,307 --> 00:43:04,092
+obviamente esses dois métodos são
+
+878
+00:43:04,092 --> 00:43:05,944
+agnosticos à aplicação
+
+879
+00:43:05,944 --> 00:43:08,024
+é o interactor que sabe
+
+880
+00:43:08,024 --> 00:43:09,864
+como chamar esses métodos
+
+881
+00:43:09,864 --> 00:43:12,584
+para atingir o objetivo do caso de uso
+
+882
+00:43:16,843 --> 00:43:18,775
+um dos trabalhos do caso de uso
+
+883
+00:43:18,775 --> 00:43:21,655
+é aceitar dados de input do usuário
+
+884
+00:43:21,655 --> 00:43:24,738
+e entregar dados output de volta ao usuário
+
+885
+00:43:24,738 --> 00:43:27,587
+isso é trabalho para o terceiro tipo de objeto
+
+886
+00:43:27,587 --> 00:43:29,624
+o objeto fronteira
+
+887
+00:43:34,775 --> 00:43:37,913
+objeto fronteira isola os casos de uso
+
+888
+00:43:37,910 --> 00:43:39,556
+do mecanismo de entrega
+
+889
+00:43:39,556 --> 00:43:41,692
+e prove um canal de comunicação
+
+890
+00:43:41,692 --> 00:43:43,409
+entre os dois
+
+891
+00:43:43,409 --> 00:43:45,575
+se você tem um sistema Mvocê
+
+892
+00:43:45,575 --> 00:43:47,095
+ou um sistema em console
+
+893
+00:43:47,095 --> 00:43:48,873
+ou fat client
+
+894
+00:43:48,873 --> 00:43:53,200
+tudo isso está do outro lado da fronteira
+
+895
+00:43:53,200 --> 00:43:54,670
+os casos de uso do outro lado
+
+896
+00:43:54,670 --> 00:43:56,756
+não sabe de nada disso
+
+897
+00:43:57,673 --> 00:43:58,916
+o mecanismo de entrega
+
+898
+00:43:58,916 --> 00:44:00,732
+junta os dados do usuário
+
+899
+00:44:00,732 --> 00:44:03,427
+empacota tudo em uma boa forma canônica
+
+900
+00:44:03,427 --> 00:44:07,144
+envia através da fronteira até o interactor
+
+901
+00:44:07,144 --> 00:44:08,086
+os interactors
+
+902
+00:44:08,086 --> 00:44:12,104
+invocam suas regras de negócio especificas
+
+903
+00:44:12,104 --> 00:44:18,270
+manipulam as entidades e
+suas regras agnósticas a aplicação
+
+904
+00:44:18,270 --> 00:44:21,440
+finalmente, ele junta a informação resultante
+
+905
+00:44:21,440 --> 00:44:24,240
+empacota em uma boa forma canônica
+
+906
+00:44:24,240 --> 00:44:28,233
+e envia de volta para a
+fronteira até o mecanismo de entrega
+
+907
+00:44:30,855 --> 00:44:32,406
+e assim as regras de negócio
+
+908
+00:44:32,400 --> 00:44:37,520
+ambas as especificas e agnosticas da aplicação
+
+909
+00:44:37,520 --> 00:44:39,667
+estão fortemente desacopladas
+
+910
+00:44:39,667 --> 00:44:42,276
+do mecanismo de entrega
+
+911
+00:44:42,276 --> 00:44:44,836
+em caso de entrega via web
+
+912
+00:44:44,836 --> 00:44:46,215
+o framewor web inteiro
+
+913
+00:44:46,215 --> 00:44:49,575
+fica pendurada do outro lado da arquitetura
+
+914
+00:44:49,575 --> 00:44:54,116
+do jeito que seu apendice fica
+pendurado do lado do seu intestino
+
+915
+00:44:55,378 --> 00:44:57,852
+e esse é o jeito que deveria ser
+
+916
+00:44:57,852 --> 00:45:00,978
+se sua aplicação é entregue via web
+
+917
+00:45:00,978 --> 00:45:02,756
+ou em um console
+
+918
+00:45:02,750 --> 00:45:04,738
+ou através de um fat client
+
+919
+00:45:07,815 --> 00:45:09,464
+o mecanismo de entrega
+
+920
+00:45:09,464 --> 00:45:11,286
+deveria ficar pendurado do lado de fora
+
+921
+00:45:11,286 --> 00:45:13,353
+da arquitetura primária
+
+922
+00:45:13,353 --> 00:45:15,667
+como um apendice
+
+923
+00:45:16,603 --> 00:45:19,600
+é assim que particionamos um sistema
+
+924
+00:45:19,600 --> 00:45:21,723
+descrevemos o comportamento do sistema
+
+925
+00:45:21,723 --> 00:45:23,981
+em termos de casos de uso
+
+926
+00:45:23,981 --> 00:45:28,652
+nós capturamos os comportamentos específicos
+da aplicação desses casos de uso
+
+927
+00:45:28,652 --> 00:45:30,793
+em objetos interactors
+
+928
+00:45:30,793 --> 00:45:34,129
+capturamos os casos de uso agnosticos a aplicação
+
+929
+00:45:34,120 --> 00:45:38,252
+em objetos de entidade, controlado por esses interactors
+
+930
+00:45:38,252 --> 00:45:41,083
+então penduramos a UI do lado de fora
+
+931
+00:45:41,083 --> 00:45:43,132
+como um grande apendice
+
+932
+00:45:43,132 --> 00:45:45,298
+usando objetos de fronteira
+
+933
+00:45:45,298 --> 00:45:47,827
+que comunica com os interactors
+
+934
+00:45:51,501 --> 00:45:53,766
+o negócio sobre apendices é
+
+935
+00:45:53,766 --> 00:45:55,415
+elas precisam ser faceis de remover
+
+936
+00:45:55,415 --> 00:45:58,104
+pois podem inflamar ou ser infectadas
+
+937
+00:45:58,104 --> 00:46:01,156
+então tomamos cuidado em isola-lá do nosso sistema
+
+938
+00:46:01,156 --> 00:46:03,378
+para que seja fácil de extirpar
+
+939
+00:46:03,378 --> 00:46:04,873
+esse isolamento
+
+940
+00:46:04,873 --> 00:46:07,273
+é o que falaremos agora
+
+941
+00:46:11,101 --> 00:46:14,984
+isolamento
+
+942
+00:46:16,170 --> 00:46:18,812
+para manter o mecanismo de entrega
+
+943
+00:46:18,812 --> 00:46:22,098
+fortemente isolado do resto da aplicação
+
+944
+00:46:22,098 --> 00:46:25,427
+precisamos controlar as dependencias estritamente
+
+945
+00:46:25,427 --> 00:46:29,169
+para que cruzem a fronteira em apenas uma direção
+
+946
+00:46:29,169 --> 00:46:31,766
+soa familiar?
+
+947
+00:46:31,846 --> 00:46:34,412
+digamos que o mecanismo de entrega
+
+948
+00:46:34,412 --> 00:46:35,476
+é a web
+
+949
+00:46:35,476 --> 00:46:37,132
+ok...
+
+950
+00:46:37,132 --> 00:46:40,547
+o web server, o framework web
+
+951
+00:46:40,547 --> 00:46:42,147
+toda as coisas web
+
+952
+00:46:42,147 --> 00:46:45,846
+ficam do lado da entrega na fronteira
+
+953
+00:46:45,846 --> 00:46:50,738
+urls, roteamento, htmls, css, javascripts
+
+954
+00:46:50,730 --> 00:46:54,670
+tudo do lado da entrega na fronteira
+
+955
+00:46:54,670 --> 00:46:57,286
+de fato, o Mvocê
+
+956
+00:46:57,286 --> 00:47:01,784
+fica do lado da entrega na fronteira
+
+957
+00:47:03,735 --> 00:47:06,147
+models, Mvocê?
+
+958
+00:47:06,147 --> 00:47:07,415
+peraí...
+
+959
+00:47:07,415 --> 00:47:10,480
+os models do Mvocê não
+são os objetos do negócio?
+
+960
+00:47:10,480 --> 00:47:13,292
+não deveriam estar do outro lado da fronteira?
+
+961
+00:47:16,135 --> 00:47:18,129
+céus, não!
+
+962
+00:47:18,129 --> 00:47:19,680
+mas...isso é porque
+
+963
+00:47:19,680 --> 00:47:25,495
+o Mvocê que conhecemos e...amamos hoje
+
+964
+00:47:25,495 --> 00:47:29,335
+é bem diferente do Mvocê
+
+965
+00:47:29,335 --> 00:47:31,680
+que foi inventado em 1979
+
+966
+00:47:31,680 --> 00:47:34,000
+por Trygve Reenskaug
+
+967
+00:47:34,880 --> 00:47:36,713
+nessa época
+
+968
+00:47:36,710 --> 00:47:37,870
+os models
+
+969
+00:47:37,870 --> 00:47:41,833
+realmente eram algo próximo dos objetos de negócio
+
+970
+00:47:41,833 --> 00:47:43,175
+mas hoje em dia
+
+971
+00:47:43,175 --> 00:47:46,135
+nos frameworks modernos de Mvocê
+
+972
+00:47:46,135 --> 00:47:49,421
+os models são algo muito mais complicados
+
+973
+00:47:50,547 --> 00:47:52,701
+hoje em dia, seria ingênuo pensar
+
+974
+00:47:52,701 --> 00:47:57,280
+que views complexas podem ser
+derivadas de simples objetos de negócio
+
+975
+00:47:57,280 --> 00:47:59,046
+muitas views na verdade
+
+976
+00:47:59,046 --> 00:48:02,449
+usam uma colaboração de\vários objetos de negócio
+
+977
+00:48:02,449 --> 00:48:03,987
+de fato, muitas views
+
+978
+00:48:03,987 --> 00:48:08,043
+são uma porção significativa dos casos de uso
+
+979
+00:48:08,043 --> 00:48:09,390
+então, hoje em dia
+
+980
+00:48:09,390 --> 00:48:12,381
+os models em frameworks Mvocê
+
+981
+00:48:12,381 --> 00:48:15,833
+devem retirar seus dados da colaboração
+
+982
+00:48:15,833 --> 00:48:17,507
+de entidades e interactos
+
+983
+00:48:17,507 --> 00:48:19,864
+que implementam os casos de usos
+
+984
+00:48:19,864 --> 00:48:22,596
+esse model pode ser um único objeto
+
+985
+00:48:22,596 --> 00:48:25,120
+mas não é um objeto de negócio
+
+986
+00:48:27,175 --> 00:48:30,886
+esses models são raramente
+mais do que simples objetos de dados
+
+987
+00:48:30,886 --> 00:48:34,276
+que vão e volta através da fronteira
+
+988
+00:48:35,304 --> 00:48:36,818
+pense desta forma
+
+989
+00:48:36,818 --> 00:48:39,396
+na versão web do Mvocê
+
+990
+00:48:39,396 --> 00:48:42,658
+o web server recebe uma requisição HTTP
+
+991
+00:48:42,658 --> 00:48:44,006
+ele executa essa requisição
+
+992
+00:48:44,006 --> 00:48:45,372
+através de seu mecanismo de roteamento
+
+993
+00:48:45,372 --> 00:48:47,624
+para poder selecionar sua controller
+
+994
+00:48:47,624 --> 00:48:48,996
+o controller então
+
+995
+00:48:48,996 --> 00:48:51,581
+analisa a requisição
+
+996
+00:48:51,581 --> 00:48:54,750
+extraindo a informação da requisição
+
+997
+00:48:54,750 --> 00:48:58,276
+e coloca em uma boa e simples estrutura de dados
+
+998
+00:48:59,747 --> 00:49:02,276
+essa estrutura de dados é realmente simples
+
+999
+00:49:02,276 --> 00:49:05,630
+não tem nada de dicionários, hashmaps
+
+1000
+00:49:05,630 --> 00:49:09,796
+que geralmente são associados com web servers e frameworks
+
+1001
+00:49:09,796 --> 00:49:16,289
+tudo relacionado a web são removidos
+
+1002
+00:49:16,289 --> 00:49:18,566
+se olhar isoladamente
+
+1003
+00:49:18,566 --> 00:49:22,289
+não conseguiria saber se alguma parte veio da web
+
+1004
+00:49:22,289 --> 00:49:26,295
+é simplesmente uma estrutura pura de dados
+
+1005
+00:49:27,507 --> 00:49:28,836
+essa estrutura de dados
+
+1006
+00:49:28,836 --> 00:49:30,818
+é a model do request
+
+1007
+00:49:30,818 --> 00:49:34,227
+e é enviada através da fronteira para um interactor
+
+1008
+00:49:35,261 --> 00:49:38,252
+o interactor orquestra a mágica
+
+1009
+00:49:38,252 --> 00:49:41,470
+em converter o model da requisição
+
+1010
+00:49:41,470 --> 00:49:44,738
+para o model da resposta
+
+1011
+00:49:44,738 --> 00:49:46,892
+ele implementa o caso de uso
+
+1012
+00:49:46,892 --> 00:49:51,163
+coordena a dança entre todos os objetos de entidade
+
+1013
+00:49:51,163 --> 00:49:54,073
+junta toda a informação
+
+1014
+00:49:54,073 --> 00:49:57,027
+e coloca em uma estrutura pura de dados
+
+1015
+00:49:57,027 --> 00:49:59,243
+o modelo da resposta
+
+1016
+00:49:59,243 --> 00:50:00,633
+essa estrutura de dados
+
+1017
+00:50:00,633 --> 00:50:02,824
+não tem nada da web
+
+1018
+00:50:02,824 --> 00:50:05,058
+todos os dados estão lá
+
+1019
+00:50:05,058 --> 00:50:08,381
+mas não pode dizer que
+é para web só de olhar
+
+1020
+00:50:09,624 --> 00:50:12,818
+o interactor passa o model da resposta
+
+1021
+00:50:12,818 --> 00:50:14,732
+devolta para a boundary
+
+1022
+00:50:14,732 --> 00:50:16,227
+para um objeto presenter
+
+1023
+00:50:16,227 --> 00:50:18,227
+no framewor de entrega
+
+1024
+00:50:18,227 --> 00:50:19,384
+esse objeto Presenter
+
+1025
+00:50:19,384 --> 00:50:22,406
+converte os dados no model de resposta
+
+1026
+00:50:22,406 --> 00:50:25,766
+para um formato mais aceitável para web
+
+1027
+00:50:25,766 --> 00:50:27,790
+a apresentação final da estrutura de dados
+
+1028
+00:50:27,790 --> 00:50:29,852
+é entregue para a view
+
+1029
+00:50:29,852 --> 00:50:32,356
+que é rederizada em html
+
+1030
+00:50:33,446 --> 00:50:35,532
+alguns de vocês irão reconhecer isto
+
+1031
+00:50:35,532 --> 00:50:38,935
+como  o bom e velho padrão model-view-presenter
+
+1032
+00:50:40,726 --> 00:50:43,433
+perceba a estrutura da boundary
+
+1033
+00:50:43,433 --> 00:50:47,655
+é composta de dois conjuntos
+separados de interfaces
+
+1034
+00:50:47,655 --> 00:50:49,747
+o primeiro conjunto de interfaces
+
+1035
+00:50:49,747 --> 00:50:52,092
+é usado pelo controller
+
+1036
+00:50:52,092 --> 00:50:54,923
+mas implementado pelo interactor
+
+1037
+00:50:54,923 --> 00:50:58,707
+aceita estrutura de dados de request model
+
+1038
+00:50:58,707 --> 00:51:00,861
+o segundo conjunto de interfaces
+
+1039
+00:51:00,861 --> 00:51:03,569
+é usado pelo interactor
+
+1040
+00:51:03,569 --> 00:51:06,147
+mas implementado pelo presenter
+
+1041
+00:51:06,147 --> 00:51:10,209
+aceita estrutura de dados de response model
+
+1042
+00:51:11,409 --> 00:51:14,584
+essas interfaces são a boundary
+
+1043
+00:51:14,584 --> 00:51:16,584
+pertencem ao lado da aplicação
+
+1044
+00:51:16,584 --> 00:51:19,704
+e são partes da arquitetura da aplicação
+
+1045
+00:51:19,704 --> 00:51:22,553
+o mecanismo de entrega depende deles
+
+1046
+00:51:22,553 --> 00:51:24,443
+até implementa eles
+
+1047
+00:51:24,443 --> 00:51:27,052
+e nenhuma dependencia deve cruzar esssa boundary
+
+1048
+00:51:27,052 --> 00:51:29,729
+apontando na direção do mecanismo de entrega
+
+1049
+00:51:30,910 --> 00:51:33,218
+agora se você está usando um framework web
+
+1050
+00:51:33,218 --> 00:51:38,400
+como JSF ou Struts ou Spring ou Rails
+
+1051
+00:51:38,400 --> 00:51:40,073
+então quero que perceba algo
+
+1052
+00:51:40,073 --> 00:51:43,538
+sobre esses objetos entities e interactors
+
+1053
+00:51:43,538 --> 00:51:46,701
+eles não sabem de nada sobre o framework
+
+1054
+00:51:46,701 --> 00:51:47,421
+e isso significa
+
+1055
+00:51:47,421 --> 00:51:50,713
+que pode desenvolve-los e testá-los
+
+1056
+00:51:50,713 --> 00:51:52,449
+sem rodar o web server
+
+1057
+00:51:52,449 --> 00:51:54,344
+você pode rodar todos os seus testes
+
+1058
+00:51:54,344 --> 00:51:55,723
+sem o web server
+
+1059
+00:51:55,723 --> 00:51:57,323
+e isso é possível
+
+1060
+00:51:57,323 --> 00:51:59,218
+porque entites e interactors
+
+1061
+00:51:59,218 --> 00:52:02,283
+são simples objetos
+
+1062
+00:52:04,215 --> 00:52:05,809
+você pode escrever e testar
+
+1063
+00:52:05,809 --> 00:52:07,766
+todos os interactors e entities
+
+1064
+00:52:07,766 --> 00:52:10,996
+bem antes de tomar a decisão de web server
+
+1065
+00:52:10,996 --> 00:52:13,913
+você pode ter a aplicação inteira funcionando
+
+1066
+00:52:13,913 --> 00:52:16,006
+antes de decidir sobre o web server
+
+1067
+00:52:16,006 --> 00:52:21,175
+você pode adiar essa decisão por um bom tempo
+
+1068
+00:52:23,353 --> 00:52:26,264
+até mesmo bem no fim do projeto
+
+1069
+00:52:26,264 --> 00:52:31,138
+se você decidir que web é a
+forma errada de entregar o sistema
+
+1070
+00:52:31,138 --> 00:52:34,880
+não será tão tarde para mudar sua idéia
+
+1071
+00:52:38,043 --> 00:52:41,803
+e não é isso que uma boa
+arquitetura deveria permitir?
+
+1072
+00:52:47,464 --> 00:52:49,446
+Banco de dados
+
+1073
+00:52:50,855 --> 00:52:54,566
+como o banco de dados se encaixa nisso tudo?
+
+1074
+00:52:54,566 --> 00:52:57,692
+seus objetos de entities são persistentes?
+
+1075
+00:52:57,692 --> 00:53:00,892
+eles são armazenados no banco ?
+
+1076
+00:53:00,892 --> 00:53:02,935
+se você usa rails
+
+1077
+00:53:02,935 --> 00:53:07,015
+suas entities derivam de ActiveRecord?
+
+1078
+00:53:07,015 --> 00:53:09,076
+se está usando Hibernate
+
+1079
+00:53:09,076 --> 00:53:13,181
+o Hibernate está buscando suas entities da base de dado?
+
+1080
+00:53:14,670 --> 00:53:16,443
+provavelmente não!
+
+1081
+00:53:16,443 --> 00:53:18,313
+se lembra do episódio 5?
+
+1082
+00:53:18,313 --> 00:53:20,609
+falamos de incompatibilidade conceitual
+
+1083
+00:53:20,609 --> 00:53:24,166
+entre banco de dados relacional e objetos
+
+1084
+00:53:24,166 --> 00:53:26,492
+lembra que falamos que banco de dados
+
+1085
+00:53:26,492 --> 00:53:30,313
+contém estrutura de dados e não objetos de negócio
+
+1086
+00:53:30,313 --> 00:53:33,236
+isso é justamente a situação aqui
+
+1087
+00:53:34,246 --> 00:53:35,821
+o schemma do banco de dados
+
+1088
+00:53:35,821 --> 00:53:38,209
+muito provavelmente irá conter dados
+
+1089
+00:53:38,209 --> 00:53:42,861
+que irá usar pelos interactors e pelas entities
+
+1090
+00:53:42,861 --> 00:53:43,827
+o que mais
+
+1091
+00:53:43,827 --> 00:53:46,744
+a forma que esses dados são organizados
+
+1092
+00:53:46,744 --> 00:53:53,175
+provavelmente não será a forma que os
+interactors ou entities gostaria de ver
+
+1093
+00:53:54,295 --> 00:53:55,273
+portanto
+
+1094
+00:53:55,273 --> 00:53:57,907
+você provavelmente terá que
+fornecer uma camada de boundary
+
+1095
+00:53:57,907 --> 00:54:03,040
+que irá separar sua base dos interactos e entities
+
+1096
+00:54:03,040 --> 00:54:07,446
+provavelmente usando o
+mecanismo que falamos no episódio 5
+
+1097
+00:54:07,446 --> 00:54:11,329
+um conjunto de interfaces no lado da aplicação
+
+1098
+00:54:11,329 --> 00:54:13,993
+implementado pelo lado do banco de dados
+
+1099
+00:54:13,993 --> 00:54:18,227
+com todas as dependencias
+apontando para a aplicação
+
+1100
+00:54:19,236 --> 00:54:22,369
+geralmente são os interactors que sabem quando
+
+1101
+00:54:22,369 --> 00:54:26,578
+abrir, commit ou rollback uma transação
+
+1102
+00:54:26,578 --> 00:54:30,560
+são os interactors que sabem
+como manipular o banco de dados
+
+1103
+00:54:30,560 --> 00:54:32,295
+para a camada apropriada
+
+1104
+00:54:32,295 --> 00:54:36,990
+são os interactors que
+usam as abtrações da base de dados
+
+1105
+00:54:36,990 --> 00:54:39,249
+do lado da aplicação.
+
+1106
+00:54:39,249 --> 00:54:43,507
+a implementação dessas abstrações no banco de dados
+
+1107
+00:54:43,507 --> 00:54:45,483
+constroem objetos entites
+
+1108
+00:54:45,483 --> 00:54:48,504
+e devolvem para os interactors
+
+1109
+00:54:48,504 --> 00:54:52,584
+para que eles possam usar para
+completar seus casos de usos
+
+1110
+00:54:53,163 --> 00:54:54,892
+então aí está
+
+1111
+00:54:54,892 --> 00:54:57,901
+uma arquitetura que isola o mecanismo de entrega
+
+1112
+00:54:57,901 --> 00:54:59,218
+e o banco de dados
+
+1113
+00:54:59,218 --> 00:55:01,501
+dos casos de uso da aplicação
+
+1114
+00:55:01,501 --> 00:55:04,492
+uma arquitetura que fazem esses casos de usos
+
+1115
+00:55:04,492 --> 00:55:06,307
+a abstração principal
+
+1116
+00:55:06,307 --> 00:55:09,280
+e o principio de organização central
+
+1117
+00:55:09,280 --> 00:55:11,360
+que conceito!
+
+1118
+00:55:18,603 --> 00:55:22,338
+e imagine como vai ser fácil usar TDD
+
+1119
+00:55:22,338 --> 00:55:24,430
+com todo aquele código da aplicação
+
+1120
+00:55:24,430 --> 00:55:26,424
+sem falar do código do banco de dados
+
+1121
+00:55:26,424 --> 00:55:27,993
+e do mecanismo de entrega
+
+1122
+00:55:27,993 --> 00:55:30,560
+todo esse isolamento
+
+1123
+00:55:30,560 --> 00:55:33,415
+vai fazer os testes bem triviais
+
+1124
+00:55:33,415 --> 00:55:36,713
+de imaginar e de escrever
+
+1125
+00:55:37,913 --> 00:55:39,280
+o que mais?
+
+1126
+00:55:39,280 --> 00:55:40,738
+todo esse isolamento
+
+1127
+00:55:40,738 --> 00:55:43,396
+faz os testes rodar bem rápido
+
+1128
+00:55:43,538 --> 00:55:45,723
+você não precisa do banco de dados
+
+1129
+00:55:45,723 --> 00:55:47,212
+não precisa do web server
+
+1130
+00:55:47,212 --> 00:55:51,132
+seus testes podem voar
+
+1131
+00:55:52,504 --> 00:55:54,153
+melhor ainda
+
+1132
+00:55:54,153 --> 00:55:56,153
+essa arquitetura te permite
+
+1133
+00:55:56,153 --> 00:56:00,030
+publicar a aplicação independentemente
+
+1134
+00:56:00,030 --> 00:56:05,378
+na sua própria dll ou arquivo jar ou o que for
+
+1135
+00:56:05,370 --> 00:56:09,003
+se tiver que alterar a UI ou a base de dados
+
+1136
+00:56:09,003 --> 00:56:10,836
+ou o web server
+
+1137
+00:56:10,836 --> 00:56:14,523
+você pode não precisar republicar a aplicação
+
+1138
+00:56:15,526 --> 00:56:17,033
+e em cima disso tudo
+
+1139
+00:56:17,033 --> 00:56:20,732
+se no fim você decidir que não
+gosta daquele framework GUI
+
+1140
+00:56:20,732 --> 00:56:23,040
+então a tarefa de substitui-lo é
+
+1141
+00:56:23,040 --> 00:56:24,043
+definível
+
+1142
+00:56:24,043 --> 00:56:25,458
+quantificável
+
+1143
+00:56:25,458 --> 00:56:29,058
+e tem impacto minimo na estrutura da aplicação
+
+1144
+00:56:31,606 --> 00:56:34,320
+e se pensa que esse tipo de arquitetura
+
+1145
+00:56:34,320 --> 00:56:38,412
+dá muito trabalho e irá te deixar mais lento
+
+1146
+00:56:38,412 --> 00:56:41,378
+eu sugiro que fale com sua mãe sobre isso
+
+1147
+00:56:41,378 --> 00:56:42,978
+ela te dirá
+
+1148
+00:56:42,978 --> 00:56:44,640
+se colocar tudo separado
+
+1149
+00:56:44,640 --> 00:56:46,393
+em lugares bem organizados
+
+1150
+00:56:46,393 --> 00:56:50,455
+em vez de juntar tudo e
+enfiar embaixo da cama
+
+1151
+00:56:50,455 --> 00:56:54,153
+vai passar bem menos
+tempo procurando o que precisa
+
+1152
+00:56:54,153 --> 00:56:56,363
+arquitetura bem organizada
+
+1153
+00:56:56,363 --> 00:56:58,523
+te faz ir mais rápido
+
+1154
+00:56:58,523 --> 00:57:00,166
+porque todo mundo sabe
+
+1155
+00:57:00,166 --> 00:57:01,606
+onde tudo está
+
+1156
+00:57:01,606 --> 00:57:03,858
+as coisas não estão todas misturadas
+
+1157
+00:57:03,858 --> 00:57:05,796
+um nó de dependências
+
+1158
+00:57:05,796 --> 00:57:09,347
+e é bem fácil de ficar fora
+do caminho de outras pessoas
+
+1159
+00:57:12,646 --> 00:57:15,483
+estudo de caso
+
+1160
+00:57:17,390 --> 00:57:18,676
+eu escrevi este livro
+
+1161
+00:57:18,676 --> 00:57:20,098
+Agile software development
+
+1162
+00:57:20,098 --> 00:57:22,086
+principles, patterns and practices
+
+1163
+00:57:22,080 --> 00:57:23,987
+em 2003
+
+1164
+00:57:23,993 --> 00:57:26,018
+me surpreendeu demais, mas
+
+1165
+00:57:26,018 --> 00:57:27,870
+eu ganhei um prêmio por ele
+
+1166
+00:57:27,870 --> 00:57:28,880
+foi legal
+
+1167
+00:57:28,880 --> 00:57:30,080
+eu fui nessa conferência
+
+1168
+00:57:30,080 --> 00:57:32,350
+eu nem sabia que era uma cerimonia de premiação
+
+1169
+00:57:32,350 --> 00:57:36,153
+e do nada eles me chamaram
+e me deram uma garrafa azul
+
+1170
+00:57:36,153 --> 00:57:37,852
+legal
+
+1171
+00:57:38,572 --> 00:57:39,538
+de qualquer forma
+
+1172
+00:57:39,538 --> 00:57:41,193
+este livro contém discussões
+
+1173
+00:57:41,193 --> 00:57:44,707
+sobre os princípios SOLID de OO
+
+1174
+00:57:44,707 --> 00:57:47,538
+que iremos falar em um bom número de episódios
+
+1175
+00:57:47,538 --> 00:57:50,400
+também fala sobre design patterns
+
+1176
+00:57:50,400 --> 00:57:53,513
+que iremos falar ainda mais
+
+1177
+00:57:53,513 --> 00:57:56,996
+e fala também sobre práticas agiles
+
+1178
+00:57:56,996 --> 00:58:00,283
+que falaremos ainda mais
+
+1179
+00:58:00,283 --> 00:58:03,310
+é tipo um compêndio de todas as coisas boas
+
+1180
+00:58:03,310 --> 00:58:04,818
+que aconteceram em software
+
+1181
+00:58:04,818 --> 00:58:08,098
+desde 1990 até 2000
+
+1182
+00:58:09,323 --> 00:58:10,147
+neste livro
+
+1183
+00:58:10,147 --> 00:58:11,095
+tem um estudo de caso
+
+1184
+00:58:11,095 --> 00:58:14,240
+mostrando o tipo de arquitetura que estávamos falando
+
+1185
+00:58:14,240 --> 00:58:18,043
+vamos falar rapidamente sobre
+esse caso de estudo agora
+
+1186
+00:58:19,378 --> 00:58:22,529
+a aplicação é um sistema de pagamento
+
+1187
+00:58:22,529 --> 00:58:27,975
+o que você deve ver quando você olha a
+arquitetura de um sistema de pagamento?
+
+1188
+00:58:27,975 --> 00:58:30,240
+você deve ver pagamento
+
+1189
+00:58:30,240 --> 00:58:32,289
+você acha que deve ver web?
+
+1190
+00:58:32,289 --> 00:58:35,230
+você acha que deve ver injeção de dependencia?
+
+1191
+00:58:35,230 --> 00:58:37,618
+você acha que deve ver Mvocê?
+
+1192
+00:58:37,618 --> 00:58:39,421
+ou Hibernate  ou banco de dados?
+
+1193
+00:58:39,421 --> 00:58:41,255
+ou Spring?
+
+1194
+00:58:41,255 --> 00:58:41,716
+não
+
+1195
+00:58:41,716 --> 00:58:43,710
+você não deve ver nada disso
+
+1196
+00:58:43,710 --> 00:58:46,578
+quando você olha a arquitetura
+de um sistema de pagamento
+
+1197
+00:58:46,578 --> 00:58:49,255
+você deve ver... pagamento!
+
+1198
+00:58:49,255 --> 00:58:52,750
+e é exatamente o que iremos ver aqui
+
+1199
+00:58:53,852 --> 00:58:56,301
+o sistema de pagamento é bem simples
+
+1200
+00:58:56,301 --> 00:58:58,960
+vamos falar com um dos stakeholders
+
+1201
+00:58:58,960 --> 00:59:01,606
+e ver o que ele tem a falar sobre isso
+
+1202
+00:59:02,744 --> 00:59:04,486
+a reunião com o stakeholders
+
+1203
+00:59:06,067 --> 00:59:08,276
+alguns de nossos empregados
+
+1204
+00:59:08,276 --> 00:59:09,575
+trabalham de hora em hora
+
+1205
+00:59:09,575 --> 00:59:12,153
+e são pagos por hora
+
+1206
+00:59:12,153 --> 00:59:16,061
+e eles tem que entregar cartões ponto
+
+1207
+00:59:16,061 --> 00:59:17,704
+no fim de cada dia
+
+1208
+00:59:17,704 --> 00:59:19,310
+nas sextas-feiras
+
+1209
+00:59:19,310 --> 00:59:24,000
+precisamos saber se eles
+trabalharam mais de 8 horas por dia
+
+1210
+00:59:24,000 --> 00:59:25,870
+ou 40 horas por semana
+
+1211
+00:59:25,870 --> 00:59:27,686
+porque se trabalharam
+
+1212
+00:59:27,686 --> 00:59:30,338
+então recebem 1.5x
+
+1213
+00:59:31,292 --> 00:59:32,147
+alguns empregados
+
+1214
+00:59:32,147 --> 00:59:33,563
+trabalham com vendas
+
+1215
+00:59:33,563 --> 00:59:36,781
+então recebem comissão mais o salário
+
+1216
+00:59:36,781 --> 00:59:38,203
+e a cada semana
+
+1217
+00:59:38,203 --> 00:59:41,052
+tem que entregar os recibos das vendas
+
+1218
+00:59:41,335 --> 00:59:44,726
+na primeira e terceira sexta do mês eles recebem
+
+1219
+00:59:44,726 --> 00:59:48,233
+mas é uma taxa base mais a comissão
+
+1220
+00:59:49,446 --> 00:59:51,101
+o resto dos empregados
+
+1221
+00:59:51,101 --> 00:59:52,098
+são isentos
+
+1222
+00:59:52,098 --> 00:59:54,941
+e no último dia de trabalho do mês
+
+1223
+00:59:54,941 --> 00:59:58,430
+eles recebem o salario normal
+
+1224
+00:59:58,430 --> 01:00:02,006
+Os empregados tem 3 formas de receber
+
+1225
+01:00:02,006 --> 01:00:06,744
+eles podem recolher o pagamento com o tesoureiro
+
+1226
+01:00:06,744 --> 01:00:09,636
+ou podemos enviar por correio
+
+1227
+01:00:09,636 --> 01:00:12,732
+ou depósito direto na conta deles
+
+1228
+01:00:13,846 --> 01:00:15,827
+esse aqui é complicado
+
+1229
+01:00:15,827 --> 01:00:17,243
+então eu peguei anotações
+
+1230
+01:00:17,243 --> 01:00:20,043
+alguns empregados pertencem a sindicados
+
+1231
+01:00:20,043 --> 01:00:23,883
+e o sindicato faz deduçoes no pagamento deles
+
+1232
+01:00:25,113 --> 01:00:28,898
+e eles podem algumas taxas de serviço
+
+1233
+01:00:28,898 --> 01:00:30,781
+de tempos em tempos
+
+1234
+01:00:31,433 --> 01:00:32,363
+de qualquer modo
+
+1235
+01:00:32,363 --> 01:00:34,941
+essas taxas são submetidas
+ao sistema de pagamento
+
+1236
+01:00:34,941 --> 01:00:36,824
+no final do período de pagamento
+
+1237
+01:00:36,824 --> 01:00:41,440
+e são deduzidas dos pagamentos do próximo mês
+
+1238
+01:00:42,406 --> 01:00:44,640
+então isso é um sistema web
+
+1239
+01:00:44,640 --> 01:00:46,996
+e durante o dia
+
+1240
+01:00:46,996 --> 01:00:50,172
+alguns funcionários irão fazer
+alteraços na base de dados
+
+1241
+01:00:50,172 --> 01:00:52,153
+e farão algo do tipo como
+
+1242
+01:00:52,153 --> 01:00:53,255
+adicionar empregados
+
+1243
+01:00:53,255 --> 01:00:56,246
+ou modificar empregados existentes
+
+1244
+01:00:56,246 --> 01:00:57,636
+e adicionar pagamentos
+
+1245
+01:00:57,636 --> 01:00:59,341
+e deletar empregados antigos
+
+1246
+01:00:59,341 --> 01:01:01,249
+e recibos de vendas
+
+1247
+01:01:01,249 --> 01:01:02,535
+e taxas de serviços
+
+1248
+01:01:02,535 --> 01:01:04,289
+e todo esse tipo de coisa
+
+1249
+01:01:04,289 --> 01:01:07,409
+queremos que seja um sistema em web 2.0
+
+1250
+01:01:07,409 --> 01:01:09,396
+com features Drag-and-drop
+
+1251
+01:01:09,396 --> 01:01:12,640
+e todo aquele négocio ajax
+
+1252
+01:01:13,113 --> 01:01:14,701
+ouvimos falar de ajax
+
+1253
+01:01:14,701 --> 01:01:16,836
+e achamos que é bem legal
+
+1254
+01:01:16,836 --> 01:01:19,575
+e achamos que irá nos dar um vantagem competitiva
+
+1255
+01:01:27,113 --> 01:01:31,440
+também achamos que deve possuir
+uma arquitetura voltada a serviço
+
+1256
+01:01:31,440 --> 01:01:33,200
+ouvimos falar sobre SOA
+
+1257
+01:01:33,200 --> 01:01:35,975
+e achamos que é a melhor escolha
+
+1258
+01:01:39,193 --> 01:01:40,116
+também ouvimos falar
+
+1259
+01:01:40,116 --> 01:01:43,329
+que existe um padrão de schemma de banco de dados
+
+1260
+01:01:43,329 --> 01:01:45,507
+e um protocolo de serviço
+
+1261
+01:01:45,507 --> 01:01:48,480
+que foi desenvolvido para sistema de pagamentos
+
+1262
+01:01:48,480 --> 01:01:50,664
+desenvolvido por ISO-SIPPA
+
+1263
+01:01:50,978 --> 01:01:53,421
+e achamos que é importante
+
+1264
+01:01:53,421 --> 01:01:56,824
+obedecer e ser compatível à ISO-SIPPA
+
+1265
+01:01:59,778 --> 01:02:02,830
+há.. e deixa te falar...
+
+1266
+01:02:02,830 --> 01:02:05,883
+precisamos disso pronto para mês que vem
+
+1267
+01:02:05,883 --> 01:02:08,209
+e ouvimos falar das práticas Agile
+
+1268
+01:02:08,209 --> 01:02:10,652
+que te fazem ir mais rápido
+
+1269
+01:02:10,652 --> 01:02:12,535
+então queremos que usem isso
+
+1270
+01:02:12,535 --> 01:02:14,196
+ok???
+
+1271
+01:02:16,295 --> 01:02:17,193
+meu deus
+
+1272
+01:02:17,193 --> 01:02:21,181
+pensei em enviar essas
+pessoas na primeira espaçonave
+
+1273
+01:02:22,160 --> 01:02:23,643
+ANÁLISE
+
+1274
+01:02:26,172 --> 01:02:28,689
+Ok...esquece aquela última parte
+
+1275
+01:02:28,689 --> 01:02:30,892
+vamos falar em outro episódio
+
+1276
+01:02:30,892 --> 01:02:32,547
+de como falar não
+
+1277
+01:02:32,547 --> 01:02:33,975
+de como fazer estimativas
+
+1278
+01:02:33,975 --> 01:02:37,243
+e o propósito real dos métodos Agile
+
+1279
+01:02:37,243 --> 01:02:38,295
+por enquanto
+
+1280
+01:02:38,295 --> 01:02:42,080
+vamos apenas analisar os
+requisitos significativos
+
+1281
+01:02:43,341 --> 01:02:44,689
+primeiramente
+
+1282
+01:02:44,689 --> 01:02:49,046
+vamos ignorar tudo aquilo de web 2.0
+
+1283
+01:02:49,046 --> 01:02:54,480
+AJAX, SOA, banco de dados
+
+1284
+01:02:54,480 --> 01:02:59,366
+padrões empresariais bobos tipo ISO-SIPPA
+
+1285
+01:03:00,024 --> 01:03:01,390
+vamos tratar tudo isso
+
+1286
+01:03:01,390 --> 01:03:04,738
+como coisas que podemos adiar tranquilamente
+
+1287
+01:03:04,738 --> 01:03:07,298
+será o objetivo de nossa arquitetura
+
+1288
+01:03:07,298 --> 01:03:10,055
+fazer todas essas coisas irrelevantes
+
+1289
+01:03:10,055 --> 01:03:12,295
+o que significa que será
+fácil de adicionar depois
+
+1290
+01:03:12,295 --> 01:03:14,627
+se necessário
+
+1291
+01:03:15,630 --> 01:03:18,313
+começamos claro, com os casos de uso
+
+1292
+01:03:18,313 --> 01:03:20,067
+o primeiro que iremos olhar
+
+1293
+01:03:20,067 --> 01:03:21,975
+é adicionar empregado
+
+1294
+01:03:21,975 --> 01:03:24,400
+aqui está em forma esquemática
+
+1295
+01:03:24,400 --> 01:03:28,030
+note que temos 3 variações
+
+1296
+01:03:28,030 --> 01:03:31,175
+uma para cada tipo de empregado
+
+1297
+01:03:31,170 --> 01:03:36,067
+note também que tem bastante
+dados associados com o caso de uso
+
+1298
+01:03:36,067 --> 01:03:39,526
+o ID do empregado, seu nome, endereço
+
+1299
+01:03:39,526 --> 01:03:42,246
+conta de banco, tipo de empregado
+
+1300
+01:03:42,246 --> 01:03:45,784
+e note que o tipo do empregado
+está encodado em letras
+
+1301
+01:03:45,784 --> 01:03:47,520
+HSC
+
+1302
+01:03:47,520 --> 01:03:50,480
+para hourly, salary e commissioned
+
+1303
+01:03:52,067 --> 01:03:53,784
+note que esse caso de uso
+
+1304
+01:03:53,784 --> 01:03:56,086
+não menciona web
+
+1305
+01:03:56,086 --> 01:03:57,470
+banco de dados
+
+1306
+01:03:57,470 --> 01:03:59,796
+arquitetura orientada a serviço
+
+1307
+01:03:59,790 --> 01:04:04,480
+ou até mesmo ISO-SIPPA
+
+1308
+01:04:05,766 --> 01:04:10,030
+o caso de uso parece ser
+agnostico a tudo isso
+
+1309
+01:04:10,030 --> 01:04:14,381
+de fato, se for ver de verdade
+
+1310
+01:04:14,381 --> 01:04:17,569
+aposto que pode imaginar que esse caso de uso
+
+1311
+01:04:17,569 --> 01:04:20,892
+pode ser aplicado em cartões-ponto
+
+1312
+01:04:20,892 --> 01:04:24,584
+ou até mesmo aplicação console
+
+1313
+01:04:26,344 --> 01:04:27,396
+o meu ponto é
+
+1314
+01:04:27,396 --> 01:04:31,495
+fazer os casos de uso
+o mais agnóstico possível
+
+1315
+01:04:31,495 --> 01:04:36,412
+sobre o mecanismo de entrega, frameworks, banco de dados
+
+1316
+01:04:36,412 --> 01:04:41,840
+padrões de body e tudo aquilo
+irrelevante para arquitetura
+
+1317
+01:04:41,840 --> 01:04:46,886
+separamos as coisas que
+importam das outras coisas
+
+1318
+01:04:48,080 --> 01:04:53,433
+este caso de uso se encaixa
+bem em uma modelagem OO
+
+1319
+01:04:53,433 --> 01:04:56,498
+os casos de uso veem em três variações
+
+1320
+01:04:56,498 --> 01:05:00,141
+é bem fácil de ver como
+podemos criar uma clase base
+
+1321
+01:05:00,141 --> 01:05:04,984
+que captura as partes genéricasN de todas as três variações
+
+1322
+01:05:04,984 --> 01:05:08,615
+e três derivadas que capturam as variações
+
+1323
+01:05:10,116 --> 01:05:13,027
+aqui está a modelagem
+para o primeiro caso de uso
+
+1324
+01:05:13,027 --> 01:05:16,910
+perceba que coloquei em
+uma classe chamada "transaction"
+
+1325
+01:05:16,910 --> 01:05:19,249
+a palavra transaction
+apenas significa interactor
+
+1326
+01:05:19,249 --> 01:05:20,836
+eu a uso como sinônimo
+
+1327
+01:05:20,836 --> 01:05:24,972
+essa é a modelagem para
+nosso primeiro interactor
+
+1328
+01:05:26,147 --> 01:05:27,052
+lembre-se que
+
+1329
+01:05:27,052 --> 01:05:30,283
+interactors se comunicam com entities
+
+1330
+01:05:30,283 --> 01:05:35,212
+entities representam
+regras ou objetos de negócio
+
+1331
+01:05:35,212 --> 01:05:40,067
+então que tipo de objetos de negócio
+devemos ter para essa aplicação
+
+1332
+01:05:40,067 --> 01:05:42,227
+bem.. aqui está uma proposta
+
+1333
+01:05:42,221 --> 01:05:43,581
+talvez devemos ter
+
+1334
+01:05:43,581 --> 01:05:45,544
+uma classe base Employee
+
+1335
+01:05:45,544 --> 01:05:47,027
+e três derivadas
+
+1336
+01:05:47,020 --> 01:05:51,323
+uma para cada dos três tipos de empregados
+
+1337
+01:05:51,323 --> 01:05:53,433
+legal não é?
+
+1338
+01:05:54,043 --> 01:05:56,504
+o próximo caso de uso que iremos ver é
+
+1339
+01:05:56,504 --> 01:05:58,110
+Alterar Empregado
+
+1340
+01:05:58,110 --> 01:06:00,756
+e uau é complicado não é?
+
+1341
+01:06:00,756 --> 01:06:03,187
+olhe tudo o que pode ser alterado!
+
+1342
+01:06:03,187 --> 01:06:07,083
+pode alterar o nome, endereço, sua conta
+
+1343
+01:06:07,083 --> 01:06:10,689
+seu tipo, onde mandar o seu pagamento
+
+1344
+01:06:10,689 --> 01:06:11,993
+seu sindica...
+
+1345
+01:06:11,993 --> 01:06:13,446
+peraí...
+
+1346
+01:06:13,446 --> 01:06:15,095
+eu disse tipo?!
+
+1347
+01:06:15,095 --> 01:06:18,904
+você pode alterar o tipo do empregado???
+
+1348
+01:06:18,904 --> 01:06:21,649
+é melhor voltarmos a ver aquela modelagem de novo
+
+1349
+01:06:23,187 --> 01:06:23,938
+é....
+
+1350
+01:06:23,938 --> 01:06:25,907
+isso não vai funcionar
+
+1351
+01:06:25,907 --> 01:06:30,504
+eles vão querer alterar empregados
+do tipo "hourly" para "salary"
+
+1352
+01:06:30,504 --> 01:06:34,153
+e empregados "salary" para "commissioned"
+
+1353
+01:06:34,153 --> 01:06:35,963
+na maioria das linguagens OO
+
+1354
+01:06:35,963 --> 01:06:40,695
+não é fácil alterar o tipo do
+objeto uma vez que o construiu
+
+1355
+01:06:40,695 --> 01:06:44,215
+então talvez precisamos olhar
+para uma abstração diferente
+
+1356
+01:06:45,796 --> 01:06:47,747
+ok... está melhor
+
+1357
+01:06:47,747 --> 01:06:50,953
+agora o empregado não tem três tipos
+
+1358
+01:06:50,953 --> 01:06:54,301
+agora ele possui a classificação de pagamento
+
+1359
+01:06:54,301 --> 01:06:56,338
+na qual existem 3 variações
+
+1360
+01:06:56,338 --> 01:06:59,058
+hourly, salary e commissioned
+
+1361
+01:06:59,058 --> 01:07:01,255
+isso nos dá um bom espaço para colocar
+
+1362
+01:07:01,255 --> 01:07:04,123
+os cartões-hora e recibos de vendas
+
+1363
+01:07:04,123 --> 01:07:08,750
+e também nos dá uma dica de como
+podemos fazer o método de pagamento
+
+1364
+01:07:08,750 --> 01:07:11,076
+e a afiliação de sindicato
+
+1365
+01:07:12,172 --> 01:07:16,344
+realmente confiamos que todos
+os empregados irão ser pagos
+
+1366
+01:07:16,344 --> 01:07:19,107
+toda a sexta feira por toda a eternidade?
+
+1367
+01:07:19,107 --> 01:07:23,895
+e que todos os comissionados
+serão pagos toda outra sexta também?
+
+1368
+01:07:23,895 --> 01:07:28,110
+ou pode ser que o acoplamento do
+ tipo de empregado
+
+1369
+01:07:28,110 --> 01:07:32,080
+e o pagamento do empregado pode mudar?
+
+1370
+01:07:32,787 --> 01:07:34,363
+de fato podem!
+
+1371
+01:07:34,363 --> 01:07:36,836
+então vamos completar o objeto entity
+
+1372
+01:07:36,836 --> 01:07:40,326
+com a mesma estratégia para o Payment Schedule
+
+1373
+01:07:42,030 --> 01:07:45,292
+note que foi considerações dos casos de uso
+
+1374
+01:07:45,292 --> 01:07:47,507
+que nos levou a raciocinar
+
+1375
+01:07:47,507 --> 01:07:49,883
+o que resultou nesta modelagem
+
+1376
+01:07:49,883 --> 01:07:52,018
+se não tivessemos considerado cuidadosamente
+
+1377
+01:07:52,018 --> 01:07:54,190
+o caso de uso de alterar empregado
+
+1378
+01:07:54,190 --> 01:07:57,581
+é possível que iríamos errar
+a classificação de pagamento
+
+1379
+01:07:57,581 --> 01:07:59,716
+e as abstrações de agendamento do pagamento
+
+1380
+01:07:59,716 --> 01:08:03,175
+nos levando a uma gambiarra mais tarde
+
+1381
+01:08:04,086 --> 01:08:05,433
+de fato
+
+1382
+01:08:05,938 --> 01:08:07,698
+análise de casos de uso antecipada
+
+1383
+01:08:07,698 --> 01:08:13,261
+parece ser essencial para entender
+o modelo de objetos de négocio
+
+1384
+01:08:14,436 --> 01:08:16,098
+Interactors e banco de dados
+
+1385
+01:08:18,332 --> 01:08:20,036
+agora podemos olhar mais perto
+
+1386
+01:08:20,036 --> 01:08:24,486
+os interactors que implementam
+o caso de uso do addEmployee
+
+1387
+01:08:24,486 --> 01:08:26,473
+a classe base interactor
+
+1388
+01:08:26,473 --> 01:08:28,196
+AddEmployeeTransaction
+
+1389
+01:08:28,196 --> 01:08:31,076
+Manipula o objeto Employee
+
+1390
+01:08:31,076 --> 01:08:35,243
+mas são as três derivadas de AddEmployeeTransaction
+
+1391
+01:08:35,243 --> 01:08:37,692
+que fornece os Schedules
+
+1392
+01:08:37,692 --> 01:08:40,258
+Isso parece bem apropriado
+
+1393
+01:08:40,258 --> 01:08:43,064
+não queremos que as entitites saibam
+
+1394
+01:08:43,064 --> 01:08:45,876
+que HourlyEmployee são pagos semanalmente
+
+1395
+01:08:45,876 --> 01:08:48,916
+ou Salary Employees são pagos mensalmente
+
+1396
+01:08:48,916 --> 01:08:51,673
+são os casos de uso que sabem disso
+
+1397
+01:08:53,083 --> 01:08:55,692
+Olhe onde esse banco de dados vive
+
+1398
+01:08:55,692 --> 01:08:59,686
+se pendura do lado da classe base interactor
+
+1399
+01:08:59,686 --> 01:09:01,483
+isso é muito bom
+
+1400
+01:09:01,483 --> 01:09:04,812
+nenhuma das entidadades sabem de nada
+
+1401
+01:09:04,812 --> 01:09:06,184
+sobre o banco de dados
+
+1402
+01:09:06,184 --> 01:09:08,953
+são os interactos que controlam o banco de dados
+
+1403
+01:09:08,953 --> 01:09:10,880
+e usa quando necessário
+
+1404
+01:09:10,880 --> 01:09:15,520
+é o interactor que sabe sobre transação de banco
+
+1405
+01:09:15,520 --> 01:09:20,615
+queries, conexões e tudo desse tipo
+
+1406
+01:09:21,950 --> 01:09:23,698
+a abstração subjacente
+
+1407
+01:09:25,950 --> 01:09:28,504
+se continuarmos essa análise do caso de uso
+
+1408
+01:09:28,504 --> 01:09:30,627
+como fiz no livro
+
+1409
+01:09:30,627 --> 01:09:36,104
+vamos começar a ver uma adorável
+abstração saindo dos detalhes
+
+1410
+01:09:36,104 --> 01:09:36,110
+de uma olhada nesse pseudo-código
+vamos começar a ver uma adorável
+abstração saindo dos detalhes
+
+1411
+01:09:36,110 --> 01:09:38,276
+de uma olhada nesse pseudo-código
+
+1412
+01:09:38,276 --> 01:09:41,809
+esse pseudo-código nos diz a verdade
+
+1413
+01:09:42,295 --> 01:09:44,276
+para cada Employee
+
+1414
+01:09:44,276 --> 01:09:47,520
+se hoje é o dia que ele deveria ser pago
+
+1415
+01:09:47,520 --> 01:09:49,661
+então calcule seu pagamento
+
+1416
+01:09:49,661 --> 01:09:51,532
+e envie o pagamento
+
+1417
+01:09:51,532 --> 01:09:53,470
+isso é a verdade fundamental
+
+1418
+01:09:53,470 --> 01:09:56,689
+e note que está desprovido de qualquer detalhe
+
+1419
+01:09:56,689 --> 01:09:58,726
+não tem nenhuma dependencia estranha
+
+1420
+01:09:58,726 --> 01:10:00,701
+nenhuma menção da web
+
+1421
+01:10:00,701 --> 01:10:02,603
+nenhuma menção de frameworks
+
+1422
+01:10:02,603 --> 01:10:05,963
+nenhuma menção de Hourly, Commissioned, salary
+
+1423
+01:10:05,963 --> 01:10:08,184
+weekly, byWeekly, monthly
+
+1424
+01:10:08,184 --> 01:10:10,830
+tudo isso está fora
+
+1425
+01:10:10,830 --> 01:10:13,341
+tem algo bonito sobre o fato
+
+1426
+01:10:13,341 --> 01:10:15,587
+que este código fica de pé
+
+1427
+01:10:15,587 --> 01:10:16,732
+independente
+
+1428
+01:10:16,732 --> 01:10:19,310
+e diz a verdade absoluta
+
+1429
+01:10:20,855 --> 01:10:21,944
+melhor ainda
+
+1430
+01:10:21,944 --> 01:10:24,049
+este código é independente
+
+1431
+01:10:24,049 --> 01:10:25,446
+eu posso pegar ess código
+
+1432
+01:10:25,446 --> 01:10:29,033
+e posso por em uma dll o ou jar
+
+1433
+01:10:29,033 --> 01:10:32,707
+e posso entregar independente do resto do sistema
+
+1434
+01:10:32,707 --> 01:10:34,516
+tem algo belo sobre o fato
+
+1435
+01:10:34,516 --> 01:10:39,150
+que este código é independente E verdadeiro
+
+1436
+01:10:39,150 --> 01:10:42,209
+é a abstração central do sistema
+
+1437
+01:10:42,209 --> 01:10:44,264
+a verdade completa
+
+1438
+01:10:44,264 --> 01:10:46,633
+e está em um único lugar
+
+1439
+01:10:46,633 --> 01:10:48,960
+sem qualquer detalhe obscuro
+
+1440
+01:10:48,960 --> 01:10:51,033
+ou dependencias incomodas
+
+1441
+01:10:52,824 --> 01:10:54,350
+Conclusão
+
+1442
+01:10:56,664 --> 01:11:00,215
+esta foi uma viagem rápida para este estudo de caso
+
+1443
+01:11:00,215 --> 01:11:02,473
+se quer ver mais detalhes
+
+1444
+01:11:02,473 --> 01:11:04,123
+de uma olhada neste livro
+
+1445
+01:11:04,123 --> 01:11:05,938
+ou se for um cara de .Net
+
+1446
+01:11:05,938 --> 01:11:08,707
+você pode dar uma olhada na edição em C#
+
+1447
+01:11:10,098 --> 01:11:11,600
+note que no final
+
+1448
+01:11:11,600 --> 01:11:14,584
+iremos acabar com um conjunto de interactors
+
+1449
+01:11:14,584 --> 01:11:18,264
+que manipulam um conjunto de simpes entities
+
+1450
+01:11:18,264 --> 01:11:23,544
+e controla persistencia através
+de uma abstração de banco de dados
+
+1451
+01:11:24,086 --> 01:11:26,344
+em lugar nenhum, mencionamos
+
+1452
+01:11:26,344 --> 01:11:32,153
+SOA, web, schema de bd, padrões
+
+1453
+01:11:32,153 --> 01:11:36,209
+ou qualquer dessas coisas irrelevantes de arquitetura
+
+1454
+01:11:36,209 --> 01:11:38,172
+a arquitetura do sistema
+
+1455
+01:11:38,172 --> 01:11:39,741
+é sobre pagamento
+
+1456
+01:11:39,741 --> 01:11:42,529
+não sobre essas outras distrações
+
+1457
+01:11:42,529 --> 01:11:43,950
+e ainda assim
+
+1458
+01:11:43,950 --> 01:11:46,024
+podemos pegar essa arquitetura
+
+1459
+01:11:46,024 --> 01:11:49,655
+cobrir com um lençol de web 2.0
+
+1460
+01:11:49,655 --> 01:11:51,581
+ligar com MySQL
+
+1461
+01:11:51,581 --> 01:11:55,193
+juntar tudo com uma arquitetura SOA
+
+1462
+01:11:55,193 --> 01:11:58,400
+e não mudar nada do que fizemos aqui
+
+1463
+01:12:00,006 --> 01:12:00,978
+e note
+
+1464
+01:12:00,978 --> 01:12:07,052
+nem mencionamos Struts ou
+Spring ou Rails ou Hibernate
+
+1465
+01:12:07,052 --> 01:12:09,618
+ou nenhum desses frameworks
+
+1466
+01:12:09,618 --> 01:12:12,295
+se precisar podemos sempre adicioná-los depois
+
+1467
+01:12:13,803 --> 01:12:15,126
+em resumo
+
+1468
+01:12:15,126 --> 01:12:18,061
+Nós não fomos desconcertados por Frameworks
+
+1469
+01:12:18,061 --> 01:12:19,981
+sobrecarregados por padrões
+
+1470
+01:12:19,981 --> 01:12:22,880
+cercado por protocolos de comunicação
+
+1471
+01:12:22,880 --> 01:12:24,873
+detidos por bancos de dados
+
+1472
+01:12:24,873 --> 01:12:27,360
+ou manipulados por servidores da Web
+
+1473
+01:12:27,360 --> 01:12:32,516
+nos mantivemos livres de todas
+essas influências complicadas.
+
+1474
+01:12:33,372 --> 01:12:37,076
+e isso é o que é arquitetura
+
+1475
+01:12:41,169 --> 01:12:43,156
+pura besteira
+
+1476
+01:12:43,396 --> 01:12:46,080
+completo disparate
+
+1477
+01:12:46,080 --> 01:12:48,406
+(completo idiota)
+
+1478
+01:12:52,480 --> 01:12:56,043
+Conclusão
+
+1479
+01:12:56,923 --> 01:13:03,230
+e assim acaba mais um episódio de clean code
+
+1480
+01:13:03,230 --> 01:13:04,541
+neste episódio aprendemos
+
+1481
+01:13:04,541 --> 01:13:06,793
+que arquitetura não é baseada
+
+1482
+01:13:06,793 --> 01:13:08,670
+em framewors e ferramentas
+
+1483
+01:13:08,670 --> 01:13:10,363
+pelo contrário
+
+1484
+01:13:10,363 --> 01:13:11,396
+arquitetura boa
+
+1485
+01:13:11,390 --> 01:13:15,729
+te permite adiar essas decisões
+
+1486
+01:13:15,729 --> 01:13:17,686
+por muito tempo
+
+1487
+01:13:17,686 --> 01:13:19,907
+de fato, uma boa arquitetura
+
+1488
+01:13:19,907 --> 01:13:24,412
+maximiza o número de decisões não tomadas
+
+1489
+01:13:25,587 --> 01:13:26,535
+aprendemos
+
+1490
+01:13:26,535 --> 01:13:27,704
+que uma boa arquitetura
+
+1491
+01:13:27,704 --> 01:13:30,196
+não depende do mecanismo de entrega
+
+1492
+01:13:30,190 --> 01:13:34,640
+que boa arquitetura esconde o mecanismo de entrega
+
+1493
+01:13:35,150 --> 01:13:36,184
+por exemplo
+
+1494
+01:13:36,184 --> 01:13:38,443
+se ver a forma de um sistema
+
+1495
+01:13:38,443 --> 01:13:41,310
+você não deveria ser capaz
+de dizer se é um sistema web
+
+1496
+01:13:42,898 --> 01:13:43,600
+aprendemos
+
+1497
+01:13:43,600 --> 01:13:44,812
+que uma boa arquitetura
+
+1498
+01:13:44,812 --> 01:13:48,849
+permite o negócio separar os custos dos casos de uso
+
+1499
+01:13:48,849 --> 01:13:52,307
+dos custos de UI e outros componentes do sistema
+
+1500
+01:13:52,307 --> 01:13:54,892
+permindo que o negócio compare este custo
+
+1501
+01:13:54,892 --> 01:13:57,366
+com os valores de negócio correspondentes
+
+1502
+01:13:58,892 --> 01:13:59,907
+aprendemos
+
+1503
+01:13:59,907 --> 01:14:01,870
+que os casos de uso do sistema
+
+1504
+01:14:01,870 --> 01:14:03,920
+devem ser as abstrações principais
+
+1505
+01:14:03,920 --> 01:14:05,956
+e os princípios de organização central
+
+1506
+01:14:05,956 --> 01:14:07,680
+da arquitetura do sistema
+
+1507
+01:14:07,680 --> 01:14:09,612
+que quando olhe para esta arquitetura
+
+1508
+01:14:09,612 --> 01:14:12,024
+você deve ver a intenção do sistema
+
+1509
+01:14:12,024 --> 01:14:14,295
+e não a interface do usuário
+
+1510
+01:14:15,624 --> 01:14:20,720
+aprendemos como usar as
+partiçoes Interactors,Entity e Boundary
+
+1511
+01:14:20,720 --> 01:14:24,430
+para criar arquitetura orientada a casos de uso
+
+1512
+01:14:24,430 --> 01:14:25,360
+aprendemos
+
+1513
+01:14:25,360 --> 01:14:28,732
+que interactors encapsulam casos de uso
+
+1514
+01:14:28,732 --> 01:14:31,661
+e entities encapsulam objetos de negócio
+
+1515
+01:14:31,661 --> 01:14:35,009
+e boundaries nos isola da interface do usuário
+
+1516
+01:14:35,009 --> 01:14:36,529
+saúde
+
+1517
+01:14:41,304 --> 01:14:44,523
+aprendemos que para atender
+os detalhes desse isolamento
+
+1518
+01:14:44,523 --> 01:14:47,390
+podemos criar uma boundary de interfaces
+
+1519
+01:14:47,390 --> 01:14:51,360
+que separa a aplicação do lado de entrega
+
+1520
+01:14:51,360 --> 01:14:56,775
+aprendemos também que Mvocê forma uma
+boa estrutura para o lado da entrega
+
+1521
+01:14:56,775 --> 01:14:59,427
+e que um simples conjunto de estrutura de dados
+
+1522
+01:14:59,420 --> 01:15:00,369
+podem ser usados
+
+1523
+01:15:00,369 --> 01:15:02,855
+para se comunicar através da boundary
+
+1524
+01:15:03,618 --> 01:15:04,578
+aprendemos
+
+1525
+01:15:04,578 --> 01:15:08,615
+que banco de dados deve estar
+separado de entity e interactor
+
+1526
+01:15:08,615 --> 01:15:10,929
+usando a técnica de camadas
+
+1527
+01:15:10,929 --> 01:15:13,636
+que estudamos no episódio 5
+
+1528
+01:15:13,636 --> 01:15:14,775
+também discutimos
+
+1529
+01:15:14,775 --> 01:15:17,421
+que são os interactors que são responsáveis
+
+1530
+01:15:17,421 --> 01:15:20,627
+por orquestrar acesso ao banco
+
+1531
+01:15:20,627 --> 01:15:21,624
+finalmente
+
+1532
+01:15:21,624 --> 01:15:23,858
+examinamos uma simples caso de estudo
+
+1533
+01:15:23,858 --> 01:15:26,172
+para solidificar todas essas idéias
+
+1534
+01:15:27,913 --> 01:15:31,963
+mas tem mais 2 tópicos que deveríamos falar sobre
+
+1535
+01:15:32,984 --> 01:15:34,676
+Grande Bola de Lama
+
+1536
+01:15:36,996 --> 01:15:40,190
+você construirua uma casa em uma poça?
+
+1537
+01:15:40,190 --> 01:15:43,273
+adiando decisões críticas de fundação
+
+1538
+01:15:43,273 --> 01:15:44,849
+irá te levar a criar
+
+1539
+01:15:44,849 --> 01:15:47,230
+uma grande bola de lama
+
+1540
+01:15:47,230 --> 01:15:50,406
+você não estabeleceu a fundação apropriadamente
+
+1541
+01:15:50,406 --> 01:15:58,307
+e seu sistema inteiro irá
+residir em uma poça instável
+
+1542
+01:15:58,307 --> 01:15:59,920
+irá inevitavelmente colapçar
+
+1543
+01:15:59,920 --> 01:16:04,196
+te fazendo manter um monte de destroços
+
+1544
+01:16:04,196 --> 01:16:06,990
+boa sorte para você
+
+1545
+01:16:07,901 --> 01:16:09,563
+eu ouço esse argumento um monte
+
+1546
+01:16:09,563 --> 01:16:11,156
+e francamente
+
+1547
+01:16:11,156 --> 01:16:12,984
+é um absurdo
+
+1548
+01:16:12,984 --> 01:16:15,298
+frameworks não são fundações
+
+1549
+01:16:15,298 --> 01:16:17,513
+banco de dados não são fundações
+
+1550
+01:16:17,513 --> 01:16:19,021
+são ferramentas!
+
+1551
+01:16:19,021 --> 01:16:21,870
+não tem nada de fundação sobre eles!
+
+1552
+01:16:22,806 --> 01:16:24,713
+a verdadeira fundação de um sistema
+
+1553
+01:16:24,713 --> 01:16:26,332
+está nos seus casos de uso
+
+1554
+01:16:26,898 --> 01:16:28,338
+adie essa fundação
+
+1555
+01:16:28,338 --> 01:16:29,483
+você se pergunta
+
+1556
+01:16:29,483 --> 01:16:31,840
+o que esse sistema deve fazer?
+
+1557
+01:16:31,840 --> 01:16:34,916
+mas você se pergunta de
+uma forma agnostica a entrega
+
+1558
+01:16:35,329 --> 01:16:41,255
+então você cria as abstrações que
+suportam esses casos de usos agnósticos
+
+1559
+01:16:42,861 --> 01:16:46,326
+isto não leva a uma grande bola de lama
+
+1560
+01:16:46,326 --> 01:16:47,698
+pelo contrário
+
+1561
+01:16:47,698 --> 01:16:49,113
+leva a um sistema
+
+1562
+01:16:49,113 --> 01:16:52,252
+que sua estrutura é baseada na sua intenção
+
+1563
+01:16:52,252 --> 01:16:56,350
+e não em algum framework de sonho molhado
+
+1564
+01:16:57,655 --> 01:16:59,341
+besteira!
+
+1565
+01:16:59,341 --> 01:17:01,052
+eu sou o arquiteto
+
+1566
+01:17:01,052 --> 01:17:05,107
+você não faz idéia o que
+eu faço ou quem eu sou
+
+1567
+01:17:06,867 --> 01:17:08,467
+quem é o arquiteto?
+
+1568
+01:17:12,732 --> 01:17:16,498
+muitas empresas estabelecem um
+papel técnico de nível elevado
+
+1569
+01:17:16,498 --> 01:17:19,353
+que eles chamam de arquiteto
+
+1570
+01:17:20,326 --> 01:17:25,095
+algumas vezes esse papel é mais
+político e administrativo do que técnico
+
+1571
+01:17:25,095 --> 01:17:27,366
+frequentemente o trabalho de um arquiteto
+
+1572
+01:17:27,366 --> 01:17:30,289
+é prover suporte de vendas de alto nível
+
+1573
+01:17:30,289 --> 01:17:33,483
+para defender o trabalho e prazos dos gerentes
+
+1574
+01:17:33,483 --> 01:17:37,046
+e decisão de aquisição de frameworks
+
+1575
+01:17:38,467 --> 01:17:41,120
+apesar dessas funções serem necessárias
+
+1576
+01:17:41,120 --> 01:17:44,092
+tem muito pouco de arquitetura em seu ambito
+
+1577
+01:17:45,550 --> 01:17:49,476
+outras empresas irão promover programadores experientes
+
+1578
+01:17:49,476 --> 01:17:52,104
+para o status de "Arquiteto"
+
+1579
+01:17:52,104 --> 01:17:54,701
+eles podem até esperar que
+esse arquitetos não programem
+
+1580
+01:17:54,701 --> 01:17:57,138
+geralmente eles não querem que programem
+
+1581
+01:17:57,138 --> 01:17:57,870
+ao invés disso
+
+1582
+01:17:57,870 --> 01:18:01,120
+o papel é uma espécie de líder técnico
+
+1583
+01:18:01,120 --> 01:18:05,704
+alguem que irá dar forma para
+interfaces e modelagens de alto nível
+
+1584
+01:18:05,704 --> 01:18:10,153
+talvez até irão mais longe para
+fazer alguns code reviews
+
+1585
+01:18:11,753 --> 01:18:14,806
+ambas essas definiçoes carregam a suposição
+
+1586
+01:18:14,806 --> 01:18:16,849
+que arquitetos não programam
+
+1587
+01:18:16,849 --> 01:18:17,987
+que de alguma forma
+
+1588
+01:18:17,980 --> 01:18:20,886
+programar é algo de baixo nível
+
+1589
+01:18:20,886 --> 01:18:24,750
+para alguém com o calibre de Arquiteto
+
+1590
+01:18:26,326 --> 01:18:27,932
+bem isso é bobagem
+
+1591
+01:18:27,932 --> 01:18:29,544
+arquitetos que não programam
+
+1592
+01:18:29,544 --> 01:18:31,507
+se tornam irrelevantes rapidamente
+
+1593
+01:18:31,507 --> 01:18:34,036
+arquitetos que fazem designs de alto nivel
+
+1594
+01:18:34,036 --> 01:18:35,556
+e nunca os programam
+
+1595
+01:18:35,556 --> 01:18:39,095
+nunca se deita na cama 
+que fazem para os devs
+
+1596
+01:18:40,566 --> 01:18:42,603
+se você é um arquiteto
+
+1597
+01:18:42,600 --> 01:18:44,910
+e quer ser efetivo neste papel
+
+1598
+01:18:47,138 --> 01:18:49,606
+então você escreve código!
+
+1599
+01:18:49,606 --> 01:18:52,381
+você deve trabalhar bem ao lado dos programadores
+
+1600
+01:18:52,381 --> 01:18:55,323
+que está na cama que você fez para eles
+
+1601
+01:18:55,323 --> 01:18:56,658
+programe em dupla com eles
+
+1602
+01:18:56,658 --> 01:18:59,193
+veja como é a vida deles
+
+1603
+01:18:59,193 --> 01:19:02,707
+lute junto com a tropa na trincheira
+
+1604
+01:19:02,707 --> 01:19:07,206
+para que veja quais são os problemas reais da arquitetura
+
+1605
+01:19:08,221 --> 01:19:10,849
+você não precisa programar 100% to tempo
+
+1606
+01:19:10,849 --> 01:19:13,870
+não precisa nem programar 50% do tempo
+
+1607
+01:19:13,870 --> 01:19:16,621
+mas precisa programar algumas vezes
+
+1608
+01:19:16,621 --> 01:19:18,055
+e quando o fizer
+
+1609
+01:19:18,055 --> 01:19:20,123
+deve fazer bem
+
+1610
+01:19:21,101 --> 01:19:22,806
+é isso aí
+
+1611
+01:19:26,498 --> 01:19:29,526
+espero que tenham gostado
+
+1612
+01:19:29,526 --> 01:19:31,993
+mas cara temos um monte de
+coisas para falar ainda
+
+1613
+01:19:31,993 --> 01:19:38,436
+tem todos os design principles
+e design patterns e métodos agile
+
+1614
+01:19:38,436 --> 01:19:42,713
+você não vai querer perder o próximo episódio de clean code
+
+1615
+01:19:42,713 --> 01:19:47,636
+episódio 8 : os princípios SOLID - parte I
+
+1616
+01:19:47,636 --> 01:20:00,289
+Legendado por Andre Castilho Filho
+
