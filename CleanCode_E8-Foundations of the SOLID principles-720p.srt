@@ -1,0 +1,2405 @@
+﻿1
+00:00:06,118 --> 00:00:10,286
+OI! Sou o tio Bob
+e isto é código limpo!
+
+2
+00:00:43,882 --> 00:00:47,085
+Segmento 1: Visão geral
+
+3
+00:00:49,988 --> 00:00:53,490
+Bem-vindo ao episódio 8 do Código Limpo
+
+4
+00:00:53,590 --> 00:00:57,079
+O primeiro de uma série de episódios sobre os
+princípios do SOLID
+
+5
+00:00:57,179 --> 00:00:58,722
+entra, entra.
+
+6
+00:01:01,663 --> 00:01:06,908
+No episódio 7 discutimos casos de uso,
+arquitetura e design de alto nível.
+
+7
+00:01:07,308 --> 00:01:11,908
+Muitos dos princípios do SOLID
+estavam escondidos naquele episódio:
+
+8
+00:01:12,008 --> 00:01:15,309
+Nós usamos eles, mas não demos os nomes
+
+9
+00:01:15,759 --> 00:01:18,909
+Naquele episódio nós aprendemos que arquitetura
+
+10
+00:01:19,009 --> 00:01:23,010
+é a forma que um sistem adota
+para atender casos de uso .
+
+11
+00:01:23,110 --> 00:01:26,260
+Aprendemos o que casos de uso são e não são
+
+12
+00:01:26,360 --> 00:01:31,411
+e aprendemos que eles devem ser visíveis
+nos níveis mais altos do sistema
+
+13
+00:01:32,361 --> 00:01:37,711
+Aprendemos que MVC pode ser uma excelente
+arquitetura para interfaces do usuário.
+
+14
+00:01:37,961 --> 00:01:41,362
+Mas não é uma boa arquitetura para uma aplicação.
+
+15
+00:01:41,462 --> 00:01:45,012
+e não deveria existir nos
+níveis mais altos do sistema
+
+16
+00:01:45,969 --> 00:01:50,521
+Aprendemos que interfaces do usuário,
+banco de dados e frameworks
+
+17
+00:01:50,621 --> 00:01:56,298
+são detalhes para ser escondidos,eles não são
+as abstrações centrais de nossa arquitetura
+
+18
+00:01:56,398 --> 00:02:00,733
+devemos pensar neles como plugins para a aplicação
+
+19
+00:02:00,833 --> 00:02:04,059
+plugins que podem ser rapidamente e facilmente alterados.
+
+20
+00:02:05,051 --> 00:02:12,462
+Aprendemos que podemos atingir este objetivo, criando escopos
+que separam nossa aplicação de detalhes externos
+
+21
+00:02:12,562 --> 00:02:16,313
+como o banco de dados,  UI e frameworks
+
+22
+00:02:16,413 --> 00:02:21,040
+e então nós gerenciamos as dependências do
+código fonte para atravessar esses escopos.
+
+23
+00:02:21,140 --> 00:02:26,583
+para que todos atravessem em uma única direção,
+apontando para a aplicação.
+
+24
+00:02:27,867 --> 00:02:33,469
+em resumo: aprendemos que detalhes
+devem depender de políticas de alto nível.
+
+25
+00:02:33,569 --> 00:02:36,912
+políticas de alto nível, nunca
+devem depender de detalhes.
+
+26
+00:02:37,012 --> 00:02:42,630
+essa afirmação é um dos princípios do SOLID.
+O princípio de Inversão de dependência
+
+27
+00:02:42,730 --> 00:02:46,015
+Que devemos aprender em um próximo episódio.
+
+28
+00:02:46,248 --> 00:02:50,625
+Finalmente, aprendemos que arquiteturas de susesso nos permite
+
+29
+00:02:50,725 --> 00:02:56,985
+a postergar decisões sobre UI, banco de dados e frameworks
+
+30
+00:02:57,085 --> 00:03:03,346
+Uma boa arquitetura, maximiza o número de decisões não tomadas.
+
+31
+00:03:04,280 --> 00:03:08,831
+Neste episódio iremos introduzir as
+fundações para os princípios do  SOLID
+
+32
+00:03:08,931 --> 00:03:14,958
+estudando o velho problema do código podre
+que exploramos no Episódio 1
+
+33
+00:03:15,058 --> 00:03:19,335
+mas dessa vez iremos fazer com mais detalhe.
+
+34
+00:03:20,794 --> 00:03:27,913
+Vamos falar do porquê o código apodrece,
+a forma de aporecimento e o que leva essa podridão.
+
+35
+00:03:28,013 --> 00:03:36,374
+discutiremos os sintomas, e o custo dessa podridão
+para o projeto, e a empresa como um todo.
+
+36
+00:03:36,782 --> 00:03:42,326
+Falaremos sobre o que é design de software
+e as melhores formas de representá-lo
+
+37
+00:03:42,426 --> 00:03:50,612
+Discutiremos os papéis que UML e código-fonte
+desempenham em design de software
+
+38
+00:03:51,546 --> 00:04:00,299
+Identificaremos um conjunto de "design smells", sintomas de
+mal design que todos os devs deveriam saber
+
+39
+00:04:01,057 --> 00:04:05,434
+Iremos mergulhar na história da Orientação a Objetos
+
+40
+00:04:05,534 --> 00:04:10,744
+Criaremos uma definição
+inequívoca do que significa OO
+
+41
+00:04:10,844 --> 00:04:16,579
+e vamos mostrar como OO se trata realmente
+de gerenciamento de dependências.
+
+42
+00:04:17,571 --> 00:04:20,372
+Finalmente iremos estudar gerenciamento de dependência
+
+43
+00:04:20,472 --> 00:04:25,566
+E veremos como o SOLID nos ajuda a
+manter todas as dependências do código
+
+44
+00:04:25,666 --> 00:04:28,075
+dentro do sistema sob controle.
+
+45
+00:04:31,751 --> 00:04:40,096
+então, apertem os cintos senhoras e senhores, porque
+estamos prestes a bater nos portões dos princípios do SOLID!
+
+46
+00:04:43,947 --> 00:04:48,555
+Segmento 2: Relatividade especial
+
+47
+00:04:48,655 --> 00:04:54,436
+em 1905 Einstein mostrou que o navio de relatividade de Galileo
+
+48
+00:04:54,536 --> 00:04:58,587
+poderia seguramente velejar nas ondas eletromagneticas de Maxwell
+
+49
+00:04:58,687 --> 00:05:04,468
+Se assumirmos que a velocidade da luz é
+constante para todos os quadros de referencias
+
+50
+00:05:04,814 --> 00:05:08,446
+mas o que isso quer dizer ?
+
+51
+00:05:09,181 --> 00:05:15,192
+significa que não importa o quão rápido
+você está indo em relação a fonte da onda de luz
+
+52
+00:05:15,292 --> 00:05:26,305
+você  medirá a velocidade daquela onda de luz
+relativo a VOCÊ, a 299.792.458 metros por segundo.
+
+53
+00:05:26,781 --> 00:05:32,965
+Digamos que você tenha um dispositivo que possa medir
+A velocidade de um feixe de luz à medida que passa por você.
+
+54
+00:05:33,065 --> 00:05:39,019
+
+Vamos dizer que você também tem uma lanterna.
+Pegue a lanterna, aponte para o seu dispositivo
+
+55
+00:05:39,119 --> 00:05:49,360
+e medirá a velocidade dessa luz em
+299.792.458 metros por segundo.
+
+56
+00:05:50,013 --> 00:05:58,711
+Agora entre em alguns trilhos de trem, fique na
+frente de um trem enquanto ele está a 100 metros por segundo.
+
+57
+00:05:58,811 --> 00:06:04,392
+Use o seu dispositivo para medir a velocidade
+da luz de seu farol enquanto se aproxima de você
+
+58
+00:06:04,492 --> 00:06:14,296
+Seu dispositivo irá ler 299,792,458 metros por segundo.
+
+59
+00:06:14,698 --> 00:06:20,530
+Agora salte para fora do caminho enquanto
+o trem passa e volte para os trilhos.
+
+60
+00:06:20,630 --> 00:06:27,217
+e meça a velocidade da luz traseira enquanto o
+trem foge de voce a 100 metros por segundo
+
+61
+00:06:27,317 --> 00:06:36,970
+e seu dispositivo irá ler 299,792,458 metros por segundo.
+
+62
+00:06:37,624 --> 00:06:45,919
+Você pode repetir esse experimento quantas vezes quiser.
+Você pode fazer isso em um carro,
+você pode fazê-lo em um avião a jato ou um foguete.
+
+63
+00:06:46,019 --> 00:06:51,650
+Pode usar a terra rodando em volta do sol ou o sol atravessando a galáxia.
+
+64
+00:06:51,750 --> 00:06:57,382
+não importa: todo feixo de luz que meça, independente
+do quão rápido a origem dele está se movendo
+
+65
+00:06:57,482 --> 00:07:08,794
+vai mover em relação a você à 299.792.458 m/s
+
+66
+00:07:09,397 --> 00:07:17,542
+e qualquer outro observador que medir esses raios de luz,
+independende de quão rápido estão se movendo em relaçao à você
+
+67
+00:07:17,642 --> 00:07:28,954
+irão medir  eles movendo a  299,792,458 m/s em relação a eles.
+
+68
+00:07:29,256 --> 00:07:40,769
+quando um raio de luz passa por você, ele está a
+299,792,458 m/s,  não importa o que aconteça
+
+69
+00:07:41,523 --> 00:07:44,389
+Agora imagine que eu tenho um relógio.
+
+70
+00:07:44,489 --> 00:07:48,511
+Este relógio é construído de um tubo,
+com espelhos em cada extremidade.
+
+71
+00:07:48,662 --> 00:07:52,634
+Há um raio de luz saltando para frente
+e para trás nos dois espelhos.
+
+72
+00:07:52,734 --> 00:07:56,957
+O relógio faz tique, toda vez que
+o raio de luz atinge um dos espelhos.
+
+73
+00:07:57,057 --> 00:08:03,946
+Se o tubo tiver 12 polegadas de altura,
+o relógio faz tique uma vez por nanosegundo
+
+74
+00:08:06,258 --> 00:08:09,727
+Imagine que eu e você possua esse relógio.
+
+75
+00:08:09,827 --> 00:08:16,313
+Voce está em uma nave espacial e eu em outra.
+Ambos movendo rápido  e você está vindo na minha direção
+
+76
+00:08:17,570 --> 00:08:20,939
+Do meu ponto de vista, estou parado.
+
+77
+00:08:21,140 --> 00:08:26,770
+Eu olho para meu relógio e está à 1
+tique por nanosegundo, como de costume.
+
+78
+00:08:27,122 --> 00:08:31,697
+Mas o seu relógio....Seu relógio está se movendo em minha direção.
+
+79
+00:08:31,798 --> 00:08:35,669
+O feixe de luz deve se mover em um
+ângulo para acertar os dois espelhos.
+
+80
+00:08:35,769 --> 00:08:39,138
+Isso significa que o raio de luz está percorrendo uma distância maior.
+
+81
+00:08:39,236 --> 00:08:43,261
+então seu relógio está mais lento que o meu
+
+82
+00:08:43,814 --> 00:08:46,277
+Você não ve nada disso
+
+83
+00:08:46,377 --> 00:08:49,796
+da sua perspectiva, vc está
+parado e eu estou movendo
+
+84
+00:08:49,896 --> 00:08:54,422
+Vc olha para seu relogio e vê a luz
+pulando uma vez por nanosegundo
+
+85
+00:08:54,522 --> 00:08:59,701
+Mas quando olha para meurelogio,
+vc ve a luz em vigue-zague
+
+86
+00:08:59,801 --> 00:09:03,270
+levando mais de um nanosegundo por tic
+
+87
+00:09:03,823 --> 00:09:10,912
+do meu ponto de vista, seu relogio, e
+portanto seu tempo, está mais devagar
+
+88
+00:09:11,163 --> 00:09:15,537
+do seu ponto de vista, meu relogio
+(e meu tempo) estão mais lentos
+
+89
+00:09:16,392 --> 00:09:18,403
+o quão devagar?
+
+90
+00:09:18,503 --> 00:09:22,023
+Bem, aplicando o teorema de pitágoras
+
+91
+00:09:22,123 --> 00:09:28,609
+é facil demonstrar que eu verei seu
+tempo mais devagar por um fator de
+
+92
+00:09:28,709 --> 00:09:34,139
+a raiz quadrada de 1 menos sua velocidade ao
+quadrado dividido pela velocidade da luz ao quadrado
+
+93
+00:09:34,239 --> 00:09:37,658
+esse é um fator chamado de tau.
+
+94
+00:09:39,217 --> 00:09:44,998
+enquanto voa em cima, eu seguro
+uma regua paralela a sua trajetoria
+
+95
+00:09:45,098 --> 00:09:50,327
+eu conto o numero de ticks que ocorrem no
+meu relogio quando o nariz do seu navio
+
+96
+00:09:50,427 --> 00:09:53,143
+passa de uma ponta da minha regua para outra
+
+97
+00:09:53,243 --> 00:09:56,511
+vc faz o mesmo, contando os ticks do seu relógio
+
+98
+00:09:56,611 --> 00:09:59,477
+mas vc conta menos ticks do que eu
+
+99
+00:09:59,577 --> 00:10:06,415
+e portanto vc acredita que minha
+regua é mais curta, por um fator de tau
+
+100
+00:10:07,521 --> 00:10:11,744
+Quando passamos um pelo outro, nossas aletas estabilizadoras traseiras
+
+101
+00:10:11,844 --> 00:10:17,476
+esbarram umas nas outras sempre dando-nos
+um leve empurrão na direção perpendicular.
+
+102
+00:10:18,079 --> 00:10:26,877
+O momentum deve ser conservado, por isso, quando olho para
+o seu navio, devo medir sua velocidade perpendicular igual à minha.
+
+103
+00:10:27,279 --> 00:10:31,452
+Mas desde que percebi que seu
+tempo está correndo devagar,
+
+104
+00:10:31,552 --> 00:10:37,535
+Eu vejo que sua velocidade perpendicular
+é lenta  demais, por um fator de tau.
+
+105
+00:10:37,635 --> 00:10:44,725
+A única conclusão a que posso chegar é que
+sua massa aumentou por um fator idêntico.
+
+106
+00:10:45,429 --> 00:10:47,289
+Notável, não ?
+
+107
+00:10:47,489 --> 00:10:54,227
+Todos esses efeitos contra-intuitivos, simplesmente assumindo que
+a velocidade da luz é constante para todos os quadros de referência.
+
+108
+00:10:54,327 --> 00:10:57,394
+E esses efeitos tem sido experimentalmente verificados
+
+109
+00:10:57,494 --> 00:11:00,762
+a n-ésima casa decimal de precisão.
+
+110
+00:11:00,862 --> 00:11:04,885
+O mundo é realmente um lugar muito bizarro.
+
+111
+00:11:05,488 --> 00:11:09,259
+E nós nem sequer falamos sobre Relatividade Geral ainda.
+
+112
+00:11:12,979 --> 00:11:16,750
+Segmento 3: O código fonte é o Design
+
+113
+00:11:17,253 --> 00:11:24,995
+em 1992 Jack Reeves publicou o
+artigo de referência "What is Software Design?"
+
+114
+00:11:25,441 --> 00:11:32,640
+Este artigo foi tão importante que o publiquei
+em meus livros "Princípios Ágeis, Padrões e Práticas".
+
+115
+00:11:32,740 --> 00:11:38,598
+Você pode encontrar o artigo lá,
+ou na URL que está na sua tela.
+
+116
+00:11:39,306 --> 00:11:43,607
+Neste artigo, Jack faz este argumento verdadeiramente belo:
+
+117
+00:11:43,707 --> 00:11:47,854
+Pergunta: "O que os engenheiros produzem?"
+
+118
+00:11:48,181 --> 00:11:55,041
+Respostas: "Engenheiros produzem documentos
+que especificam como construir produtos".
+
+119
+00:11:55,141 --> 00:11:58,526
+
+Arquitetos e arquitetos de construção produzem
+
+120
+00:11:58,626 --> 00:12:04,624
+documentos, plantas, diagramas de construção
+que especificam como construir o edifício.
+
+121
+00:12:04,724 --> 00:12:12,791
+Engenheiros eletrônicos produzem documentos, diagramas
+de circuitos que especificam como construir a placa de circuito.
+
+122
+00:12:12,891 --> 00:12:20,467
+Engenheiros mecânicos produzem documentos, desenhos
+mecânicos que especificam como construir máquinas.
+
+123
+00:12:20,849 --> 00:12:27,981
+Então, o que no mundo do software se
+qualificaria como um documento de engenharia?
+
+124
+00:12:28,417 --> 00:12:35,113
+A resposta é óbvia: o único documento produzido
+por engenheiros de software que é detalhado o suficiente para
+
+125
+00:12:35,213 --> 00:12:39,415
+especificar totalmente o produto de software, é o código-fonte.
+
+126
+00:12:40,068 --> 00:12:46,547
+OK, eu to te ouvindo aí. Você está dizendo que o código-fonte é o produto.
+
+127
+00:12:47,092 --> 00:12:54,932
+Não, não é. O programa em execução é o verdadeiro
+produto: o executável binário é o verdadeiro produto.
+
+128
+00:12:55,032 --> 00:13:02,663
+O código-fonte é o documento do qual o verdadeiro produto
+(o programa em execução) deriva.
+
+129
+00:13:03,044 --> 00:13:05,222
+Vamos ver isso de maneira diferente:
+
+130
+00:13:05,386 --> 00:13:14,859
+Se eu tivesse uma fábrica automatizada capaz de construir
+casas, então a entrada para aquela fábrica seria a planta do arquiteto.
+
+131
+00:13:15,404 --> 00:13:19,923
+Se eu tivesse uma fábrica automatizada
+capaz de construir placas de circuito,
+
+132
+00:13:20,023 --> 00:13:28,253
+então a entrada para aquela fábrica seria
+os diagramas e especificações criados por engenheiros eletrônicos.
+
+133
+00:13:28,906 --> 00:13:34,405
+Se eu tivesse uma fábrica automatizada
+capaz de construir componentes mecânicos,
+
+134
+00:13:34,505 --> 00:13:40,885
+então a entrada para aquela fábrica seria os
+desenhos criados pelos engenheiros mecânicos.
+
+135
+00:13:41,647 --> 00:13:47,581
+E eu tenho uma fábrica automatizada que
+pode construir um produto de software,
+
+136
+00:13:47,681 --> 00:13:53,788
+ele é chamado de "compilador" e a
+entrada para essa fábrica é o código-fonte.
+
+137
+00:13:54,823 --> 00:13:59,015
+Portanto, o código-fonte é o design.
+
+138
+00:14:00,050 --> 00:14:04,786
+Quaisquer outros documentos que você possa produzir que
+sejam preliminares ao código-fonte
+
+139
+00:14:04,886 --> 00:14:08,815
+são apenas isso: preliminar. Eles não são o design.
+
+140
+00:14:09,414 --> 00:14:14,314
+Se você desenhar diagramas UML para
+ajudá-lo a organizar seus pensamentos
+
+141
+00:14:14,414 --> 00:14:21,883
+esses diagramas não são o design. São apenas diagramas preliminares que
+ajudam você a criar o design real.
+
+142
+00:14:21,983 --> 00:14:28,961
+Não há nada de errado em desenhá-los.
+Eles podem ser muito úteis, mas os diagramas não são o design.
+
+143
+00:14:29,668 --> 00:14:33,371
+O código fonte é o design.
+
+144
+00:14:33,643 --> 00:14:37,944
+E isso nos leva a uma conclusão muito interessante:
+
+145
+00:14:38,044 --> 00:14:43,770
+quando construímos uma casa,
+passamos muito tempo projetando
+
+146
+00:14:43,870 --> 00:14:50,412
+porque o custo de projetá-lo é muito
+menos caro do que o custo de construí-lo.
+
+147
+00:14:51,066 --> 00:14:55,748
+Quando construímos placas de circuito
+gastamos muito tempo projetando
+
+148
+00:14:55,848 --> 00:15:02,880
+porque o custo de projetá-los é muito
+mais barato do que o custo de construção e produção em massa.
+
+149
+00:15:03,588 --> 00:15:08,380
+Quando construímos componentes mecânicos como engrenagens ou escadas ou coisas assim
+
+150
+00:15:08,480 --> 00:15:13,062
+nós gastamos muito tempo no design mecânico porque o projeto é barato
+
+151
+00:15:13,162 --> 00:15:16,764
+em comparação com as matrizes de corte e metal de fresagem.
+
+152
+00:15:17,635 --> 00:15:26,673
+E em todos esses três casos, o custo de correção de erros após a conclusão do projeto e a produção ter começado é enorme.
+
+153
+00:15:36,038 --> 00:15:38,706
+Mas em software o reverso é verdade:
+
+154
+00:15:38,806 --> 00:15:42,517
+é muito mais barato construir o produto do que projetá-lo.
+
+155
+00:15:42,617 --> 00:15:46,274
+E corrigir erros antes do lançamento também é muito barato.
+
+156
+00:15:46,374 --> 00:15:54,005
+De fato, mesmo após o lançamento, o custo de corrigir erros é muito mais barato do que mudar as fundações de uma casa.
+
+157
+00:15:55,094 --> 00:15:59,994
+Para software, o custo de construção é o custo de compilação e teste.
+
+158
+00:16:00,094 --> 00:16:03,751
+Eu posso compilar um aplicativo de um milhão de linhas em segundos.
+
+159
+00:16:03,851 --> 00:16:08,651
+Eu posso testá-lo em minutos, e consertar os problemas dentro dele pode levar algumas horas.
+
+160
+00:16:08,751 --> 00:16:13,334
+Portanto, para software, o custo de construção é barato.
+
+161
+00:16:13,987 --> 00:16:18,942
+Por outro lado, o custo de projetar esse software é realmente muito alto.
+
+162
+00:16:19,042 --> 00:16:22,154
+Desenvolvedores de software fazem bons salários
+
+163
+00:16:22,254 --> 00:16:27,163
+e a quantidade de código que eles
+escrevem por hora, ou por dia, é muito pequena.
+
+164
+00:16:28,198 --> 00:16:32,063
+Portanto, a estrutura de custos é completamente invertida:
+
+165
+00:16:32,163 --> 00:16:37,236
+o custo do design é caro, enquanto o custo de construção é barato.
+
+166
+00:16:37,336 --> 00:16:40,067
+E essa inversão de custos significa que
+
+167
+00:16:40,167 --> 00:16:47,798
+A estratégia para construir software é totalmente diferente da estratégia de construir uma casa.
+
+168
+00:16:48,996 --> 00:16:53,406
+E se o custo de construir uma casa fosse pequeno?
+
+169
+00:16:53,506 --> 00:16:59,613
+E se você pudesse construir a casa inteira por cem dólares e levaria apenas uma hora?
+
+170
+00:17:00,648 --> 00:17:08,270
+E se cada mudança que você fez naquela casa custasse cem dólares e levasse uma hora?
+
+171
+00:17:09,087 --> 00:17:13,225
+Como você iria construir uma casa dessas?
+
+172
+00:17:14,205 --> 00:17:20,738
+Você contrataria um arquiteto e pagaria uma pequena fortuna para criar todo o projeto da casa?
+
+173
+00:17:20,838 --> 00:17:23,079
+e depois construir a casa de uma só vez?
+
+174
+00:17:23,406 --> 00:17:24,931
+claro que não
+
+175
+00:17:25,031 --> 00:17:28,960
+Se lhe custar apenas cem dólares e uma hora para construir uma casa,
+
+176
+00:17:29,060 --> 00:17:32,771
+o que você faz é esboçar alguns quartos em um guardanapo
+
+177
+00:17:32,871 --> 00:17:35,112
+e construí-los e ver como filca
+
+178
+00:17:36,745 --> 00:17:42,408
+Então você passaria por essas salas procurando por coisas que você não gostou
+
+179
+00:17:42,508 --> 00:17:47,308
+e você faria uma lista dessas coisas e gastaria mais cem dólares
+
+180
+00:17:47,408 --> 00:17:49,812
+e outra hora consertando essas coisas.
+
+181
+00:17:51,446 --> 00:17:54,876
+E é claro que você continuaria fazendo isso por mais alguns dias
+
+182
+00:17:54,976 --> 00:18:02,444
+você continuaria aprimorando o tamanho
+das salas, adicionando novas salas ajustando as relações entre elas.
+
+183
+00:18:02,544 --> 00:18:06,963
+Eventualmente, você evoluiria o edifício para a estrutura em que você pensava poder viver
+
+184
+00:18:07,063 --> 00:18:09,522
+e então você se mudaria.
+
+185
+00:18:10,393 --> 00:18:16,654
+Mas é claro que você não ia parar aí: todos os dias você encontraria coisas na casa que não gostou
+
+186
+00:18:16,754 --> 00:18:21,990
+ou você pensaria em novas salas que você precisava adicionar, você faria uma lista dessas coisas,
+
+187
+00:18:22,090 --> 00:18:28,850
+e então no final de cada semana você gastaria outra hora e mais cem dólares fazendo todas essas mudanças.
+
+188
+00:18:30,429 --> 00:18:32,988
+E você nunca pararia de fazer isso.
+
+189
+00:18:33,088 --> 00:18:38,868
+Ah, você pode diminuir para uma mudança por semana ou uma mudança por mês, ou até mesmo uma mudança por ano.
+
+190
+00:18:38,968 --> 00:18:43,387
+mas você nunca deixaria de brincar com o design daquela casa.
+
+191
+00:18:44,150 --> 00:18:45,892
+Isso é software
+
+192
+00:18:45,992 --> 00:18:49,649
+É uma loucura gastar muito tempo na modelagem
+
+193
+00:18:49,749 --> 00:18:55,529
+quando você consegue fazer algo funcionar rapidamente, e depois evolui para um sistema que atenda às suas necessidades.
+
+194
+00:18:56,618 --> 00:19:02,716
+E aí jaz o X da questão. Para quando você evoluir o design de um sistema,
+
+195
+00:19:02,816 --> 00:19:06,854
+não há garantia de que você irá projetá-lo bem.
+
+196
+00:19:08,923 --> 00:19:12,625
+É fácil evoluir o design em algo que funcione
+
+197
+00:19:12,725 --> 00:19:21,173
+Infelizmente, também é fácil dificultar a modificação, manutenção,  instabilidade.
+
+198
+00:19:21,273 --> 00:19:25,093
+Algumas pessoas chamam isso de "Big Ball of Mud".
+
+199
+00:19:25,747 --> 00:19:34,458
+No episódio 6, aprendemos que um bom conjunto de testes elimina o medo e nos
+permite manter nosso código constantemente limpo.
+
+200
+00:19:34,558 --> 00:19:44,204
+Então, para evitar esse "Big Ball of Mud", precisamos praticar o TDD e aplicar muito esforço para manter nosso código continuamente limpo.
+
+201
+00:19:44,304 --> 00:19:52,207
+O problema é que, para limpar nossos projetos, precisamos ser capazes de reconhecer quando esses projetos estão indo mal.
+
+202
+00:19:53,677 --> 00:19:58,033
+Precisamos saber como o design ruim cheira.
+
+203
+00:20:03,151 --> 00:20:06,799
+Segmento 4: Design Smells
+
+204
+00:20:07,296 --> 00:20:10,099
+O que o mau design cheira?
+
+205
+00:20:10,199 --> 00:20:17,877
+Quais são os sintomas do design ruim? E quais são as situações que um bom designer deve evitar?
+
+206
+00:20:19,078 --> 00:20:25,198
+No episódio 1, estudamos o design smells de rigidez, fragilidade e imobilidade.
+
+207
+00:20:25,298 --> 00:20:31,604
+Vamos ver esses smells novamente em mais detalhes, e adicionaremos mais alguns smells.
+
+208
+00:20:31,704 --> 00:20:35,607
+Rigidez
+
+209
+00:20:36,065 --> 00:20:40,983
+Rigidez é a tendência de um sistema ser difícil de alterar.
+
+210
+00:20:41,612 --> 00:20:45,044
+O que torna um sistema difícil de alterar?
+
+211
+00:20:45,144 --> 00:20:53,123
+É difícil alterar um sistema quando o custo de fazer uma alteração é alto.
+
+212
+00:20:53,223 --> 00:21:06,206
+Por exemplo, se fazendo uma pequena alteração eu tenho que fazer uma grande reconstrução, então esse sistema é rígido.
+
+213
+00:21:07,349 --> 00:21:14,613
+Agora, digamos que você tenha um sistema que requer três horas para construir e testar.
+
+214
+00:21:14,713 --> 00:21:22,620
+Digamos também que a menor alteração no subsistema mais insignificante desse sistema
+
+215
+00:21:22,720 --> 00:21:26,509
+requer que você faça um teste e compilação de três horas.
+
+216
+00:21:26,609 --> 00:21:30,913
+Esse sistema é rígido.
+
+217
+00:21:31,599 --> 00:21:33,887
+O que torna esse sistema rígido?
+
+218
+00:21:33,987 --> 00:21:35,603
+Duas coisas:
+
+219
+00:21:35,703 --> 00:21:40,350
+Primeiro, demora muito para fazer um teste e buildar
+
+220
+00:21:40,450 --> 00:21:45,269
+e em segundo lugar, é apenas uma pequena mudança que força um rebuild inteiro
+
+221
+00:21:46,355 --> 00:21:50,016
+Se pudermos reduzir drasticamente o tempo de build e teste,
+
+222
+00:21:50,116 --> 00:21:54,934
+podemos tornar o sistema muito menos rígido e muito mais fácil de mudar.
+
+223
+00:21:56,193 --> 00:21:59,567
+Se pudessemos encontrar uma maneira de reestruturar o sistema,
+
+224
+00:21:59,667 --> 00:22:04,943
+de tal forma que quando você muda você não
+tem que retestar e rebuildar a coisa toda,
+
+225
+00:22:05,401 --> 00:22:10,663
+então alterações seriam bem mais fáceis
+de fazer e o sistema bem menos rígido
+
+226
+00:22:11,635 --> 00:22:15,524
+falaremos de testes demorados em outro episódio
+
+227
+00:22:15,624 --> 00:22:20,042
+mas no geral, quando um teste leva muito tempo para rodar
+
+228
+00:22:20,142 --> 00:22:25,018
+é um bom indicativo de que os desenvolvedores foram descuidados
+
+229
+00:22:25,762 --> 00:22:29,308
+tempo longo de builds são uma função do acoplamento,
+
+230
+00:22:29,994 --> 00:22:36,743
+sso é especialmente verdadeiro em C ++, em que o tempo de build é
+proportional ao número de módulos acoplados ao quadrado.
+
+231
+00:22:36,843 --> 00:22:41,318
+mas isso é algo que falaremos em um episódio futuro
+
+232
+00:22:42,462 --> 00:22:47,381
+Quando pequenas alterações forçam um rebuild,
+também é um sintoma de alto acoplamento.
+
+233
+00:22:47,481 --> 00:22:53,386
+Quando os módulos são acoplados, pequenas alterações
+fazem com que todo o sistema seja reconstruído.
+
+234
+00:22:54,416 --> 00:23:00,078
+
+Portanto, um dos nossos objetivos de design é gerenciar
+a dependências entre módulos,
+
+235
+00:23:00,178 --> 00:23:04,653
+para garantir que quando um módulo muda,
+os outros permanecem inalterados.
+
+236
+00:23:05,054 --> 00:23:08,943
+Fragilidade
+
+237
+00:23:10,315 --> 00:23:19,981
+Um sistema é frágil quando uma pequena alteração em um módulo
+causa outros módulos não relacionados a se comportar mal.
+
+238
+00:23:21,011 --> 00:23:24,213
+Imagine o software que controla um automóvel.
+
+239
+00:23:24,671 --> 00:23:32,564
+Esse software será frágil se quando você corrigiu
+um bug com o rádio afetou as janelas elétricas.
+
+240
+00:23:33,421 --> 00:23:39,198
+Esses tipos de
+dependencias comportamentais de longa distância são muito assustadoras.
+
+241
+00:23:39,298 --> 00:23:46,290
+Especialmente para os gerentes e clientes que veem elas
+como indicações de incompetência.
+
+242
+00:23:47,434 --> 00:23:54,412
+Afinal, se toda vez que os desenvolvedores
+consertam um bug ou adicionam um novo recurso
+
+243
+00:23:54,512 --> 00:23:58,587
+algo completamente desvinculado quebra ou estraga,
+
+244
+00:23:58,687 --> 00:24:05,049
+a única conclusão a que você pode chegar é que esses
+desenvolvedores perderam o controle do software,
+
+245
+00:24:05,149 --> 00:24:07,738
+e não sabem o que diabos estão fazendo.
+
+246
+00:24:09,968 --> 00:24:15,687
+Quanto mais isso acontece, mais desconfortáveis
+​​gerentes e clientes se tornam.
+
+247
+00:24:15,787 --> 00:24:21,636
+No final, eles simplesmente congelarão o
+desenvolvimento e a rigidez oficial se instalará.
+
+248
+00:24:22,837 --> 00:24:31,930
+Sensibilidade a longas distâncias como essa é sempre causada por
+estranhos acoplamentos e dependências que se infiltram pelo sistema.
+
+249
+00:24:32,903 --> 00:24:39,709
+A solução é gerenciar as dependências entre
+os módulos e isolá-los uns dos outros.
+
+250
+00:24:40,967 --> 00:24:44,799
+Imobilidade
+
+251
+00:24:45,371 --> 00:24:55,151
+Um sistema é imóvel, quando seus componentes internos
+não podem ser facilmente extraídos e reutilizados em novos ambientes.
+
+252
+00:24:56,524 --> 00:25:03,558
+Considere, por exemplo, um sistema no qual
+existe um módulo típico de login de usuário e senha.
+
+253
+00:25:03,658 --> 00:25:10,193
+Se você não conseguir extrair rapidamente esse módulo
+de login e usá-lo em um sistema totalmente diferente,
+
+254
+00:25:10,293 --> 00:25:13,339
+esse módulo é imóvel: não pode ser movido.
+
+255
+00:25:14,597 --> 00:25:21,231
+A imobilidade é causada por acoplamentos
+e dependências nos módulos do sistema,
+
+256
+00:25:21,331 --> 00:25:31,183
+Por exemplo, digamos que eu tenha um módulo de login que usou um
+esquema de banco de dados específico e um esquema de interface do usuário específico.
+
+257
+00:25:31,283 --> 00:25:36,101
+Eu não seria capaz de reutilizar esse
+módulo de login em um sistema diferente
+
+258
+00:25:36,201 --> 00:25:41,306
+se tiver um esquema de banco de dados diferente e
+um esquema de interface do usuário diferente.
+
+259
+00:25:42,107 --> 00:25:45,710
+Esse módulo de login seria imóvel.
+
+260
+00:25:49,199 --> 00:25:52,402
+A estratégia para evitar a imobilidade
+
+261
+00:25:52,502 --> 00:25:56,863
+
+é precisamente o tipo de arquitetura que exploramos no episódio 7
+
+262
+00:25:56,963 --> 00:26:04,527
+um que dissocia as abstrações centrais do aplicativo do
+banco de dados, a interface do usuário e as estruturas.
+
+263
+00:26:05,499 --> 00:26:09,274
+Viscosidade
+
+264
+00:26:09,813 --> 00:26:19,076
+Um sistema é viscoso, quando operações necessárias
+como construção e teste são difíceis de executar,
+
+265
+00:26:19,176 --> 00:26:21,726
+e levar muito tempo para executar.
+
+266
+00:26:23,049 --> 00:26:31,383
+Um ambiente de desenvolvimento onde check-ins,
+check-outs e merges são processos longos e árduos,
+
+267
+00:26:31,483 --> 00:26:36,089
+porque o custo dessas operações essenciais é alto.
+
+268
+00:26:36,727 --> 00:26:43,051
+Projetos de sistema nos quais novos recursos devem
+ser adicionados em várias camadas do sistema,
+
+269
+00:26:43,151 --> 00:26:51,090
+lidar com múltiplos mecanismos de transporte, serializações, empacotamento, hidratações,
+
+270
+00:26:51,433 --> 00:26:58,052
+isso é sempre viscoso, porque mesmo
+a mudança mais simples é cara de fazer.
+
+271
+00:26:59,081 --> 00:27:04,768
+A causa da viscosidade é sempre a
+mesma: tolerância irresponsável.
+
+272
+00:27:04,868 --> 00:27:10,356
+Os desenvolvedores toleram condições que sabem
+ser ruins e não fazem nada para corrigi-los.
+
+273
+00:27:11,484 --> 00:27:15,259
+O custo desses maus comportamentos é o acoplamento.
+
+274
+00:27:15,651 --> 00:27:25,554
+O acoplamento apertado torna os sistemas
+difíceis de construir, difíceis de testar e difíceis de alterar.
+
+275
+00:27:25,654 --> 00:27:31,730
+É esse acoplamento rígido que eleva o custo dessas operações essenciais.
+
+276
+00:27:32,907 --> 00:27:36,976
+A cura para a viscosidade é atacar os sintomas,
+
+277
+00:27:37,076 --> 00:27:42,025
+desacoplando os módulos e gerenciando
+as dependências que permanecem.
+
+278
+00:27:42,662 --> 00:27:46,290
+Complexidade Desnecessária
+
+279
+00:27:47,222 --> 00:27:52,663
+Um problema comum em discussões de
+design de software é como lidar com o futuro:
+
+280
+00:27:53,006 --> 00:27:57,026
+Devemos projetar nosso sistema
+apenas para os requisitos de hoje?
+
+281
+00:27:57,126 --> 00:28:02,762
+Ou devemos ter uma visão de longo prazo e
+antecipar todos os requisitos futuros do sistema?
+
+282
+00:28:04,085 --> 00:28:09,625
+
+Em outras palavras: devemos "colocar os ganchos"
+para futuras extensões, ou não?
+
+283
+00:28:10,311 --> 00:28:16,390
+Sistemas que carregam muito design
+antecipatório são desnecessariamente complexos.
+
+284
+00:28:16,490 --> 00:28:22,763
+
+Cada gancho, cada ponto de extensão é outro peso adicionado ao sistema
+
+285
+00:28:22,863 --> 00:28:27,175
+
+que os desenvolvedores devem carregar no presente.
+
+286
+00:28:28,401 --> 00:28:33,548
+
+Quando você tem medo do seu código e acha que é difícil e caro mudar,
+
+287
+00:28:33,648 --> 00:28:39,137
+então você vai encher esse código com todos os tipos de elementos de design antecipado
+
+288
+00:28:39,237 --> 00:28:42,471
+para você não precisar alterar o design mais tarde.
+
+289
+00:28:43,402 --> 00:28:48,794
+
+Se, por outro lado, você seguir o conselho dado no Episódio 6
+
+290
+00:28:48,894 --> 00:28:52,716
+e manter um conjunto abrangente de testes
+
+291
+00:28:53,108 --> 00:28:56,442
+então você não terá medo de mudar o código.
+
+292
+00:28:57,275 --> 00:29:02,080
+Você não terá que encher de elementos de design antecipado.
+
+293
+00:29:02,570 --> 00:29:10,610
+Seus projetos serão mais simples, mais fáceis de
+manter e não serão desnecessariamente complexos.
+
+294
+00:29:11,149 --> 00:29:15,953
+A complexidade desnecessária geralmente leva a um acoplamento forte
+
+295
+00:29:16,053 --> 00:29:24,042
+porque antecipamos a necessidade futura de
+relacionamentos entre módulos que não estão atualmente relacionados.
+
+296
+00:29:24,434 --> 00:29:32,131
+
+Quanto mais essas relações futuras anteciparmos,
+mais estreitamente acoplado o software se torna agora.
+
+297
+00:29:33,896 --> 00:29:40,220
+A solução, é manter seu design focado no atual conjunto de requisitos
+
+298
+00:29:40,320 --> 00:29:47,916
+mantendo um conjunto abrangente de testes,
+que reduz o medo de alterar o design posteriormente.
+
+299
+00:29:49,828 --> 00:29:54,877
+Claro que ninguém começa a projetar um sistema que cheira mal.
+
+300
+00:29:54,977 --> 00:30:00,956
+smells se acumulam com o tempo. Eles são causados ​​por uma seqüência de más decisões
+
+301
+00:30:01,056 --> 00:30:08,015
+que são motivados por descuido, medo e falsa experiência.
+
+302
+00:30:09,388 --> 00:30:15,908
+Quanto maior a bagunça, mais difícil é
+progredir (tudo fica cada vez mais difícil)
+
+303
+00:30:16,008 --> 00:30:23,409
+e maior é a tentação de tomar atalhos que aumentam a bagunça.
+
+304
+00:30:25,566 --> 00:30:31,645
+Vamos ver como isso acontece. Vamos.
+assistir a alguns erros de código.
+
+305
+00:30:36,498 --> 00:30:39,684
+Segmento 5: Code Rot
+
+306
+00:30:40,469 --> 00:30:45,567
+Segunda de manhã seu chefe te chama em uma sala de conferência e então ele diz ...
+
+307
+00:30:47,038 --> 00:30:52,234
+Então eu te chamei aqui porque
+eu tenho um novo projeto para você.
+
+308
+00:30:52,334 --> 00:30:53,334
+OK
+
+309
+00:30:53,434 --> 00:30:59,637
+O que eu gostaria que você fizesse é escrever um programa
+que copie caracteres do teclado para a impressora.
+
+310
+00:30:59,737 --> 00:31:02,578
+Mhm ... tudo bem. Algo mais?
+
+311
+00:31:02,678 --> 00:31:07,039
+Não não. É só isso. Quanto tempo você acha que vai te levar?
+
+312
+00:31:08,412 --> 00:31:12,285
+[Eu acho que isso é vai dar umas seis linhas de código] Três semanas.
+
+313
+00:31:13,363 --> 00:31:15,324
+Excelente. Vamos começar.
+
+314
+00:31:17,089 --> 00:31:20,324
+Três semanas é a estimativa mínima em que você trabalha.
+
+315
+00:31:20,424 --> 00:31:26,746
+Se alguém dá uma estimativa de menos de três semanas
+é repentinamente espancado pelos outros programadores.
+
+316
+00:31:26,846 --> 00:31:30,619
+A razão pela qual seu chefe foi embora
+feliz é que ele conseguiu a estimativa mínima.
+
+317
+00:31:31,943 --> 00:31:39,786
+A primeira coisa que você faz é desenhar um diagrama porque,
+como você sabe, todos os programadores desenham diagramas antes de escreverem código.
+
+318
+00:31:48,365 --> 00:31:51,699
+O módulo Copy contém toda a política de alto nível.
+
+319
+00:31:51,799 --> 00:31:57,043
+Ele contém o loop principal que obtém caracteres do leitor do teclado e os envia para a impressora.
+
+320
+00:31:57,143 --> 00:32:00,817
+Também reconhece a condição de final de arquivo e sai.
+
+321
+00:32:02,680 --> 00:32:06,406
+Esse diagrama parece bom, e você está prestes
+a escrever o código que combina com ele
+
+322
+00:32:06,506 --> 00:32:12,681
+mas seu chefe entra com um cara novo que você tem que orientar ele.
+
+323
+00:32:12,781 --> 00:32:16,946
+E demora o dia todo. Então, isso leva toda a segunda-feira.
+
+324
+00:32:18,285 --> 00:32:22,142
+Terça-feira, você escreve o código. Se parece com isso.
+
+325
+00:32:22,242 --> 00:32:24,882
+São as seis linhas que você tinha na sua cabeça.
+
+326
+00:32:24,982 --> 00:32:30,719
+Um loop simples que termina no EOF e copia os caracteres do teclado para a impressora.
+
+327
+00:32:33,815 --> 00:32:39,347
+Você está prestes a compilá-lo quando percebe que está
+atrasado para uma reunião de qualidade que vai durar o dia todo.
+
+328
+00:32:41,174 --> 00:32:45,945
+Quarta-feira você compila o código; e compila imediatamente também.
+
+329
+00:32:46,045 --> 00:32:50,918
+Isso é bom porque logo depois o gerente
+de serviço de campo corre para o cubículo
+
+330
+00:32:51,018 --> 00:32:57,110
+com um bug horrível. Você vai ter que consertar isso. Isso vai te levar o dia todo.
+
+331
+00:32:58,684 --> 00:33:02,947
+Quinta-feira você testa o código, e ele funciona de primeira também.
+
+332
+00:33:03,556 --> 00:33:09,037
+Ainda bem, pois o seu chefe entra e te puxa para uma reunião horrível
+
+333
+00:33:09,137 --> 00:33:11,016
+Isso vai levar o dia todo.
+
+334
+00:33:12,488 --> 00:33:16,701
+Sexta-feira. Sem reuniões. Não há bugs. Sem interrupções.
+
+335
+00:33:16,801 --> 00:33:23,552
+E é uma coisa boa também, porque demora todo o dia para colocar esse código no sistema de controle do código-fonte.
+
+336
+00:33:25,785 --> 00:33:28,374
+você terminou com duas semanas de sobra
+
+337
+00:33:28,983 --> 00:33:31,013
+Mas não deixe seu chefe saber que você terminou cedo.
+
+338
+00:33:31,113 --> 00:33:35,936
+É melhor você se manter ocupado com
+outras coisas e depois liberá-lo a tempo.
+
+339
+00:33:37,560 --> 00:33:40,047
+Você ganha prêmios por este software!
+
+340
+00:33:40,147 --> 00:33:44,615
+Centenas de outros programadores
+começam a usá-lo em seus sistemas.
+
+341
+00:33:44,919 --> 00:33:52,278
+É tão bem sucedido. Essas seis linhas de código podem
+ser as linhas de código mais bem-sucedidas já escritas em sua empresa.
+
+342
+00:33:53,395 --> 00:33:56,947
+Versão 2
+
+343
+00:33:57,810 --> 00:34:01,413
+Alguns meses depois, seu chefe chega até você e diz:
+
+344
+00:34:03,494 --> 00:34:07,301
+Então... sabe aquele programa que você fez. Aquele de copy?
+
+345
+00:34:07,401 --> 00:34:08,401
+Yap.
+
+346
+00:34:08,501 --> 00:34:13,797
+Ótimo trabalho! E você vai ver nossa apreciação em sua próxima revisão salarial.
+
+347
+00:34:13,897 --> 00:34:20,090
+Então... agora o que gostaríamos é que ele lesse o leitor de fita de papel.
+
+348
+00:34:20,953 --> 00:34:23,339
+so isso? Basta ler o leitor de fita de papel?
+
+349
+00:34:23,439 --> 00:34:26,790
+As vezes. Às vezes, do teclado,
+às vezes do leitor de fita de papel.
+
+350
+00:34:26,890 --> 00:34:28,262
+OK.
+
+351
+00:34:28,362 --> 00:34:30,951
+Quanto tempo você acha que vai levar para fazer?
+
+352
+00:34:31,966 --> 00:34:36,027
+
+[Hmmm ... isso parece ser um booleano e um if.]
+
+353
+00:34:36,127 --> 00:34:37,245
+Três semanas.
+
+354
+00:34:38,208 --> 00:34:40,391
+Bom! Vamos começar!
+
+355
+00:34:41,965 --> 00:34:47,344
+Então agora você modifica o diagrama para mostrar a
+nova dependência sobre o leitor de fita de papel.
+
+356
+00:34:49,375 --> 00:34:51,760
+Então, como você deve modificar este programa?
+
+357
+00:34:52,166 --> 00:34:55,110
+Você poderia passar um booleano para o programa de cópia.
+
+358
+00:34:56,531 --> 00:34:59,018
+Mas isso muda a assinatura da função,
+
+359
+00:34:59,118 --> 00:35:03,484
+e todas aquelas outras centenas de
+programadores que usam sua função
+
+360
+00:35:03,584 --> 00:35:06,732
+vai ter que recompilar e re-testar se você fizer isso,
+
+361
+00:35:06,832 --> 00:35:09,879
+então eles virão ao seu cubículo com porretes.
+
+362
+00:35:10,741 --> 00:35:13,634
+Não, provavelmente é melhor usar uma global.
+
+363
+00:35:13,734 --> 00:35:17,745
+É uma idéia simples: se alguém quiser copiar do leitor de fita de papel
+
+364
+00:35:17,845 --> 00:35:22,262
+eles simplesmente configuram a variável
+GptFlag para true, e eles chamam de copy.
+
+365
+00:35:23,937 --> 00:35:29,570
+É melhor que eles se lembrem de limpar a flag quando
+terminarem, caso contrário, o próximo visitante receberá uma surpresa.
+
+366
+00:35:30,078 --> 00:35:33,834
+Você pode se proteger com um comentário apropriado, assim.
+
+367
+00:35:34,240 --> 00:35:37,285
+// lembre de limpar
+
+368
+00:35:38,706 --> 00:35:41,802
+OK, agora temos que fazer isso funcionar.
+
+369
+00:35:42,208 --> 00:35:46,674
+A melhor característica da família C de linguagens é o operador ternário:
+
+370
+00:35:46,774 --> 00:35:50,328
+Ele permite que você coloque
+instruções if completas em uma única expressão.
+
+371
+00:35:50,428 --> 00:35:55,150
+Então, vamos inserir no programa assim e ... voilà!
+
+372
+00:35:56,014 --> 00:35:59,616
+versão 3
+
+373
+00:36:00,857 --> 00:36:04,489
+Alguns meses depois, seu chefe pede para vê-lo novamente.
+
+374
+00:36:06,435 --> 00:36:08,640
+sabe aquele programa de cópia que você escreveu?
+
+375
+00:36:08,740 --> 00:36:09,740
+Yeah.
+
+376
+00:36:09,840 --> 00:36:15,256
+Às vezes, gostaríamos de escrever para o perfurador de fita de papel.
+
+377
+00:36:16,597 --> 00:36:21,829
+[Mmm ... Eu tenho um padrão de design para isso agora, eu sei como resolvê-lo.]
+
+378
+00:36:21,929 --> 00:36:23,318
+Três semanas.
+
+379
+00:36:24,164 --> 00:36:25,245
+Ótimo!
+
+380
+00:36:26,370 --> 00:36:31,905
+Mais uma adição ao diagrama, adicionando ainda
+outra dependência ao módulo de cópia.
+
+381
+00:36:32,873 --> 00:36:39,704
+A mudança no código é simples: apenas mais um global aqui.
+Você pode reutilizar o comentário.
+
+382
+00:36:40,433 --> 00:36:45,673
+E agora você pode adicionar outro operador ternário assim.
+
+383
+00:36:46,071 --> 00:36:50,182
+pronto. Isso vai funcionar. publicar!
+
+384
+00:36:50,580 --> 00:36:54,294
+Summary
+
+385
+00:36:56,085 --> 00:36:58,207
+Este código está apodrecendo.
+
+386
+00:36:58,307 --> 00:37:02,518
+Está bem claro que seu chefe está sempre
+voltando para você com mais e mais mudanças.
+
+387
+00:37:02,618 --> 00:37:08,553
+Ele vai querer ler do leitor de caracteres ópticos
+e escrever no sintetizador. Não haverá fim para isso.
+
+388
+00:37:09,415 --> 00:37:16,379
+E assim, esse módulo irá crescer, apodrecer, apodrecer e degradar.
+
+389
+00:37:17,175 --> 00:37:23,740
+Daqui a alguns anos, será hora de polir seu
+currículo e deixar essa bagunça para outra pessoa.
+
+390
+00:37:28,913 --> 00:37:31,898
+O que é OO?
+
+391
+00:37:32,893 --> 00:37:36,142
+Claro que não tem que ser assim.
+
+392
+00:37:36,242 --> 00:37:39,127
+Nós poderíamos ter escrito o código assim.
+
+393
+00:37:40,387 --> 00:37:45,825
+Sim, isso parece com as seis linhas originais. Mas há uma pequena diferença.
+
+394
+00:37:46,151 --> 00:37:50,124
+Em vez de ler o leitor de teclado e
+escrever no gravador da impressora
+
+395
+00:37:50,224 --> 00:37:54,402
+
+estamos lendo de getchar e escrevendo para putchar.
+
+396
+00:37:55,136 --> 00:37:59,170
+getchar lê da entrada padrão, cujo padrão é o teclado.
+
+397
+00:37:59,353 --> 00:38:03,448
+putchar escreve na saída padrão, que
+é padronizada para a impressora.
+
+398
+00:38:03,548 --> 00:38:07,604
+Então, esta versão faz exatamente
+o que a versão anterior fez.
+
+399
+00:38:07,726 --> 00:38:14,510
+No entanto, a entrada padrão e a saída padrão
+podem ser redirecionadas para outros dispositivos
+
+400
+00:38:14,610 --> 00:38:17,994
+como o leitor de fita de papel e o perfurador de fita de papel.
+
+401
+00:38:18,422 --> 00:38:22,028
+Isso significa que quando seu chefe disser:
+
+402
+00:38:23,067 --> 00:38:27,467
+Às vezes precisamos ler o leitor de fita de papel.
+
+403
+00:38:29,912 --> 00:38:33,029
+
+Você tem uma opção. Você poderia dizer:
+
+404
+00:38:33,457 --> 00:38:34,863
+Três semanas.
+
+405
+00:38:36,268 --> 00:38:41,586
+Ou você poderia dizer a ele que já leu do leitor de fita de papel.
+
+406
+00:38:42,869 --> 00:38:47,576
+Este código difere do código anterior por duas palavras,
+
+407
+00:38:47,676 --> 00:38:54,115
+e, no entanto, essas duas palavras de alguma forma evitam
+que o código apodreça quando você adiciona novos dispositivos.
+
+408
+00:38:54,215 --> 00:38:58,638
+De fato, adicionando novos dispositivos,
+você não precisa nem recompilar!
+
+409
+00:38:59,983 --> 00:39:03,894
+O que há de tão especial nessas duas palavras?
+
+410
+00:39:03,994 --> 00:39:09,395
+Como eles mudam tão completamente as características de manutenção deste módulo?
+
+411
+00:39:09,495 --> 00:39:12,695
+e parou completamente esse código de apodrecer?
+
+412
+00:39:13,612 --> 00:39:17,340
+Dependency Inversion
+
+413
+00:39:18,196 --> 00:39:23,880
+Para entender por que essas duas palavras
+são tão importantes, vamos ver os diagramas novamente.
+
+414
+00:39:23,980 --> 00:39:26,630
+Aqui está o diagrama da primeira solução:
+
+415
+00:39:26,730 --> 00:39:30,725
+O módulo de cópia depende do teclado e da impressora.
+
+416
+00:39:30,825 --> 00:39:33,781
+Olhe a direção dessas setas:
+
+417
+00:39:33,881 --> 00:39:40,321
+o módulo que contém a política de alto
+nível depende dos detalhes de baixo nível.
+
+418
+00:39:40,749 --> 00:39:47,044
+E quando adicionamos novos dispositivos como o
+leitor de fita de papel e o perfurador de fita de papel,
+
+419
+00:39:47,144 --> 00:39:50,283
+nós tivemos que adicionar novas dependências ao módulo de cópia
+
+420
+00:39:50,383 --> 00:39:55,050
+então o fan-out do módulo de
+cópia cresceu a cada mudança.
+
+421
+00:39:56,089 --> 00:39:59,940
+Mas agora olhe para o diagrama da nova versão:
+
+422
+00:40:00,040 --> 00:40:06,540
+A cópia depende de getchar e putchar, mas
+não depende do teclado e da impressora.
+
+423
+00:40:06,640 --> 00:40:10,452
+O que é que preenche a lacuna entre os dois?
+
+424
+00:40:11,124 --> 00:40:18,275
+Acontece que getchar e putchar são parte da abstração do Unix conhecida como "Arquivo".
+
+425
+00:40:18,375 --> 00:40:27,076
+Essa abstração é representada por uma estrutura de dados que, entre outras coisas, contém uma tabela de cinco ponteiros para funções.
+
+426
+00:40:27,176 --> 00:40:31,815
+Essas funções são: abrir, fechar, ler, escrever e procurar.
+
+427
+00:40:32,858 --> 00:40:41,133
+Os drivers de IO para o teclado, a impressora, o leitor de fita de papel e o perfurador de fita de papel implementam essas cinco funções.
+
+428
+00:40:41,233 --> 00:40:44,522
+
+Então, quando você redireciona a entrada padrão e a saída padrão
+
+429
+00:40:44,622 --> 00:40:50,322
+o que você está realmente fazendo é carregar essas cinco funções na abstração de arquivos.
+
+430
+00:40:51,104 --> 00:40:55,926
+Isso significa que os drivers de I/O dependem da abstração de arquivos.
+
+431
+00:40:59,966 --> 00:41:06,874
+Agora, olhe estes dois diagramas lado a lado. Observe a inversão das dependências.
+
+432
+00:41:06,974 --> 00:41:12,152
+Na primeira versão do código, as dependências
+apontam na mesma direção do fluxo de controle.
+
+433
+00:41:12,252 --> 00:41:16,844
+Mas na nova versão, as dependências se opõem ao fluxo de controle.
+
+434
+00:41:18,798 --> 00:41:23,816
+Essa inversão de dependências impede que o sistema apodreça
+
+435
+00:41:23,916 --> 00:41:28,573
+porque impede que o fan-out do módulo de cópia cresça.
+
+436
+00:41:28,673 --> 00:41:33,656
+O módulo de cópia não precisa ser modificado, porque todas as dependências de saída
+
+437
+00:41:33,756 --> 00:41:36,067
+terminam na abstração File.
+
+438
+00:41:36,167 --> 00:41:44,539
+Novos dispositivos podem ser adicionados ad nauseum sem afetar o programa de cópia.
+
+439
+00:41:45,190 --> 00:41:47,015
+Agora considere isto:
+
+440
+00:41:47,115 --> 00:41:50,403
+essas cinco funções na estrutura de dados do arquivo
+
+441
+00:41:50,503 --> 00:41:56,399
+são exatamente equivalentes a C ++ vtables usados ​​para implementar funções virtuais.
+
+442
+00:41:56,499 --> 00:42:00,374
+Eles são logicamente equivalentes ao mecanismo de despacho polimórfico
+
+443
+00:42:00,474 --> 00:42:06,695
+usado em Java, C #, Python, Ruby, Smalltalk
+e qualquer outra linguagem OO.
+
+444
+00:42:08,389 --> 00:42:14,905
+Isto significa que getchar e putchar são
+logicamente equivalentes aos métodos polimórficos
+
+445
+00:42:15,005 --> 00:42:16,730
+em uma classe chamada File.
+
+446
+00:42:16,830 --> 00:42:21,552
+Então, a nova versão da cópia é realmente um programa orientado a objetos.
+
+447
+00:42:24,159 --> 00:42:30,871
+Este programa pode não parecer OO para você
+porque está escrito em C, e C não é uma linguagem OO.
+
+448
+00:42:30,971 --> 00:42:32,826
+Mas isso não é realmente importante:
+
+449
+00:42:32,926 --> 00:42:36,736
+você não precisa de uma linguagem OO
+para escrever um programa OO.
+
+450
+00:42:36,836 --> 00:42:42,796
+Tudo o que você realmente precisa fazer é inverter
+as principais dependências usando o polimorfismo dinâmico.
+
+451
+00:42:44,164 --> 00:42:47,748
+Para deixar isso claro, dê uma olhada neste diagrama
+
+452
+00:42:47,848 --> 00:42:52,636
+que é o equivalente lógico da solução getchar / putchar
+
+453
+00:42:52,736 --> 00:42:56,089
+e ainda é claramente um programa orientado a objetos.
+
+454
+00:42:56,189 --> 00:42:59,283
+
+File é uma interface implementada por
+
+455
+00:42:59,383 --> 00:43:02,541
+os dois drivers IO para o teclado e a impressora,
+
+456
+00:43:02,641 --> 00:43:05,147
+e é usado pelo algoritmo Copy.
+
+457
+00:43:06,646 --> 00:43:08,275
+E aqui está o código.
+
+458
+00:43:08,375 --> 00:43:12,837
+Novamente, é semanticamente idêntico à solução getchar / putchar,
+
+459
+00:43:12,937 --> 00:43:15,183
+mas está escrito em uma linguagem OO.
+
+460
+00:43:15,639 --> 00:43:18,376
+Observe a inversão das dependências.
+
+461
+00:43:18,476 --> 00:43:22,742
+O teclado e os derivados da impressora das interfaces do Reader e do Writer
+
+462
+00:43:22,842 --> 00:43:26,717
+dependem de uma direção que se opõe ao fluxo de controle.
+
+463
+00:43:28,085 --> 00:43:31,865
+O que é OO?
+
+464
+00:43:32,728 --> 00:43:35,497
+O que é OO?
+
+465
+00:43:38,215 --> 00:43:45,213
+Em 1966, dois cientistas da computação
+noruegueses, Ole Johan Dahl e Kristen Nygaard,
+
+466
+00:43:45,414 --> 00:43:49,241
+estavam brincando com o compilador Algol 60.
+
+467
+00:43:50,046 --> 00:43:54,325
+Eles pegaram uma estrutura de dados crítica, o quadro de pilha de chamadas de função,
+
+468
+00:43:54,425 --> 00:43:57,547
+e eles mudaram da pilha para o heap.
+
+469
+00:43:57,698 --> 00:44:05,954
+E OO nasceu. Eles inventaram a primeira linguagem OO: Simula 67
+
+470
+00:44:06,609 --> 00:44:13,103
+Dahl e Nygaard inventaram a sintaxe de chamada
+de método com a qual estamos tão familiarizados: o.f (x)
+
+471
+00:44:13,606 --> 00:44:17,936
+Mas esta sintaxe é realmente a essência do OO?
+
+472
+00:44:18,036 --> 00:44:23,725
+O (x) é realmente tão diferente de f (o, x)?
+
+473
+00:44:23,977 --> 00:44:26,947
+Qualquer programador de Python pode dizer que não é.
+
+474
+00:44:28,256 --> 00:44:33,643
+Dahl e Nygaard também imbuíram
+Simula 67 com polimorfismo dinâmico.
+
+475
+00:44:34,045 --> 00:44:38,778
+Isto dá a afirmação o.f (x) uma nova interpretação interessante:
+
+476
+00:44:39,281 --> 00:44:43,661
+O chamador não sabe qual implementação de f será realmente invocada,
+
+477
+00:44:43,761 --> 00:44:47,940
+então o chamador foi dissociado da função que é chamada.
+
+478
+00:44:49,098 --> 00:44:53,578
+Mas foi Alan Kay quem nos deu a metáfora mais eficaz:
+
+479
+00:44:53,678 --> 00:44:56,851
+"OO é sobre passar mensagens".
+
+480
+00:44:57,253 --> 00:45:02,741
+Quando você passa uma mensagem, perde o controle
+sobre como essa mensagem será interpretada.
+
+481
+00:45:02,841 --> 00:45:05,258
+Você não sabe onde vai acabar.
+
+482
+00:45:05,358 --> 00:45:09,990
+Você só pode esperar que o destinatário da mensagem reaja adequadamente.
+
+483
+00:45:11,198 --> 00:45:17,843
+Assim, o remetente não depende do destinatário,
+nem o destinatário depende do remetente.
+
+484
+00:45:17,943 --> 00:45:22,425
+Ambos dependem da mensagem, que é uma abstração.
+
+485
+00:45:22,525 --> 00:45:30,479
+A dependência se opõe ao fluxo de controle, e é isso que é a essência do OO.
+
+486
+00:45:31,839 --> 00:45:37,376
+Costuma-se dizer que OO é sobre a modelagem do mundo real dentro do seu software.
+
+487
+00:45:37,476 --> 00:45:43,015
+Há verdade nisso, mas na verdade não há nada
+de especial sobre o OO que permita isso:
+
+488
+00:45:43,115 --> 00:45:47,545
+programação é modelar o mundo real dentro do seu software.
+
+489
+00:45:48,502 --> 00:45:54,493
+Costuma-se dizer que o OO é herança,
+encapsulamento e polimorfismo.
+
+490
+00:45:54,593 --> 00:46:01,592
+E embora seja verdade que eles estão envolvidos, você
+pode usar herança, polimorfismo e encapsulamento
+
+491
+00:46:01,692 --> 00:46:06,221
+para escrever programas que apodreçam tão .
+bem quanto o programa de cópia apodreceu
+
+492
+00:46:06,625 --> 00:46:11,106
+Encapsulamento, herança e polimorfismo são mecanismos dentro do OO,
+
+493
+00:46:11,307 --> 00:46:13,975
+mas eles não são a qualidade essencial.
+
+494
+00:46:15,435 --> 00:46:20,772
+A qualidade essencial do OO, o que o diferencia de outros paradigmas,
+
+495
+00:46:20,872 --> 00:46:22,836
+e o que torna isso útil
+
+496
+00:46:22,936 --> 00:46:30,537
+é a capacidade de inverter as principais dependências,
+protegendo as políticas de alto nível dos detalhes de baixo nível.
+
+497
+00:46:31,797 --> 00:46:38,140
+No fim, o design de POO é tudo sobre gerenciamento de dependências.
+
+498
+00:46:42,520 --> 00:46:45,389
+Gestão de Dependências
+
+499
+00:46:46,406 --> 00:46:50,955
+Ao longo dos anos, montei 11 princípios
+de design orientado a objetos.
+
+500
+00:46:51,055 --> 00:46:54,999
+Cada um desses princípios envolve um aspecto do gerenciamento de dependências.
+
+501
+00:46:55,099 --> 00:46:58,930
+De fato, poderíamos chamá-los de princípios de gerenciamento de dependência.
+
+502
+00:46:59,885 --> 00:47:05,333
+Os primeiros cinco princípios controlam
+as relações e operações entre classes.
+
+503
+00:47:05,433 --> 00:47:12,183
+Eles são chamados princípios SOLID, porque seus nomes formam a sigla: SOLID
+
+504
+00:47:14,150 --> 00:47:20,707
+Esses cinco princípios descrevem a maneira como as classes,
+em um projeto orientado a objetos, se relacionam umas com as outras.
+
+505
+00:47:20,807 --> 00:47:27,741
+Eles são todos sobre as dependências entre essas
+classes e as motivações para criar essas dependências.
+
+506
+00:47:29,876 --> 00:47:34,538
+Os próximos três princípios são chamados
+de princípios de coesão de componentes.
+
+507
+00:47:34,638 --> 00:47:41,950
+Eles descrevem as forças que fazem com que as classes
+sejam agrupadas em componentes implantáveis ​​independentemente.
+
+508
+00:47:42,962 --> 00:47:46,725
+Os três últimos princípios são os princípios do acoplamento de componentes.
+
+509
+00:47:47,174 --> 00:47:52,509
+Esses princípios descrevem as forças que governam as dependências entre os componentes.
+
+510
+00:47:55,093 --> 00:48:00,092
+Juntos, esses princípios formam um
+regime de gerenciamento de dependência,
+
+511
+00:48:00,192 --> 00:48:07,112
+que descrevem como usamos o OO para criar aplicativos com classes e compor
+
+512
+00:48:07,212 --> 00:48:14,188
+em componentes implantáveis ​​independentemente com alta coesão e baixo acoplamento.
+
+513
+00:48:15,649 --> 00:48:20,517
+Os próximos episódios investigarão esses princípios em detalhes extremos.
+
+514
+00:48:20,617 --> 00:48:25,926
+Olharemos para eles de todos os lados e investigaremos estudos de caso que os aplicarão.
+
+515
+00:48:27,836 --> 00:48:33,228
+Nosso objetivo é empregar os princípios do projeto orientado a objetos para criar
+
+516
+00:48:33,328 --> 00:48:40,191
+aplicação de software com designs robustos
+e arquiteturas que não cheiram e não apodrecem.
+
+517
+00:48:45,471 --> 00:48:48,223
+Conclusão
+
+518
+00:48:49,122 --> 00:48:50,260
+Então vamos rever:
+
+
+519
+00:48:50,360 --> 00:48:56,547
+Neste episódio, lançamos as bases para os princípios do SOLID de design de software
+
+
+520
+00:48:56,648 --> 00:49:00,521
+entendendo primeiro o que é design de software.
+
+
+521
+00:49:01,365 --> 00:49:07,431
+Discutimos a notável percepção de Jack Reeve de
+ que, ao contrário da maioria das outras indústrias,
+
+522
+00:49:07,599 --> 00:49:12,597
+O software é caro para projetar, mas é barato de construir.
+
+
+523
+00:49:13,721 --> 00:49:20,349
+Nós mostramos que isso implica que o
+ software deve ser projetado e construído iterativamente
+
+524
+00:49:20,512 --> 00:49:23,042
+sem um enorme planejamento inicial.
+
+
+525
+00:49:23,831 --> 00:49:30,121
+Nós falamos sobre cheiros de design, os tipos 
+de coisas que dão errado com o design de um sistema.
+
+526
+00:49:30,233 --> 00:49:38,376
+Nós falamos sobre rigidez, fragilidade, imobilidade, viscosidade e complexidade desnecessária.
+
+
+527
+00:49:39,163 --> 00:49:46,926
+Observamos alguns problemas de codificação e
+ vimos como o design desse código promoveu essa podridão.
+
+528
+00:49:47,026 --> 00:49:52,430
+Nós também aprendemos que projetos que têm uma estrutura de dependência invertida,
+
+
+529
+00:49:52,530 --> 00:49:57,471
+onde as dependências se opõem ao.
+ fluxo de controle, tendem a não apodrecer
+
+530
+00:49:58,596 --> 00:50:05,279
+Nós discutimos a história da OO, e então criamos uma definição que era independente
+
+
+531
+00:50:05,379 --> 00:50:13,984
+das definições mais mecânicas de OO, como polimorfismo, encapsulamento e herança.
+
+532
+00:50:14,084 --> 00:50:21,735
+Em nossa definição, um projeto OO é aquele 
+em que dependências-chave foram invertidas
+
+533
+00:50:21,835 --> 00:50:28,134
+a fim de isolar a política de alto nível dos detalhes de baixo nível.
+
+
+534
+00:50:28,811 --> 00:50:35,494
+Finally we talked about dependency management,
+and the role that the SOLID principles play
+
+535
+00:50:35,594 --> 00:50:40,605
+em manter as dependências do código-fonte 
+em um aplicativo de software sob controle.
+
+536
+00:50:41,448 --> 00:50:45,766
+Então é isso. Espero que você tenha aprendido 
+alguma coisa, espero que você tenha se divertido.
+
+537
+00:50:45,866 --> 00:50:51,950
+Mas rapaz, temos muito mais coisas para falar. 
+Temos que falar sobre todos os outros princípios de design,
+
+538
+00:50:52,050 --> 00:50:54,781
+e depois uma carga inteira de padrões de design,
+
+
+539
+00:50:54,881 --> 00:50:58,297
+temos que falar muito sobre
+ práticas como integração contínua,
+
+540
+00:50:58,397 --> 00:51:02,114
+e lembre-se da avançada sessão de Desenvolvimento 
+Orientado a Testes que prometi a você.
+
+541
+00:51:02,216 --> 00:51:06,272
+Você não vai querer perder o próximo 
+episódio emocionante do Código Limpo,
+
+542
+00:51:06,372 --> 00:51:10,706
+Episódio 9: O Princípio da Responsabilidade Única.
+
+543
+00:51:10,806 --> 00:51:28,400
+Legendado por André Castilho
+
