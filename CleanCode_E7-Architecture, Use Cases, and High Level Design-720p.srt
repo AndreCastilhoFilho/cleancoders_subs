@@ -345,7 +345,7 @@ e o que não são
 
 86
 00:04:42,560 --> 00:04:44,873
-como se relacionam com as Histórias de usuário
+como se relacionam com as estórias de usuário
 
 87
 00:04:44,873 --> 00:04:46,541
@@ -394,7 +394,7 @@ da aplicação muito melhor
 
 97
 00:05:17,735 --> 00:05:23,304
-e pode ser usada com Mvocê
+e pode ser usada com MVC
 para formar uma boa estrutura de sistema
 
 98
@@ -1234,7 +1234,7 @@ e
 
 302
 00:15:23,963 --> 00:15:28,264
-decidi usar Mvocê
+decidi usar MVC
 
 303
 00:15:30,080 --> 00:15:32,504
@@ -1307,7 +1307,7 @@ ou ter pequenas dicussões
 
 320
 00:16:14,540 --> 00:16:17,846
-talves uma área de conferência
+talvez uma área de conferência
 
 321
 00:16:17,846 --> 00:16:18,873
